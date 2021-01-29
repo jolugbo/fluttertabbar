@@ -1,0 +1,21 @@
+{
+    "appName": "projectx",
+    "roleName": "pinpointLambdaRole37b4b698",
+    "cloudformationPolicyName": "cloudformationPolicy37b4b698",
+    "cloudWatchPolicyName": "cloudWatchPolicy37b4b698",
+    "pinpointPolicyName": "pinpointPolicy37b4b698",
+    "authPolicyName": "pinpoint_amplify_37b4b698",
+    "unauthPolicyName": "pinpoint_amplify_37b4b698",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

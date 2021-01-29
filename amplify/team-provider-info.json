@@ -1,0 +1,20 @@
+{
+    "devone": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-projectx-devone-165542-authRole",
+            "UnauthRoleArn": "arn:aws:iam::844511654333:role/amplify-projectx-devone-165542-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::844511654333:role/amplify-projectx-devone-165542-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-projectx-devone-165542-deployment",
+            "UnauthRoleName": "amplify-projectx-devone-165542-unauthRole",
+            "StackName": "amplify-projectx-devone-165542",
+            "StackId": "arn:aws:cloudformation:us-west-2:844511654333:stack/amplify-projectx-devone-165542/0a2c2be0-22a4-11eb-8686-066f2b89a6eb",
+            "AmplifyAppId": "d232ojm3ywbdiq"
+        },
+        "categories": {
+            "auth": {
+                "projectx1ef0496f": {}
+            }
+        }
+    }
+}
