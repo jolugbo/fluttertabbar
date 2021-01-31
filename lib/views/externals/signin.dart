@@ -195,7 +195,7 @@ class _SigninPageState extends State<signinPage>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.1,
+                        //height: MediaQuery.of(context).size.height * 0.12,
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.center,
                         child: Column(
@@ -203,12 +203,15 @@ class _SigninPageState extends State<signinPage>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text('Welcome back!',style: darkBold25Style,textAlign: TextAlign.center,),
+                              Text('Welcome back!',style: dark25BoldStyle,textAlign: TextAlign.center,),
                               Container(
                                 height: MediaQuery.of(context).size.height * 0.01,
                               ),
-                              Text('Sign in to learn and connect with other professionals like you',style: darkNormal18Style,textAlign: TextAlign.center,),
-                            ]),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.95,
+                                child: Text('Sign in to learn and connect with other professionals like you',style: darkNormal18Style,textAlign: TextAlign.center,),
+                              ),
+                              ]),
                       ),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.15,

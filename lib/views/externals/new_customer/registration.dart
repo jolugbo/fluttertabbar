@@ -95,7 +95,7 @@ class _RegistrationPageState extends State<registrationPage>
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('PROJECT X',style: darkBold25Style,textAlign: TextAlign.center,),
+                      Text('PROJECT X',style: dark25BoldStyle,textAlign: TextAlign.center,),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),

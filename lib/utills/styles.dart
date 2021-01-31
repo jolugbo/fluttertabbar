@@ -130,6 +130,14 @@ final dark14Style = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.normal,
 );
+final dark13BoldStyle = TextStyle(
+  color: projectDark,
+  fontFamily: generalFont,
+  fontSize: 13.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+);
 final dark16Style = TextStyle(
   color: projectDark,
   fontFamily: generalFont,
@@ -162,6 +170,14 @@ final dark20Style = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.normal,
 );
+final dark25Style = TextStyle(
+  color: projectDark,
+  fontFamily: generalFont,
+  fontSize: 25.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.normal,
+);
 final dark15Style = TextStyle(
   color: projectDark,
   fontFamily: generalFont,
@@ -170,11 +186,10 @@ final dark15Style = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,
 );
-final darkBold25Style = TextStyle(
+final dark25BoldStyle = TextStyle(
   color: projectDark,
-  //fontFamily: generalFont,
+  fontFamily: generalFont,
   fontSize: 25.0,
-  fontFamily: 'Montserrat',
   height: 1.2,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,
@@ -363,11 +378,27 @@ final blue12boldStyle = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,
 );
+final blue13boldStyle = TextStyle(
+  color: projectBlue,
+  fontFamily: generalFont,
+  fontSize: 13.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+);
 final blue14Style = TextStyle(
   color: projectBlue,
   fontFamily: generalFont,
   fontSize: 14.0,
   height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+);
+final blue25BoldStyle = TextStyle(
+  color: projectBlue,
+  fontFamily: generalFont,
+  fontSize: 25.0,
+  height: 1.2,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,
 );

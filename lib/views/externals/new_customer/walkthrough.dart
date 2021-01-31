@@ -89,7 +89,7 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                   height: MediaQuery.of(context).size.height * 0.15,
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
-                  child: Text('PROJECT X',style: darkBold25Style,textAlign: TextAlign.center,),
+                  child: Text('PROJECT X',style: dark25BoldStyle,textAlign: TextAlign.center,),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.65,

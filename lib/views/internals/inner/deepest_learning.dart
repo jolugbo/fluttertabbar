@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_emoji/flutter_emoji.dart';
 import 'package:project_x/utills/linechart.dart';
 import 'package:project_x/utills/pagetransitionutill.dart';
 import 'package:project_x/utills/styles.dart';
@@ -23,8 +24,11 @@ class deepest_learning extends StatefulWidget {
   _DeepestLearningState createState() => _DeepestLearningState();
 }
 
+enum Answer { A, B, C, D }
+
 class _DeepestLearningState extends State<deepest_learning>
     with TickerProviderStateMixin {
+  var parser = EmojiParser();
   String defaultprofile = 'assets/jolugbo.jpeg';
   String econKing = 'assets/share1.png';
   String ribbon = 'assets/ribbon.jpg';
@@ -32,6 +36,9 @@ class _DeepestLearningState extends State<deepest_learning>
   String owen = 'assets/share3.png';
   String alex = 'assets/share4.png';
   String fred = 'assets/share5.png';
+  int _current = 0;
+  Answer AnswerSelected;
+
   final GlobalKey<ScaffoldState> _scaffoldKey1 = GlobalKey<ScaffoldState>();
   ContainerTransitionType _transitionType = ContainerTransitionType.fade;
 
@@ -42,6 +49,291 @@ class _DeepestLearningState extends State<deepest_learning>
 
   @override
   Widget build(BuildContext context) {
+
+    Widget content = Column(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.65,
+          alignment: Alignment.center,color: projectGray2,
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return  Container(
+                        alignment: Alignment.center,
+                        height: MediaQuery.of(context).size.height * 0.65,
+                        child:Container(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          alignment: Alignment.center, color: accent,
+                          height: MediaQuery.of(context).size.height,
+                          child:ListView(
+                            scrollDirection: Axis.vertical,
+                            padding: EdgeInsets.all(20),
+                            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                            children: <Widget>[
+                              Container(
+                                  width: MediaQuery.of(context).size.width * 0.95,
+                                  height: MediaQuery.of(context).size.height * 0.1,
+                                  alignment: Alignment.centerLeft,
+                                  child:Text('Asset management.',style: blue25BoldStyle,textAlign: TextAlign.left,)
+                              ),
+                              Container(
+                                  width: MediaQuery.of(context).size.width * 0.95,
+                                  alignment: Alignment.center,
+                                  child:Text('Asset management refers to a systematic approach to the governance and realization of value from the things that a group or entity is responsible for,over their whole life cycles. \n\nIt may apply both to tangible assets (physical objects such as buildings or equipment) and to intangible assets (such as human capital, intellectual property, goodwill or financial assets). \n\nAsset management is a systematic process of developing, operating, maintaining, upgrading, and disposing of assets in the most cost-effective manner (including all costs, risks and performance attributes). \n\nThe term is commonly used in the financial sector to describe people and companies who manage investments on behalf of others.\n\n\ Those include, for example, investment managers that manage the assets of a pension fund. \n\nIt is also increasingly used in both the business world and public infrastructure sectors to ensure a coordinated approach to the optimization of costs, risks, service/ performance and sustainability.',style: dark15Style,textAlign: TextAlign.left,)
+                              ),
+                            ],
+                          ),
+                        )
+                    );
+                  },
+                  childCount: 1,
+                ),
+              ),
+            ],
+          ),
+          //margin: EdgeInsets.all(10),
+        ),
+        Container(
+          //height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.centerLeft,padding: EdgeInsets.all(10),
+          child: Container(
+            width: MediaQuery.of(context).size.width *0.4,
+            alignment: Alignment.centerRight,
+            child: ButtonTheme(
+                height: 40,
+                buttonColor: Colors.transparent,
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                    //side: BorderSide(color: projectBlue)
+                  ),
+                  color: accent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Comments',style: blue14Style,),
+                      Stack(
+                        children: <Widget>[
+                          Icon(Icons.mode_comment_outlined,color: projectBlue,size: 40,),
+                          new Positioned(
+                            top: 10.0,
+                            right: 10.0,
+                            child: Text('621',
+                                style: red10Style),
+                          )
+                        ],
+                      ),
+                      //Icon(Icons.mode_comment_outlined,color: projectBlue,)
+                    ],
+                  ),
+                  onPressed: () async {
+
+                  },
+                )),
+          ),
+        ),
+        Container(
+          // height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.centerRight,padding: EdgeInsets.all(10),
+          child: Container(
+            width: MediaQuery.of(context).size.width *0.4,
+            alignment: Alignment.centerRight,
+            child: ButtonTheme(
+                height: 40,
+                buttonColor: Colors.transparent,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      side: BorderSide(color: projectBlue)
+                  ),
+                  color: projectBlue,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Continue',style: white18Style,),
+                      Icon(Icons.arrow_forward,color: accent,)
+                    ],
+                  ),
+                  onPressed: () async {
+
+                  },
+                  highlightElevation: 0.8,
+                )),
+          ),
+        ),
+      ],
+    );
+    Widget qAndA =Column(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.65,
+          alignment: Alignment.center,color: projectGray2,
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                    return  Container(
+                        alignment: Alignment.center,
+                        height: MediaQuery.of(context).size.height * 0.65,
+                        child:Container(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          alignment: Alignment.center, color: accent,
+                          height: MediaQuery.of(context).size.height,
+                          child:ListView(
+                            scrollDirection: Axis.vertical,
+                            padding: EdgeInsets.all(20),
+                            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                            children: <Widget>[
+                              Container(
+                                  width: MediaQuery.of(context).size.width * 0.95,
+                                  padding: EdgeInsets.fromLTRB(0,0,0,10),
+                                  alignment: Alignment.centerLeft,
+                                  child:Text('Which of the following best describes asset management?',style: dark20Style,textAlign: TextAlign.left,)
+                              ),
+                              Container(
+                                  width: MediaQuery.of(context).size.width * 0.95,
+                                  alignment: Alignment.center,
+                                  child:Column(
+                                    children: [
+                                      ListTile(
+                                        title:  Text(
+                                          'Asset management refers to a systematic approach to the governance and realization of value from the things that a group or entity is responsible for, over their whole life cycles',
+                                          style: dark15Style,
+                                        ),
+                                        leading:Radio(
+                                          value: Answer.A,
+                                          groupValue: AnswerSelected,
+                                          onChanged: (Answer value) {
+                                            setState(() { AnswerSelected = value; });
+                                          },
+                                        ),
+                                      ),
+                                      ListTile(
+                                        title:  Text(
+                                          'Asset management refers to a systematic approach to the governance and realization of value from the things that a group or entity is responsible for, over their whole life cycles',
+                                          style: dark15Style,
+                                        ),
+                                        leading:Radio(
+                                          value: Answer.B,
+                                          groupValue: AnswerSelected,
+                                          onChanged: (Answer value) {
+                                            setState(() { AnswerSelected = value; });
+                                          },
+                                        ),
+                                      ),
+                                      ListTile(
+                                        title:  Text(
+                                          'Asset management refers to a systematic approach to the governance and realization of value from the things that a group or entity is responsible for, over their whole life cycles',
+                                          style: dark15Style,
+                                        ),
+                                        leading:Radio(
+                                          value: Answer.C,
+                                          groupValue: AnswerSelected,
+                                          onChanged: (Answer value) {
+                                            setState(() { AnswerSelected = value; });
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                              ),
+                            ],
+                          ),
+                        )
+                    );
+                  },
+                  childCount: 1,
+                ),
+              ),
+            ],
+          ),
+          //margin: EdgeInsets.all(10),
+        ),
+        Container(
+          //height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.centerLeft,padding: EdgeInsets.all(10),
+          child: Container(
+            width: MediaQuery.of(context).size.width *0.4,
+            alignment: Alignment.centerRight,
+            child: ButtonTheme(
+                height: 40,
+                buttonColor: Colors.transparent,
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                    //side: BorderSide(color: projectBlue)
+                  ),
+                  color: accent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Comments',style: blue14Style,),
+                      Stack(
+                        children: <Widget>[
+                          Icon(Icons.mode_comment_outlined,color: projectBlue,size: 40,),
+                          new Positioned(
+                            top: 10.0,
+                            right: 10.0,
+                            child: Text('621',
+                                style: red10Style),
+                          )
+                        ],
+                      ),
+                      //Icon(Icons.mode_comment_outlined,color: projectBlue,)
+                    ],
+                  ),
+                  onPressed: () async {
+
+                  },
+                )),
+          ),
+        ),
+        Container(
+          // height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.centerRight,padding: EdgeInsets.all(10),
+          child: Container(
+            width: MediaQuery.of(context).size.width *0.4,
+            alignment: Alignment.centerRight,
+            child: ButtonTheme(
+                height: 40,
+                buttonColor: Colors.transparent,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      side: BorderSide(color: projectBlue)
+                  ),
+                  color: projectBlue,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Check',style: white18Style,),
+                      Text(parser.get('hand_with_index_and_middle_fingers_crossed').code,
+                        textAlign: TextAlign.center,
+                        style: dark18Style,
+                      ),
+                    ],
+                  ),
+                  onPressed: () async {
+
+                  },
+                  highlightElevation: 0.8,
+                )),
+          ),
+        ),
+      ],
+    );
+
+    List<Widget> carouselItems = [content,qAndA];
+
     return DefaultTabController(
         length: 3,
         child:Scaffold(
@@ -51,764 +343,141 @@ class _DeepestLearningState extends State<deepest_learning>
             backgroundColor: accent,
             leading: IconButton(
               icon: Icon(
-                Icons.arrow_back,color: projectDark,
+                Icons.arrow_back,color: projectBlue,
               ),
               onPressed: (){
                 Navigator.pop(context);
               },),
-            title: Container(
-              alignment: Alignment.center,
-              child: Text('Activity Notifications',style: blue14Style,),
-            ),
-          ),
-          body:ListView(
-            //padding: const EdgeInsets.all(8),
-            children: [
-              Container(
-                //color: projectLightBlue,
-                width: MediaQuery.of(context).size.width * 0.65,
-                alignment: Alignment.center,
-                child: DropdownButton(
-                    value: 0,
-                    isExpanded: false,
-                    items: [
-                      DropdownMenuItem(
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          child: Text("Activity type",textAlign: TextAlign.center,style: dark16BoldStyle,),
-                        ),
-                        value: 0,
-                      ),
-                      DropdownMenuItem(
-                        child: Text("Challenges"),
-                        value: 1,
-                      ),
-                      DropdownMenuItem(
-                        child: Text("Level Updates"),
-                        value: 2,
-                      ),
-                      DropdownMenuItem(
-                          child: Text("Chats"),
-                          value: 4
-                      )
-                    ],
-                    onChanged: (value) {
-//                          setState(() {
-//                            filter = value;
-//                          });
-                    }),
-                //margin: EdgeInsets.all(10),
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Stack(
-                                      children: [
-                                        Image.asset(econKing),
-                                        Positioned(child: Icon(Icons.flash_on_sharp,color: projectRed,),left: 25,top: 20,)
-
-                                      ],
-                                    ),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'Econs King ',style: dark12boldStyle,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'challenged you in',
-                                    style: dark10Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' Accounting',
-                                    style: blue12boldStyle,
-                                  ),
-                                  TextSpan(
-                                    text: ' 32kp',
-                                    style: green12Style,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('2 min ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Stack(
-                                      children: [
-                                        Image.asset(brains),
-                                        Positioned(child: Icon(Icons.flash_on_sharp,color: projectRed,),left: 25,top: 20,)
-
-                                      ],
-                                    ),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'Brains ',style: dark12boldStyle,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'challenged you in',
-                                    style: dark10Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' Banking',
-                                    style: blue12boldStyle,
-                                  ),
-                                  TextSpan(
-                                    text: ' 16kp',
-                                    style: green12Style,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('10 min ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Stack(
-                                      children: [
-                                        Image.asset(alex),
-                                        Positioned(child: Icon(Icons.flash_on_sharp,color: projectRed,),left: 25,top: 20,)
-
-                                      ],
-                                    ),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'Alex ',style: dark12boldStyle,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'challenged you in',
-                                    style: dark10Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' Governance',
-                                    style: blue12boldStyle,
-                                  ),
-                                  TextSpan(
-                                    text: ' 32kp',
-                                    style: green12Style,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('25 min ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Stack(
-                                      children: [
-                                        Image.asset(fred),
-                                        Positioned(child: Icon(Icons.flash_on_sharp,color: projectRed,),left: 25,top: 20,)
-
-                                      ],
-                                    ),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'Fred ',style: dark12boldStyle,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'challenged you in',
-                                    style: dark10Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' Economics',
-                                    style: blue12boldStyle,
-                                  ),
-                                  TextSpan(
-                                    text: ' 8kp',
-                                    style: green12Style,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('2 min ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: accent,
-                                    child: Image.asset(ribbon),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'You have reached ',style: dark10Style,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'Level 5',
-                                    style: dark12boldStyle,
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            //Text('Mr Jolugbo',style: blue14Style,),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('an hour ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Image.asset(econKing),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'you ',
-                                style: dark10Style,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: ' Won ',
-                                    style: green12Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' the ',
-                                    style: dark10Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' Government ',
-                                    style: blue12boldStyle,
-                                  ),
-                                  TextSpan(
-                                    text: 'challenge',
-                                    style: dark10Style,
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            //Text('Mr Jolugbo',style: blue14Style,),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('2 hours ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Image.asset(econKing),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'you ',
-                                style: dark10Style,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: ' Won ',
-                                    style: green12Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' the ',
-                                    style: dark10Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' Government ',
-                                    style: blue12boldStyle,
-                                  ),
-                                  TextSpan(
-                                    text: 'challenge',
-                                    style: dark10Style,
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('2 hours ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Image.asset(brains),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'you ',
-                                style: dark10Style,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: ' Lost ',
-                                    style: red14Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' the ',
-                                    style: dark10Style,
-                                  ),
-                                  TextSpan(
-                                    text: ' Accounting ',
-                                    style: blue12boldStyle,
-                                  ),
-                                  TextSpan(
-                                    text: 'challenge',
-                                    style: dark10Style,
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            //Text('Mr Jolugbo',style: blue14Style,),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('2 hours ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Stack(
-                                      children: [
-                                        Image.asset(econKing),
-                                        Positioned(child: Icon(Icons.flash_on_sharp,color: projectRed,),left: 25,top: 20,)
-
-                                      ],
-                                    ),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'Econs King ',style: dark12boldStyle,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'started following you',
-                                    style: dark10Style,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('2 min ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-              OpenContainer(
-                transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _DetailsCard(),
-                tappable: false,
-                closedShape: const RoundedRectangleBorder(),
-                closedElevation: 0,
-                closedBuilder: (context, openContainer) {
-                  return ListTile(
-                    onTap: openContainer,
-                    title: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: cardShape,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: ListTile(
-                            leading:
-                            CircleAvatar(
-                              radius: 25,
-                              child: ClipOval(
-                                  child:   RawMaterialButton(
-                                    elevation: 2.0,
-                                    fillColor: projectBlue,
-                                    child: Stack(
-                                      children: [
-                                        Image.asset(alex),
-                                      ],
-                                    ),
-                                    padding: EdgeInsets.all(3.0),
-                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                  )
-                              ),
-                            ),
-                            title:  RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(
-                                text: 'Alex ',style: dark12boldStyle,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'Likes your comment on ',
-                                    style: dark10Style,
-                                  ),
-                                  TextSpan(
-                                    text: 'Advisory ',
-                                    style: blue12boldStyle,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Text('2 min ago',style: gray11Style),
-                              ],
-                            ),
-                          ),
-                        )
-                    ),
-                  );
-                },
-              ),
-
-//                ...List.generate(10, (index) {
-//                  return OpenContainer<bool>(
-//                    transitionType: _transitionType,
-//                    openBuilder: (context, openContainer) =>const _DetailsCard(),
-//                    tappable: false,
-//                    closedShape: const RoundedRectangleBorder(),
-//                    closedElevation: 0,
-//                    closedBuilder: (context, openContainer) {
-//                      return ListTile(
-//                        onTap: openContainer,
-//                        title: Card(
-//                            clipBehavior: Clip.antiAlias,
-//                            elevation: 5,
-//                            shape: cardShape,
-//                            margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
-//                            child: Container(
-//                              width: MediaQuery.of(context).size.width * 0.95,
-//                              child: ListTile(
-//                                leading: CircleAvatar(
-//                                  radius: 18,
-//                                  child: ClipOval(
-//                                    child: Image.asset(defaultprofile),
-//                                  ),
-//                                ),
-//                                title: Text('Mr Jolugbo',style: blue14Style,),
-//                                subtitle: Row(
-//                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                                  mainAxisSize: MainAxisSize.max,
-//                                  children: <Widget>[
-//                                    Text('1000000000 CP',style: gray11Style),
-//                                    Text((index + 1).toString())
-//                                  ],
-//                                ),
-//                              ),
-//                            )
-//                        ),
-//                      );
-//                    },
-//                  );
-//                }),
-
+            actions: <Widget>[
+              ButtonTheme(
+                  minWidth: MediaQuery.of(context).size.width * 0.08,
+                  height: 50.0,
+                  child: RaisedButton(
+                    child: Icon(Icons.share_rounded,color: projectBlue,),
+                    onPressed: () {
+                      //Scaffold.of(context).openDrawer();
+                    },
+                    color: accent,
+                  )),
+              ButtonTheme(
+                  minWidth: MediaQuery.of(context).size.width * 0.08,
+                  height: 50.0,
+                  child: RaisedButton(
+                    child: Icon(Icons.mode_comment_outlined,color: projectBlue,),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/notifications');
+                    },
+                    color: accent,
+                  )),
+              ButtonTheme(
+                  minWidth: MediaQuery.of(context).size.width * 0.08,
+                  height: 50.0,
+                  child: RaisedButton(
+                    child: Icon(Icons.menu_outlined,color: projectBlue,),
+                    onPressed: () {
+                      //Scaffold.of(context).openDrawer();
+                    },
+                    color: accent,
+                  )),
             ],
           ),
+          body:Container(
+            height: MediaQuery.of(context).size.height * 0.95,
+            width: MediaQuery.of(context).size.width,
+            alignment: Alignment.center,
+            child: Column(
+
+              children: [
+                //navigation indicator
+                Container(
+                  color: projectGray2,
+                  width: MediaQuery.of(context).size.width,
+                  height: 31,
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ButtonTheme(
+                          minWidth: 30,
+                          height: 30.0,
+                          child: RaisedButton(
+                            child: Icon(Icons.play_arrow_outlined,color: projectGreen,),
+                            onPressed: () {
+                            },
+                            color: accent,
+                          )),
+                      ButtonTheme(
+                          minWidth: 30,
+                          height: 30.0,
+                          child: RaisedButton(
+                            child: Icon(Icons.question_answer_outlined,color: projectGray,),
+                            onPressed: () {
+                            },
+                            color: accent,
+                          )),
+                      ButtonTheme(
+                          minWidth: 30,
+                          height: 30.0,
+                          child: RaisedButton(
+                            child: Icon(Icons.play_arrow_outlined,color: projectGray,),
+                            onPressed: () {
+                            },
+                            color: accent,
+                          )),
+                      ButtonTheme(
+                          minWidth: 30,
+                          height: 30.0,
+                          child: RaisedButton(
+                            child: Icon(Icons.question_answer_outlined,color: projectGray,),
+                            onPressed: () {
+                            },
+                            color: accent,
+                          )),
+                    ],
+                  ),
+                ),
+
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: MediaQuery.of(context).size.height *0.85,
+                    aspectRatio: 1/1,
+                    viewportFraction: 1,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    reverse: false,
+                    autoPlay: false,
+                    autoPlayInterval: Duration(seconds: 3),
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enlargeCenterPage: false,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    },
+                    scrollDirection: Axis.horizontal,),
+                  items: [0,1].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          decoration: BoxDecoration(
+                            //color: Colors.blue
+                          ),
+                          child:  carouselItems[i]
+                        );
+                      },
+                    );
+                  }).toList(),
+                ),
+
+
+              ],
+            ),
+          )
         )
     );
   }
@@ -900,4 +569,5 @@ class _DetailsCard extends StatelessWidget {
     );
   }
 }
+
 

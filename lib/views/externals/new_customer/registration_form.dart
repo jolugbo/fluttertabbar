@@ -293,7 +293,7 @@ Future<void> confirmSignUp() async {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Join Project X',style: darkBold25Style,textAlign: TextAlign.center,),
+                      Text('Join Project X',style: dark25BoldStyle,textAlign: TextAlign.center,),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
