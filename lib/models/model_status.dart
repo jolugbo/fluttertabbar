@@ -23,7 +23,7 @@ enum LastNameStatus {
   error,
   success
 }
-enum DateOfBirthStatus {
+enum UserNameStatus {
   error,
   success
 }

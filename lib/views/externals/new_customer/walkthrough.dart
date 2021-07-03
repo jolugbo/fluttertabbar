@@ -1,28 +1,25 @@
-import 'package:flutter/cupertino.dart';
+ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/styles.dart';
+import 'package:edurald/models/strings.dart';
 
 class walkthroughPage extends StatefulWidget {
-  walkthroughPage({Key key, this.title}) : super(key: key);
+  walkthroughPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _WalkthroughPageState createState() => _WalkthroughPageState();
 }
 
 class _WalkthroughPageState extends State<walkthroughPage>{
-//  String humanIcon1 = 'assets/welcomelady.png';
-//  String humanIcon2 = 'assets/ladyIcon2.png';
-//  String humanIcon3 = 'assets/femaleicon.png';
-  String nairaIcon = 'assets/nairacharticon.png';
-  String bgIcon = 'assets/bgicon.png';
-  String bgMain = 'assets/blankwhite.png';
-  String centerIcon = 'assets/shield.png';
+  final String redirectUrl = 'http://edurald.com/';
+  final String clientId = '77zum551b93zkz';
+  final String clientSecret = 'gwr7A7OHq00ns3Ow';
   List<String> scrollText = ['Commerce knowledge simplified',
     'Learn and connect with other professionals','Earn your reputation as a business professional'];
-  List<String> scrollImgs = ['assets/walkthrough1.png','assets/walkthrough2.png','assets/walkthrough3.png'];
+  List<String> scrollImgs = [imageBase+'walkthrough1.png',imageBase+'walkthrough2.png',imageBase+'walkthrough3.png'];
   int index = 0;
   final int _numPages = 3;
   int _currentPage = 0;
@@ -30,8 +27,6 @@ class _WalkthroughPageState extends State<walkthroughPage>{
 
 
 
-  void doMotion() {
-  }
 
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
@@ -54,11 +49,6 @@ class _WalkthroughPageState extends State<walkthroughPage>{
     );
   }
 
-  @override
-  State<StatefulWidget> initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => doMotion());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,24 +76,22 @@ class _WalkthroughPageState extends State<walkthroughPage>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.15,
+                  height: MediaQuery.of(context).size.height * 0.1,
                   width: MediaQuery.of(context).size.width,
-                  alignment: Alignment.center,
-                  child: Text('PROJECT X',style: dark25BoldStyle,textAlign: TextAlign.center,),
+                  alignment: Alignment.bottomCenter,
+                  child: Text('Edurald',style: dark25BoldStyle,textAlign: TextAlign.center,),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.65,
                   width: MediaQuery.of(context).size.width, //color: Colors.red,
                     alignment: Alignment.center,
-                  child:
-
-                  Column(
+                  child: Column(
                   children: [
                    CarouselSlider(
                     options: CarouselOptions(
                       height: MediaQuery.of(context).size.height * 0.6,
                       aspectRatio: 16/9,
-                      viewportFraction: 0.8,
+                      viewportFraction: 1,
                       initialPage: 0,
                       enableInfiniteScroll: true,
                       reverse: false,
@@ -135,7 +123,7 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                                 children: <Widget>[
                                   Container(
                                     height: MediaQuery.of(context).size.height * 0.15,
-                                    width: MediaQuery.of(context).size.width * 0.68,
+                                    width: MediaQuery.of(context).size.width * 0.9,
                                     alignment: Alignment.center,
                                     child: Text(scrollText[i],style: darkNormal25Style,textAlign: TextAlign.center,),
                                   ),
@@ -152,7 +140,7 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                       );
                     }).toList(),
                   ),
-                Row(
+                   Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [0,1,2,].map((i) {
                     int index = i;

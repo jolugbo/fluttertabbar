@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "114990488681",
+    "project_id": "edurald",
+    "storage_bucket": "edurald.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114990488681:android:4056058fd2f639b30556f8",
+        "android_client_info": {
+          "package_name": "com.app.edurald"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114990488681-52e9t6gg2223ju324an1qvnencnk4jab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.edurald",
+            "certificate_hash": "236b30bd419ab21b136d17b6a2eb36f50362566e"
+          }
+        },
+        {
+          "client_id": "114990488681-dnaamemn1t91ertqch0or6qf3c3l1oqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZy6fhGwNFdWkZZHK3Jb-cHdQo6RIOHwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114990488681-dnaamemn1t91ertqch0or6qf3c3l1oqg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

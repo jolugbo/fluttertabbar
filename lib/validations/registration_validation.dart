@@ -11,7 +11,7 @@
 
 //
 
-import 'package:project_x/models/strings.dart';
+import 'package:edurald/models/strings.dart';
 
 bool firstNameValidator(String firstname){
   if(firstname.isNotEmpty && firstname.length > 2){
@@ -27,8 +27,8 @@ bool lastNameValidator(String lastname){
   return false;
 }
 
-bool phoneNumberValidator(String phoneNumber){
-  if(phoneNumber.length >8){
+bool phoneNumberValidator(String? phoneNumber){
+  if(phoneNumber!.replaceAll(" ", "").length >8){
     return true;
   }
   return false;
@@ -62,7 +62,7 @@ PasswordValidationResp passwordValidator(String password){
   bool hasSpecialCharacters = false;
   var character='';
   var i=0;
-  if (! password?.isEmpty) {
+  if (password.isNotEmpty) {
     //hasSpecialCharacters = password.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
     while (i < password.length){
       character = password.substring(i,i+1);

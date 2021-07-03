@@ -8,13 +8,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_x/utills/imageanimations.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/imageanimations.dart';
+import 'package:edurald/utills/styles.dart';
 
 class community extends StatefulWidget {
-  community({Key key, this.title}) : super(key: key);
+  community({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _CommunityState createState() => _CommunityState();
@@ -60,13 +60,14 @@ class _CommunityState extends State<community>
     projectYellow,
   ];
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
   }
 
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Stack(
       overflow: Overflow.visible,
       children: <Widget>[
@@ -479,200 +480,6 @@ class _CommunityState extends State<community>
                                                       )
 
                                                   ),
-//                                                  Container(
-//                                                    width: MediaQuery.of(context).size.width * 0.9,
-//                                                    height: MediaQuery.of(context).size.height * 0.35,
-//                                                    padding: EdgeInsets.fromLTRB(0,10,0,10),
-//                                                    alignment: Alignment.center,color: projectLightBlue,
-//                                                    child: ListView(
-//                                                      scrollDirection: Axis.vertical,
-//                                                      children: <Widget>[
-//                                                        Row(
-//                                                          children: <Widget>[
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Aspiring Managers', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Aspiring Investors', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Aspiring Accountant', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                          ],
-//                                                        ),
-//                                                        Row(
-//                                                          children: <Widget>[
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Advisory', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Asset Management', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Capital Market', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                          ],
-//                                                        ),
-//                                                        Row(
-//                                                          children: <Widget>[
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Advisory', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Asset Management', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                            Column(
-//                                                                mainAxisSize: MainAxisSize.max,
-//                                                                mainAxisAlignment: MainAxisAlignment.start,
-//                                                                crossAxisAlignment: CrossAxisAlignment.center,
-//                                                                children: <Widget>[
-//                                                                  RawMaterialButton(
-//                                                                    onPressed: () {},
-//                                                                    elevation: 2.0,
-//                                                                    fillColor: accent,
-//                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-//                                                                    padding: EdgeInsets.all(10.0),
-//                                                                    shape: CircleBorder(side: BorderSide(color: accent)),
-//                                                                  ),
-//                                                                  Container(
-//                                                                      padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:100,
-//                                                                      child: Text('Trading & Brokerage', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-//                                                                  ),
-//
-//                                                                ]),
-//                                                          ],
-//                                                        ),
-//                                                      ],
-//                                                    ),
-//                                                  ),
                                                 ],
                                               ),
                                             )
@@ -695,182 +502,193 @@ class _CommunityState extends State<community>
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Container(
                                 padding: EdgeInsets.fromLTRB(10,10,10,0),alignment: Alignment.topLeft,
                                 child: Text('Trending in our community', style: blue14Style,),
                               ),
-                              Container(
-                                padding: EdgeInsets.fromLTRB(10,5,10,10),alignment: Alignment.topLeft,
-                                child: Text('what\'s going on?', style: dark10Style,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(10,5,10,10),alignment: Alignment.topLeft,
+                                    child: Text('Whats going on?', style: dark10Style,),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(10,0,10,0),alignment: Alignment.centerRight,
+                                    child: Text('View more', style: green12Style,),
+                                  ),
+                                ],
                               ),
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.35,
-                                width: MediaQuery.of(context).size.width * 0.7,
-                                padding: EdgeInsets.fromLTRB(0,10,0,10),
-                                alignment: Alignment.topLeft, color: projectLightBlue,
+                                height: size.height * 0.35,
                                 child: ListView(
-                                  scrollDirection: Axis.vertical,
                                   children: <Widget>[
-                                    Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          RawMaterialButton(
-                                            onPressed: () {},
-                                            elevation: 2.0,
-                                            fillColor: accent,
-                                            child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                            padding: EdgeInsets.all(10.0),
-                                            shape: CircleBorder(side: BorderSide(color: accent)),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.topLeft,
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                Container(
-                                                  width: MediaQuery.of(context).size.width * 0.3,
-                                                  height: MediaQuery.of(context).size.height * 0.03,
-                                                  child: Text('#Auditing', style: dark10BoldStyle,softWrap: true,textAlign: TextAlign.start,),
-                                                ),
-                                                Container(
-                                                    width: MediaQuery.of(context).size.width * 0.4,
-                                                    child: Text('Brief Introduction into Account Auditing', style: dark10Style,softWrap: true,textAlign: TextAlign.start,)
-                                                ),
-                                              ],
+                                    ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      title: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        alignment: Alignment.centerLeft,
+                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        // color: accent,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('# Auditing',style:dark11BoldStyle),
                                             ),
-                                          ),
-                                        ]),
-                                    Container(
-                                      height: 20,
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
                                     ),
-                                    Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          RawMaterialButton(
-                                            onPressed: () {},
-                                            elevation: 2.0,
-                                            fillColor: accent,
-                                            child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                            padding: EdgeInsets.all(10.0),
-                                            shape: CircleBorder(side: BorderSide(color: accent)),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.topLeft,
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                Container(
-                                                  width: MediaQuery.of(context).size.width * 0.3,
-                                                  height: MediaQuery.of(context).size.height * 0.03,
-                                                  child: Text('#Auditing', style: dark10BoldStyle,softWrap: true,textAlign: TextAlign.start,),
-                                                ),
-                                                Container(
-                                                    width: MediaQuery.of(context).size.width * 0.4,
-                                                    child: Text('Brief Introduction into Account Auditing', style: dark10Style,softWrap: true,textAlign: TextAlign.start,)
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ]),
-                                    Container(
-                                      height: 20,
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Container(
+                                          height: 0.7,
+                                          width: MediaQuery.of(context).size.width,
+                                          color: projectGray),
                                     ),
-                                    Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          RawMaterialButton(
-                                            onPressed: () {},
-                                            elevation: 2.0,
-                                            fillColor: accent,
-                                            child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                            padding: EdgeInsets.all(10.0),
-                                            shape: CircleBorder(side: BorderSide(color: accent)),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.topLeft,
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                Container(
-                                                  width: MediaQuery.of(context).size.width * 0.3,
-                                                  height: MediaQuery.of(context).size.height * 0.03,
-                                                  child: Text('#Auditing', style: dark10BoldStyle,softWrap: true,textAlign: TextAlign.start,),
-                                                ),
-                                                Container(
-                                                    width: MediaQuery.of(context).size.width * 0.4,
-                                                    child: Text('Brief Introduction into Account Auditing', style: dark10Style,softWrap: true,textAlign: TextAlign.start,)
-                                                ),
-                                              ],
+                                    ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      title: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        alignment: Alignment.centerLeft,
+                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        // color: accent,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('# Investment',style:dark11BoldStyle),
                                             ),
-                                          ),
-                                        ]),
-                                    Container(
-                                      height: 20,
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
                                     ),
-                                    Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          RawMaterialButton(
-                                            onPressed: () {},
-                                            elevation: 2.0,
-                                            fillColor: accent,
-                                            child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                            padding: EdgeInsets.all(10.0),
-                                            shape: CircleBorder(side: BorderSide(color: accent)),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.topLeft,
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                Container(
-                                                  width: MediaQuery.of(context).size.width * 0.3,
-                                                  height: MediaQuery.of(context).size.height * 0.03,
-                                                  child: Text('#Auditing', style: dark10BoldStyle,softWrap: true,textAlign: TextAlign.start,),
-                                                ),
-                                                Container(
-                                                    width: MediaQuery.of(context).size.width * 0.4,
-                                                    child: Text('Brief Introduction into Account Auditing', style: dark10Style,softWrap: true,textAlign: TextAlign.start,)
-                                                ),
-                                              ],
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Container(
+                                          height: 0.7,
+                                          width: MediaQuery.of(context).size.width,
+                                          color: projectGray),
+                                    ),
+                                    ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      title: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        alignment: Alignment.centerLeft,
+                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        // color: accent,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('# Auditing',style:dark11BoldStyle),
                                             ),
-                                          ),
-                                        ]),
-                                    Container(
-                                      height: 20,
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Container(
+                                          height: 0.7,
+                                          width: MediaQuery.of(context).size.width,
+                                          color: projectGray),
+                                    ),
+                                    ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      title: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        alignment: Alignment.centerLeft,
+                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        // color: accent,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('# Auditing',style:dark11BoldStyle),
+                                            ),
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Container(
+                                          height: 0.7,
+                                          width: MediaQuery.of(context).size.width,
+                                          color: projectGray),
+                                    ),
+                                    ListTile(
+                                      contentPadding: EdgeInsets.all(0),
+                                      title: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        alignment: Alignment.centerLeft,
+                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        // color: accent,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('# Auditing',style:dark11BoldStyle),
+                                            ),
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
                                     ),
                                   ],
                                 ),
                               ),
-                              Container(
-                                padding: EdgeInsets.fromLTRB(10,0,10,0),
-                                alignment: Alignment.centerRight,
-                                width: MediaQuery.of(context).size.width * 0.9,
-                                child: Text('View more', style: green12Style,),
-                              ),
                             ],
                           ),
-                        ),
-                        Container(
-                          height: 20,
+
                         ),
                         Container(
                           height: 100,
@@ -897,11 +715,11 @@ class _CommunityState extends State<community>
 class CircleTabIndicator extends Decoration {
   final BoxPainter _painter;
 
-  CircleTabIndicator({@required Color color, @required double radius})
+  CircleTabIndicator({required Color color, required double radius})
       : _painter = _CirclePainter(color, radius);
 
   @override
-  BoxPainter createBoxPainter([onChanged]) => _painter;
+  BoxPainter createBoxPainter([void onChanged]) => _painter;
 }
 
 
@@ -917,7 +735,7 @@ class _CirclePainter extends BoxPainter {
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
     final Offset circleOffset =
-        offset + Offset(cfg.size.width / 2, cfg.size.height - radius - 5);
+        offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius - 5);
     canvas.drawCircle(circleOffset, radius, _paint);
   }
 }

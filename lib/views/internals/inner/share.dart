@@ -7,14 +7,14 @@ import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/styles.dart';
 import 'package:share/share.dart';
 
 
 class share extends StatefulWidget {
-  share({Key key, this.title}) : super(key: key);
+  share({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _ShareState createState() => _ShareState();
@@ -34,7 +34,7 @@ class _ShareState extends State<share>
   ContainerTransitionType _transitionType = ContainerTransitionType.fade;
 
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
   }
 
@@ -55,7 +55,6 @@ class _ShareState extends State<share>
                   Navigator.pop(context);
                 },),
               title: Container(
-                alignment: Alignment.center,
                 child: Text('Invite Friends',style: blue14Style,),
               ),
             ),
@@ -90,7 +89,7 @@ class _ShareState extends State<share>
                               width: MediaQuery.of(context).size.width,
                             ),
                             Container(
-                              height: MediaQuery.of(context).size.height * 0.15,
+                             // height: MediaQuery.of(context).size.height * 0.15,
                               width: MediaQuery.of(context).size.width,
                               alignment: Alignment.center,
                               child: Column(
@@ -101,7 +100,7 @@ class _ShareState extends State<share>
                                       children: [
                                         RawMaterialButton(
                                           elevation: 2.0,
-                                          fillColor: projectGray,
+                                          fillColor: projectGray,onPressed: () {  },
                                           child: Image.asset(share1,width: 50,height: 50,),
                                           padding: EdgeInsets.all(2.0),
                                           shape: CircleBorder(side: BorderSide(color: projectGray2)),
@@ -111,11 +110,11 @@ class _ShareState extends State<share>
                                           fillColor: projectGray,
                                           child: Image.asset(share2,width: 50,height: 50,),
                                           padding: EdgeInsets.all(2.0),
-                                          shape: CircleBorder(side: BorderSide(color: projectGray2)),
+                                          shape: CircleBorder(side: BorderSide(color: projectGray2)), onPressed: () {  },
                                         ),
                                         RawMaterialButton(
                                           elevation: 2.0,
-                                          fillColor: projectGray,
+                                          fillColor: projectGray,onPressed: () {  },
                                           child: Image.asset(share3,width: 50,height: 50,),
                                           padding: EdgeInsets.all(2.0),
                                           shape: CircleBorder(side: BorderSide(color: projectGray2)),
@@ -130,28 +129,28 @@ class _ShareState extends State<share>
                                       children: [
                                         RawMaterialButton(
                                           elevation: 2.0,
-                                          fillColor: projectGray,
+                                          fillColor: projectGray,onPressed: () {  },
                                           child: Image.asset(share4,width: 60,height: 60,),
                                           padding: EdgeInsets.all(2.0),
                                           shape: CircleBorder(side: BorderSide(color: projectGray2)),
                                         ),
                                         RawMaterialButton(
                                           elevation: 2.0,
-                                          fillColor: projectGray,
+                                          fillColor: projectGray,onPressed: () {  },
                                           child: Image.asset(share5,width: 60,height: 60,),
                                           padding: EdgeInsets.all(2.0),
                                           shape: CircleBorder(side: BorderSide(color: projectGray2)),
                                         ),
                                         RawMaterialButton(
                                           elevation: 2.0,
-                                          fillColor: projectGray,
+                                          fillColor: projectGray,onPressed: () {  },
                                           child: Image.asset(share6,width: 60,height: 60,),
                                           padding: EdgeInsets.all(2.0),
                                           shape: CircleBorder(side: BorderSide(color: projectGray2)),
                                         ),
                                         RawMaterialButton(
                                           elevation: 2.0,
-                                          fillColor: projectGray,
+                                          fillColor: projectGray,onPressed: () {  },
                                           child: Image.asset(share7,width: 60,height: 60,),
                                           padding: EdgeInsets.all(2.0),
                                           shape: CircleBorder(side: BorderSide(color: projectGray2)),

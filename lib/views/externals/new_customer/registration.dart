@@ -1,12 +1,14 @@
+import 'package:edurald/models/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:linkedin_login/linkedin_login.dart';
+import 'package:edurald/utills/styles.dart';
+import 'package:edurald/models/strings.dart';
 
 class registrationPage extends StatefulWidget {
-  registrationPage({Key key, this.title}) : super(key: key);
+  registrationPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
@@ -14,25 +16,23 @@ class registrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<registrationPage>
     with TickerProviderStateMixin {
-  String ladyIcon = 'assets/welcomelady.png';
-  String socialIcon = 'assets/socials.png';
-  String humanIcon3 = 'assets/femaleicon.png';
-  String nairaIcon = 'assets/nairacharticon.png';
-  String bgIcon = 'assets/bgicon.png';
-  String bgMain = 'assets/blankwhite.png';
-  String centerIcon = 'assets/shield.png';
+  String ladyIcon = imageBase+'welcomelady.png';
+  String signInLinkedInIcon = imageBase+'signInLinkedIn.png';
+  String signInTwitterIcon = imageBase+'signInTwitter.png';
+  String signInGoogleIcon = imageBase+'signInGoogle.png';
+  String redirectUrl = 'http://edurald.com/';
+  String clientId = '77zum551b93zkz';
+  String clientSecret = 'gwr7A7OHq00ns3Ow';
   List<String> scrollText = ['Investment banking knowledge simplified',
     'Learn and connect with other investors','Build your professional profile'];
-  List<String> scrollImgs = ['assets/ladyIcon2.png','assets/guys.png','assets/welcomelady.png'];
   int index = 0;
   final int _numPages = 3;
   int _currentPage = 0;
   int _current = 0;
+  bool logoutUser = false;
+  User? user;
 
 
-
-  void doMotion() {
-  }
 
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
@@ -55,11 +55,6 @@ class _RegistrationPageState extends State<registrationPage>
     );
   }
 
-  @override
-  State<StatefulWidget> initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => doMotion());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +90,7 @@ class _RegistrationPageState extends State<registrationPage>
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('PROJECT X',style: dark25BoldStyle,textAlign: TextAlign.center,),
+                      Text('Edurald',style: dark25BoldStyle,textAlign: TextAlign.center,),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
@@ -109,19 +104,79 @@ class _RegistrationPageState extends State<registrationPage>
                   child: Image( image:AssetImage(ladyIcon)),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.15,
+                  height: MediaQuery.of(context).size.height * 0.18,
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text('Continue with',style: darkNormal18Style,textAlign: TextAlign.center,),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.03,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => LinkedInUserWidget(
+                                  appBar: AppBar(
+                                    title: Text('LinkedIn Authorisation'),
+                                  ),
+                                  destroySession: logoutUser,
+                                  redirectUrl: redirectUrl,
+                                  clientId: clientId,
+                                  clientSecret: clientSecret,
+                                  projection: [
+                                    ProjectionParameters.id,
+                                    ProjectionParameters.localizedFirstName,
+                                    ProjectionParameters.localizedLastName,
+                                    ProjectionParameters.firstName,
+                                    ProjectionParameters.lastName,
+                                    ProjectionParameters.profilePicture,
+                                  ],
+                                  onError: (UserFailedAction e) {
+                                    print('Error: ${e.toString()}');
+                                    print('Error: ${e.stackTrace.toString()}');
+                                  },
+                                  onGetUserProfile: (UserSucceededAction linkedInUser) {
+                                    print('Access token ${linkedInUser.user.token.accessToken}');
+                                    print('User id: ${linkedInUser.user.userId}');
+                                    print('photoUrl: ${linkedInUser.user.profilePicture}');
+
+
+                                    setState(() {
+                                    user = User(
+                                      firstName: linkedInUser.user?.firstName?.localized?.label,
+                                      lastName: linkedInUser?.user?.lastName?.localized?.label,
+                                      email: linkedInUser?.user?.email?.elements![0]?.handleDeep?.emailAddress,
+                                      photoUrl: linkedInUser?.user?.profilePicture?.displayImageContent?.elements![0]?.identifiers![0]?.identifier,
+                                    );
+                                      logoutUser = false;
+                                    });
+                                    Navigator.pop(context);
+                                    Navigator.pushNamed(context, '/registration_form',
+                                        arguments: user
+                                        // {
+                                        //   'email':user.email,
+                                        //   'lastName': user.lastName,
+                                        //   'photoUrl': user.photoUrl,
+                                        //  }
+                                        );
+                                  },
+                                ),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                          child: Image( image:AssetImage(signInLinkedInIcon),),
                         ),
-                        Image( image:AssetImage(socialIcon)),
+                        GestureDetector(
+                          onTap: () => print('Twitter Clicked'),
+                          child: Image( image:AssetImage(signInTwitterIcon)),
+                        ),
+                        GestureDetector(
+                          onTap: () =>print('Google Clicked'),
+                          child: Image( image:AssetImage(signInGoogleIcon)),
+                        ),
                       ]),
                 ),
 

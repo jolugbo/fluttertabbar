@@ -3,16 +3,14 @@
 //               OLUFEMI         ADETOLA             <bold!>JOLUGBO<bold!>
 
 //
-import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';
-import 'package:amplify_core/amplify_core.dart';
 import 'package:animations/animations.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:project_x/utills/linechart.dart';
-import 'package:project_x/utills/pagetransitionutill.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/linechart.dart';
+import 'package:edurald/utills/pagetransitionutill.dart';
+import 'package:edurald/utills/styles.dart';
 import 'package:flutter_emoji/flutter_emoji.dart';
 import 'base/learn.dart';
 import 'base/community.dart';
@@ -20,10 +18,10 @@ import 'base/discovery.dart';
 import 'base/challenge.dart';
 
 class dashboardPage extends StatefulWidget {
-  dashboardPage({Key key, this.title,this.index}) : super(key: key);
+  dashboardPage({Key? key, this.title,this.index}) : super(key: key);
 
-  final String title;
-  final int index;
+  final String? title;
+  final int? index;
 
   @override
   _DashboardPageState createState() => _DashboardPageState();
@@ -39,7 +37,6 @@ class _DashboardPageState extends State<dashboardPage>
   int _currentIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   ContainerTransitionType _transitionType = ContainerTransitionType.fade;
-  AnalyticsEvent event = AnalyticsEvent("PasswordReset");
 
   static GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   final List<dynamic> _children = [
@@ -51,7 +48,7 @@ class _DashboardPageState extends State<dashboardPage>
 
   Icon dropDown = Icon(Icons.keyboard_arrow_down,color: accent,);
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
   }
 
@@ -525,12 +522,6 @@ class _DashboardPageState extends State<dashboardPage>
 
 
   void onTabTapped(int index) {
-    event.properties.addStringProperty("Channel", "SMS");
-    event.properties.addBoolProperty("Successful", true);
-    event.properties.addIntProperty("ProcessDuration", 792);
-    event.properties.addDoubleProperty("doubleKey", 120.3);
-
-    Amplify.Analytics.recordEvent(event: event);
 
     setState(() {
       if(index != 4) {
@@ -542,7 +533,7 @@ class _DashboardPageState extends State<dashboardPage>
       }
       else{
         chat = true;
-        _drawerKey.currentState.openEndDrawer();
+        _drawerKey.currentState!.openEndDrawer();
       }
     });
   }
@@ -550,15 +541,15 @@ class _DashboardPageState extends State<dashboardPage>
 
 class _ChartCard extends StatelessWidget {
   const _ChartCard({this.openContainer});
-  final VoidCallback openContainer;
+  final VoidCallback? openContainer;
 
   @override
   Widget build(BuildContext context) {
     String defaultprofile = 'assets/jolugbo.jpeg';
 
     return InkWellOverlay(
-      openContainer: openContainer,
-      height: 300,
+      openContainer: openContainer?? (){},
+      height: 300, width: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -599,7 +590,7 @@ class _ChartCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16,),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor.',
-              style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black54,inherit: false,),
+
             ),
           ),
         ],),

@@ -6,9 +6,9 @@ class PopulationData {
   int population;
   charts.Color barColor;
   PopulationData({
-    @required this.year,
-    @required this.population,
-    @required this.barColor
+    required this.year,
+    required this.population,
+    required this.barColor
   });
 }
 

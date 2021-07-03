@@ -9,15 +9,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:project_x/utills/pagetransitionutill.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/pagetransitionutill.dart';
+import 'package:edurald/utills/styles.dart';
 
 import '../dashboard.dart';
 
 class learn extends StatefulWidget {
-  learn({Key key, this.title}) : super(key: key);
+  learn({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _LearnPageState createState() => _LearnPageState();
@@ -42,7 +42,7 @@ class _LearnPageState extends State<learn>
   int _currentIndex = 0;
   Icon dropDown = Icon(Icons.remove_red_eye,color: accent,);
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
   }
 
@@ -74,7 +74,6 @@ class _LearnPageState extends State<learn>
                           children: <Widget>[
                             Card(
                               elevation: 2,
-                              color: projectLightGray2,
                               shape: cardShape,
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.95,
@@ -255,7 +254,6 @@ class _LearnPageState extends State<learn>
                             ),
                             Card(
                               elevation: 2,
-                              color: projectLightGray2,
                               shape: cardShape,
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.95,
@@ -435,7 +433,6 @@ class _LearnPageState extends State<learn>
                             ),
                             Card(
                               elevation: 2,
-                              color: projectLightGray2,
                               shape: cardShape,
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.95,
@@ -615,7 +612,6 @@ class _LearnPageState extends State<learn>
                             ),
                             Card(
                               elevation: 2,
-                              color: projectLightGray2,
                               shape: cardShape,
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.95,
@@ -810,27 +806,28 @@ class _LearnPageState extends State<learn>
 
 class _DetailsCard extends StatelessWidget {
   const _DetailsCard({this.openContainer,this.id});
-  final VoidCallback openContainer;
-  final String id;
+  final VoidCallback? openContainer;
+  final String? id;
 
   @override
   Widget build(BuildContext context) {
     String bg = 'assets/graduatehat.png';
     String assetManagement = 'assets/assetManagement.png';
+    var size = MediaQuery.of(context).size;
 
     return InkWellOverlay(
-      openContainer: openContainer,
-        height: MediaQuery.of(context).size.height,
+      openContainer: openContainer??(){},
+        height: MediaQuery.of(context).size.height,width: MediaQuery.of(context).size.width,
       child:  Stack(
         overflow: Overflow.visible,
         children: <Widget>[
           //bg
           AnimatedPositioned(
-            top: 0,
-            left: MediaQuery.of(context).size.width * 0.02,
+            top: size.height * 0.04,
+            left: size.width * 0.02,
             duration: Duration(seconds: 1),
             child: Container(
-              height: MediaQuery.of(context).size.height,
+              height: size.height * 0.95,
               width: 2,
               color: projectGray,
             ),
@@ -838,11 +835,12 @@ class _DetailsCard extends StatelessWidget {
 
           //bg
           AnimatedPositioned(
-            top: 0,
-            right: MediaQuery.of(context).size.width * 0.02,
+            top: size.height * 0.04,
+            right: size.width * 0.02,
             duration: Duration(seconds: 1),
             child: Container(
-              height: MediaQuery.of(context).size.height,alignment: Alignment.centerRight,
+              height: size.height * 0.95,
+              alignment: Alignment.centerRight,
               width: 2,
               color: projectGray,
             ),
@@ -921,7 +919,7 @@ class _DetailsCard extends StatelessWidget {
                                                           fillColor: projectOrange,
                                                           child: Image.asset(assetManagement,width: 30,height: 30,),
                                                           padding: EdgeInsets.all(10.0),
-                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)),
+                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)), onPressed: () {  },
                                                         )
                                                     ),
                                                     Container(
@@ -1025,7 +1023,7 @@ class _DetailsCard extends StatelessWidget {
                                                           fillColor: projectGray2,
                                                           child: Image.asset(assetManagement,width: 30,height: 30,),
                                                           padding: EdgeInsets.all(10.0),
-                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)),
+                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)), onPressed: () {  },
                                                         )
                                                     ),
                                                     Container(
@@ -1128,111 +1126,7 @@ class _DetailsCard extends StatelessWidget {
                                                           fillColor: projectGray2,
                                                           child: Image.asset(assetManagement,width: 30,height: 30,),
                                                           padding: EdgeInsets.all(10.0),
-                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                                        )
-                                                    ),
-                                                    Container(
-                                                        padding: EdgeInsets.fromLTRB(10,0,10,0),alignment: Alignment.topLeft,
-                                                        width: MediaQuery.of(context).size.width * 0.6,
-                                                        height: MediaQuery.of(context).size.height * 0.35,
-                                                        child: Column(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                          mainAxisSize: MainAxisSize.max,
-                                                          children: [
-                                                            Container(
-                                                                padding: EdgeInsets.fromLTRB(10,5,0,0),alignment: Alignment.topLeft,
-                                                                //height: MediaQuery.of(context).size.height * 0.04,
-                                                                child: Row(
-                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                  children: [
-                                                                    Text('Introduction', style: dark16BoldStyle,),
-                                                                    Icon(Icons.lock_open_rounded,color: projectGray,)
-                                                                  ],
-                                                                )
-                                                            ),
-                                                            Container(
-                                                              padding: EdgeInsets.fromLTRB(10,5,10,5),alignment: Alignment.topLeft,
-                                                              child: Text('Understanding the general Overview of Asset Management', style: dark14Style,),
-                                                            ),
-                                                            Container(
-                                                                padding: EdgeInsets.fromLTRB(10,5,10,5),alignment: Alignment.topLeft,
-                                                                height: MediaQuery.of(context).size.height * 0.04,
-                                                                child: Row(
-                                                                  children: [
-                                                                    Text('0/10', style: orange14Style,),
-                                                                    LinearPercentIndicator(
-                                                                      width: MediaQuery.of(context).size.width * 0.4,
-                                                                      lineHeight: 10.0,
-                                                                      percent: 0,
-                                                                      backgroundColor: Colors.grey,
-                                                                      progressColor: projectOrange,
-                                                                    ),
-                                                                  ],
-                                                                )
-                                                            ),
-                                                          ],
-                                                        )
-                                                    ),
-                                                  ],
-                                                ),
-                                                padding: EdgeInsets.zero,
-                                                onPressed: (){
-                                                  Navigator.pushNamed(context, '/deepest_learning');
-                                                  Navigator.pushNamed(context, '/deepest_learning');
-                                                },
-                                              )
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                              ),
-
-                              SizedBox(height: MediaQuery.of(context).size.height* 0.02,),
-                              SizedBox(
-                                  width: MediaQuery.of(context).size.width ,
-                                  height: MediaQuery.of(context).size.height* 0.18,
-                                  child: Stack(
-                                    children: [
-
-                                      Positioned(
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: 0),
-                                          child: Container(
-                                              height: 3,
-                                              width: MediaQuery.of(context).size.width,
-                                              color: projectGray),
-                                        ),
-                                        top: MediaQuery.of(context).size.height* 0.09,),
-
-                                      Container(
-                                        alignment: Alignment.center,
-                                        width: MediaQuery.of(context).size.width,
-                                        height: MediaQuery.of(context).size.height * 0.18,
-                                        child: Card(
-                                          elevation: 5,
-                                          color: accent,shadowColor: projectGray,
-                                          shape: cardShape,
-                                          // margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.05,0,MediaQuery.of(context).size.width * 0.05,0),
-                                          child: Container(
-                                              width: MediaQuery.of(context).size.width * 0.8,
-                                              height: MediaQuery.of(context).size.height * 0.18,
-                                              alignment: Alignment.topCenter, padding: EdgeInsets.fromLTRB(5,2,5,2), //color: Colors.red,
-                                              child: FlatButton(
-                                                child: Row(
-                                                  mainAxisSize: MainAxisSize.max,
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Container(
-                                                        alignment: Alignment.center,
-                                                        width: MediaQuery.of(context).size.width * 0.15,
-                                                        child: RawMaterialButton(
-                                                          elevation: 2.0,
-                                                          fillColor: projectGray2,
-                                                          child: Image.asset(assetManagement,width: 30,height: 30,),
-                                                          padding: EdgeInsets.all(10.0),
-                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)),
+                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)), onPressed: () {  },
                                                         )
                                                     ),
                                                     Container(
@@ -1336,7 +1230,7 @@ class _DetailsCard extends StatelessWidget {
                                                           fillColor: projectGray2,
                                                           child: Image.asset(assetManagement,width: 30,height: 30,),
                                                           padding: EdgeInsets.all(10.0),
-                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)),
+                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)), onPressed: () {  },
                                                         )
                                                     ),
                                                     Container(
@@ -1440,7 +1334,111 @@ class _DetailsCard extends StatelessWidget {
                                                           fillColor: projectGray2,
                                                           child: Image.asset(assetManagement,width: 30,height: 30,),
                                                           padding: EdgeInsets.all(10.0),
-                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)),
+                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)), onPressed: () {  },
+                                                        )
+                                                    ),
+                                                    Container(
+                                                        padding: EdgeInsets.fromLTRB(10,0,10,0),alignment: Alignment.topLeft,
+                                                        width: MediaQuery.of(context).size.width * 0.6,
+                                                        height: MediaQuery.of(context).size.height * 0.35,
+                                                        child: Column(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                          mainAxisSize: MainAxisSize.max,
+                                                          children: [
+                                                            Container(
+                                                                padding: EdgeInsets.fromLTRB(10,5,0,0),alignment: Alignment.topLeft,
+                                                                //height: MediaQuery.of(context).size.height * 0.04,
+                                                                child: Row(
+                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                  children: [
+                                                                    Text('Introduction', style: dark16BoldStyle,),
+                                                                    Icon(Icons.lock_open_rounded,color: projectGray,)
+                                                                  ],
+                                                                )
+                                                            ),
+                                                            Container(
+                                                              padding: EdgeInsets.fromLTRB(10,5,10,5),alignment: Alignment.topLeft,
+                                                              child: Text('Understanding the general Overview of Asset Management', style: dark14Style,),
+                                                            ),
+                                                            Container(
+                                                                padding: EdgeInsets.fromLTRB(10,5,10,5),alignment: Alignment.topLeft,
+                                                                height: MediaQuery.of(context).size.height * 0.04,
+                                                                child: Row(
+                                                                  children: [
+                                                                    Text('0/10', style: orange14Style,),
+                                                                    LinearPercentIndicator(
+                                                                      width: MediaQuery.of(context).size.width * 0.4,
+                                                                      lineHeight: 10.0,
+                                                                      percent: 0,
+                                                                      backgroundColor: Colors.grey,
+                                                                      progressColor: projectOrange,
+                                                                    ),
+                                                                  ],
+                                                                )
+                                                            ),
+                                                          ],
+                                                        )
+                                                    ),
+                                                  ],
+                                                ),
+                                                padding: EdgeInsets.zero,
+                                                onPressed: (){
+                                                  Navigator.pushNamed(context, '/deepest_learning');
+                                                  Navigator.pushNamed(context, '/deepest_learning');
+                                                },
+                                              )
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                              ),
+
+                              SizedBox(height: MediaQuery.of(context).size.height* 0.02,),
+                              SizedBox(
+                                  width: MediaQuery.of(context).size.width ,
+                                  height: MediaQuery.of(context).size.height* 0.18,
+                                  child: Stack(
+                                    children: [
+
+                                      Positioned(
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(horizontal: 0),
+                                          child: Container(
+                                              height: 3,
+                                              width: MediaQuery.of(context).size.width,
+                                              color: projectGray),
+                                        ),
+                                        top: MediaQuery.of(context).size.height* 0.09,),
+
+                                      Container(
+                                        alignment: Alignment.center,
+                                        width: MediaQuery.of(context).size.width,
+                                        height: MediaQuery.of(context).size.height * 0.18,
+                                        child: Card(
+                                          elevation: 5,
+                                          color: accent,shadowColor: projectGray,
+                                          shape: cardShape,
+                                          // margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.05,0,MediaQuery.of(context).size.width * 0.05,0),
+                                          child: Container(
+                                              width: MediaQuery.of(context).size.width * 0.8,
+                                              height: MediaQuery.of(context).size.height * 0.18,
+                                              alignment: Alignment.topCenter, padding: EdgeInsets.fromLTRB(5,2,5,2), //color: Colors.red,
+                                              child: FlatButton(
+                                                child: Row(
+                                                  mainAxisSize: MainAxisSize.max,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Container(
+                                                        alignment: Alignment.center,
+                                                        width: MediaQuery.of(context).size.width * 0.15,
+                                                        child: RawMaterialButton(
+                                                          elevation: 2.0,
+                                                          fillColor: projectGray2,
+                                                          child: Image.asset(assetManagement,width: 30,height: 30,),
+                                                          padding: EdgeInsets.all(10.0),
+                                                          shape: CircleBorder(side: BorderSide(color: projectGray2)), onPressed: () {  },
                                                         )
                                                     ),
                                                     Container(

@@ -10,17 +10,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_x/utills/linechart.dart';
-import 'package:project_x/utills/pagetransitionutill.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/linechart.dart';
+import 'package:edurald/utills/pagetransitionutill.dart';
+import 'package:edurald/utills/styles.dart';
 
 import 'community.dart';
 import 'learn.dart';
 
 class discovery extends StatefulWidget {
-  discovery({Key key, this.title}) : super(key: key);
+  discovery({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _DiscoveryState createState() => _DiscoveryState();
@@ -55,7 +55,7 @@ class _DiscoveryState extends State<discovery>
   ContainerTransitionType _transitionType = ContainerTransitionType.fade;
 
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
   }
   _getSeriesData() {
@@ -375,45 +375,18 @@ class _DiscoveryState extends State<discovery>
   }
 }
 
-//class CircleTabIndicator extends Decoration {
-//  final BoxPainter _painter;
-//
-//  CircleTabIndicator({@required Color color, @required double radius})
-//      : _painter = _CirclePainter(color, radius);
-//
-//  @override
-//  BoxPainter createBoxPainter([onChanged]) => _painter;
-//}
-//
-//
-//class _CirclePainter extends BoxPainter {
-//  final Paint _paint;
-//  final double radius;
-//
-//  _CirclePainter(Color color, this.radius)
-//      : _paint = Paint()
-//    ..color = color
-//    ..isAntiAlias = true;
-//
-//  @override
-//  void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
-//    final Offset circleOffset =
-//        offset + Offset(cfg.size.width / 2, cfg.size.height - radius - 5);
-//    canvas.drawCircle(circleOffset, radius, _paint);
-//  }
-//}
 
 class _DetailsCard extends StatelessWidget {
   const _DetailsCard({this.openContainer});
-  final VoidCallback openContainer;
+  final VoidCallback? openContainer;
 
   @override
   Widget build(BuildContext context) {
     String MA = 'assets/MA.png';
 
     return InkWellOverlay(
-      openContainer: openContainer,
-      height: 300,
+      openContainer: openContainer??(){},
+      height: 300,width: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -421,7 +394,6 @@ class _DetailsCard extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                 // color: projectLightBlue,
                   child: Center(
                     child: Image.asset(MA),
                   ),),
@@ -448,13 +420,98 @@ class _DetailsCard extends StatelessWidget {
           ),
           ListTile(
             title: Text('Header Text'),
-            subtitle: Text('body Text'),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('01/03/2021'),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  width:MediaQuery.of(context).size.width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ButtonTheme(
+                          minWidth: MediaQuery.of(context).size.width * 0.05,
+                          buttonColor: accent,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                side: BorderSide(color: accent)
+                            ),
+                            //color: armonePurple,
+                            child: Row(
+                              children: [
+                                Icon(Icons.favorite_border_sharp),
+                                Text('100k',style: dark10BoldStyle,),
+                              ],
+                            ),
+                            onPressed: () => {
+
+                            },
+                            highlightElevation: 20,
+                          )),
+                      ButtonTheme(
+                          minWidth: MediaQuery.of(context).size.width * 0.05,
+                          buttonColor: accent,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                side: BorderSide(color: accent)
+                            ),
+                            color: accent,
+                            child: Row(
+                              children: [
+                                Icon(Icons.comment_bank_outlined),
+                                Text('11k',style: dark10BoldStyle,),
+                              ],
+                            ),
+                            onPressed: () => {
+
+                            },
+                            highlightElevation: 20,
+                          )),
+                      ButtonTheme(
+                          minWidth: MediaQuery.of(context).size.width * 0.05,
+                          buttonColor: accent,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                side: BorderSide(color: accent)
+                            ),
+                            color: accent,
+                            child: Icon(Icons.bookmark_border_outlined),
+                            onPressed: () => {
+
+                            },
+                            highlightElevation: 20,
+                          )),
+                      ButtonTheme(
+                          minWidth: MediaQuery.of(context).size.width * 0.05,
+                          buttonColor: accent,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                side: BorderSide(color: accent)
+                            ),
+                            color: accent,
+                            child: Icon(Icons.share_outlined),
+                            onPressed: () => {
+
+                            },
+                            highlightElevation: 20,
+                          )),
+                    ],
+                  ),
+                ),
+              ],
+            )
           ),
           Padding(
             padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16,),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor.',
-              style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black54,inherit: false,),
+
             ),
           ),
         ],),

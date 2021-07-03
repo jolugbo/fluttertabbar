@@ -1,23 +1,20 @@
-import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';
-import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:amplify_core/amplify_core.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:project_x/models/model_status.dart';
-import 'package:project_x/models/strings.dart';
-import 'package:project_x/utills/input_util.dart';
-import 'package:project_x/utills/styles.dart';
-import 'package:project_x/validations/registration_validation.dart';
+import 'package:edurald/models/model_status.dart';
+import 'package:edurald/models/strings.dart';
+import 'package:edurald/utills/input_util.dart';
+import 'package:edurald/utills/styles.dart';
+import 'package:edurald/validations/registration_validation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class signinPage extends StatefulWidget {
-  signinPage({Key key, this.title}) : super(key: key);
+  signinPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _SigninPageState createState() => _SigninPageState();
@@ -25,17 +22,10 @@ class signinPage extends StatefulWidget {
 
 class _SigninPageState extends State<signinPage>
     with TickerProviderStateMixin {
-  String ladyIcon = 'assets/welcomelady.png';
-  String socialIcon = 'assets/socials.png';
-  String humanIcon3 = 'assets/femaleicon.png';
-  String nairaIcon = 'assets/nairacharticon.png';
-  String bgIcon = 'assets/bgicon.png';
-  String bgMain = 'assets/blankwhite.png';
-  String centerIcon = 'assets/shield.png';
+  String socialIcon = imageBase+'socials.png';
   List<String> scrollText = ['Investment banking knowledge simplified',
     'Learn and connect with other investors','Build your professional profile'];
-  List<String> scrollImgs = ['assets/ladyIcon2.png','assets/guys.png','assets/welcomelady.png'];
-  bool isSignInComplete;
+  bool isSignInComplete = false;
   bool  showLoader = false;
   int index = 0;
   final int _numPages = 3;
@@ -48,11 +38,12 @@ class _SigninPageState extends State<signinPage>
   PasswordStatus passwordStatus = PasswordStatus.success;
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
+  String signInLinkedInIcon = imageBase+'signInLinkedIn.png';
+  String signInTwitterIcon = imageBase+'signInTwitter.png';
+  String signInGoogleIcon = imageBase+'signInGoogle.png';
 
 
 
-  void doMotion() {
-  }
 
   void showPopUp(String msg){
     Fluttertoast.showToast(
@@ -98,50 +89,50 @@ class _SigninPageState extends State<signinPage>
 //
 //    Amplify.Analytics.recordEvent(event: loginEvent);
 //    print("event logged");
-    try {
-//      SignInResult res = await Amplify.Auth.signIn(
-//        username: emailController.text.trim(),
-//        password: passwordController.text.trim(),
-//      );
-      setState(() {
-        showLoader = false;
-      });
-//      if(res.isSignedIn){
-        Navigator.pushNamed(context, '/dashboard');
-//      }
-
-    } on AuthError catch (e) {
-      setState(() {
-        showLoader = false;
-      });
-      if(e.exceptionList[0].detail == 'User is not confirmed.'){
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setString('userId', emailController.text);
-        resendSignUpCode();
-        Fluttertoast.showToast(
-            msg:e.exceptionList[0].detail + " Sign up code re-sent",
-            toastLength: Toast.LENGTH_LONG,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0);
-      Navigator.pushNamed(context, '/registration_token');
-      return;
-      }
-
-      Navigator.pushNamed(context, '/dashboard');
-      Fluttertoast.showToast(
-          msg:e.exceptionList[1].exception =='NOT_AUTHORIZED'?'Incorrect username or password':'Connection Error',
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    } catch (error) {
-      print(error);
-    }
+//     try {
+// //      SignInResult res = await Amplify.Auth.signIn(
+// //        username: emailController.text.trim(),
+// //        password: passwordController.text.trim(),
+// //      );
+//       setState(() {
+//         showLoader = false;
+//       });
+// //      if(res.isSignedIn){
+         Navigator.pushNamed(context, '/dashboard');
+// //      }
+//
+//     } on AuthError catch (e) {
+//       setState(() {
+//         showLoader = false;
+//       });
+//       if(e.exceptionList[0].detail == 'User is not confirmed.'){
+//         final prefs = await SharedPreferences.getInstance();
+//         await prefs.setString('userId', emailController.text);
+//         resendSignUpCode();
+//         Fluttertoast.showToast(
+//             msg:e.exceptionList[0].detail + " Sign up code re-sent",
+//             toastLength: Toast.LENGTH_LONG,
+//             gravity: ToastGravity.BOTTOM,
+//             timeInSecForIosWeb: 1,
+//             backgroundColor: Colors.red,
+//             textColor: Colors.white,
+//             fontSize: 16.0);
+//       Navigator.pushNamed(context, '/registration_token');
+//       return;
+//       }
+//
+//       Navigator.pushNamed(context, '/dashboard');
+//       Fluttertoast.showToast(
+//           msg:e.exceptionList[1].exception =='NOT_AUTHORIZED'?'Incorrect username or password':'Connection Error',
+//           toastLength: Toast.LENGTH_LONG,
+//           gravity: ToastGravity.BOTTOM,
+//           timeInSecForIosWeb: 1,
+//           backgroundColor: Colors.red,
+//           textColor: Colors.white,
+//           fontSize: 16.0);
+//     } catch (error) {
+//       print(error);
+//     }
 
     setState(() {
       showLoader = false;
@@ -149,24 +140,19 @@ class _SigninPageState extends State<signinPage>
   }
 
   Future<void> resendSignUpCode() async {
-    try {
-      ResendSignUpCodeResult res = await Amplify.Auth.resendSignUpCode(
-        username: emailController.value.text.trim()
-      );
-    } on AuthError catch (e) {
-      print(e);
-    }
-  }
-  @override
-  State<StatefulWidget> initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => doMotion());
+    // try {
+    //   ResendSignUpCodeResult res = await Amplify.Auth.resendSignUpCode(
+    //     username: emailController.value.text.trim()
+    //   );
+    // } on AuthError catch (e) {
+    //   print(e);
+    // }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
+        //resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           child: Container(
@@ -204,24 +190,37 @@ class _SigninPageState extends State<signinPage>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text('Welcome back!',style: dark25BoldStyle,textAlign: TextAlign.center,),
-                              Container(
-                                height: MediaQuery.of(context).size.height * 0.01,
-                              ),
+                              SizedBox(height: 15,),
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.95,
                                 child: Text('Sign in to learn and connect with other professionals like you',style: darkNormal18Style,textAlign: TextAlign.center,),
                               ),
                               ]),
                       ),
+                      SizedBox(height: 45,),
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.15,
+                        height: MediaQuery.of(context).size.height * 0.2,
                         width: MediaQuery.of(context).size.width,
-                        alignment: Alignment.center, padding:EdgeInsets.all(0),
-                        child: Image( image:AssetImage(socialIcon)),
+                        alignment: Alignment.center,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () =>print('LinkedIn Clicked'),
+                                child: Image( image:AssetImage(signInLinkedInIcon)),
+                              ), GestureDetector(
+                                onTap: () => print('Twitter Clicked'),
+                                child: Image( image:AssetImage(signInTwitterIcon)),
+                              ), GestureDetector(
+                                onTap: () =>print('Google Clicked'),
+                                child: Image( image:AssetImage(signInGoogleIcon)),
+                              ),
+                            ]),
                       ),
-
+                      SizedBox(height: 35,),
                       Container(
-                        //height: MediaQuery.of(context).size.height * 0.20,
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.center, padding:EdgeInsets.all(0),
                         child: Column(
@@ -269,9 +268,6 @@ class _SigninPageState extends State<signinPage>
                             ),
                           ],
                         ),
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.05,
                       ),
                       Container(
                         //height: MediaQuery.of(context).size.height * 0.1,

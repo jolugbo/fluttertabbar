@@ -1,24 +1,30 @@
-import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:amplify_core/amplify_core.dart';
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edurald/models/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geocoder/model.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:project_x/models/model_status.dart';
-import 'package:project_x/models/strings.dart';
-import 'package:project_x/utills/input_util.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/models/model_status.dart';
+import 'package:edurald/models/strings.dart';
+import 'package:edurald/utills/input_util.dart';
+import 'package:edurald/utills/styles.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:project_x/validations/registration_validation.dart';
+import 'package:edurald/validations/registration_validation.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../../main.dart';
+
+final userRef =  FirebaseFirestore.instance.collection('users');
 
 class registration_formPage extends StatefulWidget {
-  registration_formPage({Key key, this.title}) : super(key: key);
+  registration_formPage({Key? key,  this.user}) : super(key: key);
 
-  final String title;
+  final User? user;
 
   @override
   _Registration_formPageState createState() => _Registration_formPageState();
@@ -26,25 +32,24 @@ class registration_formPage extends StatefulWidget {
 
 class _Registration_formPageState extends State<registration_formPage>
     with TickerProviderStateMixin {
-  String ladyIcon = 'assets/welcomelady.png';
-  String socialIcon = 'assets/socials.png';
-  String humanIcon3 = 'assets/femaleicon.png';
-  String nairaIcon = 'assets/nairacharticon.png';
-  String bgIcon = 'assets/bgicon.png';
-  String bgMain = 'assets/blankwhite.png';
-  String centerIcon = 'assets/shield.png';
+  //String placeholderImage = imageBase+'graduatehat.jpg';
+  String userIcon = 'https://firebasestorage.googleapis.com/v0/b/edurald.appspot.com/o/permanents%2Fgraduatehat.jpg?alt=media&token=fa45072d-2ecf-45ef-b225-b6199edf89c7';
+  File _image = File(imageBase+'graduatehat.jpg');
+  final picker = ImagePicker();
   int index = 0;
   final int _numPages = 3;
   bool next = true;
-  bool showIcons = true;
+  bool isNetwork = true;
+  bool enableEmail = true;
   bool isFirstView = true;
   bool _passwordVisible = false;
   int _currentPage = 0;
   int _current = 0;
   bool  isSignUpComplete = false;
   bool  showLoader = false;
-  String phoneNumber = '';
+  String? phoneNumber = '';
   bool emailIsValid = false;
+  bool userNameIsValid = false;
   bool firstNameIsValid = false;
   bool lastNameIsValid = false;
   bool phoneNumberIsValid = false;
@@ -52,15 +57,18 @@ class _Registration_formPageState extends State<registration_formPage>
   EmailStatus emailStatus = EmailStatus.success;
   FirstNameStatus firstNameStatus = FirstNameStatus.success;
   LastNameStatus lastNameStatus = LastNameStatus.success;
+  UserNameStatus userNameStatus = UserNameStatus.success;
   PhoneNumberStatus phoneNumberStatus = PhoneNumberStatus.success;
   PasswordValidationResp passwordValidationResp = PasswordValidationResp(0, '');
   PasswordStatus passwordStatus = PasswordStatus.success;
   TextEditingController phoneNoController = new TextEditingController();
+  TextEditingController userNameController = new TextEditingController();
   TextEditingController emailController = new TextEditingController();
   TextEditingController firstNameController = new TextEditingController();
   TextEditingController lastNameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
-  String countryCode = '';
+  String countryCode = '';PhoneNumber? initialnumber;
+  DateTime timeStamp = DateTime.now();
 
   void showPopUp(String msg){
     Fluttertoast.showToast(
@@ -80,9 +88,9 @@ class _Registration_formPageState extends State<registration_formPage>
     var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
     var first = addresses.first;
     //initialCountry = first.countryCode;
-
     setState(() {
       countryCode = first.countryCode;
+      initialnumber = PhoneNumber(isoCode: countryCode);
     });
   }
 
@@ -108,64 +116,74 @@ class _Registration_formPageState extends State<registration_formPage>
   }
 
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
 
     getLocation();
   }
 
-Future<void> registerUser() async {
+  Future<void> registerUser() async {
  if(!showLoader){
   setState(() {
     showLoader = true;
   });
-
-  try {
-    Map<String, dynamic> userAttributes = {
-      "email": emailController.text,
-      "phone_number": phoneNumber,
-      "name":firstNameController.text,
-      "family_name":lastNameController.text
-      // additional attributes as needed
-    };
-    SignUpResult res = await Amplify.Auth.signUp(
-        username: emailController.text,
-        password: passwordController.text,
-        options: CognitoSignUpOptions(
-            userAttributes: userAttributes
-        ),
-    );
-    if(res.isSignUpComplete){
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('userId', emailController.text);
-      Navigator.pushNamed(context, '/registration_token');
-    }
-  } on AuthError catch (e) {
-    showPopUp(e.exceptionList[1].detail);
-  }
+  await createUserInFireStore();
   setState(() {
     showLoader = false;
   });
  }
 }
 
-Future<void> confirmSignUp() async {
-  try {
-    SignUpResult res = await Amplify.Auth.confirmSignUp(
-        username: "Jolugbo",
-        confirmationCode: "123456"
+  createUserInFireStore() async{
+    var userArgs = ModalRoute.of(context)!.settings.arguments as User;
+    User user = new User(
+      bio: "",
+      displayName: userNameController.text,
+      email: emailController.text,
+      firstName: firstNameController.text,
+      lastName: lastNameController.text,
+      phoneNumber: phoneNoController.text,
+      photoUrl: userArgs.photoUrl
     );
-    setState(() {
-      isSignUpComplete = res.isSignUpComplete;
-    });
-  } on AuthError catch (e) {
-    print(e);
+    DocumentSnapshot doc = await userRef.doc(user.email).get();
+
+    if(!doc.exists){
+
+      userRef.doc(user.id).set({
+        "id": user.id,
+        "phoneNumber": user.phoneNumber,
+        "photoUrl": user.photoUrl,
+        "email": user.email,
+        "displayName": user.displayName,
+        "bio": "",
+        "timeStamp": timeStamp
+      });
+      await followersRef.doc(user.id)
+          .collection("userFollowers")
+          .doc(user.id)
+          .set({});
+      doc = await userRef.doc(user.id).get();
+    }
+    currentUser = User.fromDocument(doc);
   }
-}
+
+
 
   @override
   Widget build(BuildContext context) {
-
+    var user = ModalRoute.of(context)!.settings.arguments as User;
+    var size = MediaQuery.of(context).size;
+    emailController.text = user.email!;
+    firstNameController.text = user.firstName!;
+    lastNameController.text = user.lastName!;
+    userIcon = user.photoUrl ?? userIcon;
+    //isNetwork = !(user.photoUrl == null);
+    setState(() {
+      enableEmail = false;
+      emailIsValid = emailValidator(user.email!);
+      firstNameIsValid = firstNameValidator(user.firstName!);
+      lastNameIsValid = lastNameValidator(user.lastName!);
+    });
     PhoneNumber number = PhoneNumber(isoCode: countryCode);
 
     Widget thirdView = Container(
@@ -205,39 +223,7 @@ Future<void> confirmSignUp() async {
                 });}
           ),
           (lastNameStatus == LastNameStatus.error) ? error(lastName_error) : Text(''),
-          InternationalPhoneNumberInput(
-            onInputChanged: (PhoneNumber number) {
-              setState(() {
-                phoneNumberIsValid =
-                    phoneNumberValidator(number.phoneNumber);
-                if (!phoneNumberIsValid) {
-                  phoneNumberStatus =
-                      PhoneNumberStatus.error;
-                } else
-                  phoneNumberStatus =
-                      PhoneNumberStatus.success;
-              });
-              print(number.phoneNumber);
-              setState(() {
-                phoneNumber =number.phoneNumber;
-              });
-            },
-            onInputValidated: (bool value) {
-              print(value);
-            },
-            selectorConfig: SelectorConfig(
-              selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-              backgroundColor: accent,
-            ),
-            ignoreBlank: false,
-            autoValidateMode: AutovalidateMode.disabled,
-            selectorTextStyle: TextStyle(color: projectDark),
-            initialValue: number,
-            textFieldController: phoneNoController,
-          ),
-          (phoneNumberStatus == PhoneNumberStatus.error)
-              ? error(phoneNumber_error)
-              : Text(''),
+
         ],
       ),
     );
@@ -249,12 +235,65 @@ Future<void> confirmSignUp() async {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Container(
+            child: Stack(
+              children: [
+                AnimatedCrossFade(
+                  duration: const Duration(milliseconds: 500),
+                  firstChild: RawMaterialButton(
+                    onPressed: (){},
+                    elevation: 2.0,
+                    fillColor: projectGray2,
+                    child: CircleAvatar(
+                      foregroundImage:  NetworkImage(userIcon),
+                      radius: size.height * 0.06,
+                    ),
+                    padding: EdgeInsets.all(5.0),
+                    shape: CircleBorder(side: BorderSide(color: projectBlue)),
+                  ),
+                  secondChild: RawMaterialButton(
+                    onPressed: (){},
+                    elevation: 2.0,
+                    fillColor: projectGray2,
+                    child: CircleAvatar(
+                      foregroundImage:  FileImage(_image),
+                      radius: size.height * 0.06,
+                    ),
+                    padding: EdgeInsets.all(3.0),
+                    shape: CircleBorder(side: BorderSide(color: projectBlue)),
+                  ),
+                  crossFadeState: isNetwork
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
+                ),
+                Positioned(
+                  top: size.height * 0.076,left:size.width * 0.12,
+                  child: IconButton(
+                      icon: Icon(Icons.add_circle,color: projectGreen,size: size.height * 0.04,),
+                      onPressed: () async {
+                        final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+                        setState(() {
+                          if (pickedFile != null) {
+                            isNetwork = false;
+                            _image = File(pickedFile.path);
+                          } else {
+                            print('No image selected.');
+                          }
+                        });
+                      })
+                ),
+              ],
+            ),
+
+            width: size.width,alignment: Alignment.center,height: size.height * 0.15
+          ),
           TextField(
-            textAlignVertical: TextAlignVertical.bottom,
-            decoration: InputDecoration(
-                labelText: 'Email ',
-                labelStyle: gray19Style),keyboardType: TextInputType.emailAddress,
-            controller: emailController,
+              textAlignVertical: TextAlignVertical.bottom,enabled: enableEmail,
+              decoration: InputDecoration(
+                  labelText: 'Email ',
+                  labelStyle: gray19Style),keyboardType: TextInputType.emailAddress,
+              controller: emailController,
               onChanged: (value) {
                 setState(() {
                   emailIsValid = emailValidator(value);
@@ -265,7 +304,24 @@ Future<void> confirmSignUp() async {
                 });}
           ),
           (emailStatus == EmailStatus.error) ? error(email_error) : Text(''),
-        ]));
+          TextField(
+              textAlignVertical: TextAlignVertical.bottom,
+              decoration: InputDecoration(
+                  labelText: 'Display Name ',
+                  labelStyle: gray19Style),keyboardType: TextInputType.text,
+              controller: userNameController,
+              onChanged: (value) {
+                setState(() {
+                  userNameIsValid = firstNameValidator(value);
+                  if (!userNameIsValid) {
+                    userNameStatus = UserNameStatus.error;
+                  } else
+                    userNameStatus = UserNameStatus.success;
+                });}
+          ),
+          (userNameStatus == UserNameStatus.error) ? error(userName_error) : Text(''),
+        ])
+    );
 
     return Scaffold(
       body: Stack(
@@ -293,7 +349,7 @@ Future<void> confirmSignUp() async {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Join Project X',style: dark25BoldStyle,textAlign: TextAlign.center,),
+                      Text('Join Edurald',style: dark25BoldStyle,textAlign: TextAlign.center,),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
@@ -304,7 +360,7 @@ Future<void> confirmSignUp() async {
 
           //bottom rect
           AnimatedPositioned(
-            top: MediaQuery.of(context).size.height * 0.1,
+            top: MediaQuery.of(context).size.height * 0.15,
             height: MediaQuery.of(context).size.height,
             duration: Duration(seconds: 0),
             child: Container(
@@ -325,21 +381,38 @@ Future<void> confirmSignUp() async {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          TextField(
-                              decoration: InputDecoration(
-                                  labelText: 'Email',
-                                  labelStyle: gray19Style),
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            onChanged: (value) {
-                            setState(() {
-                            emailIsValid = emailValidator(value);
-                            if (!emailIsValid) {
-                            emailStatus = EmailStatus.error;
-                            } else
-                            emailStatus = EmailStatus.success;
-                            });}),
-                          (emailStatus == EmailStatus.error) ? error(email_error) : Text(''),
+                          InternationalPhoneNumberInput(
+                            onInputChanged: (PhoneNumber number) {
+                              setState(() {
+                                phoneNumberIsValid =
+                                    phoneNumberValidator(number.phoneNumber);
+                                if (!phoneNumberIsValid) {
+                                  phoneNumberStatus =
+                                      PhoneNumberStatus.error;
+                                } else
+                                  phoneNumberStatus =
+                                      PhoneNumberStatus.success;
+                              });
+                              print(number.phoneNumber);
+                              setState(() {
+                                phoneNumber =number.phoneNumber;
+                              });
+                            },
+                            onInputValidated: (bool value) {
+                              print(value);
+                            },
+                            selectorConfig: SelectorConfig(
+                              selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                            ),
+                            ignoreBlank: false,
+                            autoValidateMode: AutovalidateMode.disabled,
+                            selectorTextStyle: TextStyle(color: projectDark),
+                            initialValue: initialnumber,
+                            textFieldController: phoneNoController,
+                          ),
+                          (phoneNumberStatus == PhoneNumberStatus.error)
+                              ? error(phoneNumber_error)
+                              : Text(''),
                           TextField(
                               decoration: InputDecoration(
                                   labelText: 'Password',
@@ -393,7 +466,7 @@ Future<void> confirmSignUp() async {
                           child: RichText(
                             textAlign: TextAlign.left,
                             text: TextSpan(
-                              text: 'You agree to the Project X ',
+                              text: 'You agree to the Edurald ',
                               style: gray12Style,
                               children: <TextSpan>[
                             TextSpan(
@@ -427,19 +500,18 @@ Future<void> confirmSignUp() async {
                                     print(_current);
                                     switch (_current){
                                       case 1:
-                                        if(!emailIsValid){
+                                        if(!emailIsValid || !userNameIsValid){
                                           _current = 0;
                                           showPopUp(form_update_error);
                                           return;
                                         }
                                         setState((){
                                           next = !next;
-                                          showIcons = false;
                                           isFirstView = false;
                                         });
                                         break;
                                       case 2:
-                                        if(!emailIsValid || (passwordStatus == PasswordStatus.error) || passwordController.text.isEmpty){
+                                        if(!phoneNumberIsValid || (passwordStatus == PasswordStatus.error) || passwordController.text.isEmpty){
                                           showPopUp(form_update_error);
                                           _current = 1;
                                           return;
@@ -447,7 +519,7 @@ Future<void> confirmSignUp() async {
                                         next = !next;
                                         break;
                                       case 0:
-                                        if(!firstNameIsValid || !lastNameIsValid || !phoneNumberIsValid){
+                                        if(!firstNameIsValid || !lastNameIsValid ){
                                           _current = 2;
                                           showPopUp(form_update_error);
                                           return;
@@ -473,63 +545,63 @@ Future<void> confirmSignUp() async {
                               )),
                         ),
 
-
-                        AnimatedCrossFade(
-                          duration: const Duration(milliseconds: 500),
-                          firstChild: Container(
-                            height: MediaQuery.of(context).size.height * 0.2,
-                            width: MediaQuery.of(context).size.width,
-                            alignment: Alignment.center, padding:EdgeInsets.all(0),
-                            child:  Column(
-                              children: <Widget>[
-                                Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  alignment: Alignment.center, padding:EdgeInsets.all(0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                        child: Container(
-                                            height: 3,
-                                            width: MediaQuery.of(context).size.width * 0.3,
-                                            color: projectGray),
-                                      ),
-                                      Container(
-                                        alignment: Alignment.center,
-                                        child: Text('OR',style: darkSemiBold19Style,textAlign: TextAlign.center,),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                        child: Container(
-                                            height: 3,
-                                            width: MediaQuery.of(context).size.width * 0.3,
-                                            color: projectGray),
-                                      ),
-
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  height: MediaQuery.of(context).size.height * 0.1,
-                                  width: MediaQuery.of(context).size.width,
-                                  alignment: Alignment.center,
-                                  child: Image( image:AssetImage(socialIcon)),
-                                ),
-                              ],
-                            ),
-                          ),
-                          secondChild: Container(
-                            height: MediaQuery.of(context).size.height * 0.2,
-                            width: MediaQuery.of(context).size.width,
-                            alignment: Alignment.center, padding:EdgeInsets.all(0),
-                          ),
-                          crossFadeState: showIcons
-                              ? CrossFadeState.showFirst
-                              : CrossFadeState.showSecond,
-                        ),
+                        //
+                        // AnimatedCrossFade(
+                        //   duration: const Duration(milliseconds: 500),
+                        //   firstChild: Container(
+                        //     height: MediaQuery.of(context).size.height * 0.2,
+                        //     width: MediaQuery.of(context).size.width,
+                        //     alignment: Alignment.center, padding:EdgeInsets.all(0),
+                        //     child:  Column(
+                        //       children: <Widget>[
+                        //         Container(
+                        //           width: MediaQuery.of(context).size.width,
+                        //           alignment: Alignment.center, padding:EdgeInsets.all(0),
+                        //           child: Row(
+                        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //             mainAxisSize: MainAxisSize.max,
+                        //             crossAxisAlignment: CrossAxisAlignment.center,
+                        //             children: <Widget>[
+                        //               Padding(
+                        //                 padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        //                 child: Container(
+                        //                     height: 3,
+                        //                     width: MediaQuery.of(context).size.width * 0.3,
+                        //                     color: projectGray),
+                        //               ),
+                        //               Container(
+                        //                 alignment: Alignment.center,
+                        //                 child: Text('OR',style: darkSemiBold19Style,textAlign: TextAlign.center,),
+                        //               ),
+                        //               Padding(
+                        //                 padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        //                 child: Container(
+                        //                     height: 3,
+                        //                     width: MediaQuery.of(context).size.width * 0.3,
+                        //                     color: projectGray),
+                        //               ),
+                        //
+                        //             ],
+                        //           ),
+                        //         ),
+                        //         Container(
+                        //           height: MediaQuery.of(context).size.height * 0.1,
+                        //           width: MediaQuery.of(context).size.width,
+                        //           alignment: Alignment.center,
+                        //           child: Image( image:AssetImage(socialIcon)),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        //   secondChild: Container(
+                        //     height: MediaQuery.of(context).size.height * 0.2,
+                        //     width: MediaQuery.of(context).size.width,
+                        //     alignment: Alignment.center, padding:EdgeInsets.all(0),
+                        //   ),
+                        //   crossFadeState: showIcons
+                        //       ? CrossFadeState.showFirst
+                        //       : CrossFadeState.showSecond,
+                        // ),
                       ],
                     ),
                   ),

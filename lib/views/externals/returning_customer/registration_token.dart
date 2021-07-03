@@ -1,17 +1,15 @@
 import 'dart:async';
-import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:amplify_core/amplify_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:project_x/utills/imageanimations.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/imageanimations.dart';
+import 'package:edurald/utills/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class registration_tokenPage extends StatefulWidget {
-  registration_tokenPage({Key key, this.title}) : super(key: key);
+  registration_tokenPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
 
   @override
@@ -31,15 +29,15 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
 
 
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
     getData();
   }
 
   Future<void> getData() async {
     final prefs = await SharedPreferences.getInstance();
-    String payloadResponse = prefs.getString('userId');
-    if (payloadResponse.isNotEmpty) {
+    String? payloadResponse = prefs.getString('userId');
+    if (payloadResponse!.isNotEmpty) {
       setState(() {
         userId = payloadResponse;
         print(userId);
@@ -52,30 +50,30 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
       setState(() {
         showLoader = true;
       });
-      try {
-        SignUpResult res = await Amplify.Auth.confirmSignUp(
-            username: userId.trim(),
-            confirmationCode: token.substring(0, 6)
-        );
-        setState(() {
-          showLoader = false;
-        });
-        if(res.isSignUpComplete){
-          Navigator.pushNamed(context, '/signin');
-        }
-      } on AuthError catch (e) {
-        setState(() {
-          showLoader = false;
-        });
-        Fluttertoast.showToast(
-            msg: e.exceptionList[1].detail.toString(),
-            toastLength: Toast.LENGTH_LONG,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0);
-      }
+      // try {
+      //   SignUpResult res = await Amplify.Auth.confirmSignUp(
+      //       username: userId.trim(),
+      //       confirmationCode: token.substring(0, 6)
+      //   );
+      //   setState(() {
+      //     showLoader = false;
+      //   });
+      //   if(res.isSignUpComplete){
+      //     Navigator.pushNamed(context, '/signin');
+      //   }
+      // } on AuthError catch (e) {
+      //   setState(() {
+      //     showLoader = false;
+      //   });
+      //   Fluttertoast.showToast(
+      //       msg: e.exceptionList[1].detail.toString(),
+      //       toastLength: Toast.LENGTH_LONG,
+      //       gravity: ToastGravity.BOTTOM,
+      //       timeInSecForIosWeb: 1,
+      //       backgroundColor: Colors.red,
+      //       textColor: Colors.white,
+      //       fontSize: 16.0);
+      // }
     }
   }
 

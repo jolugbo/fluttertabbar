@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_country_picker/flutter_country_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:project_x/utills/pagetransitionutill.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/pagetransitionutill.dart';
+import 'package:edurald/utills/styles.dart';
 
 class leaderboard extends StatefulWidget {
-  leaderboard({Key key, this.title}) : super(key: key);
+  leaderboard({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _LeaderboardState createState() => _LeaderboardState();
@@ -28,10 +28,10 @@ class _LeaderboardState extends State<leaderboard>
   List<String> points = ['2060kp','1295kp','1200kp','980kp','765kp','540kp','510kp','502kp','400kp','400kp'];
   final GlobalKey<ScaffoldState> _scaffoldKey1 = GlobalKey<ScaffoldState>();
   ContainerTransitionType _transitionType = ContainerTransitionType.fade;
-  Country _selected;
+  late Country _selected;
 
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
   }
 
@@ -397,11 +397,11 @@ class _LeaderboardState extends State<leaderboard>
 class CircleTabIndicator extends Decoration {
   final BoxPainter _painter;
 
-  CircleTabIndicator({@required Color color, @required double radius})
+  CircleTabIndicator({required Color color,  required double radius})
       : _painter = _CirclePainter(color, radius);
 
   @override
-  BoxPainter createBoxPainter([onChanged]) => _painter;
+  BoxPainter createBoxPainter([void onChanged]) => _painter;
 }
 
 
@@ -417,22 +417,22 @@ class _CirclePainter extends BoxPainter {
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
     final Offset circleOffset =
-        offset + Offset(cfg.size.width / 2, cfg.size.height - radius - 5);
+        offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius - 5);
     canvas.drawCircle(circleOffset, radius, _paint);
   }
 }
 
 class _DetailsCard extends StatelessWidget {
   const _DetailsCard({this.openContainer});
-  final VoidCallback openContainer;
+  final VoidCallback? openContainer;
 
   @override
   Widget build(BuildContext context) {
     String defaultprofile = 'assets/jolugbo.jpeg';
 
     return InkWellOverlay(
-      openContainer: openContainer,
-      height: 300,
+      openContainer: openContainer??(){},
+      height: 300,width: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -473,7 +473,7 @@ class _DetailsCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16,),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor.',
-              style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black54,inherit: false,),
+
             ),
           ),
         ],),

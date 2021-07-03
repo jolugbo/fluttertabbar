@@ -1,28 +1,46 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project_x/utills/demo.dart';
-import 'package:project_x/views/externals/new_customer/registration.dart';
-import 'package:project_x/views/externals/new_customer/registration_form.dart';
-import 'package:project_x/views/externals/new_customer/walkthrough.dart';
-import 'package:project_x/views/externals/returning_customer/registration_token.dart';
-import 'package:project_x/views/externals/signin.dart';
-import 'package:project_x/views/internals/dashboard.dart';
-import 'package:project_x/views/internals/inner/deepest_learning.dart';
-import 'package:project_x/views/internals/inner/leaderboard.dart';
-// Amplify Flutter Packages
-import 'package:amplify_core/amplify_core.dart';
-import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';
-import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:project_x/views/internals/inner/notifications.dart';
-import 'package:project_x/views/internals/inner/share.dart';
-
-// Generated in previous step
-import 'amplifyconfiguration.dart';
+import 'package:edurald/views/externals/new_customer/registration.dart';
+import 'package:edurald/views/externals/new_customer/registration_form.dart';
+import 'package:edurald/views/externals/new_customer/walkthrough.dart';
+import 'package:edurald/views/externals/returning_customer/registration_token.dart';
+import 'package:edurald/views/externals/signin.dart';
+import 'package:edurald/views/internals/dashboard.dart';
+import 'package:edurald/views/internals/inner/deepest_learning.dart';
+import 'package:edurald/views/internals/inner/leaderboard.dart';
+import 'package:edurald/views/internals/inner/notifications.dart';
+import 'package:edurald/views/internals/inner/share.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:package_info/package_info.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'models/user.dart';
 
 
-void main() {
+final userRef =  FirebaseFirestore.instance.collection('users');
+final postRef =  FirebaseFirestore.instance.collection('posts');
+final commentsRef =  FirebaseFirestore.instance.collection('comments');
+final activityFeedRef =  FirebaseFirestore.instance.collection('feeds');
+final followersRef =  FirebaseFirestore.instance.collection('followers');
+final followingRef =  FirebaseFirestore.instance.collection('following');
+final timelineRef =  FirebaseFirestore.instance.collection('timeline');
+final storageRef = FirebaseStorage.instance.ref();
+User? currentUser;
+final GoogleSignIn googleSignIn = GoogleSignIn();
+bool USE_FIRESTORE_EMULATOR = false;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  if (USE_FIRESTORE_EMULATOR) {
+    FirebaseFirestore.instance.settings = const Settings(
+      host: 'localhost:8080', sslEnabled: false, persistenceEnabled: false,);
+  }
   runApp(MyApp());
 }
 
@@ -59,87 +77,123 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // gives our app awareness about whether we are succesfully connected to the cloud
-  bool _amplifyConfigured = false;
-
-  // Instantiate Amplify
-  Amplify amplifyInstance = Amplify();
-
-
+  bool isAuth = false;
+  bool rewardEarned = false;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  String version='';
+  bool hasLoggedIn = false;
 
 
 
+
+  getAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    print(packageInfo.version);
+    setState(() {
+      version = 'V.'+packageInfo.version;
+    });
+  }
+
+  getAppState() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      hasLoggedIn = preferences.getBool("hasLoggedIn") ?? false;
+    });
+  }
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
-
-    // amplify is configured on startup
-    _configureAmplify();
-    _fetchSession();
-  }
-  void _fetchSession() async {
-    try {
-      AuthUser res = await Amplify.Auth.getCurrentUser();
-      print(res.username);
-      print(res.userId);
-    } on AuthError catch (e) {
-      print(e);
-    }
-  }
-  void _configureAmplify() {
-    if (!mounted) return;
-
-    Amplify amplifyInstance = Amplify();
-    // Add Pinpoint and Cognito Plugins, or any other plugins you want to use
-    AmplifyAnalyticsPinpoint analyticsPlugin = AmplifyAnalyticsPinpoint();
-    AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
-    amplifyInstance.addPlugin(authPlugins: [authPlugin]);
-    amplifyInstance.addPlugin(analyticsPlugins: [analyticsPlugin]);
-    amplifyInstance.configure(amplifyconfig);
-
-    try {
-      setState(() {
-        _amplifyConfigured = true;
-      });
-    } catch (e) {
-      print(e);
-    }
+    getAppVersion();
+    getAppState();
+    // googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
+    //   handleSignIn(account);
+    // },onError: (err){
+    //   ////print('Error signing in: $err');
+    // });
+    // googleSignIn.signInSilently(suppressErrors: false)
+    //     .then((GoogleSignInAccount account) => handleSignIn(account))
+    //     .catchError((err){
+    //   ////print('Error signing in: $err');
+    // });
   }
 
-  Future<void> registerUser() async {
-    AnalyticsEvent loginEvent = AnalyticsEvent("login_event");
-    loginEvent.properties.addBoolProperty("boolKey", true);
-    loginEvent.properties.addDoubleProperty("doubleKey", 10.0);
-    loginEvent.properties.addIntProperty("intKey", 10);
-    loginEvent.properties.addStringProperty("stringKey", "stringValue");
-
-    Amplify.Analytics.recordEvent(event: loginEvent);
-    Amplify.Analytics.flushEvents();
-
-    print("event logged");
-//    try{
-//      Map<String, dynamic> userAttributes = {
-//        "email": 'jolugooofemi@gmail.com',
-//        //"phone_number": '07061185385',
-//        // additional attributes as needed
-//      };
-//      SignUpResult res = await Amplify.Auth.signUp(
-//          username: "jolugbooo",
-//          password: "test1password",
-//          options: CognitoSignUpOptions(
-//              userAttributes: userAttributes
-//          ),
-//      );
-//      print(isSignUpComplete);
-//      print('got here');
-//      setState(() {
-//        isSignUpComplete = res.isSignUpComplete;
-//      });
-//    } on AuthError catch (e) {
-//      print(e);
-//    }
-  }
+//   handleSignIn(GoogleSignInAccount account) async {
+//     if(account != null){
+//       await createUserInFireStore();
+//       setState(() {
+//         isAuth = true;
+//       });
+//       configurePushNotifications();
+//     }else{
+//       setState(() {
+//         isAuth = false;
+//       });
+//     }
+//   }
+//
+//
+//   createUserInFireStore() async{
+//     final GoogleSignInAccount user = googleSignIn.currentUser;
+//     DocumentSnapshot doc = await userRef.doc(user.id).get();
+//
+//     if(!doc.exists){
+//       final userForm = await Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAccount()));
+//       print(userForm);
+//       userRef.doc(user.id).set({
+//         "id": user.id,
+//         "username": userForm['userName'],
+//         "phoneNumber": userForm['phoneNumber'],
+//         "photoUrl": user.photoUrl,
+//         "email": user.email,
+//         "displayName": user.displayName,
+//         "bio": "",
+//         "timeStamp": timeStamp
+//       });
+//       await followersRef.doc(user.id)
+//           .collection("userFollowers")
+//           .doc(user.id)
+//           .set({});
+//       doc = await userRef.doc(user.id).get();
+//     }
+//     currentUser = User.fromDocument(doc);
+//     //print(currentUser);
+//     //print(currentUser.displayName);
+//   }
+//
+//   Future<void> registerUser() async {
+//     AnalyticsEvent loginEvent = AnalyticsEvent("login_event");
+//     loginEvent.properties.addBoolProperty("boolKey", true);
+//     loginEvent.properties.addDoubleProperty("doubleKey", 10.0);
+//     loginEvent.properties.addIntProperty("intKey", 10);
+//     loginEvent.properties.addStringProperty("stringKey", "stringValue");
+//
+//     Amplify.Analytics.recordEvent(event: loginEvent);
+//     Amplify.Analytics.flushEvents();
+//
+//     print("event logged");
+// //    try{
+// //      Map<String, dynamic> userAttributes = {
+// //        "email": 'jolugooofemi@gmail.com',
+// //        //"phone_number": '07061185385',
+// //        // additional attributes as needed
+// //      };
+// //      SignUpResult res = await Amplify.Auth.signUp(
+// //          username: "jolugbooo",
+// //          password: "test1password",
+// //          options: CognitoSignUpOptions(
+// //              userAttributes: userAttributes
+// //          ),
+// //      );
+// //      print(isSignUpComplete);
+// //      print('got here');
+// //      setState(() {
+// //        isSignUpComplete = res.isSignUpComplete;
+// //      });
+// //    } on AuthError catch (e) {
+// //      print(e);
+// //    }
+//   }
   // This widget is the root of your application.
 
   @override
@@ -173,7 +227,246 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: walkthroughPage(),
+      home: (hasLoggedIn) ? signinPage(): walkthroughPage(),
     );
   }
 }
+
+
+// import 'package:flutter/material.dart';
+// import 'package:linkedin_login/linkedin_login.dart';
+//
+// // ignore_for_file: avoid_print
+// void main() => runApp(MyApp());
+//
+// // @TODO IMPORTANT - you need to change variable values below
+// // You need to add your own data from LinkedIn application
+// // From: https://www.linkedin.com/developers/
+// // Please read step 1 from this link https://developer.linkedin.com/docs/oauth2
+// const String redirectUrl = 'https://www.youtube.com/callback';
+// const String clientId = '776rnw4e4izlvg';
+// const String clientSecret = 'rQEgboUHMLcQi59v';
+//
+// class MyApp extends StatelessWidget {
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter LinkedIn demo',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: DefaultTabController(
+//         length: 2,
+//         child: Scaffold(
+//           appBar: AppBar(
+//             bottom: TabBar(
+//               tabs: [
+//                 Tab(
+//                   icon: Icon(Icons.person),
+//                   text: 'Profile',
+//                 ),
+//                 Tab(icon: Icon(Icons.text_fields), text: 'Auth code')
+//               ],
+//             ),
+//             title: Text('LinkedIn Authorization'),
+//           ),
+//           body: TabBarView(
+//             children: [
+//               LinkedInProfileExamplePage(),
+//               LinkedInAuthCodeExamplePage(),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// class LinkedInProfileExamplePage extends StatefulWidget {
+//   @override
+//   State createState() => _LinkedInProfileExamplePageState();
+// }
+//
+// class _LinkedInProfileExamplePageState
+//     extends State<LinkedInProfileExamplePage> {
+//   UserObject user;
+//   bool logoutUser = false;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//         crossAxisAlignment: CrossAxisAlignment.center,
+//         mainAxisSize: MainAxisSize.max,
+//         children: <Widget>[
+//           LinkedInButtonStandardWidget(
+//             onTap: () {
+//               Navigator.push(
+//                 context,
+//                 MaterialPageRoute(
+//                   builder: (BuildContext context) => LinkedInUserWidget(
+//                     appBar: AppBar(
+//                       title: Text('OAuth User'),
+//                     ),
+//                     destroySession: logoutUser,
+//                     redirectUrl: redirectUrl,
+//                     clientId: clientId,
+//                     clientSecret: clientSecret,
+//                     projection: [
+//                       ProjectionParameters.id,
+//                       ProjectionParameters.localizedFirstName,
+//                       ProjectionParameters.localizedLastName,
+//                       ProjectionParameters.firstName,
+//                       ProjectionParameters.lastName,
+//                       ProjectionParameters.profilePicture,
+//                     ],
+//                     onError: (UserFailedAction e) {
+//                       print('Error: ${e.toString()}');
+//                       print('Error: ${e.stackTrace.toString()}');
+//                     },
+//                     onGetUserProfile: (UserSucceededAction linkedInUser) {
+//                       print(
+//                           'Access token ${linkedInUser.user.token.accessToken}');
+//
+//                       print('User id: ${linkedInUser.user.userId}');
+//
+//                       user = UserObject(
+//                         firstName:
+//                         linkedInUser?.user?.firstName?.localized?.label,
+//                         lastName:
+//                         linkedInUser?.user?.lastName?.localized?.label,
+//                         email: linkedInUser?.user?.email?.elements[0]
+//                             ?.handleDeep?.emailAddress,
+//                         profileImageUrl: linkedInUser
+//                             ?.user
+//                             ?.profilePicture
+//                             ?.displayImageContent
+//                             ?.elements[0]
+//                             ?.identifiers[0]
+//                             ?.identifier,
+//                       );
+//
+//                       setState(() {
+//                         logoutUser = false;
+//                       });
+//
+//                       Navigator.pop(context);
+//                     },
+//                   ),
+//                   fullscreenDialog: true,
+//                 ),
+//               );
+//             },
+//           ),
+//           LinkedInButtonStandardWidget(
+//             onTap: () {
+//               setState(() {
+//                 user = null;
+//                 logoutUser = true;
+//               });
+//             },
+//             buttonText: 'Logout',
+//           ),
+//           Column(
+//             mainAxisSize: MainAxisSize.max,
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               Text('First: ${user?.firstName} '),
+//               Text('Last: ${user?.lastName} '),
+//               Text('Email: ${user?.email}'),
+//               Text('Profile image: ${user?.profileImageUrl}'),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+//
+// class LinkedInAuthCodeExamplePage extends StatefulWidget {
+//   @override
+//   State createState() => _LinkedInAuthCodeExamplePageState();
+// }
+//
+// class _LinkedInAuthCodeExamplePageState
+//     extends State<LinkedInAuthCodeExamplePage> {
+//   AuthCodeObject authorizationCode;
+//   bool logoutUser = false;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       mainAxisSize: MainAxisSize.max,
+//       children: <Widget>[
+//         LinkedInButtonStandardWidget(
+//           onTap: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(
+//                 builder: (BuildContext context) => LinkedInAuthCodeWidget(
+//                   destroySession: logoutUser,
+//                   redirectUrl: redirectUrl,
+//                   clientId: clientId,
+//                   onError: (AuthorizationFailedAction e) {
+//                     print('Error: ${e.toString()}');
+//                     print('Error: ${e.stackTrace.toString()}');
+//                   },
+//                   onGetAuthCode: (AuthorizationSucceededAction response) {
+//                     print('Auth code ${response.codeResponse.code}');
+//
+//                     print('State: ${response.codeResponse.state}');
+//
+//                     authorizationCode = AuthCodeObject(
+//                       code: response.codeResponse.code,
+//                       state: response.codeResponse.state,
+//                     );
+//                     setState(() {});
+//
+//                     Navigator.pop(context);
+//                   },
+//                 ),
+//                 fullscreenDialog: true,
+//               ),
+//             );
+//           },
+//         ),
+//         LinkedInButtonStandardWidget(
+//           onTap: () {
+//             setState(() {
+//               authorizationCode = null;
+//               logoutUser = true;
+//             });
+//           },
+//           buttonText: 'Logout user',
+//         ),
+//         Container(
+//           margin: EdgeInsets.symmetric(horizontal: 16),
+//           child: Column(
+//             mainAxisSize: MainAxisSize.max,
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               Text('Auth code: ${authorizationCode?.code} '),
+//               Text('State: ${authorizationCode?.state} '),
+//             ],
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
+//
+// class AuthCodeObject {
+//   AuthCodeObject({this.code, this.state});
+//
+//   String code, state;
+// }
+//
+// class UserObject {
+//   UserObject({this.firstName, this.lastName, this.email, this.profileImageUrl});
+//
+//   String firstName, lastName, email, profileImageUrl;
+// }

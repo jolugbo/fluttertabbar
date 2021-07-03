@@ -8,16 +8,16 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:project_x/utills/imageanimations.dart';
-import 'package:project_x/utills/pagetransitionutill.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/imageanimations.dart';
+import 'package:edurald/utills/pagetransitionutill.dart';
+import 'package:edurald/utills/styles.dart';
 
 import 'community.dart';
 
 class challenge extends StatefulWidget {
-  challenge({Key key, this.title}) : super(key: key);
+  challenge({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -32,7 +32,7 @@ class _ChallengePageState extends State<challenge>
   List<String> names = ['econsKing','brains','owen','alex','fred','brainchild','egghead','Femi','Angella','Eniola'];
   List<String> courseList = ['Governance','Economics','Advisory','Trading','Accounting'];
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
   }
 
@@ -145,7 +145,7 @@ class _ChallengePageState extends State<challenge>
                           ),
                           Container(
                             height:MediaQuery.of(context).size.height* 0.4,
-                            width:MediaQuery.of(context).size.width * 0.95,
+                            //width:MediaQuery.of(context).size.width * 0.95,
                             child: Scrollbar(
                               child: ListView.builder(
                                 itemCount: 10,
@@ -160,7 +160,7 @@ class _ChallengePageState extends State<challenge>
                                       onTap: openContainer,
                                       title: ListTile(
                                         leading: CircleAvatar(
-                                          radius: 18,
+                                          radius: 10,
                                           child: ClipOval(
                                             child: Image.asset(images[index]),
                                           ),
@@ -224,9 +224,8 @@ class _ChallengePageState extends State<challenge>
                 ],
               ),
               floatingActionButton: FloatingActionButton(
-                heroTag: 'challenge',
                 onPressed: () {
-                  //_WeaponCard();
+                      (context, openContainer) =>const _WeaponCard();
                   setState(() {
                   });
                 },
@@ -245,15 +244,15 @@ class _ChallengePageState extends State<challenge>
 
 class _ChallengeCard extends StatelessWidget {
   const _ChallengeCard({this.openContainer});
-  final VoidCallback openContainer;
+  final VoidCallback? openContainer;
 
   @override
   Widget build(BuildContext context) {
     String defaultprofile = 'assets/jolugbo.jpeg';
 
     return InkWellOverlay(
-      openContainer: openContainer,
-      height: 300,
+      openContainer: openContainer??(){},
+      height: 300,width: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -294,7 +293,7 @@ class _ChallengeCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16,),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor.',
-              style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black54,inherit: false,),
+
             ),
           ),
         ],),
@@ -304,15 +303,15 @@ class _ChallengeCard extends StatelessWidget {
 
 class _ChallengeReadyCard extends StatelessWidget {
   const _ChallengeReadyCard({this.openContainer});
-  final VoidCallback openContainer;
+  final VoidCallback? openContainer;
 
   @override
   Widget build(BuildContext context) {
     String defaultprofile = 'assets/jolugbo.jpeg';
 
     return InkWellOverlay(
-      openContainer: openContainer,
-      height: 300,
+      openContainer: openContainer??(){},
+      height: 300,width: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -353,7 +352,7 @@ class _ChallengeReadyCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16,),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor.',
-              style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black54,inherit: false,),
+
             ),
           ),
         ],),
@@ -364,7 +363,7 @@ class _ChallengeReadyCard extends StatelessWidget {
 
 class _WeaponCard extends StatelessWidget {
   const _WeaponCard({this.openContainer});
-  final VoidCallback openContainer;
+  final VoidCallback? openContainer;
 
   @override
   Widget build(BuildContext context) {
@@ -374,8 +373,8 @@ class _WeaponCard extends StatelessWidget {
     List<String> names = ['Asset Management','Advisory','Capital Market','Advisory','Asset Management','Advisory','Capital Market','Asset Management','Advisory','Capital Market'];
 
     return InkWellOverlay(
-      openContainer: openContainer,
-      //height: 300,
+      openContainer: openContainer??(){},
+      height: 300,
       width: 300,
       child: Dialog(
         child:  Column(

@@ -10,14 +10,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_x/utills/linechart.dart';
-import 'package:project_x/utills/pagetransitionutill.dart';
-import 'package:project_x/utills/styles.dart';
+import 'package:edurald/utills/linechart.dart';
+import 'package:edurald/utills/pagetransitionutill.dart';
+import 'package:edurald/utills/styles.dart';
 
 class notifications extends StatefulWidget {
-  notifications({Key key, this.title}) : super(key: key);
+  notifications({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _NotificationsState createState() => _NotificationsState();
@@ -36,7 +36,7 @@ class _NotificationsState extends State<notifications>
   ContainerTransitionType _transitionType = ContainerTransitionType.fade;
 
   @override
-  State<StatefulWidget> initState() {
+  void initState() {
     super.initState();
   }
 
@@ -121,7 +121,7 @@ class _NotificationsState extends State<notifications>
                                 radius: 25,
                                 child: ClipOval(
                                     child:   RawMaterialButton(
-                                      elevation: 2.0,
+                                      elevation: 2.0,onPressed: () {  },
                                       fillColor: projectBlue,
                                       child: Stack(
                                         children: [
@@ -191,7 +191,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: projectBlue,
+                                      fillColor: projectBlue,onPressed: () {  },
                                       child: Stack(
                                         children: [
                                           Image.asset(brains),
@@ -260,7 +260,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: projectBlue,
+                                      fillColor: projectBlue,onPressed: () {  },
                                       child: Stack(
                                         children: [
                                           Image.asset(alex),
@@ -329,7 +329,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: projectBlue,
+                                      fillColor: projectBlue,onPressed: () {  },
                                       child: Stack(
                                         children: [
                                           Image.asset(fred),
@@ -398,7 +398,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: accent,
+                                      fillColor: accent,onPressed: () {  },
                                       child: Image.asset(ribbon),
                                       padding: EdgeInsets.all(3.0),
                                       shape: CircleBorder(),
@@ -455,7 +455,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: projectBlue,
+                                      fillColor: projectBlue,onPressed: () {  },
                                       child: Image.asset(econKing),
                                       padding: EdgeInsets.all(3.0),
                                       shape: CircleBorder(side: BorderSide(color: projectGray2)),
@@ -525,7 +525,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: projectBlue,
+                                      fillColor: projectBlue,onPressed: () {  },
                                       child: Image.asset(econKing),
                                       padding: EdgeInsets.all(3.0),
                                       shape: CircleBorder(side: BorderSide(color: projectGray2)),
@@ -594,7 +594,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: projectBlue,
+                                      fillColor: projectBlue,onPressed: () {  },
                                       child: Image.asset(brains),
                                       padding: EdgeInsets.all(3.0),
                                       shape: CircleBorder(side: BorderSide(color: projectGray2)),
@@ -664,7 +664,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: projectBlue,
+                                      fillColor: projectBlue,onPressed: () {  },
                                       child: Stack(
                                         children: [
                                           Image.asset(econKing),
@@ -725,7 +725,7 @@ class _NotificationsState extends State<notifications>
                                 child: ClipOval(
                                     child:   RawMaterialButton(
                                       elevation: 2.0,
-                                      fillColor: projectBlue,
+                                      fillColor: projectBlue,onPressed: () {  },
                                       child: Stack(
                                         children: [
                                           Image.asset(alex),
@@ -814,15 +814,17 @@ class _NotificationsState extends State<notifications>
   }
 }
 
-class CircleTabIndicator extends Decoration {
-  final BoxPainter _painter;
-
-  CircleTabIndicator({@required Color color, @required double radius})
-      : _painter = _CirclePainter(color, radius);
-
-  @override
-  BoxPainter createBoxPainter([onChanged]) => _painter;
-}
+// class CircleTabIndicator1 extends Decoration {
+//   final BoxPainter _painter;
+//
+//   CircleTabIndicator({ required Color color, required double radius})
+//       : _painter = _CirclePainter(color, radius);
+//
+//   @override
+//   BoxPainter createBoxPainter([onChanged= onChange()]) => _painter;
+//
+//    void onChange(){ return 0;}
+// }
 
 
 class _CirclePainter extends BoxPainter {
@@ -837,22 +839,22 @@ class _CirclePainter extends BoxPainter {
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
     final Offset circleOffset =
-        offset + Offset(cfg.size.width / 2, cfg.size.height - radius - 5);
+        offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius - 5);
     canvas.drawCircle(circleOffset, radius, _paint);
   }
 }
 
 class _DetailsCard extends StatelessWidget {
   const _DetailsCard({this.openContainer});
-  final VoidCallback openContainer;
+  final VoidCallback? openContainer;
 
   @override
   Widget build(BuildContext context) {
     String defaultprofile = 'assets/jolugbo.jpeg';
 
     return InkWellOverlay(
-      openContainer: openContainer,
-      height: 300,
+      openContainer: openContainer??(){},
+      height: 300, width: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -893,7 +895,7 @@ class _DetailsCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16,),
             child: Text(
               'Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor.',
-              style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black54,inherit: false,),
+
             ),
           ),
         ],),

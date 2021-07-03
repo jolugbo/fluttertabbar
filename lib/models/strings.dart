@@ -4,12 +4,7 @@
 
 //
 const RegisterationURL ='http://7a599492e061.ngrok.io/swagger/index.html';
-const BaseUrlUnencrypted = 'https://testapi.paydayinvestor.ng/version4/api/PayDayInvestorUnEncrypt/';
-const BaseUrlEncrypted = 'https://testapi.paydayinvestor.ng/version4/api/PaydayInvestor/';
-const UpdatecustomerdataURL ='updatecustomerdata?RequestSource=Web';
-const UpdateKYCdocumentURL ='kycdocument?RequestSource=Web';
-const GetKeyUrl = 'https://testapi.paydayinvestor.ng/version4/api/Utility/';//authorization?AppUserID=ser%40gmail.com&RequestSource=web
-
+const imageBase ='assets/images/';
 const email = "Email";
 const password = "Password";
 const signup = "Sign Up";
@@ -33,7 +28,7 @@ const firstName_error = "First name is not valid.";
 const lastName_error = "Last name is not valid.";
 const phoneNumber_error = "Phone number is not valid.";
 const code_error = "Code is not valid.";
-const address_error = "Address is not valid.";
+const userName_error = "username is not valid.";
 const place_of_birth_error = "place of birth is not valid.";
 const state_of_origin_error = "state of birth is not valid.";
 const date_of_birth_error = "date of birth is not valid.";

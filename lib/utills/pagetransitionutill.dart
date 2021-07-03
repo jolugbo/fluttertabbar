@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 
-class OpenContainerWrapper extends StatelessWidget {
-  const OpenContainerWrapper({this.closedBuilder,this.transitionType,this.child});
-  final CloseContainerBuilder closedBuilder;
-  final ContainerTransitionType transitionType;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return OpenContainer<bool>(
-      transitionType: transitionType,
-      openBuilder: (context, openContainer) =>
-     child,tappable: false,
-      closedBuilder: closedBuilder,
-    );
-  }
-}
+// class OpenContainerWrapper extends StatelessWidget {
+//   const OpenContainerWrapper({this.closedBuilder,this.transitionType,this.child});
+//   final CloseContainerBuilder closedBuilder;
+//   final ContainerTransitionType transitionType;
+//   final Widget child;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return OpenContainer<bool>(
+//       transitionType: transitionType,
+//       openBuilder: (context, openContainer) =>
+//      child,tappable: false,
+//       closedBuilder: closedBuilder,
+//     );
+//   }
+// }
 
 
 class InkWellOverlay extends StatefulWidget {
-   InkWellOverlay({this.openContainer,this.width,this.height,this.child,});
+   InkWellOverlay({required this.openContainer,required this.width,required this.height,required this.child,});
   final VoidCallback openContainer;
   final double width;
   final double height;
