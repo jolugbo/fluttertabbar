@@ -1,2 +1,0 @@
-com/miguelruivo/flutter/plugin/countrycodes/country_codes/BuildConfig.java
- com.miguelruivo.flutter.plugin.countrycodes.country_codes.BuildConfig

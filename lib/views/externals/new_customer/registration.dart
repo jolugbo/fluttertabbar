@@ -145,10 +145,10 @@ class _RegistrationPageState extends State<registrationPage>
 
                                     setState(() {
                                     user = User(
-                                      firstName: linkedInUser.user?.firstName?.localized?.label,
-                                      lastName: linkedInUser?.user?.lastName?.localized?.label,
-                                      email: linkedInUser?.user?.email?.elements![0]?.handleDeep?.emailAddress,
-                                      photoUrl: linkedInUser?.user?.profilePicture?.displayImageContent?.elements![0]?.identifiers![0]?.identifier,
+                                      // firstName: linkedInUser.user?.firstName?.localized?.label,
+                                      // lastName: linkedInUser?.user?.lastName?.localized?.label,
+                                      // email: linkedInUser?.user?.email?.elements![0]?.handleDeep?.emailAddress,
+                                      // photoUrl: linkedInUser?.user?.profilePicture?.displayImageContent?.elements![0]?.identifiers![0]?.identifier,
                                     );
                                       logoutUser = false;
                                     });

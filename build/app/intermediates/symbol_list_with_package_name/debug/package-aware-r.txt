@@ -1,8 +1,14 @@
 com.app.edurald
+attr activityAction
+attr activityName
 attr alpha
+attr alwaysExpand
 attr buttonSize
 attr circleCrop
+attr clearTop
 attr colorScheme
+attr finishPrimaryWithSecondary
+attr finishSecondaryWithPrimary
 attr font
 attr fontProviderAuthority
 attr fontProviderCerts
@@ -10,12 +16,24 @@ attr fontProviderFetchStrategy
 attr fontProviderFetchTimeout
 attr fontProviderPackage
 attr fontProviderQuery
+attr fontProviderSystemFontFamily
 attr fontStyle
 attr fontVariationSettings
 attr fontWeight
 attr imageAspectRatio
 attr imageAspectRatioAdjust
+attr nestedScrollViewStyle
+attr placeholderActivityName
+attr primaryActivityName
+attr queryPatterns
 attr scopeUris
+attr secondaryActivityAction
+attr secondaryActivityName
+attr shortcutMatchRequired
+attr splitLayoutDirection
+attr splitMinSmallestWidth
+attr splitMinWidth
+attr splitRatio
 attr ttcIndex
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
@@ -130,6 +148,7 @@ id action_text
 id actions
 id adjust_height
 id adjust_width
+id androidx_window_activity_scope
 id async
 id auto
 id blocking
@@ -145,6 +164,8 @@ id italic
 id light
 id line1
 id line3
+id locale
+id ltr
 id none
 id normal
 id notification_background
@@ -152,15 +173,21 @@ id notification_main_column
 id notification_main_column_container
 id right_icon
 id right_side
+id rtl
 id standard
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
 id tag_accessibility_pane_title
+id tag_on_apply_window_listener
+id tag_on_receive_content_listener
+id tag_on_receive_content_mime_types
 id tag_screen_reader_focusable
+id tag_state_description
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id tag_window_insets_animation_callback
 id text
 id text2
 id time
@@ -196,7 +223,6 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string default_web_client_id
-string fcm_fallback_notification_channel_label
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -213,12 +239,18 @@ style TextAppearance_Compat_Notification_Time
 style TextAppearance_Compat_Notification_Title
 style Widget_Compat_NotificationActionContainer
 style Widget_Compat_NotificationActionText
+styleable ActivityFilter activityAction activityName
+styleable ActivityRule alwaysExpand
+styleable Capability queryPatterns shortcutMatchRequired
 styleable ColorStateListItem android_color android_alpha alpha
-styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
+styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
 styleable SignInButton buttonSize colorScheme scopeUris
+styleable SplitPairFilter primaryActivityName secondaryActivityAction secondaryActivityName
+styleable SplitPairRule clearTop finishPrimaryWithSecondary finishSecondaryWithPrimary splitLayoutDirection splitMinSmallestWidth splitMinWidth splitRatio
+styleable SplitPlaceholderRule placeholderActivityName splitLayoutDirection splitMinSmallestWidth splitMinWidth splitRatio
 xml flutter_image_picker_file_paths
 xml flutter_share_file_paths

@@ -7,8 +7,8 @@ import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_country_picker/flutter_country_picker.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+//import 'package:flutter_country_picker/flutter_country_picker.dart';
+//import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:edurald/utills/pagetransitionutill.dart';
 import 'package:edurald/utills/styles.dart';
 
@@ -28,7 +28,7 @@ class _LeaderboardState extends State<leaderboard>
   List<String> points = ['2060kp','1295kp','1200kp','980kp','765kp','540kp','510kp','502kp','400kp','400kp'];
   final GlobalKey<ScaffoldState> _scaffoldKey1 = GlobalKey<ScaffoldState>();
   ContainerTransitionType _transitionType = ContainerTransitionType.fade;
-  late Country _selected;
+  //late Country _selected;
 
   @override
   void initState() {
@@ -189,20 +189,20 @@ class _LeaderboardState extends State<leaderboard>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
-                            child: CountryPicker(
-                              dense: false,
-                              showFlag: true,  //displays flag, true by default
-                              showDialingCode: false, //displays dialing code, false by default
-                              showName: true, //displays country name, true by default
-                              showCurrency: false, //eg. 'British pound'
-                              showCurrencyISO: true, //eg. 'GBP'
-                              onChanged: (Country country) {
-                                setState(() {
-                                  _selected = country;
-                                });
-                              },
-                              selectedCountry: _selected,
-                            ),
+                            // child: CountryPicker(
+                            //   dense: false,
+                            //   showFlag: true,  //displays flag, true by default
+                            //   showDialingCode: false, //displays dialing code, false by default
+                            //   showName: true, //displays country name, true by default
+                            //   showCurrency: false, //eg. 'British pound'
+                            //   showCurrencyISO: true, //eg. 'GBP'
+                            //   onChanged: (Country country) {
+                            //     setState(() {
+                            //       _selected = country;
+                            //     });
+                            //   },
+                            //   selectedCountry: _selected,
+                            // ),
                             padding: EdgeInsets.fromLTRB(20,0,0,0),
                           ),
                           Container(

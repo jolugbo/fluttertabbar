@@ -1,2 +1,0 @@
-rocks/biessek/fluttercountrypicker/BuildConfig.java
- rocks.biessek.fluttercountrypicker.BuildConfig

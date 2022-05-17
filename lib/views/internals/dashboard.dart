@@ -127,28 +127,28 @@ class _DashboardPageState extends State<dashboardPage>
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.school,color: projectGray,),
-              activeIcon: Icon(Icons.school,color: projectBlue,),
-              title: Text('Learn'),
+              activeIcon: Icon(Icons.school,color: projectBlue,),label: 'Learn',
+              //title: Text('Learn'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.group,color: projectGray,),
-              activeIcon: Icon(Icons.group,color: projectBlue,),
-              title: Text('Community'),
+              activeIcon: Icon(Icons.group,color: projectBlue,),label: 'Community',
+              //title: Text('Community'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.location_searching,color: Colors.transparent,),
               activeIcon: Icon(Icons.location_searching,color: Colors.transparent,),
-              title: Text('Discover', style: (discover)? green12Style: gray12Style ,),
+              label: 'Discover', //Text(, style: (discover)? green12Style: gray12Style ,)
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.flash_off,color: projectGray,),
-              activeIcon: Icon(Icons.flash_on,color: projectRed,),
-              title: Text('Challenge', style: (challeng)? dark14Style : gray11Style,),
+              activeIcon: Icon(Icons.flash_on,color: projectRed,),label: 'Challenge',
+             // title: Text('Challenge', style: (challeng)? dark14Style : gray11Style,),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.chat_bubble,color: projectRed,),
-              activeIcon: Icon(Icons.chat_bubble,color: projectRed,),
-              title: Text('Chats' ,style: red11Style,),
+              activeIcon: Icon(Icons.chat_bubble,color: projectRed,),label: 'Chats',
+              //title: Text('Chats' ,style: red11Style,),
             ),
           ]),
       drawer: Drawer(

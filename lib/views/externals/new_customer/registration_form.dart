@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edurald/models/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoder/geocoder.dart';
-import 'package:geocoder/model.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+//import 'package:geocoder/geocoder.dart';
+//import 'package:geocoder/model.dart';
+//import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:edurald/models/model_status.dart';
 import 'package:edurald/models/strings.dart';
 import 'package:edurald/utills/input_util.dart';
@@ -19,7 +19,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../main.dart';
 
-final userRef =  FirebaseFirestore.instance.collection('users');
+// final userRef =  FirebaseFirestore.instance.collection('users');
 
 class registration_formPage extends StatefulWidget {
   registration_formPage({Key? key,  this.user}) : super(key: key);
@@ -67,7 +67,7 @@ class _Registration_formPageState extends State<registration_formPage>
   TextEditingController firstNameController = new TextEditingController();
   TextEditingController lastNameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
-  String countryCode = '';PhoneNumber? initialnumber;
+  //String countryCode = '';PhoneNumber? initialnumber;
   DateTime timeStamp = DateTime.now();
 
   void showPopUp(String msg){
@@ -84,13 +84,13 @@ class _Registration_formPageState extends State<registration_formPage>
   Future<void> getLocation() async {
     Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high,);
     //await CountryCodes.init();
-    final coordinates = new Coordinates(position.latitude, position.longitude);
-    var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    var first = addresses.first;
+   // final coordinates = new Coordinates(position.latitude, position.longitude);
+   // var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    //var first = addresses.first;
     //initialCountry = first.countryCode;
     setState(() {
-      countryCode = first.countryCode;
-      initialnumber = PhoneNumber(isoCode: countryCode);
+     // countryCode = first.countryCode;
+      //initialnumber = PhoneNumber(isoCode: countryCode);
     });
   }
 
@@ -135,36 +135,36 @@ class _Registration_formPageState extends State<registration_formPage>
 }
 
   createUserInFireStore() async{
-    var userArgs = ModalRoute.of(context)!.settings.arguments as User;
-    User user = new User(
-      bio: "",
-      displayName: userNameController.text,
-      email: emailController.text,
-      firstName: firstNameController.text,
-      lastName: lastNameController.text,
-      phoneNumber: phoneNoController.text,
-      photoUrl: userArgs.photoUrl
-    );
-    DocumentSnapshot doc = await userRef.doc(user.email).get();
-
-    if(!doc.exists){
-
-      userRef.doc(user.id).set({
-        "id": user.id,
-        "phoneNumber": user.phoneNumber,
-        "photoUrl": user.photoUrl,
-        "email": user.email,
-        "displayName": user.displayName,
-        "bio": "",
-        "timeStamp": timeStamp
-      });
-      await followersRef.doc(user.id)
-          .collection("userFollowers")
-          .doc(user.id)
-          .set({});
-      doc = await userRef.doc(user.id).get();
-    }
-    currentUser = User.fromDocument(doc);
+    // var userArgs = ModalRoute.of(context)!.settings.arguments as User;
+    // User user = new User(
+    //   bio: "",
+    //   displayName: userNameController.text,
+    //   email: emailController.text,
+    //   firstName: firstNameController.text,
+    //   lastName: lastNameController.text,
+    //   phoneNumber: phoneNoController.text,
+    //   photoUrl: userArgs.photoUrl
+    // );
+    // //DocumentSnapshot doc = await userRef.doc(user.email).get();
+    //
+    // if(!doc.exists){
+    //
+    //   userRef.doc(user.id).set({
+    //     "id": user.id,
+    //     "phoneNumber": user.phoneNumber,
+    //     "photoUrl": user.photoUrl,
+    //     "email": user.email,
+    //     "displayName": user.displayName,
+    //     "bio": "",
+    //     "timeStamp": timeStamp
+    //   });
+    //   await followersRef.doc(user.id)
+    //       .collection("userFollowers")
+    //       .doc(user.id)
+    //       .set({});
+    //   doc = await userRef.doc(user.id).get();
+    // }
+    // currentUser = User.fromDocument(doc);
   }
 
 
@@ -184,7 +184,7 @@ class _Registration_formPageState extends State<registration_formPage>
       firstNameIsValid = firstNameValidator(user.firstName!);
       lastNameIsValid = lastNameValidator(user.lastName!);
     });
-    PhoneNumber number = PhoneNumber(isoCode: countryCode);
+   // PhoneNumber number = PhoneNumber(isoCode: countryCode);
 
     Widget thirdView = Container(
       alignment: Alignment.center, padding:EdgeInsets.all(0),
@@ -381,35 +381,35 @@ class _Registration_formPageState extends State<registration_formPage>
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          InternationalPhoneNumberInput(
-                            onInputChanged: (PhoneNumber number) {
-                              setState(() {
-                                phoneNumberIsValid =
-                                    phoneNumberValidator(number.phoneNumber);
-                                if (!phoneNumberIsValid) {
-                                  phoneNumberStatus =
-                                      PhoneNumberStatus.error;
-                                } else
-                                  phoneNumberStatus =
-                                      PhoneNumberStatus.success;
-                              });
-                              print(number.phoneNumber);
-                              setState(() {
-                                phoneNumber =number.phoneNumber;
-                              });
-                            },
-                            onInputValidated: (bool value) {
-                              print(value);
-                            },
-                            selectorConfig: SelectorConfig(
-                              selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                            ),
-                            ignoreBlank: false,
-                            autoValidateMode: AutovalidateMode.disabled,
-                            selectorTextStyle: TextStyle(color: projectDark),
-                            initialValue: initialnumber,
-                            textFieldController: phoneNoController,
-                          ),
+                          // InternationalPhoneNumberInput(
+                          //   onInputChanged: (PhoneNumber number) {
+                          //     setState(() {
+                          //       phoneNumberIsValid =
+                          //           phoneNumberValidator(number.phoneNumber);
+                          //       if (!phoneNumberIsValid) {
+                          //         phoneNumberStatus =
+                          //             PhoneNumberStatus.error;
+                          //       } else
+                          //         phoneNumberStatus =
+                          //             PhoneNumberStatus.success;
+                          //     });
+                          //     print(number.phoneNumber);
+                          //     setState(() {
+                          //       phoneNumber =number.phoneNumber;
+                          //     });
+                          //   },
+                          //   onInputValidated: (bool value) {
+                          //     print(value);
+                          //   },
+                          //   selectorConfig: SelectorConfig(
+                          //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                          //   ),
+                          //   ignoreBlank: false,
+                          //   autoValidateMode: AutovalidateMode.disabled,
+                          //   selectorTextStyle: TextStyle(color: projectDark),
+                          //   initialValue: initialnumber,
+                          //   textFieldController: phoneNoController,
+                          // ),
                           (phoneNumberStatus == PhoneNumberStatus.error)
                               ? error(phoneNumber_error)
                               : Text(''),

@@ -1,16 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/Jolugbo/IdeaProjects/fluttertabbar/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/Jolugbo/.gradle/caches/transforms-2/files-2.1/101bea36e7b2cb4c9e6c082296b6e131/jetified-play-services-auth-16.0.1/res/values-watch-v20/values.xml",
+                    "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\a72af1df0121a74b1cc49dd250286aa7\\jetified-play-services-auth-20.0.1\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
-                        "startOffsets": "171,246,322,397,472,559,636,723",
+                        "startOffsets": "173,248,324,399,474,561,638,725",
                         "endColumns": "74,75,74,74,86,76,86,75",
-                        "endOffsets": "245,321,396,471,558,635,722,798"
+                        "endOffsets": "247,323,398,473,560,637,724,800"
                     },
                     "to": {
                         "startLines": "2,3,4,5,6,7,8,9",

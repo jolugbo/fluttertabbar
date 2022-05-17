@@ -1,8 +1,8 @@
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,24 +22,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'models/user.dart';
 
 
-final userRef =  FirebaseFirestore.instance.collection('users');
-final postRef =  FirebaseFirestore.instance.collection('posts');
-final commentsRef =  FirebaseFirestore.instance.collection('comments');
-final activityFeedRef =  FirebaseFirestore.instance.collection('feeds');
-final followersRef =  FirebaseFirestore.instance.collection('followers');
-final followingRef =  FirebaseFirestore.instance.collection('following');
-final timelineRef =  FirebaseFirestore.instance.collection('timeline');
-final storageRef = FirebaseStorage.instance.ref();
+// final userRef =  FirebaseFirestore.instance.collection('users');
+// final postRef =  FirebaseFirestore.instance.collection('posts');
+// final commentsRef =  FirebaseFirestore.instance.collection('comments');
+// final activityFeedRef =  FirebaseFirestore.instance.collection('feeds');
+// final followersRef =  FirebaseFirestore.instance.collection('followers');
+// final followingRef =  FirebaseFirestore.instance.collection('following');
+// final timelineRef =  FirebaseFirestore.instance.collection('timeline');
+// final storageRef = FirebaseStorage.instance.ref();
 User? currentUser;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 bool USE_FIRESTORE_EMULATOR = false;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  //await Firebase.initializeApp();
   if (USE_FIRESTORE_EMULATOR) {
-    FirebaseFirestore.instance.settings = const Settings(
-      host: 'localhost:8080', sslEnabled: false, persistenceEnabled: false,);
+    // FirebaseFirestore.instance.settings = const Settings(
+    //   host: 'localhost:8080', sslEnabled: false, persistenceEnabled: false,);
   }
   runApp(MyApp());
 }
