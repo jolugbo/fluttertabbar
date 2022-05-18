@@ -12,10 +12,10 @@ import 'package:edurald/utills/linechart.dart';
 import 'package:edurald/utills/pagetransitionutill.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:flutter_emoji/flutter_emoji.dart';
-import 'base/learn.dart';
-import 'base/community.dart';
-import 'base/discovery.dart';
-import 'base/challenge.dart';
+import '../learn/learn.dart';
+import '../../views/internals/base/community.dart';
+import '../discovery/discovery.dart';
+import '../challenge/challenge.dart';
 
 class dashboardPage extends StatefulWidget {
   dashboardPage({Key? key, this.title,this.index}) : super(key: key);

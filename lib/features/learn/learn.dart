@@ -12,7 +12,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:edurald/utills/pagetransitionutill.dart';
 import 'package:edurald/utills/styles.dart';
 
-import '../dashboard.dart';
+import '../dashboard/dashboard.dart';
 
 class learn extends StatefulWidget {
   learn({Key? key, this.title}) : super(key: key);

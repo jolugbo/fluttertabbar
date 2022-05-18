@@ -6,19 +6,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:edurald/views/externals/new_customer/registration.dart';
-import 'package:edurald/views/externals/new_customer/registration_form.dart';
-import 'package:edurald/views/externals/new_customer/walkthrough.dart';
-import 'package:edurald/views/externals/returning_customer/registration_token.dart';
-import 'package:edurald/views/externals/signin.dart';
-import 'package:edurald/views/internals/dashboard.dart';
-import 'package:edurald/views/internals/inner/deepest_learning.dart';
-import 'package:edurald/views/internals/inner/leaderboard.dart';
-import 'package:edurald/views/internals/inner/notifications.dart';
-import 'package:edurald/views/internals/inner/share.dart';
+import 'package:edurald/features/signin/signin.dart';
+import 'package:edurald/features/dashboard/dashboard.dart';
+import 'package:edurald/features/deepest_study/deepest_study.dart';
+import 'package:edurald/features/notifications/notifications.dart';
+import 'package:edurald/features/share/share.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'features/champions_league/champions_league.dart';
+import 'features/onboarding/registration.dart';
+import 'features/onboarding/registration_form.dart';
+import 'features/onboarding/registration_token.dart';
+import 'features/onboarding/walkthrough.dart';
 import 'models/user.dart';
 
 

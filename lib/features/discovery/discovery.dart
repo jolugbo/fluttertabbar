@@ -14,8 +14,8 @@ import 'package:edurald/utills/linechart.dart';
 import 'package:edurald/utills/pagetransitionutill.dart';
 import 'package:edurald/utills/styles.dart';
 
-import 'community.dart';
-import 'learn.dart';
+import '../../views/internals/base/community.dart';
+import '../learn/learn.dart';
 
 class discovery extends StatefulWidget {
   discovery({Key? key, this.title}) : super(key: key);
