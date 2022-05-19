@@ -214,10 +214,10 @@ class _SigninPageState extends State<signinPage>
                                 child: Assets.images.signInLinkedIn.image(),//Image( image:AssetImage(signInLinkedInIcon)),
                               ), GestureDetector(
                                 onTap: () => print('Twitter Clicked'),
-                                child: Image( image:AssetImage(signInTwitterIcon)),
+                                child: Assets.images.signInTwitter.image(),
                               ), GestureDetector(
                                 onTap: () =>print('Google Clicked'),
-                                child: Image( image:AssetImage(signInGoogleIcon)),
+                                child: Assets.images.signInGoogle.image(),
                               ),
                             ]),
                       ),
