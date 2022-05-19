@@ -1,4 +1,4 @@
-                            import 'package:connectivity/connectivity.dart';
+ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,8 @@ import 'package:edurald/utills/input_util.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:edurald/validations/registration_validation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../gen/assets.gen.dart';
 
 class signinPage extends StatefulWidget {
   signinPage({Key? key, this.title}) : super(key: key);
@@ -209,7 +211,7 @@ class _SigninPageState extends State<signinPage>
                             children: <Widget>[
                               GestureDetector(
                                 onTap: () =>print('LinkedIn Clicked'),
-                                child: Image( image:AssetImage(signInLinkedInIcon)),
+                                child: Assets.images.signInLinkedIn.image(),//Image( image:AssetImage(signInLinkedInIcon)),
                               ), GestureDetector(
                                 onTap: () => print('Twitter Clicked'),
                                 child: Image( image:AssetImage(signInTwitterIcon)),

@@ -12,8 +12,8 @@ import 'package:edurald/utills/linechart.dart';
 import 'package:edurald/utills/pagetransitionutill.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:flutter_emoji/flutter_emoji.dart';
+import '../community/community.dart';
 import '../learn/learn.dart';
-import '../../views/internals/base/community.dart';
 import '../discovery/discovery.dart';
 import '../challenge/challenge.dart';
 

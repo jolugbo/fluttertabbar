@@ -12,7 +12,6 @@ import 'package:edurald/utills/imageanimations.dart';
 import 'package:edurald/utills/pagetransitionutill.dart';
 import 'package:edurald/utills/styles.dart';
 
-import '../../views/internals/base/community.dart';
 
 class challenge extends StatefulWidget {
   challenge({Key? key, this.title}) : super(key: key);
