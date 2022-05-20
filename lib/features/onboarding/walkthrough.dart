@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:edurald/models/strings.dart';
+import 'package:flutter/services.dart';
+
+import '../../gen/assets.gen.dart';
 
 class walkthroughPage extends StatefulWidget {
   walkthroughPage({Key? key, this.title}) : super(key: key);
@@ -17,9 +20,11 @@ class _WalkthroughPageState extends State<walkthroughPage>{
   final String redirectUrl = 'http://edurald.com/';
   final String clientId = '77zum551b93zkz';
   final String clientSecret = 'gwr7A7OHq00ns3Ow';
+  // final String response = await rootBundle.loadString(Assets.json.configs);
+  // final data = await json.decode(response);
   List<String> scrollText = ['Commerce knowledge simplified',
     'Learn and connect with other professionals','Earn your reputation as a business professional'];
-  List<String> scrollImgs = [imageBase+'walkthrough1.png',imageBase+'walkthrough2.png',imageBase+'walkthrough3.png'];
+  List<Image> scrollImgs = [Assets.images.walkthrough1.image(),Assets.images.walkthrough2.image(),Assets.images.walkthrough3.image()];
   int index = 0;
   final int _numPages = 3;
   int _currentPage = 0;
@@ -113,9 +118,6 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                             height: MediaQuery.of(context).size.height * 0.6,
                               width: MediaQuery.of(context).size.width,
                               margin: EdgeInsets.symmetric(horizontal: 5.0),
-                              decoration: BoxDecoration(
-                                  //color: Colors.blue
-                              ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -131,7 +133,7 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                                     height: MediaQuery.of(context).size.height * 0.35,
                                     width: MediaQuery.of(context).size.width,
                                     alignment: Alignment.center, padding:EdgeInsets.all(0),
-                                    child: Image( image:AssetImage(scrollImgs[i])),
+                                    child: scrollImgs[i],
                                   ),
                                 ],
                               ),
