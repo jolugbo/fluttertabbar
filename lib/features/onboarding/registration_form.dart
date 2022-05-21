@@ -171,18 +171,18 @@ class _Registration_formPageState extends State<registration_formPage>
 
   @override
   Widget build(BuildContext context) {
-    var user = ModalRoute.of(context)!.settings.arguments as User;
-    var size = MediaQuery.of(context).size;
-    emailController.text = user.email!;
-    firstNameController.text = user.firstName!;
-    lastNameController.text = user.lastName!;
-    userIcon = user.photoUrl ?? userIcon;
+    // var user = ModalRoute.of(context)!.settings.arguments as User;
+     var size = MediaQuery.of(context).size;
+    // emailController.text = user.email!;
+    // firstNameController.text = user.firstName!;
+    // lastNameController.text = user.lastName!;
+    // userIcon = user.photoUrl ?? userIcon;
     //isNetwork = !(user.photoUrl == null);
     setState(() {
-      enableEmail = false;
-      emailIsValid = emailValidator(user.email!);
-      firstNameIsValid = firstNameValidator(user.firstName!);
-      lastNameIsValid = lastNameValidator(user.lastName!);
+      // enableEmail = false;
+      // emailIsValid = emailValidator(user.email!);
+      // firstNameIsValid = firstNameValidator(user.firstName!);
+      // lastNameIsValid = lastNameValidator(user.lastName!);
     });
    // PhoneNumber number = PhoneNumber(isoCode: countryCode);
 
@@ -249,7 +249,7 @@ class _Registration_formPageState extends State<registration_formPage>
                       radius: size.height * 0.06,
                     ),
                     padding: EdgeInsets.all(5.0),
-                    shape: CircleBorder(side: BorderSide(color: projectBlue)),
+                    shape: CircleBorder(side: BorderSide(color: projectGray)),
                   ),
                   secondChild: RawMaterialButton(
                     onPressed: (){},
@@ -260,16 +260,16 @@ class _Registration_formPageState extends State<registration_formPage>
                       radius: size.height * 0.06,
                     ),
                     padding: EdgeInsets.all(3.0),
-                    shape: CircleBorder(side: BorderSide(color: projectBlue)),
+                    shape: CircleBorder(side: BorderSide(color: projectGray)),
                   ),
                   crossFadeState: isNetwork
                       ? CrossFadeState.showFirst
                       : CrossFadeState.showSecond,
                 ),
                 Positioned(
-                  top: size.height * 0.076,left:size.width * 0.12,
+                  top: size.height * 0.08,left:size.width * 0.08,
                   child: IconButton(
-                      icon: Icon(Icons.add_circle,color: projectGreen,size: size.height * 0.04,),
+                      icon: Icon(Icons.add_circle,color: projectBlue,size: size.height * 0.04,),
                       onPressed: () async {
                         final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
@@ -458,13 +458,10 @@ class _Registration_formPageState extends State<registration_formPage>
                     child: Column(
                       children: <Widget>[
 
-                        Container(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-
+                        SizedBox(height: size.height * 0.01),
                         Container(
                           child: RichText(
-                            textAlign: TextAlign.left,
+                            textAlign: TextAlign.center,
                             text: TextSpan(
                               text: 'You agree to the Edurald ',
                               style: gray12Style,
@@ -479,6 +476,7 @@ class _Registration_formPageState extends State<registration_formPage>
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.04,
                         ),
+                        SizedBox(height: size.height * 0.01),
                         Container(
                           width: MediaQuery.of(context).size.width,
                           alignment: Alignment.center,

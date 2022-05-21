@@ -199,78 +199,6 @@ class _SigninPageState extends State<signinPage>
                               ),
                               ]),
                       ),
-                      SizedBox(height: 45,),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        width: MediaQuery.of(context).size.width,
-                        alignment: Alignment.center,
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              GestureDetector(
-                                onTap: () =>print('LinkedIn Clicked'),
-                                child: Assets.images.signInLinkedIn.image(),//Image( image:AssetImage(signInLinkedInIcon)),
-                              ), GestureDetector(
-                                onTap: () => print('Twitter Clicked'),
-                                child: Assets.images.signInTwitter.image(),
-                              ), GestureDetector(
-                                onTap: () =>print('Google Clicked'),
-                                child: Assets.images.signInGoogle.image(),
-                              ),
-                            ]),
-                      ),
-                      SizedBox(height: 35,),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        alignment: Alignment.center, padding:EdgeInsets.all(0),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.8,
-                              alignment: Alignment.center, padding:EdgeInsets.all(0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                    child: Container(
-                                        height: 3,
-                                        width: MediaQuery.of(context).size.width * 0.3,
-                                        color: projectGray),
-                                  ),
-                                  Container(
-                                    //height: MediaQuery.of(context).size.height * 0.1,
-                                    //width: MediaQuery.of(context).size.width,
-                                    alignment: Alignment.center,
-                                    child: Text('OR',style: darkSemiBold19Style,textAlign: TextAlign.center,),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                    child: Container(
-                                        height: 3,
-                                        width: MediaQuery.of(context).size.width * 0.3,
-                                        color: projectGray),
-                                  ),
-
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              alignment: Alignment.center,
-                              child:
-                              Text('Sign in with Email',style: darkNormal18Style,textAlign: TextAlign.center,),
-                            ),
-                          ],
-                        ),
-                      ),
                       Container(
                         //height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.8,
@@ -385,6 +313,78 @@ class _SigninPageState extends State<signinPage>
                             ),
                           ],
                         ),
+                      ),
+                      SizedBox(height: 35,),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        alignment: Alignment.center, padding:EdgeInsets.all(0),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              alignment: Alignment.center, padding:EdgeInsets.all(0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                    child: Container(
+                                        height: 3,
+                                        width: MediaQuery.of(context).size.width * 0.3,
+                                        color: projectGray),
+                                  ),
+                                  Container(
+                                    //height: MediaQuery.of(context).size.height * 0.1,
+                                    //width: MediaQuery.of(context).size.width,
+                                    alignment: Alignment.center,
+                                    child: Text('OR',style: darkSemiBold19Style,textAlign: TextAlign.center,),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                    child: Container(
+                                        height: 3,
+                                        width: MediaQuery.of(context).size.width * 0.3,
+                                        color: projectGray),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              alignment: Alignment.center,
+                              child:
+                              Text('Sign in with Email',style: darkNormal18Style,textAlign: TextAlign.center,),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 35,),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.2,
+                        width: MediaQuery.of(context).size.width,
+                        alignment: Alignment.center,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () =>print('LinkedIn Clicked'),
+                                child: Assets.images.signInLinkedIn.image(),//Image( image:AssetImage(signInLinkedInIcon)),
+                              ), GestureDetector(
+                                onTap: () => print('Twitter Clicked'),
+                                child: Assets.images.signInTwitter.image(),
+                              ), GestureDetector(
+                                onTap: () =>print('Google Clicked'),
+                                child: Assets.images.signInGoogle.image(),
+                              ),
+                            ]),
                       ),
                     ],
                   ),
