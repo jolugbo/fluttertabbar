@@ -185,7 +185,7 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                               color: projectBlue,
                               child: Text('Sign up',style: white25Style,),
                               onPressed: () => {
-                                Navigator.pushNamed(context, '/registration')
+                                Navigator.pushNamed(context, '/registration_form')
                               },
                               highlightElevation: 0.8,
                             )),

@@ -153,6 +153,7 @@ class _SigninPageState extends State<signinPage>
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
         //resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: true,
@@ -274,7 +275,7 @@ class _SigninPageState extends State<signinPage>
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.1,
+                        //height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.center,
                         child: Column(
@@ -314,7 +315,7 @@ class _SigninPageState extends State<signinPage>
                           ],
                         ),
                       ),
-                      SizedBox(height: 35,),
+                      SizedBox(height: size.height * 0.05),
                       Container(
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.center, padding:EdgeInsets.all(0),
@@ -352,19 +353,19 @@ class _SigninPageState extends State<signinPage>
                                 ],
                               ),
                             ),
-                            Container(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              alignment: Alignment.center,
-                              child:
-                              Text('Sign in with Email',style: darkNormal18Style,textAlign: TextAlign.center,),
-                            ),
+                            // Container(
+                            //   height: MediaQuery.of(context).size.height * 0.02,
+                            // ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width,
+                            //   alignment: Alignment.center,
+                            //   child:
+                            //   Text('Sign in with Email',style: darkNormal18Style,textAlign: TextAlign.center,),
+                            // ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 35,),
+                      SizedBox(height: size.height * 0.05),
                       Container(
                         height: MediaQuery.of(context).size.height * 0.2,
                         width: MediaQuery.of(context).size.width,
