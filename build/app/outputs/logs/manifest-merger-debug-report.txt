@@ -9,6 +9,7 @@ MERGED from [:geolocator_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\bu
 MERGED from [:image_picker_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:google_sign_in_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\google_sign_in_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_native_splash] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\flutter_native_splash\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:webview_flutter_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:connectivity] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\connectivity\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -154,6 +155,8 @@ MERGED from [:flutter_plugin_android_lifecycle] C:\Users\JOLUGBO\IdeaProjects\fl
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\google_sign_in_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\google_sign_in_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\flutter_native_splash\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\flutter_native_splash\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] C:\Users\JOLUGBO\IdeaProjects\fluttertabbar\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
