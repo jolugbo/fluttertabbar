@@ -201,7 +201,6 @@ class _SigninPageState extends State<signinPage>
                               ]),
                       ),
                       Container(
-                        //height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.8,
                         alignment: Alignment.center,
                         child: Column(
@@ -275,7 +274,6 @@ class _SigninPageState extends State<signinPage>
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       Container(
-                        //height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.center,
                         child: Column(
@@ -337,8 +335,6 @@ class _SigninPageState extends State<signinPage>
                                         color: projectGray),
                                   ),
                                   Container(
-                                    //height: MediaQuery.of(context).size.height * 0.1,
-                                    //width: MediaQuery.of(context).size.width,
                                     alignment: Alignment.center,
                                     child: Text('OR',style: darkSemiBold19Style,textAlign: TextAlign.center,),
                                   ),
@@ -353,15 +349,6 @@ class _SigninPageState extends State<signinPage>
                                 ],
                               ),
                             ),
-                            // Container(
-                            //   height: MediaQuery.of(context).size.height * 0.02,
-                            // ),
-                            // Container(
-                            //   width: MediaQuery.of(context).size.width,
-                            //   alignment: Alignment.center,
-                            //   child:
-                            //   Text('Sign in with Email',style: darkNormal18Style,textAlign: TextAlign.center,),
-                            // ),
                           ],
                         ),
                       ),
