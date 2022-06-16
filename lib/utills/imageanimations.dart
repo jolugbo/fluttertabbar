@@ -77,6 +77,7 @@ class imgAnimation2 extends StatelessWidget{
 
   Widget build(BuildContext context) {
 
+
     if(transition == RotationTransition){
       return Animator<double>(
         resetAnimationOnRebuild: true,
@@ -114,9 +115,8 @@ class imgAnimation2 extends StatelessWidget{
       );
     }
     else{
-
       return Animator<double>(
-        resetAnimationOnRebuild: true,
+        resetAnimationOnRebuild: false,
         duration: time,
         cycles: 99,
         curve: Curves.ease,

@@ -37,7 +37,7 @@ class _WalkthroughPageState extends State<walkthroughPage> {
   final int _numPages = 3;
   int _currentPage = 0;
   int _current = 0;
-
+ int animatedHeight = 0;
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
     for (int i = 0; i < _numPages; i++) {
@@ -61,6 +61,7 @@ class _WalkthroughPageState extends State<walkthroughPage> {
 
   @override
   Widget build(BuildContext context) {
+    animatedHeight = 1;
     return Scaffold(
       body: Stack(
         overflow: Overflow.visible,
@@ -75,51 +76,35 @@ class _WalkthroughPageState extends State<walkthroughPage> {
           //bottom rect
           AnimatedPositioned(
             top: MediaQuery.of(context).size.height * 0,
-            height: MediaQuery.of(context).size.height,
-            duration: Duration(seconds: 0),
+            height: MediaQuery.of(context).size.height ,
+            duration: Duration(seconds: 1),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // Container(
-                //   height: MediaQuery.of(context).size.height * 0.1,
-                //   width: MediaQuery.of(context).size.width,
-                //   alignment: Alignment.bottomCenter,
-                //   child: Text(
-                //     'Edurald',
-                //     style: dark25BoldStyle,
-                //     textAlign: TextAlign.center,
-                //   ),
-                // ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   child: Hero(
                     tag: "splashscreenImage",
                     child: WidgetAnimator(
-                      component: imgAnimation2(
-                        url: Assets.images.eduraldLogo.path,
-                        time: Duration(seconds: 3), beginx: 0.0, endx: -0,
-                        beginy: 0, endy: -0.0,
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        transition: PositionedTransition,
-                      ),
-                      transition: Transform,
-                      animPattern: Curves.easeInOutCirc,
-                      pixle: Colors.transparent,
-                      time: Duration(seconds: 1),
-                      animType: "nothing",
-                      xAxis: -MediaQuery.of(context).size.width * 0,
-                      yAxis: -MediaQuery.of(context).size.height * 0,
+                      component: Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width,
+                        color: Colors.transparent,alignment: Alignment.topCenter,
+                        child: imgAnimation2(url: Assets.images.eduraldLogo.path,time: Duration(milliseconds: 4000),
+                          width: MediaQuery.of(context).size.width * 0.5,beginx:0.1,endx: -0.1, beginy: 0,endy: 0,
+                          height: MediaQuery.of(context).size.height * 0.5,transition: PositionedTransition,
+                        ),),
+                      transition: Transform,animPattern: Curves.easeIn,pixle: Colors.transparent,time: Duration(seconds: 1),animType: "nothing",xAxis: 0,yAxis: 0,
                     ),
                   ),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.65,
-                  width: MediaQuery.of(context).size.width, //color: Colors.red,
-                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.topCenter,
                   child: Column(children: [
                     CarouselSlider(
                       options: CarouselOptions(
