@@ -1,4 +1,4 @@
- import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:edurald/utills/styles.dart';
@@ -6,6 +6,7 @@ import 'package:edurald/models/strings.dart';
 import 'package:flutter/services.dart';
 
 import '../../gen/assets.gen.dart';
+import '../../utills/imageanimations.dart';
 
 class walkthroughPage extends StatefulWidget {
   walkthroughPage({Key? key, this.title}) : super(key: key);
@@ -16,22 +17,26 @@ class walkthroughPage extends StatefulWidget {
   _WalkthroughPageState createState() => _WalkthroughPageState();
 }
 
-class _WalkthroughPageState extends State<walkthroughPage>{
+class _WalkthroughPageState extends State<walkthroughPage> {
   final String redirectUrl = 'http://edurald.com/';
   final String clientId = '77zum551b93zkz';
   final String clientSecret = 'gwr7A7OHq00ns3Ow';
   // final String response = await rootBundle.loadString(Assets.json.configs);
   // final data = await json.decode(response);
-  List<String> scrollText = ['Commerce knowledge simplified',
-    'Learn and connect with other professionals','Earn your reputation as a business professional'];
-  List<Image> scrollImgs = [Assets.images.walkthrough1.image(),Assets.images.walkthrough2.image(),Assets.images.walkthrough3.image()];
+  List<String> scrollText = [
+    'Commerce knowledge simplified',
+    'Learn and connect with other professionals',
+    'Earn your reputation as a business professional'
+  ];
+  List<Image> scrollImgs = [
+    Assets.images.walkthrough1.image(),
+    Assets.images.walkthrough2.image(),
+    Assets.images.walkthrough3.image()
+  ];
   int index = 0;
   final int _numPages = 3;
   int _currentPage = 0;
   int _current = 0;
-
-
-
 
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
@@ -54,21 +59,18 @@ class _WalkthroughPageState extends State<walkthroughPage>{
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         overflow: Overflow.visible,
         children: <Widget>[
-
           AnimatedPositioned(
               top: 0,
               duration: Duration(seconds: 1),
               child: Container(
                 height: MediaQuery.of(context).size.height,
-              )
-          ),
+              )),
 
           //bottom rect
           AnimatedPositioned(
@@ -80,42 +82,70 @@ class _WalkthroughPageState extends State<walkthroughPage>{
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                // Container(
+                //   height: MediaQuery.of(context).size.height * 0.1,
+                //   width: MediaQuery.of(context).size.width,
+                //   alignment: Alignment.bottomCenter,
+                //   child: Text(
+                //     'Edurald',
+                //     style: dark25BoldStyle,
+                //     textAlign: TextAlign.center,
+                //   ),
+                // ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
                   width: MediaQuery.of(context).size.width,
-                  alignment: Alignment.bottomCenter,
-                  child: Text('Edurald',style: dark25BoldStyle,textAlign: TextAlign.center,),
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  child: Hero(
+                    tag: "splashscreenImage",
+                    child: WidgetAnimator(
+                      component: imgAnimation2(
+                        url: Assets.images.eduraldLogo.path,
+                        time: Duration(seconds: 3), beginx: 0.0, endx: -0,
+                        beginy: 0, endy: -0.0,
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        height: MediaQuery.of(context).size.height * 0.3,
+                        transition: PositionedTransition,
+                      ),
+                      transition: Transform,
+                      animPattern: Curves.easeInOutCirc,
+                      pixle: Colors.transparent,
+                      time: Duration(seconds: 1),
+                      animType: "nothing",
+                      xAxis: -MediaQuery.of(context).size.width * 0,
+                      yAxis: -MediaQuery.of(context).size.height * 0,
+                    ),
+                  ),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.65,
                   width: MediaQuery.of(context).size.width, //color: Colors.red,
-                    alignment: Alignment.center,
-                  child: Column(
-                  children: [
-                   CarouselSlider(
-                    options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      aspectRatio: 16/9,
-                      viewportFraction: 1,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
-                      autoPlay: true,
-                      autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enlargeCenterPage: true,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _current = index;
-                        });
-                      },
-                      scrollDirection: Axis.horizontal,),
-                     items: [0,1,2].map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            height: MediaQuery.of(context).size.height * 0.6,
+                  alignment: Alignment.center,
+                  child: Column(children: [
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        height: MediaQuery.of(context).size.height * 0.6,
+                        aspectRatio: 16 / 9,
+                        viewportFraction: 1,
+                        initialPage: 0,
+                        enableInfiniteScroll: true,
+                        reverse: false,
+                        autoPlay: true,
+                        autoPlayInterval: Duration(seconds: 3),
+                        autoPlayAnimationDuration: Duration(milliseconds: 800),
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enlargeCenterPage: true,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _current = index;
+                          });
+                        },
+                        scrollDirection: Axis.horizontal,
+                      ),
+                      items: [0, 1, 2].map((i) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: MediaQuery.of(context).size.height * 0.6,
                               width: MediaQuery.of(context).size.width,
                               margin: EdgeInsets.symmetric(horizontal: 5.0),
                               child: Column(
@@ -124,44 +154,55 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Container(
-                                    height: MediaQuery.of(context).size.height * 0.15,
-                                    width: MediaQuery.of(context).size.width * 0.9,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.15,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.9,
                                     alignment: Alignment.center,
-                                    child: Text(scrollText[i],style: darkNormal25Style,textAlign: TextAlign.center,),
+                                    child: Text(
+                                      scrollText[i],
+                                      style: darkNormal25Style,
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                   Container(
-                                    height: MediaQuery.of(context).size.height * 0.35,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.35,
                                     width: MediaQuery.of(context).size.width,
-                                    alignment: Alignment.center, padding:EdgeInsets.all(0),
+                                    alignment: Alignment.center,
+                                    padding: EdgeInsets.all(0),
                                     child: scrollImgs[i],
                                   ),
                                 ],
                               ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                  ),
-                   Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [0,1,2,].map((i) {
-                    int index = i;
-                    return Container(
-                      width: 8.0,
-                      height: 8.0,
-                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _current == index
-                            ? Color.fromRGBO(0, 0, 0, 0.9)
-                            : Color.fromRGBO(0, 0, 0, 0.4),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ]
-            ),
-
+                            );
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        0,
+                        1,
+                        2,
+                      ].map((i) {
+                        int index = i;
+                        return Container(
+                          width: 8.0,
+                          height: 8.0,
+                          margin: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 2.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: _current == index
+                                ? Color.fromRGBO(0, 0, 0, 0.9)
+                                : Color.fromRGBO(0, 0, 0, 0.4),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ]),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.2,
@@ -180,12 +221,15 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                             child: RaisedButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5.0),
-                                  side: BorderSide(color: projectBlue)
-                              ),
+                                  side: BorderSide(color: projectBlue)),
                               color: projectBlue,
-                              child: Text('Sign up',style: white25Style,),
+                              child: Text(
+                                'Sign up',
+                                style: white25Style,
+                              ),
                               onPressed: () => {
-                                Navigator.pushNamed(context, '/registration_form')
+                                Navigator.pushNamed(
+                                    context, '/registration_form')
                               },
                               highlightElevation: 0.8,
                             )),
@@ -195,20 +239,21 @@ class _WalkthroughPageState extends State<walkthroughPage>{
                         alignment: Alignment.center,
                         color: Colors.transparent,
                         child: ButtonTheme(
-                            minWidth:
-                            MediaQuery.of(context).size.width * 0.5,
+                            minWidth: MediaQuery.of(context).size.width * 0.5,
                             height: 40,
                             buttonColor: accent,
                             child: RaisedButton(
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  //side: BorderSide(color: projectBlue)
+                                borderRadius: BorderRadius.circular(5.0),
+                                //side: BorderSide(color: projectBlue)
                               ),
                               color: accent,
-                              child: Text('Sign in',style: gray25Style,),
-                              onPressed: () => {
-                                Navigator.pushNamed(context, '/signin')
-                              },
+                              child: Text(
+                                'Sign in',
+                                style: gray25Style,
+                              ),
+                              onPressed: () =>
+                                  {Navigator.pushNamed(context, '/signin')},
                               highlightElevation: 0.8,
                             )),
                       ),
@@ -218,7 +263,6 @@ class _WalkthroughPageState extends State<walkthroughPage>{
               ],
             ),
           ),
-
         ],
       ),
     );

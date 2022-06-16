@@ -19,6 +19,7 @@ import 'features/onboarding/registration.dart';
 import 'features/onboarding/registration_form.dart';
 import 'features/onboarding/registration_token.dart';
 import 'features/onboarding/walkthrough.dart';
+import 'gen/assets.gen.dart';
 import 'models/user.dart';
 
 
@@ -195,41 +196,91 @@ class _MyAppState extends State<MyApp> {
 // //    }
 //   }
   // This widget is the root of your application.
-
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        //'/': (context) => WalkThrough(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/walkthrough': (context) => walkthroughPage(),
-        '/registration': (context) => registrationPage(),
-        '/registration_form': (context) => registration_formPage(),
-        '/registration_token': (context) => registration_tokenPage(),
-        '/signin': (context) => signinPage(),
-        '/dashboard': (context) => dashboardPage(),
-        '/leaderboard': (context) => leaderboard(),
-        '/share': (context) => share(),
-        '/notifications': (context) => notifications(),
-        '/deepest_learning': (context) => deepest_learning(),
+          debugShowCheckedModeBanner: false,
+          routes: {
+            // When navigating to the "/" route, build the FirstScreen widget.
+            //'/': (context) => WalkThrough(),
+            // When navigating to the "/second" route, build the SecondScreen widget.
+            '/walkthrough': (context) => walkthroughPage(),
+            '/registration': (context) => registrationPage(),
+            '/registration_form': (context) => registration_formPage(),
+            '/registration_token': (context) => registration_tokenPage(),
+            '/signin': (context) => signinPage(),
+            '/dashboard': (context) => dashboardPage(),
+            '/leaderboard': (context) => leaderboard(),
+            '/share': (context) => share(),
+            '/notifications': (context) => notifications(),
+            '/deepest_learning': (context) => deepest_learning(),
+          },
+          onGenerateRoute: (RouteSettings settings) {
+            // return landing.route();
+          },
+          theme: ThemeData(
+            fontFamily: 'Montserrat',
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: Scaffold(
+            body: (hasLoggedIn) ? signinPage(): walkthroughPage(),
+        ));
+  }
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => (hasLoggedIn) ? signinPage(): walkthroughPage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
       },
-      onGenerateRoute: (RouteSettings settings) {
-        // return landing.route();
-      },
-      theme: ThemeData(
-        fontFamily: 'Montserrat',
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: (hasLoggedIn) ? signinPage(): walkthroughPage(),
     );
   }
+
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   SystemChrome.setPreferredOrientations([
+  //     DeviceOrientation.portraitUp,
+  //     DeviceOrientation.portraitDown,
+  //   ]);
+  //   return MaterialApp(
+  //     debugShowCheckedModeBanner: false,
+  //     routes: {
+  //       // When navigating to the "/" route, build the FirstScreen widget.
+  //       //'/': (context) => WalkThrough(),
+  //       // When navigating to the "/second" route, build the SecondScreen widget.
+  //       '/walkthrough': (context) => walkthroughPage(),
+  //       '/registration': (context) => registrationPage(),
+  //       '/registration_form': (context) => registration_formPage(),
+  //       '/registration_token': (context) => registration_tokenPage(),
+  //       '/signin': (context) => signinPage(),
+  //       '/dashboard': (context) => dashboardPage(),
+  //       '/leaderboard': (context) => leaderboard(),
+  //       '/share': (context) => share(),
+  //       '/notifications': (context) => notifications(),
+  //       '/deepest_learning': (context) => deepest_learning(),
+  //     },
+  //     onGenerateRoute: (RouteSettings settings) {
+  //       // return landing.route();
+  //     },
+  //     theme: ThemeData(
+  //       fontFamily: 'Montserrat',
+  //       primarySwatch: Colors.blue,
+  //       visualDensity: VisualDensity.adaptivePlatformDensity,
+  //     ),
+  //     home: (hasLoggedIn) ? signinPage(): walkthroughPage(),
+  //   );
+  // }
 }
 
 

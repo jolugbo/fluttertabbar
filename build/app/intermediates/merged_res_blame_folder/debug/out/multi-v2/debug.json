@@ -1623,6 +1623,30 @@
             ]
         },
         {
+            "outputFile": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\res\\merged\\debug\\values-night-v31_values-night-v31.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\android\\app\\src\\main\\res\\values-night-v31\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,801",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "450,965"
+                    },
+                    "to": {
+                        "startLines": "2,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,337",
+                        "endLines": "6,9",
+                        "endColumns": "12,12",
+                        "endOffsets": "332,501"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\res\\merged\\debug\\values-ta_values-ta.arsc.flat",
             "map": [
                 {
@@ -3188,20 +3212,20 @@
                 {
                     "source": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
                     "from": {
-                        "startLines": "3,15",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,908",
-                        "endLines": "8,17",
-                        "endColumns": "12,12",
-                        "endOffsets": "557,1072"
+                        "startLines": "3,-1",
+                        "startColumns": "4,-1",
+                        "startOffsets": "173,-1",
+                        "endLines": "8,-1",
+                        "endColumns": "12,-1",
+                        "endOffsets": "537,-1"
                     },
                     "to": {
                         "startLines": "2,8",
                         "startColumns": "4,4",
-                        "startOffsets": "55,444",
+                        "startOffsets": "55,424",
                         "endLines": "7,10",
                         "endColumns": "12,12",
-                        "endOffsets": "439,608"
+                        "endOffsets": "419,588"
                     }
                 }
             ]
