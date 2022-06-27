@@ -278,6 +278,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_launcher_icons",
+      "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.9.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_native_splash",
       "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_native_splash-2.1.6",
       "packageUri": "lib/",
@@ -848,7 +854,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-06-16T00:37:30.702125Z",
+  "generated": "2022-06-27T13:55:16.447736Z",
   "generator": "pub",
   "generatorVersion": "2.16.0"
 }

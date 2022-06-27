@@ -132,11 +132,11 @@ class _WalkthroughPageState extends State<walkthroughPage> {
                             return Container(
                               height: MediaQuery.of(context).size.height * 0.6,
                               width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.symmetric(horizontal: 5.0),
+                              margin: EdgeInsets.symmetric(horizontal: 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Container(
                                     height: MediaQuery.of(context).size.height *

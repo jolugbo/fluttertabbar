@@ -12,6 +12,7 @@ import 'package:edurald/validations/registration_validation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../gen/assets.gen.dart';
+import '../../utills/imageanimations.dart';
 
 class signinPage extends StatefulWidget {
   signinPage({Key? key, this.title}) : super(key: key);
@@ -24,7 +25,7 @@ class signinPage extends StatefulWidget {
 
 class _SigninPageState extends State<signinPage>
     with TickerProviderStateMixin {
-  String socialIcon = imageBase+'socials.png';
+  //String socialIcon = imageBase+'socials.png';
   List<String> scrollText = ['Investment banking knowledge simplified',
     'Learn and connect with other investors','Build your professional profile'];
   bool isSignInComplete = false;
@@ -192,6 +193,24 @@ class _SigninPageState extends State<signinPage>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
+                              Hero(
+                                tag: "splashscreenImage",
+                                child: WidgetAnimator(
+                                  component: Container(
+                                    height: MediaQuery.of(context).size.height * 0.1,
+                                    width: MediaQuery.of(context).size.width,
+                                    color: Colors.transparent,alignment: Alignment.topCenter,
+                                    child:
+                                    imgAnimation2(url: Assets.images.logo.path,time: Duration(milliseconds: 4000),
+                                      width: MediaQuery.of(context).size.width * 0.5,beginx:0.1,endx: -0.1, beginy: 0,endy: 0,
+                                      height: MediaQuery.of(context).size.height * 0.5,transition: PositionedTransition,
+                                    ),
+
+                                  ),
+                                  transition: Transform,animPattern: Curves.easeIn,pixle: Colors.transparent,time: Duration(seconds: 1),animType: "nothing",xAxis: 0,yAxis: 0,
+                                ),
+                              ),
+                              SizedBox(height: size.height * 0.1),
                               Text('Welcome back!',style: dark25BoldStyle,textAlign: TextAlign.center,),
                               SizedBox(height: 15,),
                               Container(
@@ -352,32 +371,38 @@ class _SigninPageState extends State<signinPage>
                           ],
                         ),
                       ),
-                      SizedBox(height: size.height * 0.05),
+                      SizedBox(height: size.height * 0.02),
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.2,
+                        height: MediaQuery.of(context).size.height * 0.12,
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.center,
-                        child: Column(
+                        child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              GestureDetector(
-                                onTap: () =>print('LinkedIn Clicked'),
-                                child: Assets.images.signInLinkedIn.image(),//Image( image:AssetImage(signInLinkedInIcon)),
-                              ), GestureDetector(
-                                onTap: () => print('Twitter Clicked'),
-                                child: Assets.images.signInTwitter.image(),
-                              ), GestureDetector(
-                                onTap: () =>print('Google Clicked'),
-                                child: Assets.images.signInGoogle.image(),
-                              ),
+                              CupertinoButton(child: Image.asset(Assets.images.socials.linkedInIcon.path,height: size.height * 0.08), onPressed: () =>print('LinkedIn Clicked'),),
+                              CupertinoButton(child: Image.asset(Assets.images.socials.googleIcon.path,height: size.height * 0.07), onPressed: () =>print('Google Clicked'),),
+                              CupertinoButton(child: Image.asset(Assets.images.socials.twitterIcon.path,height: size.height * 0.08), onPressed: () =>print('Twitter Clicked'),),
+
                             ]),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        alignment: Alignment.center,
+                        child: GestureDetector(
+                          child: Text(
+                            "Don't have an account ?",
+                            style: blue20Style,
+                          ),onTap: () => {
+                          Navigator.pushNamed(
+                              context, '/registration_form')
+                        },
+                        )
                       ),
                     ],
                   ),
                 ),
-
                 if(showLoader)AnimatedPositioned(
                   top: MediaQuery.of(context).size.height * 0,
                   height: MediaQuery.of(context).size.height,

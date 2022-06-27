@@ -394,6 +394,14 @@ final blue14Style = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,
 );
+final blue20Style = TextStyle(
+  color: projectBlue,
+  fontFamily: generalFont,
+  fontSize: 20.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.normal,
+);
 final blue25BoldStyle = TextStyle(
   color: projectBlue,
   fontFamily: generalFont,

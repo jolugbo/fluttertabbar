@@ -13,6 +13,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/MA.png
   AssetGenImage get ma => const AssetGenImage('assets/images/MA.png');
 
+  /// File path: assets/images/adaptive_foreground.png
+  AssetGenImage get adaptiveForeground =>
+      const AssetGenImage('assets/images/adaptive_foreground.png');
+
   /// File path: assets/images/advisory.png
   AssetGenImage get advisory =>
       const AssetGenImage('assets/images/advisory.png');
@@ -39,6 +43,14 @@ class $AssetsImagesGen {
   AssetGenImage get eduraldLogo =>
       const AssetGenImage('assets/images/edurald_logo.png');
 
+  /// File path: assets/images/edurald_logo1.png
+  AssetGenImage get eduraldLogo1 =>
+      const AssetGenImage('assets/images/edurald_logo1.png');
+
+  /// File path: assets/images/edurald_logo2.png
+  AssetGenImage get eduraldLogo2 =>
+      const AssetGenImage('assets/images/edurald_logo2.png');
+
   /// File path: assets/images/eniola.png
   AssetGenImage get eniola => const AssetGenImage('assets/images/eniola.png');
 
@@ -60,14 +72,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/ladyIcon2.png
   AssetGenImage get ladyIcon2 =>
       const AssetGenImage('assets/images/ladyIcon2.png');
-
-  /// File path: assets/images/landing1.png
-  AssetGenImage get landing1 =>
-      const AssetGenImage('assets/images/landing1.png');
-
-  /// File path: assets/images/landing3.png
-  AssetGenImage get landing3 =>
-      const AssetGenImage('assets/images/landing3.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
@@ -115,8 +119,7 @@ class $AssetsImagesGen {
   AssetGenImage get signInTwitter =>
       const AssetGenImage('assets/images/signInTwitter.png');
 
-  /// File path: assets/images/socials.png
-  AssetGenImage get socials => const AssetGenImage('assets/images/socials.png');
+  $AssetsImagesSocialsGen get socials => const $AssetsImagesSocialsGen();
 
   /// File path: assets/images/trading.jpg
   AssetGenImage get trading => const AssetGenImage('assets/images/trading.jpg');
@@ -143,6 +146,22 @@ class $AssetsJsonGen {
 
   /// File path: assets/json/configs.json
   String get configs => 'assets/json/configs.json';
+}
+
+class $AssetsImagesSocialsGen {
+  const $AssetsImagesSocialsGen();
+
+  /// File path: assets/images/socials/googleIcon.png
+  AssetGenImage get googleIcon =>
+      const AssetGenImage('assets/images/socials/googleIcon.png');
+
+  /// File path: assets/images/socials/linkedInIcon.png
+  AssetGenImage get linkedInIcon =>
+      const AssetGenImage('assets/images/socials/linkedInIcon.png');
+
+  /// File path: assets/images/socials/twitterIcon.png
+  AssetGenImage get twitterIcon =>
+      const AssetGenImage('assets/images/socials/twitterIcon.png');
 }
 
 class Assets {
