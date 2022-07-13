@@ -38,6 +38,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\f58cdb1aa5dadebd1cc249d35ee05feb\\browser-1.4.0\\res\\values-el\\values-el.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,165,272,397",
+                        "endColumns": "109,106,124,109",
+                        "endOffsets": "160,267,392,502"
+                    },
+                    "to": {
+                        "startLines": "20,21,22,23",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "2421,2531,2638,2763",
+                        "endColumns": "109,106,124,109",
+                        "endOffsets": "2526,2633,2758,2868"
+                    }
+                },
+                {
                     "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\8b1de47239f83b4ae53af2852d74d4bc\\core-1.6.0\\res\\values-el\\values-el.xml",
                     "from": {
                         "startLines": "2",
@@ -47,11 +64,11 @@
                         "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "20",
+                        "startLines": "24",
                         "startColumns": "4",
-                        "startOffsets": "2421",
+                        "startOffsets": "2873",
                         "endColumns": "100",
-                        "endOffsets": "2517"
+                        "endOffsets": "2969"
                     }
                 }
             ]

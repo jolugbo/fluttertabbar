@@ -1,7 +1,8 @@
 import 'dart:io';
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edurald/models/user.dart';
+//import 'package:edurald/models/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ import 'package:connectivity/connectivity.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../main.dart';
+import '../../gen/assets.gen.dart';
+import '../../utills/imageanimations.dart';
 
 // final userRef =  FirebaseFirestore.instance.collection('users');
 
@@ -135,6 +138,13 @@ class _Registration_formPageState extends State<registration_formPage>
 }
 
   createUserInFireStore() async{
+
+    FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,password: passwordController.text);
+    setState((){
+      next = !next;
+      isFirstView = false;
+    });
+
     // var userArgs = ModalRoute.of(context)!.settings.arguments as User;
     // User user = new User(
     //   bio: "",
@@ -235,64 +245,81 @@ class _Registration_formPageState extends State<registration_formPage>
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            child: Stack(
-              children: [
-                AnimatedCrossFade(
-                  duration: const Duration(milliseconds: 500),
-                  firstChild: RawMaterialButton(
-                    onPressed: (){},
-                    elevation: 2.0,
-                    fillColor: projectGray2,
-                    child: CircleAvatar(
-                      foregroundImage:  NetworkImage(userIcon),
-                      radius: size.height * 0.06,
-                    ),
-                    padding: EdgeInsets.all(5.0),
-                    shape: CircleBorder(side: BorderSide(color: projectGray)),
-                  ),
-                  secondChild: RawMaterialButton(
-                    onPressed: (){},
-                    elevation: 2.0,
-                    fillColor: projectGray2,
-                    child: CircleAvatar(
-                      foregroundImage:  FileImage(_image),
-                      radius: size.height * 0.06,
-                    ),
-                    padding: EdgeInsets.all(3.0),
-                    shape: CircleBorder(side: BorderSide(color: projectGray)),
-                  ),
-                  crossFadeState: isNetwork
-                      ? CrossFadeState.showFirst
-                      : CrossFadeState.showSecond,
+          // Container(
+          //   child: Stack(
+          //     children: [
+          //       AnimatedCrossFade(
+          //         duration: const Duration(milliseconds: 500),
+          //         firstChild: RawMaterialButton(
+          //           onPressed: (){},
+          //           elevation: 2.0,
+          //           fillColor: projectGray2,
+          //           child: CircleAvatar(
+          //             foregroundImage:  NetworkImage(userIcon),
+          //             radius: size.height * 0.06,
+          //           ),
+          //           padding: EdgeInsets.all(5.0),
+          //           shape: CircleBorder(side: BorderSide(color: projectGray)),
+          //         ),
+          //         secondChild: RawMaterialButton(
+          //           onPressed: (){},
+          //           elevation: 2.0,
+          //           fillColor: projectGray2,
+          //           child: CircleAvatar(
+          //             foregroundImage:  FileImage(_image),
+          //             radius: size.height * 0.06,
+          //           ),
+          //           padding: EdgeInsets.all(3.0),
+          //           shape: CircleBorder(side: BorderSide(color: projectGray)),
+          //         ),
+          //         crossFadeState: isNetwork
+          //             ? CrossFadeState.showFirst
+          //             : CrossFadeState.showSecond,
+          //       ),
+          //       Positioned(
+          //         top: size.height * 0.08,left:size.width * 0.08,
+          //         child: IconButton(
+          //             icon: Icon(Icons.add_circle,color: projectBlue,size: size.height * 0.04,),
+          //             onPressed: () async {
+          //               final pickedFile = await picker.getImage(source: ImageSource.gallery);
+          //
+          //               setState(() {
+          //                 if (pickedFile != null) {
+          //                   isNetwork = false;
+          //                   _image = File(pickedFile.path);
+          //                 } else {
+          //                   print('No image selected.');
+          //                 }
+          //               });
+          //             })
+          //       ),
+          //     ],
+          //   ),
+          //
+          //   width: size.width,alignment: Alignment.center,height: size.height * 0.15
+          // ),
+          Hero(
+            tag: "splashscreenImage",
+            child: WidgetAnimator(
+              component: Container(
+                height: MediaQuery.of(context).size.height * 0.15,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.transparent,alignment: Alignment.topCenter,
+                child:
+                imgAnimation2(url: Assets.images.logo.path,time: Duration(milliseconds: 4000),
+                  width: MediaQuery.of(context).size.width * 0.5,beginx:0.1,endx: -0.1, beginy: 0,endy: 0,
+                  height: MediaQuery.of(context).size.height * 0.5,transition: PositionedTransition,
                 ),
-                Positioned(
-                  top: size.height * 0.08,left:size.width * 0.08,
-                  child: IconButton(
-                      icon: Icon(Icons.add_circle,color: projectBlue,size: size.height * 0.04,),
-                      onPressed: () async {
-                        final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
-                        setState(() {
-                          if (pickedFile != null) {
-                            isNetwork = false;
-                            _image = File(pickedFile.path);
-                          } else {
-                            print('No image selected.');
-                          }
-                        });
-                      })
-                ),
-              ],
+              ),
+              transition: Transform,animPattern: Curves.easeIn,pixle: Colors.transparent,time: Duration(seconds: 1),animType: "nothing",xAxis: 0,yAxis: 0,
             ),
-
-            width: size.width,alignment: Alignment.center,height: size.height * 0.15
           ),
           TextField(
               textAlignVertical: TextAlignVertical.bottom,enabled: enableEmail,
               decoration: InputDecoration(
                   labelText: 'Email ',
-                  labelStyle: gray19Style),keyboardType: TextInputType.emailAddress,
+                  labelStyle: blue20Style),keyboardType: TextInputType.emailAddress,
               controller: emailController,
               onChanged: (value) {
                 setState(() {
@@ -305,21 +332,35 @@ class _Registration_formPageState extends State<registration_formPage>
           ),
           (emailStatus == EmailStatus.error) ? error(email_error) : Text(''),
           TextField(
-              textAlignVertical: TextAlignVertical.bottom,
-              decoration: InputDecoration(
-                  labelText: 'Display Name ',
-                  labelStyle: gray19Style),keyboardType: TextInputType.text,
-              controller: userNameController,
-              onChanged: (value) {
-                setState(() {
-                  userNameIsValid = firstNameValidator(value);
-                  if (!userNameIsValid) {
-                    userNameStatus = UserNameStatus.error;
-                  } else
-                    userNameStatus = UserNameStatus.success;
-                });}
-          ),
-          (userNameStatus == UserNameStatus.error) ? error(userName_error) : Text(''),
+            decoration: InputDecoration(
+                labelText: 'Password',
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                    color: projectBlue,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _passwordVisible = !_passwordVisible;
+                    });
+                  },
+                ),
+                labelStyle: blue20Style),obscureText: !_passwordVisible,
+            controller: passwordController,
+            onChanged: (value) {
+              setState(() {
+                passwordValidationResp = passwordValidator(value);
+                if (passwordValidationResp.validated < 4) {
+                  //passwordIsValid = passwordValidationResp.validated;
+                  passwordStatus = PasswordStatus.error;
+                } else {
+                  passwordIsValid = true;
+                  passwordStatus =
+                      PasswordStatus.success;
+                }
+              });
+            },),
+          (passwordStatus == PasswordStatus.error) ? error(passwordValidationResp.error) : Text(''),
         ])
     );
 
@@ -349,10 +390,11 @@ class _Registration_formPageState extends State<registration_formPage>
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Join Edurald',style: dark25BoldStyle,textAlign: TextAlign.center,),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.02,
+                      Hero(
+                        tag: "headerTxt",
+                        child: Text('Join Edurald',style: blue25BoldStyle,textAlign: TextAlign.center,),
                       ),
+                      SizedBox(height: size.height * 0.02,),
                       Text('Sign up to learn and connect with other professionals like you',style: darkNormal18Style,textAlign: TextAlign.center,),
                     ]),
               ),
@@ -492,37 +534,17 @@ class _Registration_formPageState extends State<registration_formPage>
                                 color: projectBlue,
                                 child: Text('Continue',style: white18Style,),
                                 onPressed: () async {
-                                  setState((){
-                                    _current = ++_current % 3;
-                                  });
-                                    print(_current);
-                                    switch (_current){
+                                    setState((){
+                                      _current = ++_current % 3;
+                                    });
+                                      print(_current);
+                                      switch (_current){
                                       case 1:
-                                        if(!emailIsValid || !userNameIsValid){
+                                        if(!emailIsValid || !passwordIsValid){
                                           _current = 0;
                                           showPopUp(form_update_error);
                                           return;
                                         }
-                                        setState((){
-                                          next = !next;
-                                          isFirstView = false;
-                                        });
-                                        break;
-                                      case 2:
-                                        if(!phoneNumberIsValid || (passwordStatus == PasswordStatus.error) || passwordController.text.isEmpty){
-                                          showPopUp(form_update_error);
-                                          _current = 1;
-                                          return;
-                                        }
-                                        next = !next;
-                                        break;
-                                      case 0:
-                                        if(!firstNameIsValid || !lastNameIsValid ){
-                                          _current = 2;
-                                          showPopUp(form_update_error);
-                                          return;
-                                        }
-                                        _current = 2;
                                         var connectivityResult = await (Connectivity().checkConnectivity());
                                         if (connectivityResult == ConnectivityResult.none) {
                                           showPopUp(internet_error);
@@ -536,70 +558,102 @@ class _Registration_formPageState extends State<registration_formPage>
                                           registerUser();
                                           // I am connected to a wifi network.
                                         }
+                                        //FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,password: passwordController.text);
+                                        // setState((){
+                                        //   next = !next;
+                                        //   isFirstView = false;
+                                        // });
+                                        break;
+                                      case 2:
+                                        // if(!phoneNumberIsValid || (passwordStatus == PasswordStatus.error) || passwordController.text.isEmpty){
+                                        //   showPopUp(form_update_error);
+                                        //   _current = 1;
+                                        //   return;
+                                        // }
+                                        // next = !next;
+                                        break;
+                                      case 0:
+                                        print(_current);
+                                        // if(!firstNameIsValid || !lastNameIsValid ){
+                                        //   _current = 2;
+                                        //   showPopUp(form_update_error);
+                                        //   return;
+                                        // }
+                                        // _current = 2;
+                                        // var connectivityResult = await (Connectivity().checkConnectivity());
+                                        // if (connectivityResult == ConnectivityResult.none) {
+                                        //   showPopUp(internet_error);
+                                        //   // Mobile is not Connected to Internet
+                                        // }
+                                        // else if (connectivityResult == ConnectivityResult.mobile) {
+                                        //   registerUser();
+                                        //   // I am connected to a mobile network.
+                                        // }
+                                        // else if (connectivityResult == ConnectivityResult.wifi) {
+                                        //   registerUser();
+                                        //   // I am connected to a wifi network.
+                                        // }
                                         break;
                                     }
                                 },
                                 highlightElevation: 0.8,
                               )),
                         ),
+                        SizedBox(height: size.height * 0.05),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          alignment: Alignment.center, padding:EdgeInsets.all(0),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                alignment: Alignment.center, padding:EdgeInsets.all(0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Container(
+                                          height: 3,
+                                          width: size.width * 0.15,
+                                          color: projectBlue),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      child: Text('or sign up with',style: darkSemiBold19Style,textAlign: TextAlign.center,),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Container(
+                                          height: 3,
+                                          width: size.width * 0.15,
+                                          color: projectBlue),
+                                    ),
 
-                        //
-                        // AnimatedCrossFade(
-                        //   duration: const Duration(milliseconds: 500),
-                        //   firstChild: Container(
-                        //     height: MediaQuery.of(context).size.height * 0.2,
-                        //     width: MediaQuery.of(context).size.width,
-                        //     alignment: Alignment.center, padding:EdgeInsets.all(0),
-                        //     child:  Column(
-                        //       children: <Widget>[
-                        //         Container(
-                        //           width: MediaQuery.of(context).size.width,
-                        //           alignment: Alignment.center, padding:EdgeInsets.all(0),
-                        //           child: Row(
-                        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //             mainAxisSize: MainAxisSize.max,
-                        //             crossAxisAlignment: CrossAxisAlignment.center,
-                        //             children: <Widget>[
-                        //               Padding(
-                        //                 padding: EdgeInsets.symmetric(horizontal: 10.0),
-                        //                 child: Container(
-                        //                     height: 3,
-                        //                     width: MediaQuery.of(context).size.width * 0.3,
-                        //                     color: projectGray),
-                        //               ),
-                        //               Container(
-                        //                 alignment: Alignment.center,
-                        //                 child: Text('OR',style: darkSemiBold19Style,textAlign: TextAlign.center,),
-                        //               ),
-                        //               Padding(
-                        //                 padding: EdgeInsets.symmetric(horizontal: 10.0),
-                        //                 child: Container(
-                        //                     height: 3,
-                        //                     width: MediaQuery.of(context).size.width * 0.3,
-                        //                     color: projectGray),
-                        //               ),
-                        //
-                        //             ],
-                        //           ),
-                        //         ),
-                        //         Container(
-                        //           height: MediaQuery.of(context).size.height * 0.1,
-                        //           width: MediaQuery.of(context).size.width,
-                        //           alignment: Alignment.center,
-                        //           child: Image( image:AssetImage(socialIcon)),
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        //   secondChild: Container(
-                        //     height: MediaQuery.of(context).size.height * 0.2,
-                        //     width: MediaQuery.of(context).size.width,
-                        //     alignment: Alignment.center, padding:EdgeInsets.all(0),
-                        //   ),
-                        //   crossFadeState: showIcons
-                        //       ? CrossFadeState.showFirst
-                        //       : CrossFadeState.showSecond,
-                        // ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.02),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          width: MediaQuery.of(context).size.width,
+                          alignment: Alignment.center,
+                          child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                CupertinoButton(child: Image.asset(Assets.images.socials.linkedInIcon.path,height: size.height * 0.08), onPressed: () =>print('LinkedIn Clicked'),),
+                                CupertinoButton(child: Image.asset(Assets.images.socials.googleIcon.path,height: size.height * 0.07), onPressed: () =>print('Google Clicked'),),
+                                CupertinoButton(child: Image.asset(Assets.images.socials.twitterIcon.path,height: size.height * 0.08), onPressed: () =>print('Twitter Clicked'),),
+
+                              ]),
+                        ),
                       ],
                     ),
                   ),

@@ -10,7 +10,8 @@ import 'package:edurald/utills/input_util.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:edurald/validations/registration_validation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:firebase_analytics/firebase_analytics.dart';
+ import 'package:firebase_auth/firebase_auth.dart';
 import '../../gen/assets.gen.dart';
 import '../../utills/imageanimations.dart';
 
@@ -84,7 +85,12 @@ class _SigninPageState extends State<signinPage>
     setState(() {
       showLoader = true;
     });
-//    AnalyticsEvent loginEvent = AnalyticsEvent("login_event");
+    FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+    //await FirebaseAnalytics.instance.logLogin(loginMethod: "email");
+    print("event logged");
+    setState(() {
+      showLoader = false;
+    });
 //    loginEvent.properties.addBoolProperty("boolKey", true);
 //    loginEvent.properties.addDoubleProperty("doubleKey", 10.0);
 //    loginEvent.properties.addIntProperty("intKey", 10);
@@ -101,7 +107,7 @@ class _SigninPageState extends State<signinPage>
 //         showLoader = false;
 //       });
 // //      if(res.isSignedIn){
-         Navigator.pushNamed(context, '/dashboard');
+         //Navigator.pushNamed(context, '/dashboard');
 // //      }
 //
 //     } on AuthError catch (e) {
@@ -211,7 +217,10 @@ class _SigninPageState extends State<signinPage>
                                 ),
                               ),
                               SizedBox(height: size.height * 0.1),
-                              Text('Welcome back!',style: dark25BoldStyle,textAlign: TextAlign.center,),
+                              Hero(
+                                tag: "headerTxt",
+                                child: Text('Welcome back!',style: blue25BoldStyle,textAlign: TextAlign.center,),
+                              ),
                               SizedBox(height: 15,),
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.95,
@@ -230,7 +239,7 @@ class _SigninPageState extends State<signinPage>
                             TextField(
                                 decoration: InputDecoration(
                                     labelText: 'Email ',
-                                    labelStyle: gray19Style),
+                                    labelStyle: blue20Style),
                                 controller: emailController,
                                 onChanged: (value) {
                                   setState(() {
@@ -256,7 +265,8 @@ class _SigninPageState extends State<signinPage>
                                         });
                                       },
                                     ),
-                                    labelStyle: gray19Style),obscureText: !_passwordVisible,
+                                    labelStyle: blue20Style,focusColor: projectBlue),
+                                obscureText: !_passwordVisible,
                                 controller: passwordController,
                                 onChanged: (value) {
                                   setState(() {
@@ -351,7 +361,7 @@ class _SigninPageState extends State<signinPage>
                                     child: Container(
                                         height: 3,
                                         width: MediaQuery.of(context).size.width * 0.3,
-                                        color: projectGray),
+                                        color: projectBlue),
                                   ),
                                   Container(
                                     alignment: Alignment.center,
@@ -362,7 +372,7 @@ class _SigninPageState extends State<signinPage>
                                     child: Container(
                                         height: 3,
                                         width: MediaQuery.of(context).size.width * 0.3,
-                                        color: projectGray),
+                                        color: projectBlue),
                                   ),
 
                                 ],

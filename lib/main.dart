@@ -3,6 +3,7 @@
 // import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
 // import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,8 +21,8 @@ import 'features/onboarding/registration_form.dart';
 import 'features/onboarding/registration_token.dart';
 import 'features/onboarding/walkthrough.dart';
 import 'gen/assets.gen.dart';
-import 'models/user.dart';
-
+//import 'models/user.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 // final userRef =  FirebaseFirestore.instance.collection('users');
 // final postRef =  FirebaseFirestore.instance.collection('posts');
@@ -31,16 +32,17 @@ import 'models/user.dart';
 // final followingRef =  FirebaseFirestore.instance.collection('following');
 // final timelineRef =  FirebaseFirestore.instance.collection('timeline');
 // final storageRef = FirebaseStorage.instance.ref();
-User? currentUser;
+//User? currentUser;
 final GoogleSignIn googleSignIn = GoogleSignIn();
-bool USE_FIRESTORE_EMULATOR = false;
+bool USE_FIRESTORE_EMULATOR = true;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  await Firebase.initializeApp();
   if (USE_FIRESTORE_EMULATOR) {
     // FirebaseFirestore.instance.settings = const Settings(
     //   host: 'localhost:8080', sslEnabled: false, persistenceEnabled: false,);
+    await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   }
   runApp(MyApp());
 }
@@ -97,8 +99,23 @@ class _MyAppState extends State<MyApp> {
 
   getAppState() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      hasLoggedIn = preferences.getBool("hasLoggedIn") ?? false;
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user == null) {
+        hasLoggedIn = false;
+      } else {
+        hasLoggedIn = true;
+      }
+    });
+    FirebaseAuth.instance
+        .idTokenChanges()
+        .listen((User? user) {
+      if (user == null) {
+        hasLoggedIn = false;
+      } else {
+        hasLoggedIn = true;
+      }
     });
   }
 
