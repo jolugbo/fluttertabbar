@@ -139,7 +139,8 @@ class _Registration_formPageState extends State<registration_formPage>
 
   createUserInFireStore() async{
 
-    FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,password: passwordController.text);
+    final response = FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,password: passwordController.text);
+    print(response);
     setState((){
       next = !next;
       isFirstView = false;

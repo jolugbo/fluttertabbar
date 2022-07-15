@@ -3,7 +3,12 @@
 // import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
 // import 'package:firebase_core/firebase_core.dart';
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edurald/utills/emulations/emulator_starter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +17,7 @@ import 'package:edurald/features/dashboard/dashboard.dart';
 import 'package:edurald/features/deepest_study/deepest_study.dart';
 import 'package:edurald/features/notifications/notifications.dart';
 import 'package:edurald/features/share/share.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,6 +30,8 @@ import 'gen/assets.gen.dart';
 //import 'models/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'models/strings.dart';
+
 // final userRef =  FirebaseFirestore.instance.collection('users');
 // final postRef =  FirebaseFirestore.instance.collection('posts');
 // final commentsRef =  FirebaseFirestore.instance.collection('comments');
@@ -34,18 +42,61 @@ import 'package:firebase_core/firebase_core.dart';
 // final storageRef = FirebaseStorage.instance.ref();
 //User? currentUser;
 final GoogleSignIn googleSignIn = GoogleSignIn();
-bool USE_FIRESTORE_EMULATOR = true;
+const bool USE_FIRESTORE_EMULATOR = true;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  dotenv.load();
   await Firebase.initializeApp();
-  if (USE_FIRESTORE_EMULATOR) {
-    // FirebaseFirestore.instance.settings = const Settings(
-    //   host: 'localhost:8080', sslEnabled: false, persistenceEnabled: false,);
-    await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  if (!isProduction) {
+    await _configureFirebaseAuth();
+  }
+  else{
+
   }
   runApp(MyApp());
 }
+
+Future<void> _configureFirebaseAuth() async {
+  String configHost = dotenv.env['FIREBASE_EMU_URL'] ?? emulator_url_error;
+  print(configHost);
+  //int configPort = dotenv.env['FIREBASE_EMU_URL'] ?? emulator_url_error;
+  int configPort = const int.fromEnvironment("AUTH_EMU_PORT");
+  // Android emulator must be pointed to 10.0.2.2
+  var defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+  var host = configHost != emulator_url_error ? configHost : defaultHost;
+  var port = configPort != 0 ? configPort : 9099;
+  await FirebaseAuth.instance.useAuthEmulator(host, port);
+  debugPrint('Using Firebase Auth emulator on: $host:$port');
+}
+
+Future<void> _configureFirebaseStorage() async {
+  String configHost = const String.fromEnvironment("FIREBASE_EMU_URL");
+  int configPort = const int.fromEnvironment("STORAGE_EMU_PORT");
+  // Android emulator must be pointed to 10.0.2.2
+  var defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+  var host = configHost.isNotEmpty ? configHost : defaultHost;
+  var port = configPort != 0 ? configPort : 9199;
+  await FirebaseStorage.instance.useStorageEmulator(host, port);
+  debugPrint('Using Firebase Storage emulator on: $host:$port');
+}
+
+void _configureFirebaseFirestore() {
+  String configHost = const String.fromEnvironment("FIREBASE_EMU_URL");
+  int configPort = const int.fromEnvironment("DB_EMU_PORT");
+  // Android emulator must be pointed to 10.0.2.2
+  var defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+  var host = configHost.isNotEmpty ? configHost : defaultHost;
+  var port = configPort != 0 ? configPort : 8080;
+
+  FirebaseFirestore.instance.settings = Settings(
+    host: '$host:$port',
+    sslEnabled: false,
+    persistenceEnabled: false,
+  );
+  debugPrint('Using Firebase Firestore emulator on: $host:$port');
+}
+
 
 //class MyApp extends StatelessWidget {
 //  bool _amplifyConfigured = false;

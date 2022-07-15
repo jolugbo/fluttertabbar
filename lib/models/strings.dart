@@ -42,7 +42,7 @@ const investment_name_error = "Investment name is not valid";
 const investment_amount_error = "Investment Amount is not valid";
 const form_update_error = "Invalid form input";
 const passport_upload_error = "Kindly upload a passport";
-
+const emulator_url_error = "Environmental variable path unavailable";
 
 //State List
 const List<String> NigerianStates = [
@@ -84,3 +84,8 @@ const List<String> NigerianStates = [
   'Yobe',
   'Zamfara'
 ];
+
+
+
+//ENVIRONMENT
+const  isProduction = false;
