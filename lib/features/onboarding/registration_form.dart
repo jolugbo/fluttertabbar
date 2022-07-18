@@ -6,9 +6,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:geocoder/geocoder.dart';
-//import 'package:geocoder/model.dart';
-//import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:geocoder/geocoder.dart';
+import 'package:geocoder/model.dart';
+import 'package:country_codes/country_codes.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:edurald/models/model_status.dart';
 import 'package:edurald/models/strings.dart';
 import 'package:edurald/utills/input_util.dart';
@@ -17,11 +18,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:edurald/validations/registration_validation.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../../main.dart';
 import '../../gen/assets.gen.dart';
+import '../../main.dart';
 import '../../utills/imageanimations.dart';
-
+import 'package:firebase_database/firebase_database.dart';
 // final userRef =  FirebaseFirestore.instance.collection('users');
 
 class registration_formPage extends StatefulWidget {
@@ -39,10 +39,11 @@ class _Registration_formPageState extends State<registration_formPage>
   String userIcon = 'https://firebasestorage.googleapis.com/v0/b/edurald.appspot.com/o/permanents%2Fgraduatehat.jpg?alt=media&token=fa45072d-2ecf-45ef-b225-b6199edf89c7';
   File _image = File(imageBase+'graduatehat.jpg');
   final picker = ImagePicker();
-  int index = 0;
+  int blurrySize = 0;
+  double socialAuthsLocation = 0.75;
   final int _numPages = 3;
   bool next = true;
-  bool isNetwork = true;
+  String initialCountry = "";
   bool enableEmail = true;
   bool isFirstView = true;
   bool _passwordVisible = false;
@@ -70,9 +71,10 @@ class _Registration_formPageState extends State<registration_formPage>
   TextEditingController firstNameController = new TextEditingController();
   TextEditingController lastNameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
-  //String countryCode = '';PhoneNumber? initialnumber;
+  String countryCode = '';
+  PhoneNumber? initialnumber;
   DateTime timeStamp = DateTime.now();
-
+  late UserCredential user;
   void showPopUp(String msg){
     Fluttertoast.showToast(
         msg:msg,
@@ -86,14 +88,14 @@ class _Registration_formPageState extends State<registration_formPage>
 
   Future<void> getLocation() async {
     Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high,);
-    //await CountryCodes.init();
-   // final coordinates = new Coordinates(position.latitude, position.longitude);
-   // var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    //var first = addresses.first;
-    //initialCountry = first.countryCode;
+    await CountryCodes.init();
+    final coordinates = new Coordinates(position.latitude, position.longitude);
+    var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    var first = addresses.first;
+    initialCountry = first.countryCode;
     setState(() {
-     // countryCode = first.countryCode;
-      //initialnumber = PhoneNumber(isoCode: countryCode);
+      countryCode = first.countryCode;
+      initialnumber = PhoneNumber(isoCode: countryCode);
     });
   }
 
@@ -126,25 +128,72 @@ class _Registration_formPageState extends State<registration_formPage>
   }
 
   Future<void> registerUser() async {
- if(!showLoader){
-  setState(() {
-    showLoader = true;
-  });
-  await createUserInFireStore();
-  setState(() {
-    showLoader = false;
-  });
- }
-}
+    if(!showLoader){
+      setState(() {
+        blurrySize = 1;
+        showLoader = true;
+      });
+      await createUser();
+      setState(() {
+        blurrySize = 0;
+        showLoader = false;
+      });
+    }
+  }
 
-  createUserInFireStore() async{
 
-    final response = FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,password: passwordController.text);
-    print(response);
-    setState((){
-      next = !next;
-      isFirstView = false;
+  Future<void> updateUserRecords() async {
+    if(!showLoader){
+      setState(() {
+        blurrySize = 1;
+        showLoader = true;
+      });
+      await user.user?.updateDisplayName(userNameController.text);
+      saveUserToFirestore(user.user);
+      //await user?.updatePhotoURL("https://example.com/jane-q-user/profile.jpg");
+      setState(() {
+        next = !next;
+        blurrySize = 0;
+        showLoader = false;
+      });
+    }
+  }
+
+  validatePhoneNumber() async{
+    setState(() {
+      socialAuthsLocation = 1;
+      showLoader = true;
     });
+    print(user.user?.providerData);
+    await user.user?.updateDisplayName(userNameController.text);
+    print(FirebaseAuth.instance.currentUser?.providerData);
+  }
+
+  createUser() async{
+    try{
+      final response = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,password: passwordController.text);
+      user = response;
+      await user.user?.sendEmailVerification();
+      showMyDialog(context,"Account Verification",account_verification_msg);
+      setState((){
+        socialAuthsLocation = 1;
+        //next = !next;
+        isFirstView = false;
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+
+        _current = --_current % 3;
+        showPopUp('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        _current = --_current % 3;
+        showPopUp('An account already exists for that email.');
+      }
+    } catch (e) {
+      _current = --_current % 3;
+      print(e);
+    }
+
 
     // var userArgs = ModalRoute.of(context)!.settings.arguments as User;
     // User user = new User(
@@ -178,6 +227,25 @@ class _Registration_formPageState extends State<registration_formPage>
     // currentUser = User.fromDocument(doc);
   }
 
+  saveUserToFirestore(user) {
+    userRef.doc(user.uid).set({
+      "profile":{
+        "firstName": firstNameController.text,
+        "lastName": lastNameController.text,
+        "point": 30,
+        "socialMedia":{},
+        "communities":{},
+        "training": {},
+        "bookmarks": {},
+        "ratings":0,
+        "friends":{
+          "followers":{},
+          "followings":{},
+        },
+        "notifications":{}
+      },
+    });
+  }
 
 
   @override
@@ -195,7 +263,7 @@ class _Registration_formPageState extends State<registration_formPage>
       // firstNameIsValid = firstNameValidator(user.firstName!);
       // lastNameIsValid = lastNameValidator(user.lastName!);
     });
-   // PhoneNumber number = PhoneNumber(isoCode: countryCode);
+    PhoneNumber number = PhoneNumber(isoCode: countryCode);
 
     Widget thirdView = Container(
       alignment: Alignment.center, padding:EdgeInsets.all(0),
@@ -206,9 +274,24 @@ class _Registration_formPageState extends State<registration_formPage>
         children: <Widget>[
           TextField(
               decoration: InputDecoration(
-                  labelText: 'First name ',
-                  labelStyle: gray19Style),
-            controller: firstNameController,
+                  labelText: 'User name :-',
+                  labelStyle: blue20Style),
+              controller: userNameController,
+              onChanged: (value) {
+                setState(() {
+                  userNameIsValid = firstNameValidator(value);
+                  if (!userNameIsValid) {
+                    userNameStatus = UserNameStatus.error;
+                  } else
+                    userNameStatus = UserNameStatus.success;
+                });}
+          ),
+          (userNameStatus == UserNameStatus.error) ? error(userName_error) : Text(''),
+          TextField(
+              decoration: InputDecoration(
+                  labelText: 'First name :-',
+                  labelStyle: blue20Style),
+              controller: firstNameController,
               onChanged: (value) {
                 setState(() {
                   firstNameIsValid = firstNameValidator(value);
@@ -221,8 +304,8 @@ class _Registration_formPageState extends State<registration_formPage>
           (firstNameStatus == FirstNameStatus.error) ? error(firstName_error) : Text(''),
           TextField(
               decoration: InputDecoration(
-                  labelText: 'Last name ',
-                  labelStyle: gray19Style),
+                  labelText: 'Last name :-',
+                  labelStyle: blue20Style),
             controller: lastNameController,
               onChanged: (value) {
                 setState(() {
@@ -369,15 +452,6 @@ class _Registration_formPageState extends State<registration_formPage>
       body: Stack(
         overflow: Overflow.visible,
         children: <Widget>[
-
-          AnimatedPositioned(
-              top: 0,
-              duration: Duration(seconds: 1),
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-              )
-          ),
-
           AnimatedPositioned(
               top: 0,
               duration: Duration(seconds: 1),
@@ -424,68 +498,38 @@ class _Registration_formPageState extends State<registration_formPage>
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          // InternationalPhoneNumberInput(
-                          //   onInputChanged: (PhoneNumber number) {
-                          //     setState(() {
-                          //       phoneNumberIsValid =
-                          //           phoneNumberValidator(number.phoneNumber);
-                          //       if (!phoneNumberIsValid) {
-                          //         phoneNumberStatus =
-                          //             PhoneNumberStatus.error;
-                          //       } else
-                          //         phoneNumberStatus =
-                          //             PhoneNumberStatus.success;
-                          //     });
-                          //     print(number.phoneNumber);
-                          //     setState(() {
-                          //       phoneNumber =number.phoneNumber;
-                          //     });
-                          //   },
-                          //   onInputValidated: (bool value) {
-                          //     print(value);
-                          //   },
-                          //   selectorConfig: SelectorConfig(
-                          //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                          //   ),
-                          //   ignoreBlank: false,
-                          //   autoValidateMode: AutovalidateMode.disabled,
-                          //   selectorTextStyle: TextStyle(color: projectDark),
-                          //   initialValue: initialnumber,
-                          //   textFieldController: phoneNoController,
-                          // ),
+                          InternationalPhoneNumberInput(
+                            onInputChanged: (PhoneNumber number) {
+                              setState(() {
+                                phoneNumberIsValid =
+                                    phoneNumberValidator(number.phoneNumber);
+                                if (!phoneNumberIsValid) {
+                                  phoneNumberStatus =
+                                      PhoneNumberStatus.error;
+                                } else
+                                  phoneNumberStatus =
+                                      PhoneNumberStatus.success;
+                              });
+                              print(number.phoneNumber);
+                              setState(() {
+                                phoneNumber =number.phoneNumber;
+                              });
+                            },
+                            onInputValidated: (bool value) {
+                              print(value);
+                            },
+                            selectorConfig: SelectorConfig(
+                              selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                            ),
+                            ignoreBlank: false,
+                            autoValidateMode: AutovalidateMode.disabled,
+                            selectorTextStyle: TextStyle(color: projectDark),
+                            initialValue: initialnumber,
+                            textFieldController: phoneNoController,
+                          ),
                           (phoneNumberStatus == PhoneNumberStatus.error)
                               ? error(phoneNumber_error)
                               : Text(''),
-                          TextField(
-                              decoration: InputDecoration(
-                                  labelText: 'Password',
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                                      color: projectBlue,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _passwordVisible = !_passwordVisible;
-                                      });
-                                    },
-                                  ),
-                                  labelStyle: gray19Style),obscureText: !_passwordVisible,
-                            controller: passwordController,
-                            onChanged: (value) {
-                              setState(() {
-                                passwordValidationResp = passwordValidator(value);
-                                if (passwordValidationResp.validated < 4) {
-                                  //passwordIsValid = passwordValidationResp.validated;
-                                  passwordStatus = PasswordStatus.error;
-                                } else {
-                                  //passwordIsValid = 4;
-                                  passwordStatus =
-                                      PasswordStatus.success;
-                                }
-                              });
-                            },),
-                          (passwordStatus == PasswordStatus.error) ? error(passwordValidationResp.error) : Text(''),
                         ],
                       ),
                     ),
@@ -506,7 +550,7 @@ class _Registration_formPageState extends State<registration_formPage>
                           child: RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
-                              text: 'You agree to the Edurald ',
+                              text: 'You agree to the edurald',
                               style: gray12Style,
                               children: <TextSpan>[
                             TextSpan(
@@ -551,21 +595,32 @@ class _Registration_formPageState extends State<registration_formPage>
                                           showPopUp(internet_error);
                                           // Mobile is not Connected to Internet
                                         }
-                                        else if (connectivityResult == ConnectivityResult.mobile) {
+                                        else {
                                           registerUser();
-                                          // I am connected to a mobile network.
+                                          // I am connected to a network.
                                         }
-                                        else if (connectivityResult == ConnectivityResult.wifi) {
-                                          registerUser();
-                                          // I am connected to a wifi network.
-                                        }
-                                        //FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,password: passwordController.text);
-                                        // setState((){
-                                        //   next = !next;
-                                        //   isFirstView = false;
-                                        // });
                                         break;
                                       case 2:
+                                      if(!firstNameIsValid || !lastNameIsValid || !userNameIsValid){
+                                        _current = 2;
+                                        showPopUp(form_update_error);
+                                        return;
+                                      }
+                                      _current = 2;
+                                      var connectivityResult = await (Connectivity().checkConnectivity());
+                                      if (connectivityResult == ConnectivityResult.none) {
+                                        showPopUp(internet_error);
+                                        // Mobile is not Connected to Internet
+                                      }
+                                      else {
+                                        updateUserRecords();
+                                        // I am connected to a network.
+                                      }
+                                      break;
+                                      default:
+                                        print(_current);
+                                        validatePhoneNumber();
+
                                         // if(!phoneNumberIsValid || (passwordStatus == PasswordStatus.error) || passwordController.text.isEmpty){
                                         //   showPopUp(form_update_error);
                                         //   _current = 1;
@@ -573,34 +628,28 @@ class _Registration_formPageState extends State<registration_formPage>
                                         // }
                                         // next = !next;
                                         break;
-                                      case 0:
-                                        print(_current);
-                                        // if(!firstNameIsValid || !lastNameIsValid ){
-                                        //   _current = 2;
-                                        //   showPopUp(form_update_error);
-                                        //   return;
-                                        // }
-                                        // _current = 2;
-                                        // var connectivityResult = await (Connectivity().checkConnectivity());
-                                        // if (connectivityResult == ConnectivityResult.none) {
-                                        //   showPopUp(internet_error);
-                                        //   // Mobile is not Connected to Internet
-                                        // }
-                                        // else if (connectivityResult == ConnectivityResult.mobile) {
-                                        //   registerUser();
-                                        //   // I am connected to a mobile network.
-                                        // }
-                                        // else if (connectivityResult == ConnectivityResult.wifi) {
-                                        //   registerUser();
-                                        //   // I am connected to a wifi network.
-                                        // }
-                                        break;
                                     }
                                 },
                                 highlightElevation: 0.8,
                               )),
                         ),
-                        SizedBox(height: size.height * 0.05),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          AnimatedPositioned(
+              top: size.height * socialAuthsLocation,
+              duration: Duration(seconds: 1),
+              child: Container(
+                height: size.height * 0.25,color: Colors.transparent,width: size.width,
+                  alignment: Alignment.center,
+                  child: Column(
+                      children: <Widget>[
+                        SizedBox(height: size.height * 0.02),
                         Container(
                           width: MediaQuery.of(context).size.width,
                           alignment: Alignment.center, padding:EdgeInsets.all(0),
@@ -655,12 +704,16 @@ class _Registration_formPageState extends State<registration_formPage>
 
                               ]),
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                      ])
+              )
+          ),
+
+          AnimatedPositioned(
+              top: 10,
+              duration: Duration(seconds: 1),
+              child: Container(
+                height: size.height * blurrySize,color: Colors.transparent,width: size.width * blurrySize,
+              )
           ),
 
           if(showLoader)AnimatedPositioned(

@@ -43,7 +43,7 @@ const investment_amount_error = "Investment Amount is not valid";
 const form_update_error = "Invalid form input";
 const passport_upload_error = "Kindly upload a passport";
 const emulator_url_error = "Environmental variable path unavailable";
-
+const account_verification_msg="Welcome please check your email to verify you account";
 //State List
 const List<String> NigerianStates = [
   'Abia',

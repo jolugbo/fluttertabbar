@@ -107,7 +107,7 @@ class _SigninPageState extends State<signinPage>
 //         showLoader = false;
 //       });
 // //      if(res.isSignedIn){
-         //Navigator.pushNamed(context, '/dashboard');
+         Navigator.pushNamed(context, '/dashboard');
 // //      }
 //
 //     } on AuthError catch (e) {

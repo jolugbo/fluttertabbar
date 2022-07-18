@@ -80,6 +80,10 @@
         "source": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\res\\merged\\debug\\xml_network_security_config.xml.flat",
+        "source": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\android\\app\\src\\main\\res\\xml\\network_security_config.xml"
+    },
+    {
         "merged": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_branding.png.flat",
         "source": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\android\\app\\src\\main\\res\\drawable-xxhdpi\\branding.png"
     },
