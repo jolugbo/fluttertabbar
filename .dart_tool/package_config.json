@@ -968,6 +968,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "typesense",
+      "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/typesense-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "universal_io",
       "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/universal_io-2.0.4",
       "packageUri": "lib/",
@@ -1052,7 +1058,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-07-18T21:04:11.377879Z",
+  "generated": "2022-07-21T17:46:19.826417Z",
   "generator": "pub",
   "generatorVersion": "2.16.0"
 }

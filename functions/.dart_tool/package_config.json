@@ -147,9 +147,9 @@
     },
     {
       "name": "firebase_admin_interop",
-      "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_admin_interop-1.2.2",
+      "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/firebase_admin_interop-2.1.0",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.7"
     },
     {
       "name": "firebase_functions_interop",
@@ -219,9 +219,9 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/js-0.6.4",
+      "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/js-0.6.1+1",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "1.19"
     },
     {
       "name": "json_annotation",
@@ -434,7 +434,7 @@
       "languageVersion": "2.0"
     }
   ],
-  "generated": "2022-07-19T08:46:18.189549Z",
+  "generated": "2022-07-19T11:49:15.052455Z",
   "generator": "pub",
   "generatorVersion": "2.16.0"
 }

@@ -53,7 +53,7 @@ Widget error(String error) => Padding(
   padding: EdgeInsets.only(top: 2.0),
   child: new Text(error,
     style: TextStyle(
-        fontSize: 10.0,
+        fontSize: 12.0,
         color: Colors.red
     ),
   ),

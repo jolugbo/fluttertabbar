@@ -1,4 +1,4 @@
-#Mon Jul 18 20:43:21 WAT 2022
+#Thu Jul 21 21:44:39 WAT 2022
 path.4=classes_10.dex
 path.3=classes_1.dex
 path.2=classes_0.dex
@@ -19,12 +19,14 @@ base.8=C\:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediat
 base.7=C\:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_3.dex
 base.6=C\:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_2.dex
 base.5=C\:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_11.dex
+renamed.26=classes27.dex
 renamed.25=classes26.dex
 renamed.24=classes25.dex
 renamed.23=classes24.dex
 renamed.22=classes23.dex
 renamed.21=classes22.dex
 renamed.20=classes21.dex
+base.26=C\:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_23.dex
 base.25=C\:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_22.dex
 renamed.18=classes19.dex
 renamed.17=classes18.dex
@@ -77,3 +79,4 @@ path.24=classes_21.dex
 path.21=classes_18.dex
 path.22=classes_19.dex
 path.25=classes_22.dex
+path.26=classes_23.dex

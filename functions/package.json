@@ -1,10 +1,11 @@
 {
   "name": "functions",
-  "type": "module",
+  "type": "cloud functions for edurald",
+  "main": "build/node/index.dart.js",
   "scripts": {
-    "lint": "eslint --ext .js,.ts .",
-    "build": "tsc",
-    "build:watch": "tsc --watch",
+    "lint": "",
+    "build": "pub run build_runner build --output=build",
+    "preserve": "npm run build",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -14,7 +15,6 @@
   "engines": {
     "node": "16"
   },
-  "main": "src/index.ts",
   "dependencies": {
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.18.0"

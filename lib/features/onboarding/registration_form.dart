@@ -2,6 +2,7 @@ import 'dart:io';
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:edurald/models/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geocoder/model.dart';
 import 'package:country_codes/country_codes.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:edurald/models/model_status.dart';
 import 'package:edurald/models/strings.dart';
@@ -123,7 +125,6 @@ class _Registration_formPageState extends State<registration_formPage>
   @override
   void initState() {
     super.initState();
-
     getLocation();
   }
 
@@ -141,6 +142,21 @@ class _Registration_formPageState extends State<registration_formPage>
     }
   }
 
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
 
   Future<void> updateUserRecords() async {
     if(!showLoader){
@@ -148,16 +164,42 @@ class _Registration_formPageState extends State<registration_formPage>
         blurrySize = 1;
         showLoader = true;
       });
-      await user.user?.updateDisplayName(userNameController.text);
-      saveUserToFirestore(user.user);
-      //await user?.updatePhotoURL("https://example.com/jane-q-user/profile.jpg");
-      setState(() {
-        next = !next;
-        blurrySize = 0;
-        showLoader = false;
-      });
+      if(userNameIsValid){
+        saveUserToFirestore(user.user);
+        setState(() {
+          next = !next;
+          blurrySize = 0;
+          showLoader = false;
+        });
+      }
+      else {
+        showPopUp(userName_error);
+        setState(() {
+          blurrySize = 0;
+          showLoader = false;
+        });
+      }
+
     }
   }
+
+  Future<bool> userNameExist(String displayname)async{
+    int size = 0;
+    print(displayname);
+  await FirebaseFirestore.instance.collection("users").where("unique", isEqualTo: displayname.toLowerCase()).get().then(
+        (res) => {
+          size = res.size,
+        print(size),
+        },
+    onError: (e) => print("Error completing: $e"),
+  );
+    print(size);
+    print(userNameIsValid);
+  setState(() {
+    userNameIsValid =  !(size>=1);
+  });
+  return size>=1;
+}
 
   validatePhoneNumber() async{
     setState(() {
@@ -171,9 +213,8 @@ class _Registration_formPageState extends State<registration_formPage>
 
   createUser() async{
     try{
-      final response = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text,password: passwordController.text);
+      final response = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text.trim(),password: passwordController.text.trim());
       user = response;
-      await user.user?.sendEmailVerification();
       showMyDialog(context,"Account Verification",account_verification_msg);
       setState((){
         socialAuthsLocation = 1;
@@ -182,7 +223,6 @@ class _Registration_formPageState extends State<registration_formPage>
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-
         _current = --_current % 3;
         showPopUp('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
@@ -229,9 +269,10 @@ class _Registration_formPageState extends State<registration_formPage>
 
   saveUserToFirestore(user) {
     userRef.doc(user.uid).set({
-      "profile":{
-        "firstName": firstNameController.text,
-        "lastName": lastNameController.text,
+        "firstName": firstNameController.text.trim(),
+        "lastName": lastNameController.text.trim(),
+        "displayName": userNameController.text.trim(),
+        "photo": "",
         "point": 30,
         "socialMedia":{},
         "communities":{},
@@ -242,11 +283,25 @@ class _Registration_formPageState extends State<registration_formPage>
           "followers":{},
           "followings":{},
         },
-        "notifications":{}
-      },
+        "notifications":{},
+      "unique":userNameController.text.trim().toLowerCase(),
     });
   }
 
+  socialMediaSignup() async {
+    user = await signInWithGoogle();
+    if(FirebaseAuth.instance.currentUser != null){
+      setState(() {
+        _current = ++_current % 3;
+        userNameController.text = user.user?.displayName ?? "";
+        userNameController.text = userNameController.text.replaceAll(' ', '');
+       // _current = 2;
+        socialAuthsLocation = 1;
+        //next = !next;
+        isFirstView = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -277,13 +332,17 @@ class _Registration_formPageState extends State<registration_formPage>
                   labelText: 'User name :-',
                   labelStyle: blue20Style),
               controller: userNameController,
-              onChanged: (value) {
-                setState(() {
-                  userNameIsValid = firstNameValidator(value);
-                  if (!userNameIsValid) {
-                    userNameStatus = UserNameStatus.error;
-                  } else
+              onChanged: (value) async {
+                if(value.contains(" ")){
+                  userNameController.text = value.replaceAll(' ', '');
+                  showPopUp("space not allowed for UserName");
+                }
+                await userNameExist(userNameController.text.trim());
+                setState((){
+                  if (userNameIsValid) {
                     userNameStatus = UserNameStatus.success;
+                  } else
+                    userNameStatus = UserNameStatus.error;
                 });}
           ),
           (userNameStatus == UserNameStatus.error) ? error(userName_error) : Text(''),
@@ -579,6 +638,8 @@ class _Registration_formPageState extends State<registration_formPage>
                                 color: projectBlue,
                                 child: Text('Continue',style: white18Style,),
                                 onPressed: () async {
+                                  // await updateUserRecords();
+                                  // return;
                                     setState((){
                                       _current = ++_current % 3;
                                     });
@@ -601,8 +662,10 @@ class _Registration_formPageState extends State<registration_formPage>
                                         }
                                         break;
                                       case 2:
+                                        await userNameExist(userNameController.text);
                                       if(!firstNameIsValid || !lastNameIsValid || !userNameIsValid){
-                                        _current = 2;
+
+                                        _current = 1;
                                         showPopUp(form_update_error);
                                         return;
                                       }
@@ -643,7 +706,7 @@ class _Registration_formPageState extends State<registration_formPage>
 
           AnimatedPositioned(
               top: size.height * socialAuthsLocation,
-              duration: Duration(seconds: 1),
+              duration: Duration(microseconds: 500),
               child: Container(
                 height: size.height * 0.25,color: Colors.transparent,width: size.width,
                   alignment: Alignment.center,
@@ -699,7 +762,9 @@ class _Registration_formPageState extends State<registration_formPage>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 CupertinoButton(child: Image.asset(Assets.images.socials.linkedInIcon.path,height: size.height * 0.08), onPressed: () =>print('LinkedIn Clicked'),),
-                                CupertinoButton(child: Image.asset(Assets.images.socials.googleIcon.path,height: size.height * 0.07), onPressed: () =>print('Google Clicked'),),
+                                CupertinoButton(child: Image.asset(Assets.images.socials.googleIcon.path,height: size.height * 0.07), onPressed: () =>{
+                                  socialMediaSignup()
+                                }),
                                 CupertinoButton(child: Image.asset(Assets.images.socials.twitterIcon.path,height: size.height * 0.08), onPressed: () =>print('Twitter Clicked'),),
 
                               ]),

@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/annotations/annotations.iml" filepath="$PROJECT_DIR$/annotations/annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/annotations/android/annotations_android.iml" filepath="$PROJECT_DIR$/annotations/android/annotations_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/fluttertabbar.iml" filepath="$PROJECT_DIR$/.idea/fluttertabbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/foundation/foundation.iml" filepath="$PROJECT_DIR$/foundation/foundation.iml" />
       <module fileurl="file://$PROJECT_DIR$/testing/testing.iml" filepath="$PROJECT_DIR$/testing/testing.iml" />
     </modules>
   </component>
