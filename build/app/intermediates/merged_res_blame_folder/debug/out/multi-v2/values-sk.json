@@ -70,6 +70,23 @@
                         "endColumns": "105,159,123,109,155,127,112,101,168,110,169,129,162,163,67,66,86",
                         "endOffsets": "156,316,440,550,706,834,947,1049,1357,1468,1638,1768,1931,2095,2163,2230,2317"
                     }
+                },
+                {
+                    "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\44663d8d686c1ad6194e817654f1c2d6\\jetified-twitter-core-3.1.1\\res\\values-sk\\values-sk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "69",
+                        "endOffsets": "120"
+                    },
+                    "to": {
+                        "startLines": "25",
+                        "startColumns": "4",
+                        "startOffsets": "2850",
+                        "endColumns": "69",
+                        "endOffsets": "2915"
+                    }
                 }
             ]
         }

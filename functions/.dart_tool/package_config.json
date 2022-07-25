@@ -164,6 +164,12 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "foundation",
+      "rootUri": "../../foundation",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "front_end",
       "rootUri": "file:///C:/Users/JOLUGBO/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/front_end-0.1.27",
       "packageUri": "lib/",
@@ -434,7 +440,7 @@
       "languageVersion": "2.0"
     }
   ],
-  "generated": "2022-07-19T11:49:15.052455Z",
+  "generated": "2022-07-23T20:50:27.738377Z",
   "generator": "pub",
   "generatorVersion": "2.16.0"
 }

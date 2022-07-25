@@ -33,6 +33,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'models/strings.dart';
 
  final userRef =  FirebaseFirestore.instance.collection('users');
+ final authsRef =  FirebaseFirestore.instance.collection('auths');
 // final postRef =  FirebaseFirestore.instance.collection('posts');
 // final commentsRef =  FirebaseFirestore.instance.collection('comments');
 // final activityFeedRef =  FirebaseFirestore.instance.collection('feeds');

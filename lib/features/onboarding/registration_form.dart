@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:edurald/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,8 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoder/geocoder.dart';
-import 'package:geocoder/model.dart';
+// import 'package:geocoder/geocoder.dart';
+// import 'package:geocoder/model.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -27,7 +27,7 @@ import 'package:firebase_database/firebase_database.dart';
 // final userRef =  FirebaseFirestore.instance.collection('users');
 
 class registration_formPage extends StatefulWidget {
-  registration_formPage({Key? key,  this.user}) : super(key: key);
+  registration_formPage({Key? key, this.user}) : super(key: key);
 
   final User? user;
 
@@ -38,8 +38,9 @@ class registration_formPage extends StatefulWidget {
 class _Registration_formPageState extends State<registration_formPage>
     with TickerProviderStateMixin {
   //String placeholderImage = imageBase+'graduatehat.jpg';
-  String userIcon = 'https://firebasestorage.googleapis.com/v0/b/edurald.appspot.com/o/permanents%2Fgraduatehat.jpg?alt=media&token=fa45072d-2ecf-45ef-b225-b6199edf89c7';
-  File _image = File(imageBase+'graduatehat.jpg');
+  String userIcon =
+      'https://firebasestorage.googleapis.com/v0/b/edurald.appspot.com/o/permanents%2Fgraduatehat.jpg?alt=media&token=fa45072d-2ecf-45ef-b225-b6199edf89c7';
+  File _image = File(imageBase + 'graduatehat.jpg');
   final picker = ImagePicker();
   int blurrySize = 0;
   double socialAuthsLocation = 0.75;
@@ -51,8 +52,8 @@ class _Registration_formPageState extends State<registration_formPage>
   bool _passwordVisible = false;
   int _currentPage = 0;
   int _current = 0;
-  bool  isSignUpComplete = false;
-  bool  showLoader = false;
+  int socialMediaSelectedOption = 1;
+  bool showLoader = false;
   String? phoneNumber = '';
   bool emailIsValid = false;
   bool userNameIsValid = false;
@@ -77,9 +78,9 @@ class _Registration_formPageState extends State<registration_formPage>
   PhoneNumber? initialnumber;
   DateTime timeStamp = DateTime.now();
   late UserCredential user;
-  void showPopUp(String msg){
+  void showPopUp(String msg) {
     Fluttertoast.showToast(
-        msg:msg,
+        msg: msg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
@@ -89,16 +90,18 @@ class _Registration_formPageState extends State<registration_formPage>
   }
 
   Future<void> getLocation() async {
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high,);
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
     await CountryCodes.init();
-    final coordinates = new Coordinates(position.latitude, position.longitude);
-    var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    var first = addresses.first;
-    initialCountry = first.countryCode;
-    setState(() {
-      countryCode = first.countryCode;
-      initialnumber = PhoneNumber(isoCode: countryCode);
-    });
+    // final coordinates = new Coordinates(position.latitude, position.longitude);
+    // var addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    // var first = addresses.first;
+    // initialCountry = first.countryCode;
+    // setState(() {
+    //   countryCode = first.countryCode;
+    //   initialnumber = PhoneNumber(isoCode: countryCode);
+    // });
   }
 
   List<Widget> _buildPageIndicator() {
@@ -129,7 +132,7 @@ class _Registration_formPageState extends State<registration_formPage>
   }
 
   Future<void> registerUser() async {
-    if(!showLoader){
+    if (!showLoader) {
       setState(() {
         blurrySize = 1;
         showLoader = true;
@@ -147,7 +150,8 @@ class _Registration_formPageState extends State<registration_formPage>
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -158,50 +162,76 @@ class _Registration_formPageState extends State<registration_formPage>
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
+  Future<UserCredential> signInWithTwitter() async {
+    print("tokens");
+    print("got here");
+    print(authsRef);
+    var tokens = await authsRef.doc("twitter").get();
+    print(tokens);
+    var twitterLogin = new TwitterLogin(
+      consumerKey: '<your consumer key>',
+      consumerSecret: '<your consumer secret>',
+    );
+
+    final result = await twitterLogin.authorize();
+
+    // Create a credential from the access token
+    final twitterAuthCredential = TwitterAuthProvider.credential(
+      accessToken: result.session.token!,
+      secret: result.session.secret,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance
+        .signInWithCredential(twitterAuthCredential);
+  }
+
   Future<void> updateUserRecords() async {
-    if(!showLoader){
+    if (!showLoader) {
       setState(() {
         blurrySize = 1;
         showLoader = true;
       });
-      if(userNameIsValid){
+      if (userNameIsValid) {
         saveUserToFirestore(user.user);
         setState(() {
           next = !next;
           blurrySize = 0;
           showLoader = false;
         });
-      }
-      else {
+      } else {
         showPopUp(userName_error);
         setState(() {
           blurrySize = 0;
           showLoader = false;
         });
       }
-
     }
   }
 
-  Future<bool> userNameExist(String displayname)async{
+  Future<bool> userNameExist(String displayname) async {
     int size = 0;
     print(displayname);
-  await FirebaseFirestore.instance.collection("users").where("unique", isEqualTo: displayname.toLowerCase()).get().then(
-        (res) => {
-          size = res.size,
-        print(size),
-        },
-    onError: (e) => print("Error completing: $e"),
-  );
+    await FirebaseFirestore.instance
+        .collection("users")
+        .where("unique", isEqualTo: displayname.toLowerCase())
+        .get()
+        .then(
+          (res) => {
+            size = res.size,
+            print(size),
+          },
+          onError: (e) => print("Error completing: $e"),
+        );
     print(size);
     print(userNameIsValid);
-  setState(() {
-    userNameIsValid =  !(size>=1);
-  });
-  return size>=1;
-}
+    setState(() {
+      userNameIsValid = !(size >= 1);
+    });
+    return size >= 1;
+  }
 
-  validatePhoneNumber() async{
+  validatePhoneNumber() async {
     setState(() {
       socialAuthsLocation = 1;
       showLoader = true;
@@ -211,12 +241,15 @@ class _Registration_formPageState extends State<registration_formPage>
     print(FirebaseAuth.instance.currentUser?.providerData);
   }
 
-  createUser() async{
-    try{
-      final response = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text.trim(),password: passwordController.text.trim());
+  createUser() async {
+    try {
+      final response = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim());
       user = response;
-      showMyDialog(context,"Account Verification",account_verification_msg);
-      setState((){
+      showMyDialog(context, "Account Verification", account_verification_msg);
+      setState(() {
         socialAuthsLocation = 1;
         //next = !next;
         isFirstView = false;
@@ -233,7 +266,6 @@ class _Registration_formPageState extends State<registration_formPage>
       _current = --_current % 3;
       print(e);
     }
-
 
     // var userArgs = ModalRoute.of(context)!.settings.arguments as User;
     // User user = new User(
@@ -269,33 +301,40 @@ class _Registration_formPageState extends State<registration_formPage>
 
   saveUserToFirestore(user) {
     userRef.doc(user.uid).set({
-        "firstName": firstNameController.text.trim(),
-        "lastName": lastNameController.text.trim(),
-        "displayName": userNameController.text.trim(),
-        "photo": "",
-        "point": 30,
-        "socialMedia":{},
-        "communities":{},
-        "training": {},
-        "bookmarks": {},
-        "ratings":0,
-        "friends":{
-          "followers":{},
-          "followings":{},
-        },
-        "notifications":{},
-      "unique":userNameController.text.trim().toLowerCase(),
+      "firstName": firstNameController.text.trim(),
+      "lastName": lastNameController.text.trim(),
+      "displayName": userNameController.text.trim(),
+      "photo": "",
+      "point": 30,
+      "socialMedia": {},
+      "communities": {},
+      "training": {},
+      "bookmarks": {},
+      "ratings": 0,
+      "friends": {
+        "followers": {},
+        "followings": {},
+      },
+      "notifications": {},
+      "unique": userNameController.text.trim().toLowerCase(),
     });
   }
 
   socialMediaSignup() async {
-    user = await signInWithGoogle();
-    if(FirebaseAuth.instance.currentUser != null){
+    if (socialMediaSelectedOption == 1) {
+      user = await signInWithGoogle();
+    } else if (socialMediaSelectedOption == 2) {
+      user = await signInWithGoogle();
+    } else if (socialMediaSelectedOption == 3) {
+      user = await signInWithTwitter();
+    }
+
+    if (FirebaseAuth.instance.currentUser != null) {
       setState(() {
         _current = ++_current % 3;
         userNameController.text = user.user?.displayName ?? "";
         userNameController.text = userNameController.text.replaceAll(' ', '');
-       // _current = 2;
+        // _current = 2;
         socialAuthsLocation = 1;
         //next = !next;
         isFirstView = false;
@@ -306,7 +345,7 @@ class _Registration_formPageState extends State<registration_formPage>
   @override
   Widget build(BuildContext context) {
     // var user = ModalRoute.of(context)!.settings.arguments as User;
-     var size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     // emailController.text = user.email!;
     // firstNameController.text = user.firstName!;
     // lastNameController.text = user.lastName!;
@@ -321,35 +360,36 @@ class _Registration_formPageState extends State<registration_formPage>
     PhoneNumber number = PhoneNumber(isoCode: countryCode);
 
     Widget thirdView = Container(
-      alignment: Alignment.center, padding:EdgeInsets.all(0),
-      child:  Column(
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(0),
+      child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextField(
               decoration: InputDecoration(
-                  labelText: 'User name :-',
-                  labelStyle: blue20Style),
+                  labelText: 'User name :-', labelStyle: blue20Style),
               controller: userNameController,
               onChanged: (value) async {
-                if(value.contains(" ")){
+                if (value.contains(" ")) {
                   userNameController.text = value.replaceAll(' ', '');
                   showPopUp("space not allowed for UserName");
                 }
                 await userNameExist(userNameController.text.trim());
-                setState((){
+                setState(() {
                   if (userNameIsValid) {
                     userNameStatus = UserNameStatus.success;
                   } else
                     userNameStatus = UserNameStatus.error;
-                });}
-          ),
-          (userNameStatus == UserNameStatus.error) ? error(userName_error) : Text(''),
+                });
+              }),
+          (userNameStatus == UserNameStatus.error)
+              ? error(userName_error)
+              : Text(''),
           TextField(
               decoration: InputDecoration(
-                  labelText: 'First name :-',
-                  labelStyle: blue20Style),
+                  labelText: 'First name :-', labelStyle: blue20Style),
               controller: firstNameController,
               onChanged: (value) {
                 setState(() {
@@ -358,14 +398,15 @@ class _Registration_formPageState extends State<registration_formPage>
                     firstNameStatus = FirstNameStatus.error;
                   } else
                     firstNameStatus = FirstNameStatus.success;
-                });}
-          ),
-          (firstNameStatus == FirstNameStatus.error) ? error(firstName_error) : Text(''),
+                });
+              }),
+          (firstNameStatus == FirstNameStatus.error)
+              ? error(firstName_error)
+              : Text(''),
           TextField(
               decoration: InputDecoration(
-                  labelText: 'Last name :-',
-                  labelStyle: blue20Style),
-            controller: lastNameController,
+                  labelText: 'Last name :-', labelStyle: blue20Style),
+              controller: lastNameController,
               onChanged: (value) {
                 setState(() {
                   lastNameIsValid = lastNameValidator(value);
@@ -373,165 +414,196 @@ class _Registration_formPageState extends State<registration_formPage>
                     lastNameStatus = LastNameStatus.error;
                   } else
                     lastNameStatus = LastNameStatus.success;
-                });}
-          ),
-          (lastNameStatus == LastNameStatus.error) ? error(lastName_error) : Text(''),
-
+                });
+              }),
+          (lastNameStatus == LastNameStatus.error)
+              ? error(lastName_error)
+              : Text(''),
         ],
       ),
     );
 
     Widget firstView = Container(
-        alignment: Alignment.center, padding:EdgeInsets.all(0),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          // Container(
-          //   child: Stack(
-          //     children: [
-          //       AnimatedCrossFade(
-          //         duration: const Duration(milliseconds: 500),
-          //         firstChild: RawMaterialButton(
-          //           onPressed: (){},
-          //           elevation: 2.0,
-          //           fillColor: projectGray2,
-          //           child: CircleAvatar(
-          //             foregroundImage:  NetworkImage(userIcon),
-          //             radius: size.height * 0.06,
-          //           ),
-          //           padding: EdgeInsets.all(5.0),
-          //           shape: CircleBorder(side: BorderSide(color: projectGray)),
-          //         ),
-          //         secondChild: RawMaterialButton(
-          //           onPressed: (){},
-          //           elevation: 2.0,
-          //           fillColor: projectGray2,
-          //           child: CircleAvatar(
-          //             foregroundImage:  FileImage(_image),
-          //             radius: size.height * 0.06,
-          //           ),
-          //           padding: EdgeInsets.all(3.0),
-          //           shape: CircleBorder(side: BorderSide(color: projectGray)),
-          //         ),
-          //         crossFadeState: isNetwork
-          //             ? CrossFadeState.showFirst
-          //             : CrossFadeState.showSecond,
-          //       ),
-          //       Positioned(
-          //         top: size.height * 0.08,left:size.width * 0.08,
-          //         child: IconButton(
-          //             icon: Icon(Icons.add_circle,color: projectBlue,size: size.height * 0.04,),
-          //             onPressed: () async {
-          //               final pickedFile = await picker.getImage(source: ImageSource.gallery);
-          //
-          //               setState(() {
-          //                 if (pickedFile != null) {
-          //                   isNetwork = false;
-          //                   _image = File(pickedFile.path);
-          //                 } else {
-          //                   print('No image selected.');
-          //                 }
-          //               });
-          //             })
-          //       ),
-          //     ],
-          //   ),
-          //
-          //   width: size.width,alignment: Alignment.center,height: size.height * 0.15
-          // ),
-          Hero(
-            tag: "splashscreenImage",
-            child: WidgetAnimator(
-              component: Container(
-                height: MediaQuery.of(context).size.height * 0.15,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.transparent,alignment: Alignment.topCenter,
-                child:
-                imgAnimation2(url: Assets.images.logo.path,time: Duration(milliseconds: 4000),
-                  width: MediaQuery.of(context).size.width * 0.5,beginx:0.1,endx: -0.1, beginy: 0,endy: 0,
-                  height: MediaQuery.of(context).size.height * 0.5,transition: PositionedTransition,
-                ),
-
-              ),
-              transition: Transform,animPattern: Curves.easeIn,pixle: Colors.transparent,time: Duration(seconds: 1),animType: "nothing",xAxis: 0,yAxis: 0,
-            ),
-          ),
-          TextField(
-              textAlignVertical: TextAlignVertical.bottom,enabled: enableEmail,
-              decoration: InputDecoration(
-                  labelText: 'Email ',
-                  labelStyle: blue20Style),keyboardType: TextInputType.emailAddress,
-              controller: emailController,
-              onChanged: (value) {
-                setState(() {
-                  emailIsValid = emailValidator(value);
-                  if (!emailIsValid) {
-                    emailStatus = EmailStatus.error;
-                  } else
-                    emailStatus = EmailStatus.success;
-                });}
-          ),
-          (emailStatus == EmailStatus.error) ? error(email_error) : Text(''),
-          TextField(
-            decoration: InputDecoration(
-                labelText: 'Password',
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                    color: projectBlue,
+        alignment: Alignment.center,
+        padding: EdgeInsets.all(0),
+        child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // Container(
+              //   child: Stack(
+              //     children: [
+              //       AnimatedCrossFade(
+              //         duration: const Duration(milliseconds: 500),
+              //         firstChild: RawMaterialButton(
+              //           onPressed: (){},
+              //           elevation: 2.0,
+              //           fillColor: projectGray2,
+              //           child: CircleAvatar(
+              //             foregroundImage:  NetworkImage(userIcon),
+              //             radius: size.height * 0.06,
+              //           ),
+              //           padding: EdgeInsets.all(5.0),
+              //           shape: CircleBorder(side: BorderSide(color: projectGray)),
+              //         ),
+              //         secondChild: RawMaterialButton(
+              //           onPressed: (){},
+              //           elevation: 2.0,
+              //           fillColor: projectGray2,
+              //           child: CircleAvatar(
+              //             foregroundImage:  FileImage(_image),
+              //             radius: size.height * 0.06,
+              //           ),
+              //           padding: EdgeInsets.all(3.0),
+              //           shape: CircleBorder(side: BorderSide(color: projectGray)),
+              //         ),
+              //         crossFadeState: isNetwork
+              //             ? CrossFadeState.showFirst
+              //             : CrossFadeState.showSecond,
+              //       ),
+              //       Positioned(
+              //         top: size.height * 0.08,left:size.width * 0.08,
+              //         child: IconButton(
+              //             icon: Icon(Icons.add_circle,color: projectBlue,size: size.height * 0.04,),
+              //             onPressed: () async {
+              //               final pickedFile = await picker.getImage(source: ImageSource.gallery);
+              //
+              //               setState(() {
+              //                 if (pickedFile != null) {
+              //                   isNetwork = false;
+              //                   _image = File(pickedFile.path);
+              //                 } else {
+              //                   print('No image selected.');
+              //                 }
+              //               });
+              //             })
+              //       ),
+              //     ],
+              //   ),
+              //
+              //   width: size.width,alignment: Alignment.center,height: size.height * 0.15
+              // ),
+              Hero(
+                tag: "splashscreenImage",
+                child: WidgetAnimator(
+                  component: Container(
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    width: MediaQuery.of(context).size.width,
+                    color: Colors.transparent,
+                    alignment: Alignment.topCenter,
+                    child: imgAnimation2(
+                      url: Assets.images.logo.path,
+                      time: Duration(milliseconds: 4000),
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      beginx: 0.1,
+                      endx: -0.1,
+                      beginy: 0,
+                      endy: 0,
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      transition: PositionedTransition,
+                    ),
                   ),
-                  onPressed: () {
-                    setState(() {
-                      _passwordVisible = !_passwordVisible;
-                    });
-                  },
+                  transition: Transform,
+                  animPattern: Curves.easeIn,
+                  pixle: Colors.transparent,
+                  time: Duration(seconds: 1),
+                  animType: "nothing",
+                  xAxis: 0,
+                  yAxis: 0,
                 ),
-                labelStyle: blue20Style),obscureText: !_passwordVisible,
-            controller: passwordController,
-            onChanged: (value) {
-              setState(() {
-                passwordValidationResp = passwordValidator(value);
-                if (passwordValidationResp.validated < 4) {
-                  //passwordIsValid = passwordValidationResp.validated;
-                  passwordStatus = PasswordStatus.error;
-                } else {
-                  passwordIsValid = true;
-                  passwordStatus =
-                      PasswordStatus.success;
-                }
-              });
-            },),
-          (passwordStatus == PasswordStatus.error) ? error(passwordValidationResp.error) : Text(''),
-        ])
-    );
+              ),
+              TextField(
+                  textAlignVertical: TextAlignVertical.bottom,
+                  enabled: enableEmail,
+                  decoration: InputDecoration(
+                      labelText: 'Email ', labelStyle: blue20Style),
+                  keyboardType: TextInputType.emailAddress,
+                  controller: emailController,
+                  onChanged: (value) {
+                    setState(() {
+                      emailIsValid = emailValidator(value);
+                      if (!emailIsValid) {
+                        emailStatus = EmailStatus.error;
+                      } else
+                        emailStatus = EmailStatus.success;
+                    });
+                  }),
+              (emailStatus == EmailStatus.error)
+                  ? error(email_error)
+                  : Text(''),
+              TextField(
+                decoration: InputDecoration(
+                    labelText: 'Password',
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: projectBlue,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _passwordVisible = !_passwordVisible;
+                        });
+                      },
+                    ),
+                    labelStyle: blue20Style),
+                obscureText: !_passwordVisible,
+                controller: passwordController,
+                onChanged: (value) {
+                  setState(() {
+                    passwordValidationResp = passwordValidator(value);
+                    if (passwordValidationResp.validated < 4) {
+                      //passwordIsValid = passwordValidationResp.validated;
+                      passwordStatus = PasswordStatus.error;
+                    } else {
+                      passwordIsValid = true;
+                      passwordStatus = PasswordStatus.success;
+                    }
+                  });
+                },
+              ),
+              (passwordStatus == PasswordStatus.error)
+                  ? error(passwordValidationResp.error)
+                  : Text(''),
+            ]));
 
     return Scaffold(
       body: Stack(
         overflow: Overflow.visible,
         children: <Widget>[
           AnimatedPositioned(
-              top: 0,
-              duration: Duration(seconds: 1),
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.4,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
-                alignment: Alignment.center,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Hero(
-                        tag: "headerTxt",
-                        child: Text('Join Edurald',style: blue25BoldStyle,textAlign: TextAlign.center,),
+            top: 0,
+            duration: Duration(seconds: 1),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
+              alignment: Alignment.center,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Hero(
+                      tag: "headerTxt",
+                      child: Text(
+                        'Join Edurald',
+                        style: blue25BoldStyle,
+                        textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: size.height * 0.02,),
-                      Text('Sign up to learn and connect with other professionals like you',style: darkNormal18Style,textAlign: TextAlign.center,),
-                    ]),
-              ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
+                    Text(
+                      'Sign up to learn and connect with other professionals like you',
+                      style: darkNormal18Style,
+                      textAlign: TextAlign.center,
+                    ),
+                  ]),
+            ),
           ),
 
           //bottom rect
@@ -549,10 +621,11 @@ class _Registration_formPageState extends State<registration_formPage>
                 children: <Widget>[
                   AnimatedCrossFade(
                     duration: const Duration(milliseconds: 500),
-                    firstChild: (isFirstView)?firstView:thirdView,
+                    firstChild: (isFirstView) ? firstView : thirdView,
                     secondChild: Container(
-                      alignment: Alignment.center, padding:EdgeInsets.all(0),
-                      child:  Column(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.all(0),
+                      child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -563,15 +636,13 @@ class _Registration_formPageState extends State<registration_formPage>
                                 phoneNumberIsValid =
                                     phoneNumberValidator(number.phoneNumber);
                                 if (!phoneNumberIsValid) {
-                                  phoneNumberStatus =
-                                      PhoneNumberStatus.error;
+                                  phoneNumberStatus = PhoneNumberStatus.error;
                                 } else
-                                  phoneNumberStatus =
-                                      PhoneNumberStatus.success;
+                                  phoneNumberStatus = PhoneNumberStatus.success;
                               });
                               print(number.phoneNumber);
                               setState(() {
-                                phoneNumber =number.phoneNumber;
+                                phoneNumber = number.phoneNumber;
                               });
                             },
                             onInputValidated: (bool value) {
@@ -596,28 +667,26 @@ class _Registration_formPageState extends State<registration_formPage>
                         ? CrossFadeState.showFirst
                         : CrossFadeState.showSecond,
                   ),
-
                   Container(
                     height: MediaQuery.of(context).size.height * 0.4,
                     width: MediaQuery.of(context).size.width,
                     alignment: Alignment.center,
                     child: Column(
                       children: <Widget>[
-
                         SizedBox(height: size.height * 0.01),
                         Container(
                           child: RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
-                              text: 'You agree to the edurald',
-                              style: gray12Style,
-                              children: <TextSpan>[
-                            TextSpan(
-                                text: 'User Agreement, Privacy Policy, and Cookie Policy.',
-                                style: blue12Style,
-                            )
-                              ]
-                            ),
+                                text: 'You agree to the edurald',
+                                style: gray12Style,
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text:
+                                        'User Agreement, Privacy Policy, and Cookie Policy.',
+                                    style: blue12Style,
+                                  )
+                                ]),
                           ),
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.04,
@@ -627,71 +696,79 @@ class _Registration_formPageState extends State<registration_formPage>
                           width: MediaQuery.of(context).size.width,
                           alignment: Alignment.center,
                           child: ButtonTheme(
-                              minWidth: MediaQuery.of(context).size.width ,
+                              minWidth: MediaQuery.of(context).size.width,
                               height: 40,
                               buttonColor: Colors.transparent,
                               child: RaisedButton(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5.0),
-                                    side: BorderSide(color: projectBlue)
-                                ),
+                                    side: BorderSide(color: projectBlue)),
                                 color: projectBlue,
-                                child: Text('Continue',style: white18Style,),
+                                child: Text(
+                                  'Continue',
+                                  style: white18Style,
+                                ),
                                 onPressed: () async {
                                   // await updateUserRecords();
                                   // return;
-                                    setState((){
-                                      _current = ++_current % 3;
-                                    });
-                                      print(_current);
-                                      switch (_current){
-                                      case 1:
-                                        if(!emailIsValid || !passwordIsValid){
-                                          _current = 0;
-                                          showPopUp(form_update_error);
-                                          return;
-                                        }
-                                        var connectivityResult = await (Connectivity().checkConnectivity());
-                                        if (connectivityResult == ConnectivityResult.none) {
-                                          showPopUp(internet_error);
-                                          // Mobile is not Connected to Internet
-                                        }
-                                        else {
-                                          registerUser();
-                                          // I am connected to a network.
-                                        }
-                                        break;
-                                      case 2:
-                                        await userNameExist(userNameController.text);
-                                      if(!firstNameIsValid || !lastNameIsValid || !userNameIsValid){
-
+                                  setState(() {
+                                    _current = ++_current % 3;
+                                  });
+                                  print(_current);
+                                  switch (_current) {
+                                    case 1:
+                                      if (!emailIsValid || !passwordIsValid) {
+                                        _current = 0;
+                                        showPopUp(form_update_error);
+                                        return;
+                                      }
+                                      var connectivityResult =
+                                          await (Connectivity()
+                                              .checkConnectivity());
+                                      if (connectivityResult ==
+                                          ConnectivityResult.none) {
+                                        showPopUp(internet_error);
+                                        // Mobile is not Connected to Internet
+                                      } else {
+                                        registerUser();
+                                        // I am connected to a network.
+                                      }
+                                      break;
+                                    case 2:
+                                      await userNameExist(
+                                          userNameController.text);
+                                      if (!firstNameIsValid ||
+                                          !lastNameIsValid ||
+                                          !userNameIsValid) {
                                         _current = 1;
                                         showPopUp(form_update_error);
                                         return;
                                       }
                                       _current = 2;
-                                      var connectivityResult = await (Connectivity().checkConnectivity());
-                                      if (connectivityResult == ConnectivityResult.none) {
+                                      var connectivityResult =
+                                          await (Connectivity()
+                                              .checkConnectivity());
+                                      if (connectivityResult ==
+                                          ConnectivityResult.none) {
                                         showPopUp(internet_error);
                                         // Mobile is not Connected to Internet
-                                      }
-                                      else {
+                                      } else {
                                         updateUserRecords();
                                         // I am connected to a network.
                                       }
                                       break;
-                                      default:
-                                        print(_current);
-                                        validatePhoneNumber();
+                                    default:
+                                      print(_current);
+                                      validatePhoneNumber();
 
-                                        // if(!phoneNumberIsValid || (passwordStatus == PasswordStatus.error) || passwordController.text.isEmpty){
-                                        //   showPopUp(form_update_error);
-                                        //   _current = 1;
-                                        //   return;
-                                        // }
-                                        // next = !next;
-                                        break;
-                                    }
+                                      // if(!phoneNumberIsValid || (passwordStatus == PasswordStatus.error) || passwordController.text.isEmpty){
+                                      //   showPopUp(form_update_error);
+                                      //   _current = 1;
+                                      //   return;
+                                      // }
+                                      // next = !next;
+                                      break;
+                                  }
                                 },
                                 highlightElevation: 0.8,
                               )),
@@ -708,88 +785,120 @@ class _Registration_formPageState extends State<registration_formPage>
               top: size.height * socialAuthsLocation,
               duration: Duration(microseconds: 500),
               child: Container(
-                height: size.height * 0.25,color: Colors.transparent,width: size.width,
+                  height: size.height * 0.25,
+                  color: Colors.transparent,
+                  width: size.width,
                   alignment: Alignment.center,
-                  child: Column(
-                      children: <Widget>[
-                        SizedBox(height: size.height * 0.02),
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          alignment: Alignment.center, padding:EdgeInsets.all(0),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.8,
-                                alignment: Alignment.center, padding:EdgeInsets.all(0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                      child: Container(
-                                          height: 3,
-                                          width: size.width * 0.15,
-                                          color: projectBlue),
-                                    ),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      child: Text('or sign up with',style: darkSemiBold19Style,textAlign: TextAlign.center,),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                      child: Container(
-                                          height: 3,
-                                          width: size.width * 0.15,
-                                          color: projectBlue),
-                                    ),
-
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: size.height * 0.02),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.12,
-                          width: MediaQuery.of(context).size.width,
-                          alignment: Alignment.center,
-                          child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Column(children: <Widget>[
+                    SizedBox(height: size.height * 0.02),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.all(0),
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.all(0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                CupertinoButton(child: Image.asset(Assets.images.socials.linkedInIcon.path,height: size.height * 0.08), onPressed: () =>print('LinkedIn Clicked'),),
-                                CupertinoButton(child: Image.asset(Assets.images.socials.googleIcon.path,height: size.height * 0.07), onPressed: () =>{
-                                  socialMediaSignup()
-                                }),
-                                CupertinoButton(child: Image.asset(Assets.images.socials.twitterIcon.path,height: size.height * 0.08), onPressed: () =>print('Twitter Clicked'),),
-
-                              ]),
-                        ),
-                      ])
-              )
-          ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Container(
+                                      height: 3,
+                                      width: size.width * 0.15,
+                                      color: projectBlue),
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'or sign up with',
+                                    style: darkSemiBold19Style,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 10.0),
+                                  child: Container(
+                                      height: 3,
+                                      width: size.width * 0.15,
+                                      color: projectBlue),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.02),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.12,
+                      width: MediaQuery.of(context).size.width,
+                      alignment: Alignment.center,
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            CupertinoButton(
+                                child: Image.asset(
+                                    Assets.images.socials.linkedInIcon.path,
+                                    height: size.height * 0.08),
+                                onPressed: () => {
+                                      setState(() {
+                                        socialMediaSelectedOption = 1;
+                                      }),
+                                      socialMediaSignup()
+                                    }),
+                            CupertinoButton(
+                                child: Image.asset(
+                                    Assets.images.socials.googleIcon.path,
+                                    height: size.height * 0.07),
+                                onPressed: () => {
+                                      setState(() {
+                                        socialMediaSelectedOption = 2;
+                                      }),
+                                      socialMediaSignup()
+                                    }),
+                            CupertinoButton(
+                                child: Image.asset(
+                                    Assets.images.socials.twitterIcon.path,
+                                    height: size.height * 0.08),
+                                onPressed: () => {
+                                      setState(() {
+                                        socialMediaSelectedOption = 3;
+                                      }),
+                                      socialMediaSignup()
+                                    }),
+                          ]),
+                    ),
+                  ]))),
 
           AnimatedPositioned(
               top: 10,
               duration: Duration(seconds: 1),
               child: Container(
-                height: size.height * blurrySize,color: Colors.transparent,width: size.width * blurrySize,
-              )
-          ),
+                height: size.height * blurrySize,
+                color: Colors.transparent,
+                width: size.width * blurrySize,
+              )),
 
-          if(showLoader)AnimatedPositioned(
-            top: MediaQuery.of(context).size.height * 0,
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            duration: Duration(milliseconds: 500),
-            child: Center(
-              child: new CircularProgressIndicator(),
-            ),
-          )
+          if (showLoader)
+            AnimatedPositioned(
+              top: MediaQuery.of(context).size.height * 0,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              duration: Duration(milliseconds: 500),
+              child: Center(
+                child: new CircularProgressIndicator(),
+              ),
+            )
         ],
       ),
     );

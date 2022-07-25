@@ -418,6 +418,17 @@
 236-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
 237            android:value="@integer/google_play_services_version" />
 237-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
-238    </application>
-239
-240</manifest>
+238
+239        <activity
+239-->[com.twitter.sdk.android:twitter-core:3.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\44663d8d686c1ad6194e817654f1c2d6\jetified-twitter-core-3.1.1\AndroidManifest.xml:28:9-32:40
+240            android:name="com.twitter.sdk.android.core.identity.OAuthActivity"
+240-->[com.twitter.sdk.android:twitter-core:3.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\44663d8d686c1ad6194e817654f1c2d6\jetified-twitter-core-3.1.1\AndroidManifest.xml:29:13-79
+241            android:configChanges="orientation|screenSize"
+241-->[com.twitter.sdk.android:twitter-core:3.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\44663d8d686c1ad6194e817654f1c2d6\jetified-twitter-core-3.1.1\AndroidManifest.xml:30:13-59
+242            android:excludeFromRecents="true"
+242-->[com.twitter.sdk.android:twitter-core:3.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\44663d8d686c1ad6194e817654f1c2d6\jetified-twitter-core-3.1.1\AndroidManifest.xml:31:13-46
+243            android:exported="false" />
+243-->[com.twitter.sdk.android:twitter-core:3.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\44663d8d686c1ad6194e817654f1c2d6\jetified-twitter-core-3.1.1\AndroidManifest.xml:32:13-37
+244    </application>
+245
+246</manifest>

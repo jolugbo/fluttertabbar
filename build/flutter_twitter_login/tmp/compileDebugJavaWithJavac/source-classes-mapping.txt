@@ -1,0 +1,7 @@
+com/roughike/fluttertwitterlogin/fluttertwitterlogin/BuildConfig.java
+ com.roughike.fluttertwitterlogin.fluttertwitterlogin.BuildConfig
+com/roughike/fluttertwitterlogin/fluttertwitterlogin/TwitterLoginPlugin.java
+ com.roughike.fluttertwitterlogin.fluttertwitterlogin.TwitterLoginPlugin
+ com.roughike.fluttertwitterlogin.fluttertwitterlogin.TwitterLoginPlugin$1
+ com.roughike.fluttertwitterlogin.fluttertwitterlogin.TwitterLoginPlugin$2
+ com.roughike.fluttertwitterlogin.fluttertwitterlogin.TwitterLoginPlugin$3
