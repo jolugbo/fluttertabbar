@@ -1,17 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\JOLUGBO\\source\\repos\\fluttertabbar\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\JOLUGBO\\source\\repos\\fluttertabbar\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,16",
                         "startColumns": "4,4",
-                        "startOffsets": "172,933",
+                        "startOffsets": "175,949",
                         "endLines": "9,18",
                         "endColumns": "12,12",
-                        "endOffsets": "582,1097"
+                        "endOffsets": "591,1115"
                     },
                     "to": {
                         "startLines": "2,9",

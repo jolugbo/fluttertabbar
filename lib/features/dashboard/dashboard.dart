@@ -18,7 +18,7 @@ import '../discovery/discovery.dart';
 import '../challenge/challenge.dart';
 
 class dashboardPage extends StatefulWidget {
-  dashboardPage({Key? key, this.title,this.index}) : super(key: key);
+  dashboardPage({Key? key, this.title, this.index}) : super(key: key);
 
   final String? title;
   final int? index;
@@ -40,13 +40,16 @@ class _DashboardPageState extends State<dashboardPage>
 
   static GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   final List<dynamic> _children = [
-    [learn(),'learn'],
-    [community(),'community'],
-    [discovery(),'discovery'],
-    [challenge(),'challenge'],
+    [learn(), 'learn'],
+    [community(), 'community'],
+    [discovery(), 'discovery'],
+    [challenge(), 'challenge'],
   ];
 
-  Icon dropDown = Icon(Icons.keyboard_arrow_down,color: accent,);
+  Icon dropDown = Icon(
+    Icons.keyboard_arrow_down,
+    color: accent,
+  );
   @override
   void initState() {
     super.initState();
@@ -56,21 +59,25 @@ class _DashboardPageState extends State<dashboardPage>
   Widget build(BuildContext context) {
     var parser = EmojiParser();
     return Scaffold(
-      key : _drawerKey,
+      key: _drawerKey,
       drawerScrimColor: projectLightGray2,
       drawerEdgeDragWidth: 0,
       appBar: AppBar(
-        iconTheme: IconThemeData(
-            color: projectBlue
+        iconTheme: IconThemeData(color: projectBlue),
+        title: Text(
+          _children[_currentIndex][1],
+          style: blue14Style,
         ),
-        title: Text(_children[_currentIndex][1],style: blue14Style,),
         backgroundColor: accent,
         actions: <Widget>[
           ButtonTheme(
               minWidth: MediaQuery.of(context).size.width * 0.08,
               height: 50.0,
               child: RaisedButton(
-                child: Icon(Icons.search,color: projectBlue,),
+                child: Icon(
+                  Icons.search,
+                  color: projectBlue,
+                ),
                 onPressed: () {
                   //Scaffold.of(context).openDrawer();
                 },
@@ -80,7 +87,10 @@ class _DashboardPageState extends State<dashboardPage>
               minWidth: MediaQuery.of(context).size.width * 0.08,
               height: 50.0,
               child: RaisedButton(
-                child: Icon(Icons.notifications,color: projectBlue,),
+                child: Icon(
+                  Icons.notifications,
+                  color: projectBlue,
+                ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/notifications');
                 },
@@ -103,51 +113,87 @@ class _DashboardPageState extends State<dashboardPage>
               )),
         ],
       ),
-      body:  _children[_currentIndex][0],
+      body: _children[_currentIndex][0],
       floatingActionButton: FloatingActionButton(
-
         onPressed: () {
           print('got here');
           setState(() {
-          discover = true;
-          _currentIndex = 2;
-        });
+            discover = true;
+            _currentIndex = 2;
+          });
         },
         child: Icon(Icons.location_searching),
-        backgroundColor: (discover)? projectGreen : projectGray,
+        backgroundColor: (discover) ? projectGreen : projectGray,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: accent,selectedLabelStyle: (discover| challeng | chat) ? gray11Style : blue12Style,
+          backgroundColor: accent,
+          selectedLabelStyle:
+              (discover | challeng | chat) ? gray11Style : blue12Style,
           unselectedLabelStyle: gray11Style,
           showUnselectedLabels: true,
           onTap: onTabTapped,
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.school,color: projectGray,),
-              activeIcon: Icon(Icons.school,color: projectBlue,),label: 'Learn',
+              icon: Icon(
+                Icons.school,
+                color: projectGray,
+              ),
+              activeIcon: Icon(
+                Icons.school,
+                color: projectBlue,
+              ),
+              label: 'Learn',
               //title: Text('Learn'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.group,color: projectGray,),
-              activeIcon: Icon(Icons.group,color: projectBlue,),label: 'Community',
+              icon: Icon(
+                Icons.group,
+                color: projectGray,
+              ),
+              activeIcon: Icon(
+                Icons.group,
+                color: projectBlue,
+              ),
+              label: 'Community',
               //title: Text('Community'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.location_searching,color: Colors.transparent,),
-              activeIcon: Icon(Icons.location_searching,color: Colors.transparent,),
-              label: 'Discover', //Text(, style: (discover)? green12Style: gray12Style ,)
+              icon: Icon(
+                Icons.location_searching,
+                color: Colors.transparent,
+              ),
+              activeIcon: Icon(
+                Icons.location_searching,
+                color: Colors.transparent,
+              ),
+              label:
+                  'Discover', //Text(, style: (discover)? green12Style: gray12Style ,)
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.flash_off,color: projectGray,),
-              activeIcon: Icon(Icons.flash_on,color: projectRed,),label: 'Challenge',
-             // title: Text('Challenge', style: (challeng)? dark14Style : gray11Style,),
+              icon: Icon(
+                Icons.flash_off,
+                color: projectGray,
+              ),
+              activeIcon: Icon(
+                Icons.flash_on,
+                color: projectRed,
+              ),
+              label: 'Challenge',
+              // title: Text('Challenge', style: (challeng)? dark14Style : gray11Style,),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.chat_bubble,color: projectRed,),
-              activeIcon: Icon(Icons.chat_bubble,color: projectRed,),label: 'Chats',
+              icon: Icon(
+                Icons.chat_bubble,
+                color: projectRed,
+              ),
+              activeIcon: Icon(
+                Icons.chat_bubble,
+                color: projectRed,
+              ),
+              label: 'Chats',
               //title: Text('Chats' ,style: red11Style,),
             ),
           ]),
@@ -176,11 +222,15 @@ class _DashboardPageState extends State<dashboardPage>
                     Container(
                       alignment: Alignment.centerLeft,
                       height: MediaQuery.of(context).size.height * 0.04,
-                      child:  Text('Mr Jolugbo',style:light18Style),
+                      child: Text('Mr Jolugbo', style: light18Style),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text('jolugbofemi@gmail.com',style:white14Style,textAlign: TextAlign.right,),
+                      child: Text(
+                        'jolugbofemi@gmail.com',
+                        style: white14Style,
+                        textAlign: TextAlign.right,
+                      ),
                     ),
                   ],
                 ),
@@ -203,7 +253,8 @@ class _DashboardPageState extends State<dashboardPage>
                   children: <Widget>[
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text(parser.get('trophy').code,
+                      child: Text(
+                        parser.get('trophy').code,
                         textAlign: TextAlign.center,
                         style: dark18Style,
                       ),
@@ -213,7 +264,7 @@ class _DashboardPageState extends State<dashboardPage>
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text('Leaderboard',style:blue14Style),
+                      child: Text('Leaderboard', style: blue14Style),
                     ),
                   ],
                 ),
@@ -244,7 +295,8 @@ class _DashboardPageState extends State<dashboardPage>
                   children: <Widget>[
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text(parser.get('open_book').code,
+                      child: Text(
+                        parser.get('open_book').code,
                         textAlign: TextAlign.center,
                         style: dark18Style,
                       ),
@@ -254,7 +306,7 @@ class _DashboardPageState extends State<dashboardPage>
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text('Books',style:blue14Style),
+                      child: Text('Books', style: blue14Style),
                     ),
                   ],
                 ),
@@ -284,7 +336,8 @@ class _DashboardPageState extends State<dashboardPage>
                   children: <Widget>[
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text(parser.get('bookmark').code,
+                      child: Text(
+                        parser.get('bookmark').code,
                         textAlign: TextAlign.center,
                         style: dark18Style,
                       ),
@@ -294,7 +347,7 @@ class _DashboardPageState extends State<dashboardPage>
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text('Bookmarks',style:blue14Style),
+                      child: Text('Bookmarks', style: blue14Style),
                     ),
                   ],
                 ),
@@ -324,14 +377,18 @@ class _DashboardPageState extends State<dashboardPage>
                   children: <Widget>[
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Icon(Icons.person_add,size: 20,color: projectBlue,),
+                      child: Icon(
+                        Icons.person_add,
+                        size: 20,
+                        color: projectBlue,
+                      ),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.05,
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text('Invite Friends',style:blue14Style),
+                      child: Text('Invite Friends', style: blue14Style),
                     ),
                   ],
                 ),
@@ -362,7 +419,8 @@ class _DashboardPageState extends State<dashboardPage>
                   children: <Widget>[
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text(parser.get('star').code,
+                      child: Text(
+                        parser.get('star').code,
                         textAlign: TextAlign.center,
                         style: dark18Style,
                       ),
@@ -372,7 +430,7 @@ class _DashboardPageState extends State<dashboardPage>
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text('Rate Us',style:blue14Style),
+                      child: Text('Rate Us', style: blue14Style),
                     ),
                   ],
                 ),
@@ -402,7 +460,8 @@ class _DashboardPageState extends State<dashboardPage>
                   children: <Widget>[
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text(parser.get('memo').code,
+                      child: Text(
+                        parser.get('memo').code,
                         textAlign: TextAlign.center,
                         style: dark18Style,
                       ),
@@ -412,7 +471,7 @@ class _DashboardPageState extends State<dashboardPage>
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text('Feedback',style:blue14Style),
+                      child: Text('Feedback', style: blue14Style),
                     ),
                   ],
                 ),
@@ -442,7 +501,8 @@ class _DashboardPageState extends State<dashboardPage>
                   children: <Widget>[
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text(parser.get('gear').code,
+                      child: Text(
+                        parser.get('gear').code,
                         textAlign: TextAlign.center,
                         style: dark18Style,
                       ),
@@ -452,7 +512,7 @@ class _DashboardPageState extends State<dashboardPage>
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child:  Text('Settings',style:blue14Style),
+                      child: Text('Settings', style: blue14Style),
                     ),
                   ],
                 ),
@@ -469,14 +529,18 @@ class _DashboardPageState extends State<dashboardPage>
           padding: EdgeInsets.fromLTRB(5, 30, 5, 20),
           children: <Widget>[
             Container(
-              alignment: Alignment.center,color: projectLightGray,
+                alignment: Alignment.center,
+                color: projectLightGray,
                 height: MediaQuery.of(context).size.height * 0.1,
-                child:Text('Live Chat', textAlign: TextAlign.center,style: red14Style,)
-            ),
+                child: Text(
+                  'Live Chat',
+                  textAlign: TextAlign.center,
+                  style: red14Style,
+                )),
             ...List.generate(5, (index) {
               return OpenContainer<bool>(
                 transitionType: _transitionType,
-                openBuilder: (context, openContainer) =>const _ChartCard(),
+                openBuilder: (context, openContainer) => const _ChartCard(),
                 tappable: false,
                 closedShape: const RoundedRectangleBorder(),
                 closedElevation: 0,
@@ -490,16 +554,22 @@ class _DashboardPageState extends State<dashboardPage>
                           child: Image.asset(defaultprofile),
                         ),
                       ),
-                      title:Row(
+                      title: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text('Jolugbo',style: blue14Style,),
+                          Text(
+                            'Jolugbo',
+                            style: blue14Style,
+                          ),
                         ],
                       ),
                       subtitle: Column(
                         children: <Widget>[
-                          Text('Hi Femi whats the rates of mmf today',style: gray12Style,),
+                          Text(
+                            'Hi Femi whats the rates of mmf today',
+                            style: gray12Style,
+                          ),
 //                          Padding(
 //                            padding: EdgeInsets.symmetric(horizontal: 10.0),
 //                            child: Container(
@@ -520,18 +590,15 @@ class _DashboardPageState extends State<dashboardPage>
     );
   }
 
-
   void onTabTapped(int index) {
-
     setState(() {
-      if(index != 4) {
+      if (index != 4) {
         chat = false;
         _currentIndex = index;
         discover = false;
-        (index == 3) ? challeng = true:challeng = false;
+        (index == 3) ? challeng = true : challeng = false;
         //(index == 2) ? discover = true:discover = false;
-      }
-      else{
+      } else {
         chat = true;
         _drawerKey.currentState!.openEndDrawer();
       }
@@ -548,8 +615,9 @@ class _ChartCard extends StatelessWidget {
     String defaultprofile = 'assets/jolugbo.jpeg';
 
     return InkWellOverlay(
-      openContainer: openContainer?? (){},
-      height: 300, width: 300,
+      openContainer: openContainer ?? () {},
+      height: 300,
+      width: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -559,8 +627,12 @@ class _ChartCard extends StatelessWidget {
                 Container(
                   color: projectLightBlue,
                   child: Center(
-                    child: Image.asset(defaultprofile,width: 100,),
-                  ),),
+                    child: Image.asset(
+                      defaultprofile,
+                      width: 100,
+                    ),
+                  ),
+                ),
                 Container(
                   color: Colors.transparent,
                   height: MediaQuery.of(context).size.height * 0.05,
@@ -572,11 +644,13 @@ class _ChartCard extends StatelessWidget {
                     },
                     elevation: 2.0,
                     fillColor: accent,
-                    child: Icon(Icons.arrow_back),//,backgroundColor: Colors.green,
+                    child: Icon(
+                        Icons.arrow_back), //,backgroundColor: Colors.green,
                     padding: EdgeInsets.all(5.0),
                     shape: CircleBorder(
-                        side: BorderSide(color: accent,)
-                    ),
+                        side: BorderSide(
+                      color: accent,
+                    )),
                   ),
                 ),
               ],
@@ -587,13 +661,26 @@ class _ChartCard extends StatelessWidget {
             subtitle: Text('body Text'),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16,),
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              bottom: 16,
+            ),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur ''adipiscing elit, sed do eiusmod tempor.',
-
+              'Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur '
+              'adipiscing elit, sed do eiusmod tempor.',
             ),
           ),
-        ],),
+        ],
+      ),
     );
   }
 }

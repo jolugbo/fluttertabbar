@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-tl\\values-tl.xml",
+            "outputFile": "C:\\Users\\JOLUGBO\\source\\repos\\fluttertabbar\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-tl\\values-tl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\f58cdb1aa5dadebd1cc249d35ee05feb\\browser-1.4.0\\res\\values-tl\\values-tl.xml",
@@ -52,23 +52,6 @@
                         "startOffsets": "2841",
                         "endColumns": "100",
                         "endOffsets": "2937"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\44663d8d686c1ad6194e817654f1c2d6\\jetified-twitter-core-3.1.1\\res\\values-tl\\values-tl.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "74",
-                        "endOffsets": "125"
-                    },
-                    "to": {
-                        "startLines": "25",
-                        "startColumns": "4",
-                        "startOffsets": "2942",
-                        "endColumns": "74",
-                        "endOffsets": "3012"
                     }
                 },
                 {

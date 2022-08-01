@@ -3,8 +3,8 @@
 //               OLUFEMI         ADETOLA             <bold!>JOLUGBO<bold!>
 
 //
-const RegisterationURL ='http://7a599492e061.ngrok.io/swagger/index.html';
-const imageBase ='assets/images/';
+const RegisterationURL = 'http://7a599492e061.ngrok.io/swagger/index.html';
+const imageBase = 'assets/images/';
 const email = "Email";
 const password = "Password";
 const signup = "Sign Up";
@@ -23,7 +23,8 @@ const female = "Female";
 const create = "Create";
 
 //Errors
-const email_error = "Email is not valid.";
+const email_invalid_error = "Email is not valid.";
+const email_exist_error = "Email already exit, Please login.";
 const firstName_error = "First name is not valid.";
 const lastName_error = "Last name is not valid.";
 const phoneNumber_error = "Phone number is not valid.";
@@ -33,7 +34,8 @@ const place_of_birth_error = "place of birth is not valid.";
 const state_of_origin_error = "state of birth is not valid.";
 const date_of_birth_error = "date of birth is not valid.";
 const password_error_length = "Password should be at least 8 symbols long.";
-const password_error_capital_letter = "Password should contain a capital letter.";
+const password_error_capital_letter =
+    "Password should contain a capital letter.";
 const password_error_small_letter = "Password should contain a small letter.";
 const password_error_digit = "Password should contain a digit";
 const internet_error = "Please Check your internet";
@@ -43,7 +45,8 @@ const investment_amount_error = "Investment Amount is not valid";
 const form_update_error = "Invalid form input";
 const passport_upload_error = "Kindly upload a passport";
 const emulator_url_error = "Environmental variable path unavailable";
-const account_verification_msg="Welcome please check your email to verify you account";
+const account_verification_msg =
+    "Welcome please check your email to verify you account";
 //State List
 const List<String> NigerianStates = [
   'Abia',
@@ -85,7 +88,5 @@ const List<String> NigerianStates = [
   'Zamfara'
 ];
 
-
-
 //ENVIRONMENT
-const  isProduction = false;
+const isProduction = false;

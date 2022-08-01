@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:flutter_twitter_login/flutter_twitter_login.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:twitter_login/twitter_login.dart';
+import 'package:get/get.dart';
 //import 'package:edurald/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,6 +24,9 @@ import '../../gen/assets.gen.dart';
 import '../../main.dart';
 import '../../utills/imageanimations.dart';
 import 'package:firebase_database/firebase_database.dart';
+
+import '../dashboard/dashboard.dart';
+import '../signin/signin_logic.dart';
 // final userRef =  FirebaseFirestore.instance.collection('users');
 
 class registration_formPage extends StatefulWidget {
@@ -43,11 +46,11 @@ class _Registration_formPageState extends State<registration_formPage>
   File _image = File(imageBase + 'graduatehat.jpg');
   final picker = ImagePicker();
   int blurrySize = 0;
-  double socialAuthsLocation = 0.75;
+  double socialAuthsLocation = 0.78;
   final int _numPages = 3;
   bool next = true;
   String initialCountry = "";
-  bool enableEmail = true;
+  bool enableEmail = false;
   bool isFirstView = true;
   bool _passwordVisible = false;
   int _currentPage = 0;
@@ -56,6 +59,7 @@ class _Registration_formPageState extends State<registration_formPage>
   bool showLoader = false;
   String? phoneNumber = '';
   bool emailIsValid = false;
+  bool emailExist = false;
   bool userNameIsValid = false;
   bool firstNameIsValid = false;
   bool lastNameIsValid = false;
@@ -77,7 +81,6 @@ class _Registration_formPageState extends State<registration_formPage>
   String countryCode = '';
   PhoneNumber? initialnumber;
   DateTime timeStamp = DateTime.now();
-  late UserCredential user;
   void showPopUp(String msg) {
     Fluttertoast.showToast(
         msg: msg,
@@ -145,47 +148,6 @@ class _Registration_formPageState extends State<registration_formPage>
     }
   }
 
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-
-  Future<UserCredential> signInWithTwitter() async {
-    print("tokens");
-    print("got here");
-    print(authsRef);
-    var tokens = await authsRef.doc("twitter").get();
-    print(tokens);
-    var twitterLogin = new TwitterLogin(
-      consumerKey: '<your consumer key>',
-      consumerSecret: '<your consumer secret>',
-    );
-
-    final result = await twitterLogin.authorize();
-
-    // Create a credential from the access token
-    final twitterAuthCredential = TwitterAuthProvider.credential(
-      accessToken: result.session.token!,
-      secret: result.session.secret,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance
-        .signInWithCredential(twitterAuthCredential);
-  }
-
   Future<void> updateUserRecords() async {
     if (!showLoader) {
       setState(() {
@@ -194,11 +156,7 @@ class _Registration_formPageState extends State<registration_formPage>
       });
       if (userNameIsValid) {
         saveUserToFirestore(user.user);
-        setState(() {
-          next = !next;
-          blurrySize = 0;
-          showLoader = false;
-        });
+        Get.offAll(dashboardPage());
       } else {
         showPopUp(userName_error);
         setState(() {
@@ -211,7 +169,6 @@ class _Registration_formPageState extends State<registration_formPage>
 
   Future<bool> userNameExist(String displayname) async {
     int size = 0;
-    print(displayname);
     await FirebaseFirestore.instance
         .collection("users")
         .where("unique", isEqualTo: displayname.toLowerCase())
@@ -223,10 +180,30 @@ class _Registration_formPageState extends State<registration_formPage>
           },
           onError: (e) => print("Error completing: $e"),
         );
-    print(size);
-    print(userNameIsValid);
     setState(() {
       userNameIsValid = !(size >= 1);
+      userNameStatus =
+          (size >= 1) ? UserNameStatus.error : UserNameStatus.success;
+    });
+    return size >= 1;
+  }
+
+  Future<bool> EmailExist(String displayname) async {
+    int size = 0;
+    await FirebaseFirestore.instance
+        .collection("users")
+        .where("email", isEqualTo: emailController.text.toLowerCase())
+        .get()
+        .then(
+          (res) => {
+            size = res.size,
+          },
+          onError: (e) => print("Error completing: $e"),
+        );
+    setState(() {
+      emailExist = (size >= 1);
+      print("email exist");
+      print(emailExist);
     });
     return size >= 1;
   }
@@ -299,8 +276,9 @@ class _Registration_formPageState extends State<registration_formPage>
     // currentUser = User.fromDocument(doc);
   }
 
-  saveUserToFirestore(user) {
-    userRef.doc(user.uid).set({
+  saveUserToFirestore(currentuser) {
+    userRef.doc(currentuser.uid).set({
+      "email": user.user?.email ?? emailController.text.trim(),
       "firstName": firstNameController.text.trim(),
       "lastName": lastNameController.text.trim(),
       "displayName": userNameController.text.trim(),
@@ -321,25 +299,79 @@ class _Registration_formPageState extends State<registration_formPage>
   }
 
   socialMediaSignup() async {
-    if (socialMediaSelectedOption == 1) {
-      user = await signInWithGoogle();
-    } else if (socialMediaSelectedOption == 2) {
-      user = await signInWithGoogle();
-    } else if (socialMediaSelectedOption == 3) {
-      user = await signInWithTwitter();
-    }
-
-    if (FirebaseAuth.instance.currentUser != null) {
+    try {
       setState(() {
-        _current = ++_current % 3;
-        userNameController.text = user.user?.displayName ?? "";
-        userNameController.text = userNameController.text.replaceAll(' ', '');
-        // _current = 2;
-        socialAuthsLocation = 1;
-        //next = !next;
-        isFirstView = false;
+        blurrySize = 1;
+        showLoader = true;
       });
+      if (socialMediaSelectedOption == 1) {
+        user = await signInWithGoogle();
+      } else if (socialMediaSelectedOption == 2) {
+        user = await signInWithGoogle();
+      } else if (socialMediaSelectedOption == 3) {
+        user = await signInWithTwitter();
+        await userNameExist(user.user?.displayName ?? "");
+        enableEmail = true;
+      }
+    } catch (e) {
+      if (e.toString() ==
+          "LateInitializationError: Field 'user' has already been initialized.") {
+        print("Hereee");
+        if (FirebaseAuth.instance.currentUser != null) {
+          bool isOldUser = await userExist();
+          if (isOldUser) {
+            Get.offAll(dashboardPage());
+            return;
+          } else
+            setState(() {
+              _current = ++_current % 3;
+              userNameController.text = user.user?.displayName ?? "";
+              userNameController.text =
+                  userNameController.text.replaceAll(' ', '');
+              // _current = 2;
+              socialAuthsLocation = 1;
+              //next = !next;
+              isFirstView = false;
+              blurrySize = 0;
+              showLoader = false;
+            });
+        }
+      }
+      //show error signing up notification
     }
+    if (FirebaseAuth.instance.currentUser != null) {
+      bool isOldUser = await userExist();
+      print("isOld?");
+      print(isOldUser);
+      if (isOldUser) {
+        Get.offAll(() => dashboardPage());
+        return;
+      } else
+        setState(() {
+          _current = ++_current % 3;
+          userNameController.text = user.user?.displayName ?? "";
+          userNameController.text = userNameController.text.replaceAll(' ', '');
+          // _current = 2;
+          socialAuthsLocation = 1;
+          //next = !next;
+          isFirstView = false;
+          blurrySize = 0;
+          showLoader = false;
+        });
+    }
+  }
+
+  Future<bool> userExist() async {
+    final docRef = await userRef.doc(user.user?.uid).get().then(
+      (DocumentSnapshot doc) {
+        if (doc.exists) {
+          return true;
+        } else
+          return false;
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
+    return docRef;
   }
 
   @override
@@ -362,15 +394,64 @@ class _Registration_formPageState extends State<registration_formPage>
     Widget thirdView = Container(
       alignment: Alignment.center,
       padding: EdgeInsets.all(0),
+      width: size.width * 0.8,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          Visibility(
+            child: TextField(
+                textAlignVertical: TextAlignVertical.bottom,
+                decoration: InputDecoration(
+                    labelText: 'Email ', labelStyle: blue20Style),
+                keyboardType: TextInputType.emailAddress,
+                controller: emailController,
+                onSubmitted: (value) async {
+                  await EmailExist(emailController.text.trim());
+                },
+                onChanged: (value) async {
+                  setState(() {
+                    EmailExist(emailController.text.trim());
+                    emailIsValid = emailValidator(value);
+                    if (!emailIsValid) {
+                      emailStatus = EmailStatus.error;
+                    } else
+                      emailStatus = EmailStatus.success;
+                  });
+                }),
+            maintainSize: false,
+            maintainAnimation: true,
+            maintainState: true,
+            visible: enableEmail,
+          ),
+          Visibility(
+            child: (emailStatus == EmailStatus.error)
+                ? error(email_invalid_error)
+                : Text(''),
+            maintainSize: false,
+            maintainAnimation: true,
+            maintainState: true,
+            visible: !emailIsValid,
+          ),
+          (emailExist) ? error(email_exist_error) : Text(''),
           TextField(
               decoration: InputDecoration(
                   labelText: 'User name :-', labelStyle: blue20Style),
               controller: userNameController,
+              // onSubmitted: (value) async {
+              //   if (value.contains(" ")) {
+              //     userNameController.text = value.replaceAll(' ', '');
+              //     showPopUp("space not allowed for UserName");
+              //   }
+              //   await userNameExist(userNameController.text.trim());
+              //   setState(() {
+              //     if (userNameIsValid) {
+              //       userNameStatus = UserNameStatus.success;
+              //     } else
+              //       userNameStatus = UserNameStatus.error;
+              //   });
+              // },
               onChanged: (value) async {
                 if (value.contains(" ")) {
                   userNameController.text = value.replaceAll(' ', '');
@@ -425,11 +506,12 @@ class _Registration_formPageState extends State<registration_formPage>
 
     Widget firstView = Container(
         alignment: Alignment.center,
+        width: size.width * 0.8,
         padding: EdgeInsets.all(0),
         child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               // Container(
               //   child: Stack(
@@ -484,44 +566,18 @@ class _Registration_formPageState extends State<registration_formPage>
               //
               //   width: size.width,alignment: Alignment.center,height: size.height * 0.15
               // ),
-              Hero(
-                tag: "splashscreenImage",
-                child: WidgetAnimator(
-                  component: Container(
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    width: MediaQuery.of(context).size.width,
-                    color: Colors.transparent,
-                    alignment: Alignment.topCenter,
-                    child: imgAnimation2(
-                      url: Assets.images.logo.path,
-                      time: Duration(milliseconds: 4000),
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      beginx: 0.1,
-                      endx: -0.1,
-                      beginy: 0,
-                      endy: 0,
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      transition: PositionedTransition,
-                    ),
-                  ),
-                  transition: Transform,
-                  animPattern: Curves.easeIn,
-                  pixle: Colors.transparent,
-                  time: Duration(seconds: 1),
-                  animType: "nothing",
-                  xAxis: 0,
-                  yAxis: 0,
-                ),
-              ),
               TextField(
                   textAlignVertical: TextAlignVertical.bottom,
-                  enabled: enableEmail,
                   decoration: InputDecoration(
                       labelText: 'Email ', labelStyle: blue20Style),
                   keyboardType: TextInputType.emailAddress,
                   controller: emailController,
-                  onChanged: (value) {
+                  onSubmitted: (value) async {
+                    await EmailExist(emailController.text.trim());
+                  },
+                  onChanged: (value) async {
                     setState(() {
+                      EmailExist(emailController.text.trim());
                       emailIsValid = emailValidator(value);
                       if (!emailIsValid) {
                         emailStatus = EmailStatus.error;
@@ -529,9 +585,16 @@ class _Registration_formPageState extends State<registration_formPage>
                         emailStatus = EmailStatus.success;
                     });
                   }),
-              (emailStatus == EmailStatus.error)
-                  ? error(email_error)
-                  : Text(''),
+              Visibility(
+                child: (emailStatus == EmailStatus.error)
+                    ? error(email_invalid_error)
+                    : Text(''),
+                maintainSize: false,
+                maintainAnimation: true,
+                maintainState: true,
+                visible: !emailIsValid,
+              ),
+              (emailExist) ? error(email_exist_error) : Text(''),
               TextField(
                 decoration: InputDecoration(
                     labelText: 'Password',
@@ -577,15 +640,46 @@ class _Registration_formPageState extends State<registration_formPage>
             top: 0,
             duration: Duration(seconds: 1),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
+              height: size.height * 0.4,
+              width: size.width,
+              //padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
               alignment: Alignment.center,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
+                    SizedBox(height: size.height * 0.05),
+                    Hero(
+                      tag: "splashscreenImage",
+                      child: WidgetAnimator(
+                        component: Container(
+                          height: size.height * 0.1,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.transparent,
+                          alignment: Alignment.topCenter,
+                          child: imgAnimation2(
+                            url: Assets.images.logo.path,
+                            time: Duration(milliseconds: 4000),
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            beginx: 0.1,
+                            endx: -0.1,
+                            beginy: 0,
+                            endy: 0,
+                            height: size.height * 0.1,
+                            transition: PositionedTransition,
+                          ),
+                        ),
+                        transition: Transform,
+                        animPattern: Curves.easeIn,
+                        pixle: Colors.transparent,
+                        time: Duration(seconds: 1),
+                        animType: "nothing",
+                        xAxis: 0,
+                        yAxis: 0,
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.05),
                     Hero(
                       tag: "headerTxt",
                       child: Text(
@@ -602,23 +696,26 @@ class _Registration_formPageState extends State<registration_formPage>
                       style: darkNormal18Style,
                       textAlign: TextAlign.center,
                     ),
+                    SizedBox(height: size.height * 0.05),
                   ]),
             ),
           ),
 
           //bottom rect
           AnimatedPositioned(
-            top: MediaQuery.of(context).size.height * 0.15,
-            height: MediaQuery.of(context).size.height,
-            duration: Duration(seconds: 0),
+            top: size.height * 0.15,
+            width: size.width,
+            duration: Duration(microseconds: 100),
             child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
+              width: size.width * 0.8,
+              height: size.height,
+              alignment: Alignment.center,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(height: size.height * 0.05),
                   AnimatedCrossFade(
                     duration: const Duration(milliseconds: 500),
                     firstChild: (isFirstView) ? firstView : thirdView,
@@ -626,9 +723,9 @@ class _Registration_formPageState extends State<registration_formPage>
                       alignment: Alignment.center,
                       padding: EdgeInsets.all(0),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           InternationalPhoneNumberInput(
                             onInputChanged: (PhoneNumber number) {
@@ -668,8 +765,8 @@ class _Registration_formPageState extends State<registration_formPage>
                         : CrossFadeState.showSecond,
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: MediaQuery.of(context).size.width,
+                    height: size.height * 0.4,
+                    width: size.width * 0.8,
                     alignment: Alignment.center,
                     child: Column(
                       children: <Widget>[
@@ -696,7 +793,7 @@ class _Registration_formPageState extends State<registration_formPage>
                           width: MediaQuery.of(context).size.width,
                           alignment: Alignment.center,
                           child: ButtonTheme(
-                              minWidth: MediaQuery.of(context).size.width,
+                              minWidth: size.width,
                               height: 40,
                               buttonColor: Colors.transparent,
                               child: RaisedButton(
@@ -709,8 +806,6 @@ class _Registration_formPageState extends State<registration_formPage>
                                   style: white18Style,
                                 ),
                                 onPressed: () async {
-                                  // await updateUserRecords();
-                                  // return;
                                   setState(() {
                                     _current = ++_current % 3;
                                   });
@@ -738,6 +833,7 @@ class _Registration_formPageState extends State<registration_formPage>
                                       await userNameExist(
                                           userNameController.text);
                                       if (!firstNameIsValid ||
+                                          emailExist ||
                                           !lastNameIsValid ||
                                           !userNameIsValid) {
                                         _current = 1;
@@ -785,12 +881,12 @@ class _Registration_formPageState extends State<registration_formPage>
               top: size.height * socialAuthsLocation,
               duration: Duration(microseconds: 500),
               child: Container(
-                  height: size.height * 0.25,
+                  height: size.height * 0.3,
                   color: Colors.transparent,
                   width: size.width,
                   alignment: Alignment.center,
                   child: Column(children: <Widget>[
-                    SizedBox(height: size.height * 0.02),
+                    SizedBox(height: size.height * 0.03),
                     Container(
                       width: MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
@@ -836,20 +932,20 @@ class _Registration_formPageState extends State<registration_formPage>
                         ],
                       ),
                     ),
-                    SizedBox(height: size.height * 0.02),
+                    //SizedBox(height: size.height * 0.02),
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.12,
+                      height: MediaQuery.of(context).size.height * 0.2,
                       width: MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
                       child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             CupertinoButton(
                                 child: Image.asset(
-                                    Assets.images.socials.linkedInIcon.path,
-                                    height: size.height * 0.08),
+                                    Assets.images.socials.facebook.path,
+                                    height: size.height * 0.05),
                                 onPressed: () => {
                                       setState(() {
                                         socialMediaSelectedOption = 1;
@@ -859,7 +955,7 @@ class _Registration_formPageState extends State<registration_formPage>
                             CupertinoButton(
                                 child: Image.asset(
                                     Assets.images.socials.googleIcon.path,
-                                    height: size.height * 0.07),
+                                    height: size.height * 0.05),
                                 onPressed: () => {
                                       setState(() {
                                         socialMediaSelectedOption = 2;
@@ -869,7 +965,7 @@ class _Registration_formPageState extends State<registration_formPage>
                             CupertinoButton(
                                 child: Image.asset(
                                     Assets.images.socials.twitterIcon.path,
-                                    height: size.height * 0.08),
+                                    height: size.height * 0.065),
                                 onPressed: () => {
                                       setState(() {
                                         socialMediaSelectedOption = 3;

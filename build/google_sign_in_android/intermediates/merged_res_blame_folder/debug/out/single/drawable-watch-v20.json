@@ -1,14 +1,14 @@
 [
     {
-        "merged": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\google_sign_in_android\\intermediates\\res\\merged\\debug\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml",
+        "merged": "C:\\Users\\JOLUGBO\\source\\repos\\fluttertabbar\\build\\google_sign_in_android\\intermediates\\res\\merged\\debug\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml",
+        "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\0fb7895b67ee9b797e0ef740963bbd16\\jetified-play-services-auth-20.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "C:\\Users\\JOLUGBO\\source\\repos\\fluttertabbar\\build\\google_sign_in_android\\intermediates\\res\\merged\\debug\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml",
         "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\0fb7895b67ee9b797e0ef740963bbd16\\jetified-play-services-auth-20.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml"
     },
     {
-        "merged": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\google_sign_in_android\\intermediates\\res\\merged\\debug\\drawable-watch-v20\\common_google_signin_btn_text_dark_normal.xml",
+        "merged": "C:\\Users\\JOLUGBO\\source\\repos\\fluttertabbar\\build\\google_sign_in_android\\intermediates\\res\\merged\\debug\\drawable-watch-v20\\common_google_signin_btn_text_dark_normal.xml",
         "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\0fb7895b67ee9b797e0ef740963bbd16\\jetified-play-services-auth-20.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_dark_normal.xml"
-    },
-    {
-        "merged": "C:\\Users\\JOLUGBO\\IdeaProjects\\fluttertabbar\\build\\google_sign_in_android\\intermediates\\res\\merged\\debug\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml",
-        "source": "C:\\Users\\JOLUGBO\\.gradle\\caches\\transforms-2\\files-2.1\\0fb7895b67ee9b797e0ef740963bbd16\\jetified-play-services-auth-20.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml"
     }
 ]

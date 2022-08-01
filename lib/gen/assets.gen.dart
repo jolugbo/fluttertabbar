@@ -76,6 +76,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/logo_with_name.png
+  AssetGenImage get logoWithName =>
+      const AssetGenImage('assets/images/logo_with_name.png');
+
   /// File path: assets/images/ph.jpg
   AssetGenImage get ph => const AssetGenImage('assets/images/ph.jpg');
 
@@ -150,6 +154,10 @@ class $AssetsJsonGen {
 
 class $AssetsImagesSocialsGen {
   const $AssetsImagesSocialsGen();
+
+  /// File path: assets/images/socials/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/images/socials/facebook.png');
 
   /// File path: assets/images/socials/googleIcon.png
   AssetGenImage get googleIcon =>

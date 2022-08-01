@@ -1,4 +1,3 @@
-
 //import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
@@ -18,6 +17,7 @@ import 'package:edurald/features/deepest_study/deepest_study.dart';
 import 'package:edurald/features/notifications/notifications.dart';
 import 'package:edurald/features/share/share.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,8 +32,9 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'models/strings.dart';
 
- final userRef =  FirebaseFirestore.instance.collection('users');
- final authsRef =  FirebaseFirestore.instance.collection('auths');
+final userRef = FirebaseFirestore.instance.collection('users');
+final authsRef = FirebaseFirestore.instance.collection('auths');
+late final UserCredential user;
 // final postRef =  FirebaseFirestore.instance.collection('posts');
 // final commentsRef =  FirebaseFirestore.instance.collection('comments');
 // final activityFeedRef =  FirebaseFirestore.instance.collection('feeds');
@@ -52,8 +53,6 @@ Future<void> main() async {
   //FirebaseDatabase database = FirebaseDatabase.instance;
   runApp(MyApp());
 }
-
-
 
 //class MyApp extends StatelessWidget {
 //  bool _amplifyConfigured = false;
@@ -91,34 +90,27 @@ class _MyAppState extends State<MyApp> {
   bool isAuth = false;
   bool rewardEarned = false;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  String version='';
+  String version = '';
   bool hasLoggedIn = false;
-
-
-
 
   getAppVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     print(packageInfo.version);
     setState(() {
-      version = 'V.'+packageInfo.version;
+      version = 'V.' + packageInfo.version;
     });
   }
 
   getAppState() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    FirebaseAuth.instance
-        .authStateChanges()
-        .listen((User? user) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         hasLoggedIn = false;
       } else {
         hasLoggedIn = true;
       }
     });
-    FirebaseAuth.instance
-        .idTokenChanges()
-        .listen((User? user) {
+    FirebaseAuth.instance.idTokenChanges().listen((User? user) {
       if (user == null) {
         hasLoggedIn = false;
       } else {
@@ -128,7 +120,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     getAppVersion();
     getAppState();
@@ -223,45 +215,47 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-    return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          routes: {
-            // When navigating to the "/" route, build the FirstScreen widget.
-            //'/': (context) => WalkThrough(),
-            // When navigating to the "/second" route, build the SecondScreen widget.
-            '/walkthrough': (context) => walkthroughPage(),
-            '/registration': (context) => registrationPage(),
-            '/registration_form': (context) => registration_formPage(),
-            '/registration_token': (context) => registration_tokenPage(),
-            '/signin': (context) => signinPage(),
-            '/dashboard': (context) => dashboardPage(),
-            '/leaderboard': (context) => leaderboard(),
-            '/share': (context) => share(),
-            '/notifications': (context) => notifications(),
-            '/deepest_learning': (context) => deepest_learning(),
-          },
-          onGenerateRoute: (RouteSettings settings) {
-            // return landing.route();
-          },
-          theme: ThemeData(
-            fontFamily: 'Montserrat',
-            primarySwatch: Colors.blue,
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-          ),
-          home: Scaffold(
-            body: (hasLoggedIn) ? signinPage(): walkthroughPage(),
+    return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          // When navigating to the "/" route, build the FirstScreen widget.
+          //'/': (context) => WalkThrough(),
+          // When navigating to the "/second" route, build the SecondScreen widget.
+          '/walkthrough': (context) => walkthroughPage(),
+          '/registration': (context) => registrationPage(),
+          '/registration_form': (context) => registration_formPage(),
+          '/registration_token': (context) => registration_tokenPage(),
+          '/signin': (context) => signinPage(),
+          '/dashboard': (context) => dashboardPage(),
+          '/leaderboard': (context) => leaderboard(),
+          '/share': (context) => share(),
+          '/notifications': (context) => notifications(),
+          '/deepest_learning': (context) => deepest_learning(),
+        },
+        onGenerateRoute: (RouteSettings settings) {
+          // return landing.route();
+        },
+        theme: ThemeData(
+          fontFamily: 'Montserrat',
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: Scaffold(
+          body: (hasLoggedIn) ? signinPage() : walkthroughPage(),
         ));
   }
+
   Route _createRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => (hasLoggedIn) ? signinPage(): walkthroughPage(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          (hasLoggedIn) ? signinPage() : walkthroughPage(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
         var curve = Curves.ease;
 
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
@@ -270,7 +264,6 @@ class _MyAppState extends State<MyApp> {
       },
     );
   }
-
 
   // @override
   // Widget build(BuildContext context) {

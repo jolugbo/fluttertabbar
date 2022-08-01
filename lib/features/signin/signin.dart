@@ -1,4 +1,4 @@
- import 'package:connectivity/connectivity.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ import 'package:edurald/utills/styles.dart';
 import 'package:edurald/validations/registration_validation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
- import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../gen/assets.gen.dart';
 import '../../utills/imageanimations.dart';
 
@@ -24,14 +24,17 @@ class signinPage extends StatefulWidget {
   _SigninPageState createState() => _SigninPageState();
 }
 
-class _SigninPageState extends State<signinPage>
-    with TickerProviderStateMixin {
+class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
   //String socialIcon = imageBase+'socials.png';
-  List<String> scrollText = ['Investment banking knowledge simplified',
-    'Learn and connect with other investors','Build your professional profile'];
+  List<String> scrollText = [
+    'Investment banking knowledge simplified',
+    'Learn and connect with other investors',
+    'Build your professional profile'
+  ];
   bool isSignInComplete = false;
-  bool  showLoader = false;
+  bool showLoader = false;
   int index = 0;
+  double socialAuthsLocation = 0.7;
   final int _numPages = 3;
   int _currentPage = 0;
   bool _passwordVisible = false;
@@ -42,16 +45,13 @@ class _SigninPageState extends State<signinPage>
   PasswordStatus passwordStatus = PasswordStatus.success;
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
-  String signInLinkedInIcon = imageBase+'signInLinkedIn.png';
-  String signInTwitterIcon = imageBase+'signInTwitter.png';
-  String signInGoogleIcon = imageBase+'signInGoogle.png';
+  String signInLinkedInIcon = imageBase + 'signInLinkedIn.png';
+  String signInTwitterIcon = imageBase + 'signInTwitter.png';
+  String signInGoogleIcon = imageBase + 'signInGoogle.png';
 
-
-
-
-  void showPopUp(String msg){
+  void showPopUp(String msg) {
     Fluttertoast.showToast(
-        msg:msg,
+        msg: msg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
@@ -107,7 +107,7 @@ class _SigninPageState extends State<signinPage>
 //         showLoader = false;
 //       });
 // //      if(res.isSignedIn){
-         Navigator.pushNamed(context, '/dashboard');
+    Navigator.pushNamed(context, '/dashboard');
 // //      }
 //
 //     } on AuthError catch (e) {
@@ -165,255 +165,334 @@ class _SigninPageState extends State<signinPage>
         //resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Stack(
-              overflow: Overflow.visible,
-              children: <Widget>[
+            child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Stack(
+            overflow: Overflow.visible,
+            children: <Widget>[
+              AnimatedPositioned(
+                  top: 0,
+                  duration: Duration(seconds: 1),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height,
+                  )),
 
-                AnimatedPositioned(
-                    top: 0,
-                    duration: Duration(seconds: 1),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height,
-                    )
-                ),
-
-                //bottom rect
-                AnimatedPositioned(
-                  top: MediaQuery.of(context).size.height * 0,
-                  height: MediaQuery.of(context).size.height,
+              //bottom rect
+              AnimatedPositioned(
+                  top: size.height * 0,
+                  height: size.height,
                   duration: Duration(seconds: 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        //height: MediaQuery.of(context).size.height * 0.12,
-                        width: MediaQuery.of(context).size.width,
-                        alignment: Alignment.center,
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Hero(
-                                tag: "splashscreenImage",
-                                child: WidgetAnimator(
-                                  component: Container(
-                                    height: MediaQuery.of(context).size.height * 0.1,
-                                    width: MediaQuery.of(context).size.width,
-                                    color: Colors.transparent,alignment: Alignment.topCenter,
-                                    child:
-                                    imgAnimation2(url: Assets.images.logo.path,time: Duration(milliseconds: 4000),
-                                      width: MediaQuery.of(context).size.width * 0.5,beginx:0.1,endx: -0.1, beginy: 0,endy: 0,
-                                      height: MediaQuery.of(context).size.height * 0.5,transition: PositionedTransition,
-                                    ),
-
-                                  ),
-                                  transition: Transform,animPattern: Curves.easeIn,pixle: Colors.transparent,time: Duration(seconds: 1),animType: "nothing",xAxis: 0,yAxis: 0,
-                                ),
-                              ),
-                              SizedBox(height: size.height * 0.1),
-                              Hero(
-                                tag: "headerTxt",
-                                child: Text('Welcome back!',style: blue25BoldStyle,textAlign: TextAlign.center,),
-                              ),
-                              SizedBox(height: 15,),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.95,
-                                child: Text('Sign in to learn and connect with other professionals like you',style: darkNormal18Style,textAlign: TextAlign.center,),
-                              ),
-                              ]),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            TextField(
-                                decoration: InputDecoration(
-                                    labelText: 'Email ',
-                                    labelStyle: blue20Style),
-                                controller: emailController,
-                                onChanged: (value) {
-                                  setState(() {
-                                    emailIsValid = emailValidator(value);
-                                    if (!emailIsValid) {
-                                      emailStatus = EmailStatus.error;
-                                    } else
-                                      emailStatus = EmailStatus.success;
-                                  });}
-                            ),
-                            (emailStatus == EmailStatus.error) ? error(email_error) : Text(''),
-                            TextField(
-                                decoration: InputDecoration(
-                                    labelText: 'Password ',
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                                        color: projectBlue,
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          width: size.width,
+                          alignment: Alignment.center,
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                SizedBox(height: size.height * 0.05),
+                                Hero(
+                                  tag: "splashscreenImage",
+                                  child: WidgetAnimator(
+                                    component: Container(
+                                      height: size.height * 0.1,
+                                      width: MediaQuery.of(context).size.width,
+                                      alignment: Alignment.topCenter,
+                                      child: imgAnimation2(
+                                        url: Assets.images.logoWithName.path,
+                                        time: Duration(milliseconds: 4000),
+                                        width: size.width * 0.5,
+                                        beginx: 0.1,
+                                        endx: -0.1,
+                                        beginy: 0,
+                                        endy: 0,
+                                        height: size.height * 0.5,
+                                        transition: PositionedTransition,
                                       ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _passwordVisible = !_passwordVisible;
-                                        });
-                                      },
                                     ),
-                                    labelStyle: blue20Style,focusColor: projectBlue),
-                                obscureText: !_passwordVisible,
-                                controller: passwordController,
-                                onChanged: (value) {
-                                  setState(() {
-                                    passwordValidationResp = loginPasswordValidator(value);
-                                    if (passwordValidationResp.validated == -1) {
-                                      passwordStatus = PasswordStatus.error;
-                                    } else
-                                      passwordStatus = PasswordStatus.success;
-                                  });}
-                            ),
-                            (passwordStatus == PasswordStatus.error) ? error(passwordValidationResp.error) : Text(''),
-                            Container(
-                              height: MediaQuery.of(context).size.height * 0.01,
-                            ),
-                            Container(
-                              child:RichText(
-                                textAlign: TextAlign.right,
-                                text: TextSpan(
-                                  text: 'Forgot password?',
-                                  style: grayUnderline15Style,
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      Navigator.pushNamed(context, '/forgotPass');
-                                    },
+                                    transition: Transform,
+                                    animPattern: Curves.easeIn,
+                                    pixle: Colors.transparent,
+                                    time: Duration(seconds: 1),
+                                    animType: "nothing",
+                                    xAxis: 0,
+                                    yAxis: 0,
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.05),
+                                Hero(
+                                  tag: "headerTxt",
+                                  child: Text(
+                                    'Welcome back!',
+                                    style: blue25BoldStyle,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.02),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.95,
+                                  child: Text(
+                                    'Sign in to learn and connect with other professionals like you',
+                                    style: darkNormal18Style,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.05),
+                              ]),
+                        ),
+                        Container(
+                          width: size.width * 0.8,
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              TextField(
+                                  decoration: InputDecoration(
+                                      labelText: 'Email ',
+                                      labelStyle: blue20Style),
+                                  controller: emailController,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      emailIsValid = emailValidator(value);
+                                      if (!emailIsValid) {
+                                        emailStatus = EmailStatus.error;
+                                      } else
+                                        emailStatus = EmailStatus.success;
+                                    });
+                                  }),
+                              (emailStatus == EmailStatus.error)
+                                  ? error(email_invalid_error)
+                                  : Text(''),
+                              TextField(
+                                  decoration: InputDecoration(
+                                      labelText: 'Password ',
+                                      suffixIcon: IconButton(
+                                        icon: Icon(
+                                          _passwordVisible
+                                              ? Icons.visibility
+                                              : Icons.visibility_off,
+                                          color: projectBlue,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            _passwordVisible =
+                                                !_passwordVisible;
+                                          });
+                                        },
+                                      ),
+                                      labelStyle: blue20Style,
+                                      focusColor: projectBlue),
+                                  obscureText: !_passwordVisible,
+                                  controller: passwordController,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      passwordValidationResp =
+                                          loginPasswordValidator(value);
+                                      if (passwordValidationResp.validated ==
+                                          -1) {
+                                        passwordStatus = PasswordStatus.error;
+                                      } else
+                                        passwordStatus = PasswordStatus.success;
+                                    });
+                                  }),
+                              (passwordStatus == PasswordStatus.error)
+                                  ? error(passwordValidationResp.error)
+                                  : Text(''),
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.01,
+                              ),
+                              Container(
+                                child: RichText(
+                                  textAlign: TextAlign.right,
+                                  text: TextSpan(
+                                    text: 'Forgot password?',
+                                    style: grayUnderline15Style,
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.pushNamed(
+                                            context, '/forgotPass');
+                                      },
+                                  ),
+                                ),
+                                width: MediaQuery.of(context).size.width,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.04,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                alignment: Alignment.center,
+                                child: ButtonTheme(
+                                    minWidth:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    height: 40,
+                                    buttonColor: Colors.transparent,
+                                    child: RaisedButton(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                          side: BorderSide(color: projectBlue)),
+                                      color: projectBlue,
+                                      child: Text(
+                                        'Get Started',
+                                        style: white18Style,
+                                      ),
+                                      onPressed: () async {
+                                        var connectivityResult =
+                                            await (Connectivity()
+                                                .checkConnectivity());
+                                        if (connectivityResult ==
+                                            ConnectivityResult.none) {
+                                          showPopUp(internet_error);
+                                          // Mobile is not Connected to Internet
+                                        } else if (connectivityResult ==
+                                            ConnectivityResult.mobile) {
+                                          signInUser();
+                                          // I am connected to a mobile network.
+                                        } else if (connectivityResult ==
+                                            ConnectivityResult.wifi) {
+                                          signInUser();
+                                          // I am connected to a wifi network.
+                                        }
+                                      },
+                                      highlightElevation: 0.8,
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.12),
+                      ],
+                    ),
+                  )),
+
+              AnimatedPositioned(
+                  top: size.height * socialAuthsLocation,
+                  duration: Duration(microseconds: 500),
+                  child: Container(
+                      height: size.height * 0.3,
+                      color: Colors.transparent,
+                      width: size.width,
+                      alignment: Alignment.center,
+                      child: Column(children: <Widget>[
+                        SizedBox(height: size.height * 0.03),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(0),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.all(0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
+                                      child: Container(
+                                          height: 3,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.3,
+                                          color: projectBlue),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'OR',
+                                        style: darkSemiBold19Style,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
+                                      child: Container(
+                                          height: 3,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.3,
+                                          color: projectBlue),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height * 0.04,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        alignment: Alignment.center,
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.7,
-                              alignment: Alignment.center,
-                              child: ButtonTheme(
-                                  minWidth: MediaQuery.of(context).size.width * 0.6,
-                                  height: 40,
-                                  buttonColor: Colors.transparent,
-                                  child: RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(5.0),
-                                        side: BorderSide(color: projectBlue)
-                                    ),
-                                    color: projectBlue,
-                                    child: Text('Get Started',style: white18Style,),
-                                    onPressed: () async {
-                                      var connectivityResult = await (Connectivity().checkConnectivity());
-                                      if (connectivityResult == ConnectivityResult.none) {
-                                        showPopUp(internet_error);
-                                        // Mobile is not Connected to Internet
-                                      }
-                                      else if (connectivityResult == ConnectivityResult.mobile) {
-                                        signInUser();
-                                        // I am connected to a mobile network.
-                                      }
-                                      else if (connectivityResult == ConnectivityResult.wifi) {
-                                        signInUser();
-                                        // I am connected to a wifi network.
-                                      }
-                                    },
-                                    highlightElevation: 0.8,
-                                  )),
-                            ),
-                          ],
+                        //SizedBox(height: size.height * 0.02),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          width: MediaQuery.of(context).size.width,
+                          alignment: Alignment.center,
+                          child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                CupertinoButton(
+                                    child: Image.asset(
+                                        Assets.images.socials.facebook.path,
+                                        height: size.height * 0.05),
+                                    onPressed: () => {}),
+                                CupertinoButton(
+                                    child: Image.asset(
+                                        Assets.images.socials.googleIcon.path,
+                                        height: size.height * 0.05),
+                                    onPressed: () => {}),
+                                CupertinoButton(
+                                    child: Image.asset(
+                                        Assets.images.socials.twitterIcon.path,
+                                        height: size.height * 0.065),
+                                    onPressed: () => {}),
+                              ]),
                         ),
-                      ),
-                      SizedBox(height: size.height * 0.05),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        alignment: Alignment.center, padding:EdgeInsets.all(0),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.8,
-                              alignment: Alignment.center, padding:EdgeInsets.all(0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                    child: Container(
-                                        height: 3,
-                                        width: MediaQuery.of(context).size.width * 0.3,
-                                        color: projectBlue),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    child: Text('OR',style: darkSemiBold19Style,textAlign: TextAlign.center,),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                                    child: Container(
-                                        height: 3,
-                                        width: MediaQuery.of(context).size.width * 0.3,
-                                        color: projectBlue),
-                                  ),
-
-                                ],
+                        Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            alignment: Alignment.center,
+                            child: GestureDetector(
+                              child: Text(
+                                "Don't have an account ?",
+                                style: blue20Style,
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: size.height * 0.02),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.12,
-                        width: MediaQuery.of(context).size.width,
-                        alignment: Alignment.center,
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              CupertinoButton(child: Image.asset(Assets.images.socials.linkedInIcon.path,height: size.height * 0.08), onPressed: () =>print('LinkedIn Clicked'),),
-                              CupertinoButton(child: Image.asset(Assets.images.socials.googleIcon.path,height: size.height * 0.07), onPressed: () =>print('Google Clicked'),),
-                              CupertinoButton(child: Image.asset(Assets.images.socials.twitterIcon.path,height: size.height * 0.08), onPressed: () =>print('Twitter Clicked'),),
+                              onTap: () => {
+                                Navigator.pushNamed(
+                                    context, '/registration_form')
+                              },
+                            )),
+                      ]))),
 
-                            ]),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        alignment: Alignment.center,
-                        child: GestureDetector(
-                          child: Text(
-                            "Don't have an account ?",
-                            style: blue20Style,
-                          ),onTap: () => {
-                          Navigator.pushNamed(
-                              context, '/registration_form')
-                        },
-                        )
-                      ),
-                    ],
-                  ),
-                ),
-                if(showLoader)AnimatedPositioned(
+              if (showLoader)
+                AnimatedPositioned(
                   top: MediaQuery.of(context).size.height * 0,
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
@@ -422,11 +501,8 @@ class _SigninPageState extends State<signinPage>
                     child: new CircularProgressIndicator(),
                   ),
                 )
-              ],
-            ),
-          )
-
-        ));
+            ],
+          ),
+        )));
   }
-
 }

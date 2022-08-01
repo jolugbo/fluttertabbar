@@ -1,0 +1,25 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.maru.twitter_login" >
+4
+5    <uses-sdk android:minSdkVersion="16" />
+5-->C:\Users\JOLUGBO\AppData\Local\Pub\Cache\hosted\pub.dartlang.org\twitter_login-4.2.3\android\src\main\AndroidManifest.xml
+6
+7    <queries>
+7-->C:\Users\JOLUGBO\AppData\Local\Pub\Cache\hosted\pub.dartlang.org\twitter_login-4.2.3\android\src\main\AndroidManifest.xml:10:5-15:15
+8        <intent>
+8-->C:\Users\JOLUGBO\AppData\Local\Pub\Cache\hosted\pub.dartlang.org\twitter_login-4.2.3\android\src\main\AndroidManifest.xml:11:9-14:18
+9            <action android:name="android.support.customtabs.action.CustomTabsService" />
+9-->C:\Users\JOLUGBO\AppData\Local\Pub\Cache\hosted\pub.dartlang.org\twitter_login-4.2.3\android\src\main\AndroidManifest.xml:12:13-13:73
+9-->C:\Users\JOLUGBO\AppData\Local\Pub\Cache\hosted\pub.dartlang.org\twitter_login-4.2.3\android\src\main\AndroidManifest.xml:12:21-104
+10        </intent>
+11    </queries>
+12
+13    <application>
+13-->C:\Users\JOLUGBO\AppData\Local\Pub\Cache\hosted\pub.dartlang.org\twitter_login-4.2.3\android\src\main\AndroidManifest.xml:4:5-8:19
+14        <activity android:name="com.maru.twitter_login.chrome_custom_tabs.ChromeCustomTabsActivity" />
+14-->C:\Users\JOLUGBO\AppData\Local\Pub\Cache\hosted\pub.dartlang.org\twitter_login-4.2.3\android\src\main\AndroidManifest.xml:6:9-7:96
+14-->C:\Users\JOLUGBO\AppData\Local\Pub\Cache\hosted\pub.dartlang.org\twitter_login-4.2.3\android\src\main\AndroidManifest.xml:7:13-94
+15    </application>
+16
+17</manifest>

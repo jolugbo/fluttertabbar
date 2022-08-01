@@ -23,5 +23,4 @@
     <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Otvoriť v prehliadači"</string>
     <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Zdieľať odkaz"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
-    <string name="tw__login_btn_txt">Prihlásiť sa na Twitter</string>
 </resources>
