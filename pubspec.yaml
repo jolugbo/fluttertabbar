@@ -71,6 +71,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   twitter_login: ^4.0.1
   get: ^4.6.5
+  flutter_facebook_auth: ^4.4.0+1
 
 flutter_native_splash:
   image: assets/images/logo.png

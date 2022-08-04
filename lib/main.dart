@@ -17,6 +17,7 @@ import 'package:edurald/features/deepest_study/deepest_study.dart';
 import 'package:edurald/features/notifications/notifications.dart';
 import 'package:edurald/features/share/share.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:package_info/package_info.dart';
@@ -26,11 +27,9 @@ import 'features/onboarding/registration.dart';
 import 'features/onboarding/registration_form.dart';
 import 'features/onboarding/registration_token.dart';
 import 'features/onboarding/walkthrough.dart';
-import 'gen/assets.gen.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 //import 'models/user.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'models/strings.dart';
 
 final userRef = FirebaseFirestore.instance.collection('users');
 final authsRef = FirebaseFirestore.instance.collection('auths');
@@ -50,7 +49,15 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   dotenv.load();
   await Firebase.initializeApp();
-  //FirebaseDatabase database = FirebaseDatabase.instance;
+  if (kIsWeb) {
+    // initialiaze the facebook javascript SDK
+    await FacebookAuth.instance.webInitialize(
+      appId: "1329834907365798",
+      cookie: true,
+      xfbml: true,
+      version: "v13.0",
+    );
+  }
   runApp(MyApp());
 }
 

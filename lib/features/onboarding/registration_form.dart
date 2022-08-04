@@ -81,6 +81,7 @@ class _Registration_formPageState extends State<registration_formPage>
   String countryCode = '';
   PhoneNumber? initialnumber;
   DateTime timeStamp = DateTime.now();
+
   void showPopUp(String msg) {
     Fluttertoast.showToast(
         msg: msg,
@@ -305,7 +306,7 @@ class _Registration_formPageState extends State<registration_formPage>
         showLoader = true;
       });
       if (socialMediaSelectedOption == 1) {
-        user = await signInWithGoogle();
+        user = await signInWithFacebook();
       } else if (socialMediaSelectedOption == 2) {
         user = await signInWithGoogle();
       } else if (socialMediaSelectedOption == 3) {
@@ -314,9 +315,11 @@ class _Registration_formPageState extends State<registration_formPage>
         enableEmail = true;
       }
     } catch (e) {
+      print("Hereee");
+      print(e.toString());
       if (e.toString() ==
           "LateInitializationError: Field 'user' has already been initialized.") {
-        print("Hereee");
+        
         if (FirebaseAuth.instance.currentUser != null) {
           bool isOldUser = await userExist();
           if (isOldUser) {
@@ -358,6 +361,11 @@ class _Registration_formPageState extends State<registration_formPage>
           blurrySize = 0;
           showLoader = false;
         });
+    }
+    else{
+          blurrySize = 0;
+          showLoader = false;
+        showPopUp('The password provided is too weak.');
     }
   }
 
@@ -649,13 +657,13 @@ class _Registration_formPageState extends State<registration_formPage>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: size.height * 0.05),
+                    SizedBox(height: size.height * 0.08),
                     Hero(
                       tag: "splashscreenImage",
                       child: WidgetAnimator(
                         component: Container(
-                          height: size.height * 0.1,
-                          width: MediaQuery.of(context).size.width,
+                          height: size.height * 0.05,
+                          width: size.width,
                           color: Colors.transparent,
                           alignment: Alignment.topCenter,
                           child: imgAnimation2(
