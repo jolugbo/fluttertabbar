@@ -44,6 +44,9 @@ bower_components
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
+# ignore facebook secrete key
+android/app/src/main/res/values/string.xml
+
 # Dependency directories
 node_modules/
 

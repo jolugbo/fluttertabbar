@@ -12,8 +12,8 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:14:5-67
-14-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:14:22-64
+14-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:5-67
+14-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:22-64
 15    <!--
 16     io.flutter.app.FlutterApplication is an android.app.Application that
 17         calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -22,13 +22,13 @@
 20         FlutterApplication and put your custom class here.
 21    -->
 22    <queries>
-22-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:8:10-11:15
+22-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:7:10-10:15
 23        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
-23-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:9:9-89
-23-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:9:19-86
+23-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:8:9-89
+23-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:8:19-86
 24        <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
-24-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:9:9-89
-24-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:9:19-86
+24-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:8:9-89
+24-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:8:19-86
 25        <intent>
 25-->[:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-10:18
 26            <action android:name="android.support.customtabs.action.CustomTabsService" />
@@ -38,11 +38,11 @@
 28    </queries>
 29
 30    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-30-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:12:5-79
-30-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:12:22-76
+30-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:11:5-79
+30-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:11:22-76
 31    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-31-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:5-85
-31-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:22-82
+31-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:12:5-85
+31-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:12:22-82
 32    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 32-->[:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-79
 32-->[:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-76
@@ -60,524 +60,534 @@
 36-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:26:22-107
 37
 38    <application
-38-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:15:5-75:19
-39        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-39-->[androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:24:18-86
-40        android:debuggable="true"
-41        android:icon="@mipmap/ic_launcher"
-41-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:17:9-43
-42        android:label="Edurald"
-42-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:16:9-32
-43        android:supportsRtl="true"
-43-->[com.facebook.android:facebook-login:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:28:18-44
-44        android:usesCleartextTraffic="true" >
-44-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:18:9-44
-45        <activity
-45-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:19:9-62:20
-46            android:name="com.app.edurald.MainActivity"
-46-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:13-41
-47            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-47-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:23:13-163
-48            android:hardwareAccelerated="true"
-48-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:24:13-47
-49            android:launchMode="singleTop"
-49-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:13-43
-50            android:theme="@style/LaunchTheme"
-50-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:22:13-47
-51            android:windowSoftInputMode="adjustResize" >
-51-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:25:13-55
+39        android:name="android.app.Application"
+39-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:18:9-42
+40        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+40-->[androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:24:18-86
+41        android:debuggable="true"
+42        android:icon="@mipmap/ic_launcher"
+42-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:17:9-43
+43        android:label="Edurald"
+43-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:16:9-32
+44        android:supportsRtl="true"
+44-->[com.facebook.android:facebook-android-sdk:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f31e357cdf97255d41033e9d374801ae\jetified-facebook-android-sdk-14.1.0\AndroidManifest.xml:28:18-44
+45        android:usesCleartextTraffic="true" >
+45-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml:8:13-48
+46        <meta-data
+46-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:8-106
+47            android:name="com.facebook.sdk.ApplicationId"
+47-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:19-64
+48            android:value="@string/facebook_app_id" />
+48-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:65-104
+49        <meta-data
+49-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:8-110
+50            android:name="com.facebook.sdk.ClientToken"
+50-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:19-62
+51            android:value="@string/facebook_client_token" />
+51-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:63-108
 52
-53            <!--
-54                 Specifies an Android theme to apply to this Activity as soon as
-55                 the Android process has started. This theme is visible to the user
-56                 while the Flutter UI initializes. After that, this theme continues
-57                 to determine the Window background behind the Flutter UI.
-58            -->
-59            <meta-data
-59-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:30:13-33:17
-60                android:name="io.flutter.embedding.android.NormalTheme"
-60-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:31:15-70
-61                android:resource="@style/NormalTheme" />
-61-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:32:15-52
-62            <!--
-63                 Displays an Android View that continues showing the launch screen
-64                 Drawable until Flutter paints its first frame, then this splash
-65                 screen fades out. A splash screen is useful to avoid any visual
-66                 gap between the end of Android's launch screen and the painting of
-67                 Flutter's first frame.
-68            -->
-69            <meta-data
-69-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:39:13-42:17
-70                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-70-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:40:15-79
-71                android:resource="@drawable/launch_background" />
-71-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:41:15-61
-72            <meta-data
-72-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:44:13-90
-73                android:name="flutter_deeplinking_enabled"
-73-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:44:24-66
-74                android:value="true" />
-74-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:44:67-87
-75            <meta-data
-75-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:45:13-111
-76                android:name="com.facebook.sdk.ApplicationId"
-76-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:45:24-69
-77                android:value="@string/facebook_app_id" />
-77-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:45:70-109
-78            <meta-data
-78-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:46:13-115
-79                android:name="com.facebook.sdk.ClientToken"
-79-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:46:24-67
-80                android:value="@string/facebook_client_token" />
-80-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:46:68-113
-81
-82            <intent-filter>
-82-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:47:13-52:29
-83                <action android:name="android.intent.action.VIEW" />
-83-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:17-69
-83-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:25-66
-84
-85                <category android:name="android.intent.category.DEFAULT" />
-85-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:17-76
-85-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:27-73
-86                <category android:name="android.intent.category.BROWSABLE" />
-86-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:17-78
-86-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:27-75
-87
-88                <data
-88-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:17-68
-89                    android:host=""
-89-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:51-66
-90                    android:scheme="twittersdk" />
-90-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:23-50
-91            </intent-filter>
-92            <!--
-93                 Don't delete the meta-data below.
-94                 This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-95            -->
-96            <meta-data
-96-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:13-57:41
-97                android:name="flutterEmbedding"
-97-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:21-52
-98                android:value="2" />
-98-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:21-38
-99
-100            <intent-filter>
-100-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:58:13-61:29
-101                <action android:name="android.intent.action.MAIN" />
-101-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:59:17-68
-101-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:59:25-66
-102
-103                <category android:name="android.intent.category.LAUNCHER" />
-103-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:60:17-76
-103-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:60:27-74
-104            </intent-filter>
-105        </activity>
-106        <activity
-106-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:63:1-64:136
-107            android:name="com.facebook.FacebookActivity"
-107-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:63:11-55
-108            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-108-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:64:17-100
-109            android:label="@string/app_name"
-109-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:64:101-133
-110            android:theme="@style/com_facebook_activity_theme" />
-110-->[com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:33:13-63
-111        <activity
-111-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:65:13-74:24
-112            android:name="com.facebook.CustomTabActivity"
-112-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:66:17-62
-113            android:exported="true" >
-113-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:67:17-40
-114            <intent-filter>
-114-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:68:17-73:33
-115                <action android:name="android.intent.action.VIEW" />
-115-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:17-69
-115-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:25-66
-116
-117                <category android:name="android.intent.category.DEFAULT" />
-117-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:17-76
-117-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:27-73
-118                <category android:name="android.intent.category.BROWSABLE" />
-118-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:17-78
-118-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:27-75
+53        <activity
+53-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:23:9-64:20
+54            android:name="com.app.edurald.MainActivity"
+54-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:24:13-41
+55            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+55-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:27:13-163
+56            android:hardwareAccelerated="true"
+56-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:28:13-47
+57            android:launchMode="singleTop"
+57-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:25:13-43
+58            android:theme="@style/LaunchTheme"
+58-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:26:13-47
+59            android:windowSoftInputMode="adjustResize" >
+59-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:29:13-55
+60
+61            <!--
+62                 Specifies an Android theme to apply to this Activity as soon as
+63                 the Android process has started. This theme is visible to the user
+64                 while the Flutter UI initializes. After that, this theme continues
+65                 to determine the Window background behind the Flutter UI.
+66            -->
+67            <meta-data
+67-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:34:13-37:17
+68                android:name="io.flutter.embedding.android.NormalTheme"
+68-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:35:15-70
+69                android:resource="@style/NormalTheme" />
+69-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:36:15-52
+70            <!--
+71                 Displays an Android View that continues showing the launch screen
+72                 Drawable until Flutter paints its first frame, then this splash
+73                 screen fades out. A splash screen is useful to avoid any visual
+74                 gap between the end of Android's launch screen and the painting of
+75                 Flutter's first frame.
+76            -->
+77            <meta-data
+77-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:43:13-46:17
+78                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+78-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:44:15-79
+79                android:resource="@drawable/launch_background" />
+79-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:45:15-61
+80            <meta-data
+80-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:13-90
+81                android:name="flutter_deeplinking_enabled"
+81-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:24-66
+82                android:value="true" />
+82-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:67-87
+83            <meta-data
+83-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:8-106
+84                android:name="com.facebook.sdk.ApplicationId"
+84-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:19-64
+85                android:value="@string/facebook_app_id" />
+85-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:65-104
+86            <meta-data
+86-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:8-110
+87                android:name="com.facebook.sdk.ClientToken"
+87-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:19-62
+88                android:value="@string/facebook_client_token" />
+88-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:63-108
+89            <meta-data
+89-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:13-77
+90                android:name="flutterEmbedding"
+90-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:24-55
+91                android:value="2" />
+91-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:57-74
+92
+93            <intent-filter>
+93-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:53:13-58:29
+94                <action android:name="android.intent.action.VIEW" />
+94-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:17-69
+94-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:25-66
+95
+96                <category android:name="android.intent.category.DEFAULT" />
+96-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:17-76
+96-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:27-73
+97                <category android:name="android.intent.category.BROWSABLE" />
+97-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:17-78
+97-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:27-75
+98
+99                <data
+99-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:17-68
+100                    android:host=""
+100-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:51-66
+101                    android:scheme="twittersdk" />
+101-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:23-50
+102            </intent-filter>
+103            <intent-filter>
+103-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:60:13-63:29
+104                <action android:name="android.intent.action.MAIN" />
+104-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:61:17-68
+104-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:61:25-66
+105
+106                <category android:name="android.intent.category.LAUNCHER" />
+106-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:62:17-76
+106-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:62:27-74
+107            </intent-filter>
+108        </activity>
+109        <activity
+109-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:66:9-68:52
+110            android:name="com.facebook.FacebookActivity"
+110-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:66:19-63
+111            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+111-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:67:17-100
+112            android:label="@string/app_name"
+112-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:68:17-49
+113            android:theme="@style/com_facebook_activity_theme" />
+113-->[com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:33:13-63
+114        <activity
+114-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:70:9-80:20
+115            android:name="com.facebook.CustomTabActivity"
+115-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:71:17-62
+116            android:exported="true" >
+116-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:72:17-40
+117            <intent-filter>
+117-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:73:17-78:33
+118                <action android:name="android.intent.action.VIEW" />
+118-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:17-69
+118-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:25-66
 119
-120                <data android:scheme="@string/fb_login_protocol_scheme" />
-120-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:17-68
-120-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:23-50
-121            </intent-filter>
-122            <intent-filter>
-122-->[com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:39:13-48:29
-123                <action android:name="android.intent.action.VIEW" />
-123-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:17-69
-123-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:25-66
-124
-125                <category android:name="android.intent.category.DEFAULT" />
-125-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:17-76
-125-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:27-73
-126                <category android:name="android.intent.category.BROWSABLE" />
-126-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:17-78
-126-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:27-75
+120                <category android:name="android.intent.category.DEFAULT" />
+120-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:17-76
+120-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:27-73
+121                <category android:name="android.intent.category.BROWSABLE" />
+121-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:17-78
+121-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:27-75
+122
+123                <data android:scheme="@string/fb_login_protocol_scheme" />
+123-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:17-68
+123-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:23-50
+124            </intent-filter>
+125            <intent-filter>
+125-->[com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:39:13-48:29
+126                <action android:name="android.intent.action.VIEW" />
+126-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:17-69
+126-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:25-66
 127
-128                <data
-128-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:17-68
-129                    android:host="cct.com.app.edurald"
-129-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:51-66
-130                    android:scheme="fbconnect" />
-130-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:23-50
-131            </intent-filter>
-132        </activity>
-133
-134        <service
-134-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
-135            android:name="com.google.firebase.components.ComponentDiscoveryService"
-135-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
-136            android:directBootAware="true"
-136-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:35:13-43
-137            android:exported="false" >
-137-->[com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:17:13-37
-138            <meta-data
-138-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-139                android:name="com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar"
-139-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-127
-140                android:value="com.google.firebase.components.ComponentRegistrar" />
-140-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+128                <category android:name="android.intent.category.DEFAULT" />
+128-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:17-76
+128-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:27-73
+129                <category android:name="android.intent.category.BROWSABLE" />
+129-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:17-78
+129-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:27-75
+130
+131                <data
+131-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:17-68
+132                    android:host="cct.com.app.edurald"
+132-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:51-66
+133                    android:scheme="fbconnect" />
+133-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:23-50
+134            </intent-filter>
+135        </activity>
+136
+137        <service
+137-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+138            android:name="com.google.firebase.components.ComponentDiscoveryService"
+138-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+139            android:directBootAware="true"
+139-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:35:13-43
+140            android:exported="false" >
+140-->[com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:17:13-37
 141            <meta-data
-141-->[:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-142                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-142-->[:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
+141-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+142                android:name="com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar"
+142-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-127
 143                android:value="com.google.firebase.components.ComponentRegistrar" />
-143-->[:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+143-->[:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 144            <meta-data
-144-->[:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-14:85
-145                android:name="com.google.firebase.components:io.flutter.plugins.firebase.functions.FlutterFirebaseAppRegistrar"
-145-->[:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:13:17-128
+144-->[:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+145                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+145-->[:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
 146                android:value="com.google.firebase.components.ComponentRegistrar" />
-146-->[:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-82
+146-->[:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 147            <meta-data
-147-->[:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:85
-148                android:name="com.google.firebase.components:io.flutter.plugins.firebase.analytics.FlutterFirebaseAppRegistrar"
-148-->[:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-128
+147-->[:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-14:85
+148                android:name="com.google.firebase.components:io.flutter.plugins.firebase.functions.FlutterFirebaseAppRegistrar"
+148-->[:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:13:17-128
 149                android:value="com.google.firebase.components.ComponentRegistrar" />
-149-->[:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-82
+149-->[:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-82
 150            <meta-data
-150-->[:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-151                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-151-->[:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+150-->[:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:85
+151                android:name="com.google.firebase.components:io.flutter.plugins.firebase.analytics.FlutterFirebaseAppRegistrar"
+151-->[:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-128
 152                android:value="com.google.firebase.components.ComponentRegistrar" />
-152-->[:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+152-->[:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-82
 153            <meta-data
-153-->[:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-154                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
-154-->[:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-126
+153-->[:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+154                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+154-->[:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 155                android:value="com.google.firebase.components.ComponentRegistrar" />
-155-->[:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+155-->[:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 156            <meta-data
-156-->[:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
-157                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-157-->[:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+156-->[:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+157                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
+157-->[:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-126
 158                android:value="com.google.firebase.components.ComponentRegistrar" />
-158-->[:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+158-->[:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 159            <meta-data
-159-->[com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:18:13-20:85
-160                android:name="com.google.firebase.components:com.google.firebase.functions.FunctionsRegistrar"
-160-->[com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:19:17-111
+159-->[:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+160                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+160-->[:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 161                android:value="com.google.firebase.components.ComponentRegistrar" />
-161-->[com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:20:17-82
+161-->[:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 162            <meta-data
-162-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:67:13-69:85
-163                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-163-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:68:17-109
+162-->[com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:18:13-20:85
+163                android:name="com.google.firebase.components:com.google.firebase.functions.FunctionsRegistrar"
+163-->[com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:19:17-111
 164                android:value="com.google.firebase.components.ComponentRegistrar" />
-164-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:69:17-82
+164-->[com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:20:17-82
 165            <meta-data
-165-->[com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:20:13-22:85
-166                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-166-->[com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:21:17-111
+165-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:67:13-69:85
+166                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+166-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:68:17-109
 167                android:value="com.google.firebase.components.ComponentRegistrar" />
-167-->[com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:22:17-82
+167-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:69:17-82
 168            <meta-data
-168-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:33:13-35:85
-169                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-169-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:34:17-107
+168-->[com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:20:13-22:85
+169                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+169-->[com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:21:17-111
 170                android:value="com.google.firebase.components.ComponentRegistrar" />
-170-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:35:17-82
+170-->[com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:22:17-82
 171            <meta-data
-171-->[com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:32:13-34:85
-172                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-172-->[com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:33:17-109
+171-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:33:13-35:85
+172                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+172-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:34:17-107
 173                android:value="com.google.firebase.components.ComponentRegistrar" />
-173-->[com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:34:17-82
+173-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:35:17-82
 174            <meta-data
-174-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:32:13-34:85
-175                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-175-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:33:17-96
+174-->[com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:32:13-34:85
+175                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+175-->[com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:33:17-109
 176                android:value="com.google.firebase.components.ComponentRegistrar" />
-176-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:34:17-82
+176-->[com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:34:17-82
 177            <meta-data
-177-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:31:13-33:85
-178                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-178-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:32:17-139
+177-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:32:13-34:85
+178                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+178-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:33:17-96
 179                android:value="com.google.firebase.components.ComponentRegistrar" />
-179-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:33:17-82
+179-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:34:17-82
 180            <meta-data
-180-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:18:13-20:85
-181                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-181-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:19:17-127
+180-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:31:13-33:85
+181                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+181-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:32:17-139
 182                android:value="com.google.firebase.components.ComponentRegistrar" />
-182-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:20:17-82
-183        </service>
-184
-185        <provider
-185-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
-186            android:name="io.flutter.plugins.share.ShareFileProvider"
-186-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-70
-187            android:authorities="com.app.edurald.flutter.share_provider"
-187-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
-188            android:exported="false"
-188-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
-189            android:grantUriPermissions="true" >
-189-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
-190            <meta-data
-190-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:68
-191                android:name="android.support.FILE_PROVIDER_PATHS"
-191-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
-192                android:resource="@xml/flutter_share_file_paths" />
-192-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
-193        </provider>
-194        <provider
-194-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
-195            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-195-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
-196            android:authorities="com.app.edurald.flutter.image_provider"
-196-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
-197            android:exported="false"
-197-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
-198            android:grantUriPermissions="true" >
-198-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
-199            <meta-data
-199-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:68
-200                android:name="android.support.FILE_PROVIDER_PATHS"
-200-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
-201                android:resource="@xml/flutter_image_picker_file_paths" />
-201-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
-202        </provider>
-203
-204        <activity android:name="com.maru.twitter_login.chrome_custom_tabs.ChromeCustomTabsActivity" />
-204-->[:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:14:9-103
-204-->[:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:14:19-100
-205
-206        <uses-library
-206-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-207            android:name="androidx.window.extensions"
-207-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-208            android:required="false" />
-208-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+182-->[com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:33:17-82
+183            <meta-data
+183-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:18:13-20:85
+184                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+184-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:19:17-127
+185                android:value="com.google.firebase.components.ComponentRegistrar" />
+185-->[com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:20:17-82
+186        </service>
+187
+188        <provider
+188-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+189            android:name="io.flutter.plugins.share.ShareFileProvider"
+189-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-70
+190            android:authorities="com.app.edurald.flutter.share_provider"
+190-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+191            android:exported="false"
+191-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+192            android:grantUriPermissions="true" >
+192-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+193            <meta-data
+193-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:68
+194                android:name="android.support.FILE_PROVIDER_PATHS"
+194-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+195                android:resource="@xml/flutter_share_file_paths" />
+195-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
+196        </provider>
+197        <provider
+197-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+198            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+198-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+199            android:authorities="com.app.edurald.flutter.image_provider"
+199-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+200            android:exported="false"
+200-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+201            android:grantUriPermissions="true" >
+201-->[:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+202            <meta-data
+202-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:68
+203                android:name="android.support.FILE_PROVIDER_PATHS"
+203-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+204                android:resource="@xml/flutter_image_picker_file_paths" />
+204-->[:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
+205        </provider>
+206
+207        <activity android:name="com.maru.twitter_login.chrome_custom_tabs.ChromeCustomTabsActivity" />
+207-->[:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:14:9-103
+207-->[:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:14:19-100
+208
 209        <uses-library
-209-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-210            android:name="androidx.window.sidecar"
-210-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+209-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+210            android:name="androidx.window.extensions"
+210-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
 211            android:required="false" />
-211-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-212
-213        <activity
-213-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:27:9-44:20
-214            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-214-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:28:13-80
-215            android:excludeFromRecents="true"
-215-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:29:13-46
-216            android:exported="true"
-216-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:30:13-36
-217            android:launchMode="singleTask"
-217-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:31:13-44
-218            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-218-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:32:13-72
-219            <intent-filter>
-219-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:33:13-43:29
-220                <action android:name="android.intent.action.VIEW" />
-220-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:17-69
-220-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:25-66
-221
-222                <category android:name="android.intent.category.DEFAULT" />
-222-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:17-76
-222-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:27-73
-223                <category android:name="android.intent.category.BROWSABLE" />
-223-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:17-78
-223-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:27-75
+211-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+212        <uses-library
+212-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+213            android:name="androidx.window.sidecar"
+213-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+214            android:required="false" />
+214-->[androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+215
+216        <activity
+216-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:27:9-44:20
+217            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+217-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:28:13-80
+218            android:excludeFromRecents="true"
+218-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:29:13-46
+219            android:exported="true"
+219-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:30:13-36
+220            android:launchMode="singleTask"
+220-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:31:13-44
+221            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+221-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:32:13-72
+222            <intent-filter>
+222-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:33:13-43:29
+223                <action android:name="android.intent.action.VIEW" />
+223-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:17-69
+223-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:25-66
 224
-225                <data
-225-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:17-68
-226                    android:host="firebase.auth"
-226-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:51-66
-227                    android:path="/"
-228                    android:scheme="genericidp" />
-228-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:23-50
-229            </intent-filter>
-230        </activity>
-231        <activity
-231-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:45:9-62:20
-232            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-232-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:46:13-79
-233            android:excludeFromRecents="true"
-233-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:47:13-46
-234            android:exported="true"
-234-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:48:13-36
-235            android:launchMode="singleTask"
-235-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:49:13-44
-236            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-236-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:50:13-72
-237            <intent-filter>
-237-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:51:13-61:29
-238                <action android:name="android.intent.action.VIEW" />
-238-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:17-69
-238-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:25-66
-239
-240                <category android:name="android.intent.category.DEFAULT" />
-240-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:17-76
-240-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:27-73
-241                <category android:name="android.intent.category.BROWSABLE" />
-241-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:17-78
-241-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:27-75
+225                <category android:name="android.intent.category.DEFAULT" />
+225-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:17-76
+225-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:27-73
+226                <category android:name="android.intent.category.BROWSABLE" />
+226-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:17-78
+226-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:27-75
+227
+228                <data
+228-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:17-68
+229                    android:host="firebase.auth"
+229-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:51-66
+230                    android:path="/"
+231                    android:scheme="genericidp" />
+231-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:23-50
+232            </intent-filter>
+233        </activity>
+234        <activity
+234-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:45:9-62:20
+235            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+235-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:46:13-79
+236            android:excludeFromRecents="true"
+236-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:47:13-46
+237            android:exported="true"
+237-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:48:13-36
+238            android:launchMode="singleTask"
+238-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:49:13-44
+239            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+239-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:50:13-72
+240            <intent-filter>
+240-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:51:13-61:29
+241                <action android:name="android.intent.action.VIEW" />
+241-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:17-69
+241-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:25-66
 242
-243                <data
-243-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:17-68
-244                    android:host="firebase.auth"
-244-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:51-66
-245                    android:path="/"
-246                    android:scheme="recaptcha" />
-246-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:23-50
-247            </intent-filter>
-248        </activity>
-249
-250        <provider
-250-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:26:9-31:39
-251            android:name="com.google.firebase.provider.FirebaseInitProvider"
-251-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:27:13-77
-252            android:authorities="com.app.edurald.firebaseinitprovider"
-252-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:28:13-72
-253            android:directBootAware="true"
-253-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:29:13-43
-254            android:exported="false"
-254-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:30:13-37
-255            android:initOrder="100" />
-255-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:31:13-36
-256
-257        <activity android:name="com.facebook.CustomTabMainActivity" />
-257-->[com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:34:9-71
-257-->[com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:34:19-68
-258        <activity
-258-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:23:9-27:75
-259            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-259-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:24:13-93
-260            android:excludeFromRecents="true"
-260-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:25:13-46
-261            android:exported="false"
-261-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:26:13-37
-262            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-262-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:27:13-72
-263        <!--
-264            Service handling Google Sign-In user revocation. For apps that do not integrate with
-265            Google Sign-In, this service will never be started.
-266        -->
-267        <service
-267-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:33:9-37:51
-268            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-268-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:34:13-89
-269            android:exported="true"
-269-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:35:13-36
-270            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-270-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:36:13-107
-271            android:visibleToInstantApps="true" />
-271-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:37:13-48
-272
-273        <activity
-273-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
-274            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-274-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
-275            android:exported="false"
-275-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
-276            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-276-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
-277
-278        <receiver
-278-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:29:9-33:20
-279            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-279-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:30:13-85
-280            android:enabled="true"
-280-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:31:13-35
-281            android:exported="false" >
-281-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:32:13-37
-282        </receiver>
-283
-284        <service
-284-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:35:9-38:40
-285            android:name="com.google.android.gms.measurement.AppMeasurementService"
-285-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:36:13-84
-286            android:enabled="true"
-286-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:37:13-35
-287            android:exported="false" />
-287-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:38:13-37
-288        <service
-288-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:39:9-43:72
-289            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-289-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:40:13-87
-290            android:enabled="true"
-290-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:41:13-35
-291            android:exported="false"
-291-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:42:13-37
-292            android:permission="android.permission.BIND_JOB_SERVICE" />
-292-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:43:13-69
-293
-294        <meta-data
-294-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
-295            android:name="com.google.android.gms.version"
-295-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
-296            android:value="@integer/google_play_services_version" />
-296-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
-297        <!--
-298         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
-299         with the application context. This config is merged in with the host app's manifest,
-300         but there can only be one provider with the same authority activated at any given
-301         point; so if the end user has two or more different apps that use Facebook SDK, only the
-302         first one will be able to use the provider. To work around this problem, we use the
-303         following placeholder in the authority to identify each host application as if it was
-304         a completely different provider.
-305        -->
-306        <provider
-306-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:41:9-44:40
-307            android:name="com.facebook.internal.FacebookInitProvider"
-307-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:42:13-70
-308            android:authorities="com.app.edurald.FacebookInitProvider"
-308-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:43:13-72
-309            android:exported="false" />
-309-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:44:13-37
-310
-311        <receiver
-311-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:46:9-52:20
-312            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-312-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:47:13-86
+243                <category android:name="android.intent.category.DEFAULT" />
+243-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:17-76
+243-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:27-73
+244                <category android:name="android.intent.category.BROWSABLE" />
+244-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:17-78
+244-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:27-75
+245
+246                <data
+246-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:17-68
+247                    android:host="firebase.auth"
+247-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:51-66
+248                    android:path="/"
+249                    android:scheme="recaptcha" />
+249-->C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:23-50
+250            </intent-filter>
+251        </activity>
+252
+253        <provider
+253-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:26:9-31:39
+254            android:name="com.google.firebase.provider.FirebaseInitProvider"
+254-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:27:13-77
+255            android:authorities="com.app.edurald.firebaseinitprovider"
+255-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:28:13-72
+256            android:directBootAware="true"
+256-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:29:13-43
+257            android:exported="false"
+257-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:30:13-37
+258            android:initOrder="100" />
+258-->[com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:31:13-36
+259
+260        <activity android:name="com.facebook.CustomTabMainActivity" />
+260-->[com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:34:9-71
+260-->[com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:34:19-68
+261        <!--
+262         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+263         with the application context. This config is merged in with the host app's manifest,
+264         but there can only be one provider with the same authority activated at any given
+265         point; so if the end user has two or more different apps that use Facebook SDK, only the
+266         first one will be able to use the provider. To work around this problem, we use the
+267         following placeholder in the authority to identify each host application as if it was
+268         a completely different provider.
+269        -->
+270        <provider
+270-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:41:9-44:40
+271            android:name="com.facebook.internal.FacebookInitProvider"
+271-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:42:13-70
+272            android:authorities="com.app.edurald.FacebookInitProvider"
+272-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:43:13-72
+273            android:exported="false" />
+273-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:44:13-37
+274
+275        <receiver
+275-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:46:9-52:20
+276            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+276-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:47:13-86
+277            android:exported="false" >
+277-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:48:13-37
+278            <intent-filter>
+278-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:49:13-51:29
+279                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+279-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:50:17-95
+279-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:50:25-92
+280            </intent-filter>
+281        </receiver>
+282        <receiver
+282-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:53:9-59:20
+283            android:name="com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver"
+283-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:54:13-118
+284            android:exported="false" >
+284-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:55:13-37
+285            <intent-filter>
+285-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:56:13-58:29
+286                <action android:name="com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED" />
+286-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:57:17-103
+286-->[com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:57:25-100
+287            </intent-filter>
+288        </receiver>
+289
+290        <activity
+290-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:23:9-27:75
+291            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+291-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:24:13-93
+292            android:excludeFromRecents="true"
+292-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:25:13-46
+293            android:exported="false"
+293-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:26:13-37
+294            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+294-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:27:13-72
+295        <!--
+296            Service handling Google Sign-In user revocation. For apps that do not integrate with
+297            Google Sign-In, this service will never be started.
+298        -->
+299        <service
+299-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:33:9-37:51
+300            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+300-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:34:13-89
+301            android:exported="true"
+301-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:35:13-36
+302            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+302-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:36:13-107
+303            android:visibleToInstantApps="true" />
+303-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:37:13-48
+304
+305        <activity
+305-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+306            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+306-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+307            android:exported="false"
+307-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+308            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+308-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+309
+310        <receiver
+310-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:29:9-33:20
+311            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+311-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:30:13-85
+312            android:enabled="true"
+312-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:31:13-35
 313            android:exported="false" >
-313-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:48:13-37
-314            <intent-filter>
-314-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:49:13-51:29
-315                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-315-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:50:17-95
-315-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:50:25-92
-316            </intent-filter>
-317        </receiver>
-318        <receiver
-318-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:53:9-59:20
-319            android:name="com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver"
-319-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:54:13-118
-320            android:exported="false" >
-320-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:55:13-37
-321            <intent-filter>
-321-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:56:13-58:29
-322                <action android:name="com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED" />
-322-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:57:17-103
-322-->[com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:57:25-100
-323            </intent-filter>
-324        </receiver>
-325    </application>
-326
-327</manifest>
+313-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:32:13-37
+314        </receiver>
+315
+316        <service
+316-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:35:9-38:40
+317            android:name="com.google.android.gms.measurement.AppMeasurementService"
+317-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:36:13-84
+318            android:enabled="true"
+318-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:37:13-35
+319            android:exported="false" />
+319-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:38:13-37
+320        <service
+320-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:39:9-43:72
+321            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+321-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:40:13-87
+322            android:enabled="true"
+322-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:41:13-35
+323            android:exported="false"
+323-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:42:13-37
+324            android:permission="android.permission.BIND_JOB_SERVICE" />
+324-->[com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:43:13-69
+325
+326        <meta-data
+326-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+327            android:name="com.google.android.gms.version"
+327-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+328            android:value="@integer/google_play_services_version" />
+328-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+329    </application>
+330
+331</manifest>

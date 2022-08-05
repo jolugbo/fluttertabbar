@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
    
-<string name="app_name">edurald</string>
+<string name="app_name">Edurald</string>
 <string name="facebook_app_id">428779362625208</string>
 <string name="fb_login_protocol_scheme">fb428779362625208</string>
 <string name="facebook_client_token">9b6f6081139f2f602f3603c9ccc7d46e</string>

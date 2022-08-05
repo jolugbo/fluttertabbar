@@ -1,10 +1,129 @@
 -- Merging decision tree log ---
+application
+INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:15:5-82:19
+MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:15:5-82:19
+MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:15:5-82:19
+MERGED from [:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-16:19
+MERGED from [:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-16:19
+MERGED from [:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-17:19
+MERGED from [:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-17:19
+MERGED from [:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-15:19
+MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-15:19
+MERGED from [com.facebook.android:facebook-android-sdk:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f31e357cdf97255d41033e9d374801ae\jetified-facebook-android-sdk-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-android-sdk:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f31e357cdf97255d41033e9d374801ae\jetified-facebook-android-sdk-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-gamingservices:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2b427af81348cbe2342357c1df2d7a7f\jetified-facebook-gamingservices-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-gamingservices:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2b427af81348cbe2342357c1df2d7a7f\jetified-facebook-gamingservices-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\64091cba50db80c6040d6d484daec10a\jetified-facebook-share-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-share:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\64091cba50db80c6040d6d484daec10a\jetified-facebook-share-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3c889e8c0a630c35657ca0c8d88bc09c\jetified-facebook-applinks-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-applinks:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3c889e8c0a630c35657ca0c8d88bc09c\jetified-facebook-applinks-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a4830f1434d15c3bebd9c41593fedd40\jetified-facebook-messenger-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-messenger:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a4830f1434d15c3bebd9c41593fedd40\jetified-facebook-messenger-14.1.0\AndroidManifest.xml:28:5-29:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
+MERGED from [com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:26:5-71:19
+MERGED from [com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:26:5-71:19
+MERGED from [com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\193c255326d9d08d6690b582b2a9c20f\jetified-firebase-appcheck-interop-16.0.0\AndroidManifest.xml:24:5-20
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\193c255326d9d08d6690b582b2a9c20f\jetified-firebase-appcheck-interop-16.0.0\AndroidManifest.xml:24:5-20
+MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-analytics:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3ffcbc86c7dc17f7b14739ffc180068b\jetified-firebase-analytics-21.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-analytics:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3ffcbc86c7dc17f7b14739ffc180068b\jetified-firebase-analytics-21.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:27:5-35:19
+MERGED from [com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:27:5-35:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\933506e0026e9d89b435391ecf0bff94\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\933506e0026e9d89b435391ecf0bff94\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:25:5-38:19
+MERGED from [com.facebook.android:facebook-login:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-login:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:29:5-50:19
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:29:5-50:19
+MERGED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:30:5-60:19
+MERGED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:30:5-60:19
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\549b6c9c7b91ab83fe0f08126526aeeb\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\549b6c9c7b91ab83fe0f08126526aeeb\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\34806df405f649a36f84a0683f0cf88d\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\34806df405f649a36f84a0683f0cf88d\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\45057acdf6543cbd047ced5bb12ef17e\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\45057acdf6543cbd047ced5bb12ef17e\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b18791967f88c18519051d366318072f\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b18791967f88c18519051d366318072f\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\52a1e80add573cbb6e67e010c0dcc832\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\52a1e80add573cbb6e67e010c0dcc832\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:28:5-44:19
+MERGED from [com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:28:5-44:19
+MERGED from [com.google.android.gms:play-services-measurement-sdk:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1a403d5f6bbe1f18623ec1d65e21cd4a\jetified-play-services-measurement-sdk-21.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-sdk:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1a403d5f6bbe1f18623ec1d65e21cd4a\jetified-play-services-measurement-sdk-21.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-impl:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b01bf1c722aaced5588fea0ddf5502c6\jetified-play-services-measurement-impl-21.0.0\AndroidManifest.xml:29:5-30:19
+MERGED from [com.google.android.gms:play-services-measurement-impl:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b01bf1c722aaced5588fea0ddf5502c6\jetified-play-services-measurement-impl-21.0.0\AndroidManifest.xml:29:5-30:19
+MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6b21cfc4c842dcafe9c31e38456220d7\jetified-play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6b21cfc4c842dcafe9c31e38456220d7\jetified-play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9a640c82287278bfe39ecd9056bb9a19\jetified-play-services-ads-identifier-18.0.0\AndroidManifest.xml:25:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9a640c82287278bfe39ecd9056bb9a19\jetified-play-services-ads-identifier-18.0.0\AndroidManifest.xml:25:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3d7209fa3c7fe33cda342709c0f71eb4\jetified-play-services-measurement-base-21.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3d7209fa3c7fe33cda342709c0f71eb4\jetified-play-services-measurement-base-21.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\95e298052f166bd021ab312b9ae41551\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\95e298052f166bd021ab312b9ae41551\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.facebook.android:facebook-bolts:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:28:5-29:19
+MERGED from [com.facebook.android:facebook-bolts:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:28:5-29:19
+MERGED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:11:5-20
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:11:5-20
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from [com.facebook.android:facebook-android-sdk:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f31e357cdf97255d41033e9d374801ae\jetified-facebook-android-sdk-14.1.0\AndroidManifest.xml:28:18-44
+	android:label
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:16:9-32
+	tools:ignore
+		ADDED from [:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-39
+	android:icon
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:17:9-43
+	android:usesCleartextTraffic
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml:8:13-48
+	android:name
+		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:18:9-42
 manifest
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-76:12
-INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-76:12
-INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-76:12
-INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-76:12
-MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-76:12
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-83:12
+INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-83:12
+INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-83:12
+INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-83:12
+MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-83:12
 MERGED from [:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-18:12
@@ -30,6 +149,11 @@ MERGED from [:google_sign_in_android] C:\Users\JOLUGBO\source\repos\fluttertabba
 MERGED from [:flutter_native_splash] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\flutter_native_splash\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:webview_flutter_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [com.facebook.android:facebook-android-sdk:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f31e357cdf97255d41033e9d374801ae\jetified-facebook-android-sdk-14.1.0\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-gamingservices:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2b427af81348cbe2342357c1df2d7a7f\jetified-facebook-gamingservices-14.1.0\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-share:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\64091cba50db80c6040d6d484daec10a\jetified-facebook-share-14.1.0\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-applinks:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3c889e8c0a630c35657ca0c8d88bc09c\jetified-facebook-applinks-14.1.0\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-messenger:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a4830f1434d15c3bebd9c41593fedd40\jetified-facebook-messenger-14.1.0\AndroidManifest.xml:21:1-31:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1a874281684e19fda714c73c016f39ff\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e332cf3085f1db4a6b5c88c9cebed77d\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
@@ -47,9 +171,9 @@ MERGED from [com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO
 MERGED from [com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:15:1-40:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\fda01827b00a5dd559fb5f90d32d762e\exifinterface-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\dccd70eaa49e2d490c7974959580ad7f\webkit-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.android:facebook-login:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:21:1-52:12
-MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3cb340cd2846d59b64036701eba9950a\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.facebook.android:facebook-login:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:21:1-52:12
+MERGED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:21:1-62:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\549b6c9c7b91ab83fe0f08126526aeeb\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b961a6206cd96be46dcf3f2dba81083a\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:2:1-7:12
@@ -71,16 +195,16 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.0.0] C:
 MERGED from [com.google.android.gms:play-services-measurement-base:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3d7209fa3c7fe33cda342709c0f71eb4\jetified-play-services-measurement-base-21.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\95e298052f166bd021ab312b9ae41551\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:16:1-26:12
-MERGED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:21:1-62:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5c51b5fbb3c028c2b36ee35ab5506409\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\27149529946b3e31e6ccbbe993d662ef\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f87e56de14ffc5b5fcd60328719263b9\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3cb340cd2846d59b64036701eba9950a\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\ddc605ea20655bea0708826eb214e56b\fragment-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3aaaf0bef4ecdc01fa47c93dc2c57390\loader-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.browser:browser:1.4.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f58cdb1aa5dadebd1cc249d35ee05feb\browser-1.4.0\AndroidManifest.xml:17:1-24:12
-MERGED from [com.facebook.android:facebook-bolts:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:21:1-31:12
+MERGED from [com.facebook.android:facebook-bolts:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:21:1-31:12
 MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b8aa99a9e7151e5c190282c0d3c43f7d\jetified-core-ktx-1.3.2\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.activity:activity:1.2.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4aa0f4cdda5896b2da8ee14dce805cc6\jetified-activity-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f58cdb1aa5dadebd1cc249d35ee05feb\browser-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6717823fb6e4cc577fd836e01b1b3974\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\36846f134d6836042a9ffba8d955768e\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\862c7a2e139a494cec8d88de0de532be\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -94,62 +218,62 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\JOLU
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8a0b1e738ced268d4dc028045cbd9e0a\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\713b312c1760703c91b4863a3a3fa4f1\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\daf95dd7661d0e5e0fa8bc83acb82263\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4477b073472ba7e3e2c93b5813b1e5b2\jetified-firebase-components-17.0.0\AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\72407066c5af47c959c0889ee1624d5d\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\daf95dd7661d0e5e0fa8bc83acb82263\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e68a30053fd94a99a8deee27f2ea0ddd\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e624954e6109f42c36a8bb562a166aa1\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\020bdc3e85dc86243a84e935baeaf7e6\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b3c46bbe20bc2543295aa0a05206785d\print-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\17ff881f87d7f0122932f272e333e7d2\lifecycle-runtime-2.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\68a17b57e9fdc5d72475b6c097f258aa\jetified-lifecycle-viewmodel-savedstate-2.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\73ed303fa662ac9d5c660dacc2ccd2fd\lifecycle-viewmodel-2.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\22d6da3afbd1bdf56ce146f10e9c09b7\jetified-savedstate-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\17ff881f87d7f0122932f272e333e7d2\lifecycle-runtime-2.3.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e624954e6109f42c36a8bb562a166aa1\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c4cc4239d157654df27b3f156d93b866\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\de71ee7152d215c52583cb7c8e9081c7\lifecycle-livedata-core-2.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c10d42b0a7b21497f4262b5e937f556b\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [io.grpc:grpc-android:1.44.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6a23b7a608e25af74e62fe9d7533e509\jetified-grpc-android-1.44.1\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8150973ee31a4188745423fbd246dfa4\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\903f2115ebbdbde849bbb8bd6db3c9d3\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:2:1-13:12
 INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml:1:1-10:12
 INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml:1:1-10:12
 INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml:1:1-10:12
 	package
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:2:5-30
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:70-95
 		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-76:12
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-83:12
 		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-76:12
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:1-83:12
 		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:1:11-69
 queries
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:8:10-11:15
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:7:10-10:15
 MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-11:15
 MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-11:15
 provider
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:9:9-89
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:8:9-89
 	android:authorities
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:9:19-86
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:8:19-86
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:12:5-79
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:12:22-76
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:11:22-76
 uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:5-85
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:12:5-85
 	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:22-82
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:12:22-82
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:14:5-67
-MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:14:5-67
-MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:14:5-67
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:5-67
+MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:5-67
+MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:5-67
 MERGED from [:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-67
 MERGED from [:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-67
 MERGED from [:google_sign_in_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\google_sign_in_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-67
@@ -179,219 +303,7 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:21.0.0] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\086ecc22230bad71f272af7530530c67\jetified-play-services-measurement-sdk-api-21.0.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\086ecc22230bad71f272af7530530c67\jetified-play-services-measurement-sdk-api-21.0.0\AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:14:22-64
-application
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:15:5-75:19
-MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:15:5-75:19
-MERGED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:15:5-75:19
-MERGED from [:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-16:19
-MERGED from [:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-16:19
-MERGED from [:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-17:19
-MERGED from [:firebase_analytics] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-17:19
-MERGED from [:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_auth] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_storage] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:firebase_core] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
-MERGED from [:share] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
-MERGED from [:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
-MERGED from [:image_picker_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
-MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-15:19
-MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-15:19
-MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
-MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
-MERGED from [com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:14:5-22:19
-MERGED from [com.google.firebase:firebase-functions:20.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\df1e601d5f71d21f724ef784f05b7ac1\jetified-firebase-functions-20.1.0\AndroidManifest.xml:14:5-22:19
-MERGED from [com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:26:5-71:19
-MERGED from [com.google.firebase:firebase-auth:21.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4edc354286f7b729c2cfd58f356f83df\jetified-firebase-auth-21.0.5\AndroidManifest.xml:26:5-71:19
-MERGED from [com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:16:5-24:19
-MERGED from [com.google.firebase:firebase-firestore:24.1.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f84e7a72cb0e229b7754c895947e3915\jetified-firebase-firestore-24.1.2\AndroidManifest.xml:16:5-24:19
-MERGED from [com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:29:5-37:19
-MERGED from [com.google.firebase:firebase-storage:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2cc5df1ec000d402a70bbe30a94e5f12\jetified-firebase-storage-20.0.1\AndroidManifest.xml:29:5-37:19
-MERGED from [com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.firebase:firebase-database:20.0.5] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a7a32d5a6559bef85b16365da6f2979a\jetified-firebase-database-20.0.5\AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\193c255326d9d08d6690b582b2a9c20f\jetified-firebase-appcheck-interop-16.0.0\AndroidManifest.xml:24:5-20
-MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\193c255326d9d08d6690b582b2a9c20f\jetified-firebase-appcheck-interop-16.0.0\AndroidManifest.xml:24:5-20
-MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.firebase:firebase-analytics:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3ffcbc86c7dc17f7b14739ffc180068b\jetified-firebase-analytics-21.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-analytics:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3ffcbc86c7dc17f7b14739ffc180068b\jetified-firebase-analytics-21.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:27:5-35:19
-MERGED from [com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:27:5-35:19
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\933506e0026e9d89b435391ecf0bff94\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\933506e0026e9d89b435391ecf0bff94\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:14:5-22:19
-MERGED from [com.google.firebase:firebase-installations:17.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\cb48bea4429c5d0893966ff8d630ba76\jetified-firebase-installations-17.0.1\AndroidManifest.xml:14:5-22:19
-MERGED from [com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:25:5-38:19
-MERGED from [com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:25:5-38:19
-MERGED from [com.facebook.android:facebook-login:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:29:5-50:19
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:29:5-50:19
-MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\549b6c9c7b91ab83fe0f08126526aeeb\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\549b6c9c7b91ab83fe0f08126526aeeb\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:22:5-38:19
-MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:22:5-38:19
-MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\34806df405f649a36f84a0683f0cf88d\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\34806df405f649a36f84a0683f0cf88d\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5952c8e488394cbbfc90f4b7bc1c2196\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\45057acdf6543cbd047ced5bb12ef17e\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\45057acdf6543cbd047ced5bb12ef17e\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b18791967f88c18519051d366318072f\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b18791967f88c18519051d366318072f\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\52a1e80add573cbb6e67e010c0dcc832\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\52a1e80add573cbb6e67e010c0dcc832\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:28:5-44:19
-MERGED from [com.google.android.gms:play-services-measurement:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\57043996ac4d320055491691cd540f83\jetified-play-services-measurement-21.0.0\AndroidManifest.xml:28:5-44:19
-MERGED from [com.google.android.gms:play-services-measurement-sdk:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1a403d5f6bbe1f18623ec1d65e21cd4a\jetified-play-services-measurement-sdk-21.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.android.gms:play-services-measurement-sdk:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1a403d5f6bbe1f18623ec1d65e21cd4a\jetified-play-services-measurement-sdk-21.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.android.gms:play-services-measurement-impl:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b01bf1c722aaced5588fea0ddf5502c6\jetified-play-services-measurement-impl-21.0.0\AndroidManifest.xml:29:5-30:19
-MERGED from [com.google.android.gms:play-services-measurement-impl:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b01bf1c722aaced5588fea0ddf5502c6\jetified-play-services-measurement-impl-21.0.0\AndroidManifest.xml:29:5-30:19
-MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6b21cfc4c842dcafe9c31e38456220d7\jetified-play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6b21cfc4c842dcafe9c31e38456220d7\jetified-play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9a640c82287278bfe39ecd9056bb9a19\jetified-play-services-ads-identifier-18.0.0\AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9a640c82287278bfe39ecd9056bb9a19\jetified-play-services-ads-identifier-18.0.0\AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-measurement-base:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3d7209fa3c7fe33cda342709c0f71eb4\jetified-play-services-measurement-base-21.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-measurement-base:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3d7209fa3c7fe33cda342709c0f71eb4\jetified-play-services-measurement-base-21.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\95e298052f166bd021ab312b9ae41551\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\95e298052f166bd021ab312b9ae41551\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:20:5-24:19
-MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:20:5-24:19
-MERGED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:30:5-60:19
-MERGED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:30:5-60:19
-MERGED from [com.facebook.android:facebook-bolts:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-bolts:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:28:5-29:19
-MERGED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:24:5-89
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
-MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:11:5-20
-MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:11:5-20
-	android:appComponentFactory
-		ADDED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:24:18-86
-	android:supportsRtl
-		ADDED from [com.facebook.android:facebook-login:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:28:18-44
-	android:label
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:16:9-32
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:16:9-32
-	tools:ignore
-		ADDED from [:cloud_functions] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_functions\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-39
-	android:icon
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:17:9-43
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:17:9-43
-	android:usesCleartextTraffic
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:18:9-44
-activity#com.app.edurald.MainActivity
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:19:9-62:20
-	android:launchMode
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:13-43
-	android:hardwareAccelerated
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:24:13-47
-	android:windowSoftInputMode
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:25:13-55
-	android:configChanges
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:23:13-163
-	android:theme
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:22:13-47
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:13-41
-meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:30:13-33:17
-	android:resource
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:32:15-52
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:31:15-70
-meta-data#io.flutter.embedding.android.SplashScreenDrawable
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:39:13-42:17
-	android:resource
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:41:15-61
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:40:15-79
-meta-data#flutter_deeplinking_enabled
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:44:13-90
-	android:value
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:44:67-87
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:44:24-66
-meta-data#com.facebook.sdk.ApplicationId
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:45:13-111
-	android:value
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:45:70-109
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:45:24-69
-meta-data#com.facebook.sdk.ClientToken
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:46:13-115
-	android:value
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:46:68-113
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:46:24-67
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:+data:scheme:twittersdk
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:47:13-52:29
-action#android.intent.action.VIEW
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:17-69
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:25-66
-category#android.intent.category.DEFAULT
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:17-76
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:49:27-73
-category#android.intent.category.BROWSABLE
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:17-78
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:50:27-75
-data
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:17-68
-	android:host
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:51-66
-	android:scheme
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:23-50
-meta-data#flutterEmbedding
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:13-57:41
-	android:value
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:21-38
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:21-52
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:58:13-61:29
-action#android.intent.action.MAIN
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:59:17-68
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:59:25-66
-category#android.intent.category.LAUNCHER
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:60:17-76
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:60:27-74
-activity#com.facebook.FacebookActivity
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:63:1-64:136
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:30:9-33:66
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:30:9-33:66
-	android:label
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:64:101-133
-	android:configChanges
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:64:17-100
-	android:theme
-		ADDED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:33:13-63
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:63:11-55
-activity#com.facebook.CustomTabActivity
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:65:13-74:24
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:35:9-49:20
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:35:9-49:20
-	tools:node
-		ADDED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:38:13-31
-	android:exported
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:67:17-40
-	android:name
-		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:66:17-62
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:@string/fb_login_protocol_scheme
-ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:68:17-73:33
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:13:22-64
 uses-sdk
 INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml
@@ -446,6 +358,16 @@ MERGED from [:webview_flutter_android] C:\Users\JOLUGBO\source\repos\fluttertabb
 MERGED from [:webview_flutter_android] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:twitter_login] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\twitter_login\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [com.facebook.android:facebook-android-sdk:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f31e357cdf97255d41033e9d374801ae\jetified-facebook-android-sdk-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f31e357cdf97255d41033e9d374801ae\jetified-facebook-android-sdk-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-gamingservices:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2b427af81348cbe2342357c1df2d7a7f\jetified-facebook-gamingservices-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-gamingservices:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\2b427af81348cbe2342357c1df2d7a7f\jetified-facebook-gamingservices-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\64091cba50db80c6040d6d484daec10a\jetified-facebook-share-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-share:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\64091cba50db80c6040d6d484daec10a\jetified-facebook-share-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3c889e8c0a630c35657ca0c8d88bc09c\jetified-facebook-applinks-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3c889e8c0a630c35657ca0c8d88bc09c\jetified-facebook-applinks-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a4830f1434d15c3bebd9c41593fedd40\jetified-facebook-messenger-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-messenger:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a4830f1434d15c3bebd9c41593fedd40\jetified-facebook-messenger-14.1.0\AndroidManifest.xml:24:5-26:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1a874281684e19fda714c73c016f39ff\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1a874281684e19fda714c73c016f39ff\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\789c663c883c1c662567c46a68640eb6\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
@@ -480,12 +402,12 @@ MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\JOLUGBO\.gradl
 MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\fda01827b00a5dd559fb5f90d32d762e\exifinterface-1.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\dccd70eaa49e2d490c7974959580ad7f\webkit-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\dccd70eaa49e2d490c7974959580ad7f\webkit-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.android:facebook-login:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-login:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:25:5-27:41
-MERGED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:25:5-27:41
-MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3cb340cd2846d59b64036701eba9950a\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3cb340cd2846d59b64036701eba9950a\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.facebook.android:facebook-login:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-login:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e43a4c2e1d4353ce7a7af2160142d9a3\jetified-facebook-login-14.0.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:25:5-27:41
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:25:5-27:41
+MERGED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:24:5-26:41
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\549b6c9c7b91ab83fe0f08126526aeeb\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\549b6c9c7b91ab83fe0f08126526aeeb\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:20:5-44
@@ -528,26 +450,26 @@ MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\95e298052f166bd021ab312b9ae41551\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:18:5-43
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:18:5-43
-MERGED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:24:5-26:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5c51b5fbb3c028c2b36ee35ab5506409\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\5c51b5fbb3c028c2b36ee35ab5506409\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\27149529946b3e31e6ccbbe993d662ef\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\27149529946b3e31e6ccbbe993d662ef\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f87e56de14ffc5b5fcd60328719263b9\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f87e56de14ffc5b5fcd60328719263b9\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3cb340cd2846d59b64036701eba9950a\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3cb340cd2846d59b64036701eba9950a\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\ddc605ea20655bea0708826eb214e56b\fragment-1.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\ddc605ea20655bea0708826eb214e56b\fragment-1.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3aaaf0bef4ecdc01fa47c93dc2c57390\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\3aaaf0bef4ecdc01fa47c93dc2c57390\loader-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.browser:browser:1.4.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f58cdb1aa5dadebd1cc249d35ee05feb\browser-1.4.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.browser:browser:1.4.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f58cdb1aa5dadebd1cc249d35ee05feb\browser-1.4.0\AndroidManifest.xml:20:5-22:41
-MERGED from [com.facebook.android:facebook-bolts:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-bolts:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-bolts:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-bolts:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9495aeece88ae79a452d69c41087da3e\jetified-facebook-bolts-14.0.0\AndroidManifest.xml:24:5-26:41
 MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b8aa99a9e7151e5c190282c0d3c43f7d\jetified-core-ktx-1.3.2\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b8aa99a9e7151e5c190282c0d3c43f7d\jetified-core-ktx-1.3.2\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.activity:activity:1.2.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4aa0f4cdda5896b2da8ee14dce805cc6\jetified-activity-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.2.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4aa0f4cdda5896b2da8ee14dce805cc6\jetified-activity-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f58cdb1aa5dadebd1cc249d35ee05feb\browser-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\f58cdb1aa5dadebd1cc249d35ee05feb\browser-1.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6717823fb6e4cc577fd836e01b1b3974\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6717823fb6e4cc577fd836e01b1b3974\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\36846f134d6836042a9ffba8d955768e\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
@@ -574,30 +496,30 @@ MERGED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transform
 MERGED from [androidx.core:core:1.6.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8b1de47239f83b4ae53af2852d74d4bc\core-1.6.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\713b312c1760703c91b4863a3a3fa4f1\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\713b312c1760703c91b4863a3a3fa4f1\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\daf95dd7661d0e5e0fa8bc83acb82263\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\daf95dd7661d0e5e0fa8bc83acb82263\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4477b073472ba7e3e2c93b5813b1e5b2\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\4477b073472ba7e3e2c93b5813b1e5b2\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\72407066c5af47c959c0889ee1624d5d\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\72407066c5af47c959c0889ee1624d5d\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\daf95dd7661d0e5e0fa8bc83acb82263\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\daf95dd7661d0e5e0fa8bc83acb82263\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\01f49ab46493e46efde42a66bca75318\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e68a30053fd94a99a8deee27f2ea0ddd\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e68a30053fd94a99a8deee27f2ea0ddd\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e624954e6109f42c36a8bb562a166aa1\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e624954e6109f42c36a8bb562a166aa1\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\020bdc3e85dc86243a84e935baeaf7e6\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\020bdc3e85dc86243a84e935baeaf7e6\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b3c46bbe20bc2543295aa0a05206785d\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b3c46bbe20bc2543295aa0a05206785d\print-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\17ff881f87d7f0122932f272e333e7d2\lifecycle-runtime-2.3.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\17ff881f87d7f0122932f272e333e7d2\lifecycle-runtime-2.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\68a17b57e9fdc5d72475b6c097f258aa\jetified-lifecycle-viewmodel-savedstate-2.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\68a17b57e9fdc5d72475b6c097f258aa\jetified-lifecycle-viewmodel-savedstate-2.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\73ed303fa662ac9d5c660dacc2ccd2fd\lifecycle-viewmodel-2.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\73ed303fa662ac9d5c660dacc2ccd2fd\lifecycle-viewmodel-2.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\22d6da3afbd1bdf56ce146f10e9c09b7\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\22d6da3afbd1bdf56ce146f10e9c09b7\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\17ff881f87d7f0122932f272e333e7d2\lifecycle-runtime-2.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\17ff881f87d7f0122932f272e333e7d2\lifecycle-runtime-2.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e624954e6109f42c36a8bb562a166aa1\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e624954e6109f42c36a8bb562a166aa1\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c4cc4239d157654df27b3f156d93b866\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c4cc4239d157654df27b3f156d93b866\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\de71ee7152d215c52583cb7c8e9081c7\lifecycle-livedata-core-2.3.0\AndroidManifest.xml:20:5-22:41
@@ -606,12 +528,12 @@ MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\JOLUGBO\.gradle\cac
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c10d42b0a7b21497f4262b5e937f556b\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [io.grpc:grpc-android:1.44.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6a23b7a608e25af74e62fe9d7533e509\jetified-grpc-android-1.44.1\AndroidManifest.xml:5:5-7:41
 MERGED from [io.grpc:grpc-android:1.44.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\6a23b7a608e25af74e62fe9d7533e509\jetified-grpc-android-1.44.1\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8150973ee31a4188745423fbd246dfa4\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\8150973ee31a4188745423fbd246dfa4\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\903f2115ebbdbde849bbb8bd6db3c9d3\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\903f2115ebbdbde849bbb8bd6db3c9d3\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0391d69d2451e8af1c03c20ba2887188\jetified-installreferrer-1.0\AndroidManifest.xml:5:5-7:41
 INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml
 INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml
 	android:targetSdkVersion
@@ -620,6 +542,110 @@ INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\
 	android:minSdkVersion
 		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\debug\AndroidManifest.xml
+meta-data#com.facebook.sdk.ApplicationId
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:8-106
+	android:value
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:65-104
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:20:19-64
+meta-data#com.facebook.sdk.ClientToken
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:8-110
+	android:value
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:63-108
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:21:19-62
+activity#com.app.edurald.MainActivity
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:23:9-64:20
+	android:launchMode
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:25:13-43
+	android:hardwareAccelerated
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:28:13-47
+	android:windowSoftInputMode
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:29:13-55
+	android:configChanges
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:27:13-163
+	android:theme
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:26:13-47
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:24:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:34:13-37:17
+	android:resource
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:36:15-52
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:35:15-70
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:43:13-46:17
+	android:resource
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:45:15-61
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:44:15-79
+meta-data#flutter_deeplinking_enabled
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:13-90
+	android:value
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:67-87
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:48:24-66
+meta-data#flutterEmbedding
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:13-77
+	android:value
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:57-74
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:51:24-55
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:+data:scheme:twittersdk
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:53:13-58:29
+action#android.intent.action.VIEW
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:17-69
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:54:25-66
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:17-76
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:55:27-73
+category#android.intent.category.BROWSABLE
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:17-78
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:56:27-75
+data
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:17-68
+	android:host
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:51-66
+	android:scheme
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:57:23-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:60:13-63:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:61:17-68
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:61:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:62:17-76
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:62:27-74
+activity#com.facebook.FacebookActivity
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:66:9-68:52
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:30:9-33:66
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:30:9-33:66
+	android:label
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:68:17-49
+	android:configChanges
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:67:17-100
+	android:theme
+		ADDED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:33:13-63
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:66:19-63
+activity#com.facebook.CustomTabActivity
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:70:9-80:20
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:35:9-49:20
+MERGED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:35:9-49:20
+	tools:node
+		ADDED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:38:13-31
+	android:exported
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:72:17-40
+	android:name
+		ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:71:17-62
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:@string/fb_login_protocol_scheme
+ADDED from C:\Users\JOLUGBO\source\repos\fluttertabbar\android\app\src\main\AndroidManifest.xml:73:17-78:33
 service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:firebase_database] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:cloud_firestore] C:\Users\JOLUGBO\source\repos\fluttertabbar\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
@@ -868,14 +894,14 @@ ADDED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\ca
 		ADDED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\e1cccc0adc97c3f274a020ebf15abb69\jetified-firebase-iid-21.1.0\AndroidManifest.xml:33:17-96
 uses-permission#com.google.android.gms.permission.AD_ID
 ADDED from [com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:25:5-79
+MERGED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:28:5-79
+MERGED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:28:5-79
 MERGED from [com.google.android.gms:play-services-measurement-impl:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b01bf1c722aaced5588fea0ddf5502c6\jetified-play-services-measurement-impl-21.0.0\AndroidManifest.xml:27:5-79
 MERGED from [com.google.android.gms:play-services-measurement-impl:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\b01bf1c722aaced5588fea0ddf5502c6\jetified-play-services-measurement-impl-21.0.0\AndroidManifest.xml:27:5-79
 MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9a640c82287278bfe39ecd9056bb9a19\jetified-play-services-ads-identifier-18.0.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9a640c82287278bfe39ecd9056bb9a19\jetified-play-services-ads-identifier-18.0.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\086ecc22230bad71f272af7530530c67\jetified-play-services-measurement-sdk-api-21.0.0\AndroidManifest.xml:26:5-79
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\086ecc22230bad71f272af7530530c67\jetified-play-services-measurement-sdk-api-21.0.0\AndroidManifest.xml:26:5-79
-MERGED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:28:5-79
-MERGED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:28:5-79
 	android:name
 		ADDED from [com.google.android.gms:play-services-measurement-api:21.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9b836197a77e8d70f4625ce67f87cc64\jetified-play-services-measurement-api-21.0.0\AndroidManifest.xml:25:22-76
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
@@ -903,13 +929,45 @@ ADDED from [com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle
 	android:name
 		ADDED from [com.google.firebase:firebase-common:20.1.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\a91e3e4d97077632fe3dc6a401339551\jetified-firebase-common-20.1.1\AndroidManifest.xml:27:13-77
 activity#com.facebook.CustomTabMainActivity
-ADDED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:34:9-71
+ADDED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:34:9-71
 	android:name
-		ADDED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:34:19-68
+		ADDED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:34:19-68
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:cct.${applicationId}+data:scheme:fbconnect
-ADDED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:39:13-48:29
+ADDED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:39:13-48:29
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:cct.com.app.edurald+data:scheme:fbconnect
-ADDED from [com.facebook.android:facebook-common:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\644180f1c069f0ad382f0350685de025\jetified-facebook-common-14.0.0\AndroidManifest.xml:39:13-48:29
+ADDED from [com.facebook.android:facebook-common:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\c15dfdfd3b31965b87433b7c6329ca93\jetified-facebook-common-14.1.0\AndroidManifest.xml:39:13-48:29
+provider#com.facebook.internal.FacebookInitProvider
+ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:41:9-44:40
+	android:authorities
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:43:13-72
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:44:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:42:13-70
+receiver#com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
+ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:46:9-52:20
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:48:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:47:13-86
+intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:49:13-51:29
+action#com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:50:25-92
+receiver#com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver
+ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:53:9-59:20
+	android:exported
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:55:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:54:13-118
+intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:56:13-58:29
+action#com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:57:17-103
+	android:name
+		ADDED from [com.facebook.android:facebook-core:14.1.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\16193ca7fafff0e31a4a24a20da29d03\jetified-facebook-core-14.1.0\AndroidManifest.xml:57:25-100
 activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
 ADDED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\0fb7895b67ee9b797e0ef740963bbd16\jetified-play-services-auth-20.0.1\AndroidManifest.xml:23:9-27:75
 	android:excludeFromRecents
@@ -978,35 +1036,3 @@ ADDED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUG
 		ADDED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\1ff9203964a0283968a4c7fb09a23e04\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
-provider#com.facebook.internal.FacebookInitProvider
-ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:41:9-44:40
-	android:authorities
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:43:13-72
-	android:exported
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:44:13-37
-	android:name
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:42:13-70
-receiver#com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
-ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:46:9-52:20
-	android:exported
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:48:13-37
-	android:name
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:47:13-86
-intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:49:13-51:29
-action#com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:50:17-95
-	android:name
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:50:25-92
-receiver#com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver
-ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:53:9-59:20
-	android:exported
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:55:13-37
-	android:name
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:54:13-118
-intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:56:13-58:29
-action#com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:57:17-103
-	android:name
-		ADDED from [com.facebook.android:facebook-core:14.0.0] C:\Users\JOLUGBO\.gradle\caches\transforms-2\files-2.1\9de1237853f298abeb40cea55e3a5932\jetified-facebook-core-14.0.0\AndroidManifest.xml:57:25-100

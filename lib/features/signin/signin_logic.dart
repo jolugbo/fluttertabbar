@@ -9,14 +9,10 @@ import '../../main.dart';
 
 //this handles facebook  signins
 Future<UserCredential> signInWithFacebook() async {
-  // Trigger the sign-in flow
-  final LoginResult loginResult = await FacebookAuth.instance.login();
-
-  // Create a credential from the access token
+  final LoginResult loginResult = await FacebookAuth.instance
+      .login(permissions: ['email', 'public_profile']);
   final OAuthCredential facebookAuthCredential =
-      FacebookAuthProvider.credential(loginResult.accessToken?.token ?? "");
-
-  // Once signed in, return the UserCredential
+      FacebookAuthProvider.credential(loginResult.accessToken!.token);
   return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 }
 
