@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:twitter_login/twitter_login.dart';
 import 'package:get/get.dart';
 //import 'package:edurald/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,7 +9,6 @@ import 'package:flutter/material.dart';
 // import 'package:geocoder/geocoder.dart';
 // import 'package:geocoder/model.dart';
 import 'package:country_codes/country_codes.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:edurald/models/model_status.dart';
 import 'package:edurald/models/strings.dart';
@@ -23,11 +21,9 @@ import 'package:image_picker/image_picker.dart';
 import '../../gen/assets.gen.dart';
 import '../../main.dart';
 import '../../utills/imageanimations.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 import '../dashboard/dashboard.dart';
 import '../signin/signin_logic.dart';
-// final userRef =  FirebaseFirestore.instance.collection('users');
 
 class registration_formPage extends StatefulWidget {
   registration_formPage({Key? key, this.user}) : super(key: key);
@@ -40,9 +36,6 @@ class registration_formPage extends StatefulWidget {
 
 class _Registration_formPageState extends State<registration_formPage>
     with TickerProviderStateMixin {
-  //String placeholderImage = imageBase+'graduatehat.jpg';
-  String userIcon =
-      'https://firebasestorage.googleapis.com/v0/b/edurald.appspot.com/o/permanents%2Fgraduatehat.jpg?alt=media&token=fa45072d-2ecf-45ef-b225-b6199edf89c7';
   File _image = File(imageBase + 'graduatehat.jpg');
   final picker = ImagePicker();
   int blurrySize = 0;
@@ -53,7 +46,6 @@ class _Registration_formPageState extends State<registration_formPage>
   bool enableEmail = false;
   bool isFirstView = true;
   bool _passwordVisible = false;
-  int _currentPage = 0;
   int _current = 0;
   int socialMediaSelectedOption = 1;
   bool showLoader = false;
@@ -106,14 +98,6 @@ class _Registration_formPageState extends State<registration_formPage>
     //   countryCode = first.countryCode;
     //   initialnumber = PhoneNumber(isoCode: countryCode);
     // });
-  }
-
-  List<Widget> _buildPageIndicator() {
-    List<Widget> list = [];
-    for (int i = 0; i < _numPages; i++) {
-      list.add(i == _currentPage ? _indicator(true) : _indicator(false));
-    }
-    return list;
   }
 
   Widget _indicator(bool isActive) {
@@ -189,7 +173,7 @@ class _Registration_formPageState extends State<registration_formPage>
     return size >= 1;
   }
 
-  Future<bool> EmailExist(String displayname) async {
+  Future<bool> mailExist(String displayname) async {
     int size = 0;
     await FirebaseFirestore.instance
         .collection("users")
@@ -203,8 +187,6 @@ class _Registration_formPageState extends State<registration_formPage>
         );
     setState(() {
       emailExist = (size >= 1);
-      print("email exist");
-      print(emailExist);
     });
     return size >= 1;
   }
@@ -244,37 +226,6 @@ class _Registration_formPageState extends State<registration_formPage>
       _current = --_current % 3;
       print(e);
     }
-
-    // var userArgs = ModalRoute.of(context)!.settings.arguments as User;
-    // User user = new User(
-    //   bio: "",
-    //   displayName: userNameController.text,
-    //   email: emailController.text,
-    //   firstName: firstNameController.text,
-    //   lastName: lastNameController.text,
-    //   phoneNumber: phoneNoController.text,
-    //   photoUrl: userArgs.photoUrl
-    // );
-    // //DocumentSnapshot doc = await userRef.doc(user.email).get();
-    //
-    // if(!doc.exists){
-    //
-    //   userRef.doc(user.id).set({
-    //     "id": user.id,
-    //     "phoneNumber": user.phoneNumber,
-    //     "photoUrl": user.photoUrl,
-    //     "email": user.email,
-    //     "displayName": user.displayName,
-    //     "bio": "",
-    //     "timeStamp": timeStamp
-    //   });
-    //   await followersRef.doc(user.id)
-    //       .collection("userFollowers")
-    //       .doc(user.id)
-    //       .set({});
-    //   doc = await userRef.doc(user.id).get();
-    // }
-    // currentUser = User.fromDocument(doc);
   }
 
   saveUserToFirestore(currentuser) {
@@ -319,7 +270,6 @@ class _Registration_formPageState extends State<registration_formPage>
       print(e.toString());
       if (e.toString() ==
           "LateInitializationError: Field 'user' has already been initialized.") {
-        
         if (FirebaseAuth.instance.currentUser != null) {
           bool isOldUser = await userExist();
           if (isOldUser) {
@@ -361,11 +311,10 @@ class _Registration_formPageState extends State<registration_formPage>
           blurrySize = 0;
           showLoader = false;
         });
-    }
-    else{
-          blurrySize = 0;
-          showLoader = false;
-        showPopUp('The password provided is too weak.');
+    } else {
+      blurrySize = 0;
+      showLoader = false;
+      showPopUp('The password provided is too weak.');
     }
   }
 
@@ -384,19 +333,7 @@ class _Registration_formPageState extends State<registration_formPage>
 
   @override
   Widget build(BuildContext context) {
-    // var user = ModalRoute.of(context)!.settings.arguments as User;
     var size = MediaQuery.of(context).size;
-    // emailController.text = user.email!;
-    // firstNameController.text = user.firstName!;
-    // lastNameController.text = user.lastName!;
-    // userIcon = user.photoUrl ?? userIcon;
-    //isNetwork = !(user.photoUrl == null);
-    setState(() {
-      // enableEmail = false;
-      // emailIsValid = emailValidator(user.email!);
-      // firstNameIsValid = firstNameValidator(user.firstName!);
-      // lastNameIsValid = lastNameValidator(user.lastName!);
-    });
     PhoneNumber number = PhoneNumber(isoCode: countryCode);
 
     Widget thirdView = Container(
@@ -416,11 +353,11 @@ class _Registration_formPageState extends State<registration_formPage>
                 keyboardType: TextInputType.emailAddress,
                 controller: emailController,
                 onSubmitted: (value) async {
-                  await EmailExist(emailController.text.trim());
+                  await mailExist(emailController.text.trim());
                 },
                 onChanged: (value) async {
                   setState(() {
-                    EmailExist(emailController.text.trim());
+                    mailExist(emailController.text.trim());
                     emailIsValid = emailValidator(value);
                     if (!emailIsValid) {
                       emailStatus = EmailStatus.error;
@@ -447,19 +384,6 @@ class _Registration_formPageState extends State<registration_formPage>
               decoration: InputDecoration(
                   labelText: 'User name :-', labelStyle: blue20Style),
               controller: userNameController,
-              // onSubmitted: (value) async {
-              //   if (value.contains(" ")) {
-              //     userNameController.text = value.replaceAll(' ', '');
-              //     showPopUp("space not allowed for UserName");
-              //   }
-              //   await userNameExist(userNameController.text.trim());
-              //   setState(() {
-              //     if (userNameIsValid) {
-              //       userNameStatus = UserNameStatus.success;
-              //     } else
-              //       userNameStatus = UserNameStatus.error;
-              //   });
-              // },
               onChanged: (value) async {
                 if (value.contains(" ")) {
                   userNameController.text = value.replaceAll(' ', '');
@@ -521,59 +445,6 @@ class _Registration_formPageState extends State<registration_formPage>
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              // Container(
-              //   child: Stack(
-              //     children: [
-              //       AnimatedCrossFade(
-              //         duration: const Duration(milliseconds: 500),
-              //         firstChild: RawMaterialButton(
-              //           onPressed: (){},
-              //           elevation: 2.0,
-              //           fillColor: projectGray2,
-              //           child: CircleAvatar(
-              //             foregroundImage:  NetworkImage(userIcon),
-              //             radius: size.height * 0.06,
-              //           ),
-              //           padding: EdgeInsets.all(5.0),
-              //           shape: CircleBorder(side: BorderSide(color: projectGray)),
-              //         ),
-              //         secondChild: RawMaterialButton(
-              //           onPressed: (){},
-              //           elevation: 2.0,
-              //           fillColor: projectGray2,
-              //           child: CircleAvatar(
-              //             foregroundImage:  FileImage(_image),
-              //             radius: size.height * 0.06,
-              //           ),
-              //           padding: EdgeInsets.all(3.0),
-              //           shape: CircleBorder(side: BorderSide(color: projectGray)),
-              //         ),
-              //         crossFadeState: isNetwork
-              //             ? CrossFadeState.showFirst
-              //             : CrossFadeState.showSecond,
-              //       ),
-              //       Positioned(
-              //         top: size.height * 0.08,left:size.width * 0.08,
-              //         child: IconButton(
-              //             icon: Icon(Icons.add_circle,color: projectBlue,size: size.height * 0.04,),
-              //             onPressed: () async {
-              //               final pickedFile = await picker.getImage(source: ImageSource.gallery);
-              //
-              //               setState(() {
-              //                 if (pickedFile != null) {
-              //                   isNetwork = false;
-              //                   _image = File(pickedFile.path);
-              //                 } else {
-              //                   print('No image selected.');
-              //                 }
-              //               });
-              //             })
-              //       ),
-              //     ],
-              //   ),
-              //
-              //   width: size.width,alignment: Alignment.center,height: size.height * 0.15
-              // ),
               TextField(
                   textAlignVertical: TextAlignVertical.bottom,
                   decoration: InputDecoration(
@@ -581,11 +452,11 @@ class _Registration_formPageState extends State<registration_formPage>
                   keyboardType: TextInputType.emailAddress,
                   controller: emailController,
                   onSubmitted: (value) async {
-                    await EmailExist(emailController.text.trim());
+                    await mailExist(emailController.text.trim());
                   },
                   onChanged: (value) async {
                     setState(() {
-                      EmailExist(emailController.text.trim());
+                      mailExist(emailController.text.trim());
                       emailIsValid = emailValidator(value);
                       if (!emailIsValid) {
                         emailStatus = EmailStatus.error;
@@ -864,13 +735,6 @@ class _Registration_formPageState extends State<registration_formPage>
                                     default:
                                       print(_current);
                                       validatePhoneNumber();
-
-                                      // if(!phoneNumberIsValid || (passwordStatus == PasswordStatus.error) || passwordController.text.isEmpty){
-                                      //   showPopUp(form_update_error);
-                                      //   _current = 1;
-                                      //   return;
-                                      // }
-                                      // next = !next;
                                       break;
                                   }
                                 },
@@ -940,7 +804,6 @@ class _Registration_formPageState extends State<registration_formPage>
                         ],
                       ),
                     ),
-                    //SizedBox(height: size.height * 0.02),
                     Container(
                       height: MediaQuery.of(context).size.height * 0.2,
                       width: MediaQuery.of(context).size.width,

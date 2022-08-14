@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:edurald/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +11,14 @@ import 'package:edurald/models/strings.dart';
 import 'package:edurald/utills/input_util.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:edurald/validations/registration_validation.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../gen/assets.gen.dart';
 import '../../utills/imageanimations.dart';
+import '../dashboard/dashboard.dart';
+import 'signin_logic.dart';
 
 class signinPage extends StatefulWidget {
   signinPage({Key? key, this.title}) : super(key: key);
@@ -34,16 +39,31 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
   bool isSignInComplete = false;
   bool showLoader = false;
   int index = 0;
+  int blurrySize = 0;
+  bool enableEmail = false;
+  int socialMediaSelectedOption = 1;
   double socialAuthsLocation = 0.7;
   final int _numPages = 3;
   int _currentPage = 0;
+  int _current = 0;
   bool _passwordVisible = false;
   bool emailIsValid = false;
   bool passwordIsValid = false;
+  bool emailExist = false;
+  bool next = true;
+  bool userNameIsValid = false;
+  bool firstNameIsValid = false;
+  bool lastNameIsValid = false;
   EmailStatus emailStatus = EmailStatus.success;
+  FirstNameStatus firstNameStatus = FirstNameStatus.success;
+  LastNameStatus lastNameStatus = LastNameStatus.success;
+  UserNameStatus userNameStatus = UserNameStatus.success;
   PasswordValidationResp passwordValidationResp = PasswordValidationResp(0, '');
   PasswordStatus passwordStatus = PasswordStatus.success;
   TextEditingController emailController = new TextEditingController();
+  TextEditingController userNameController = new TextEditingController();
+  TextEditingController firstNameController = new TextEditingController();
+  TextEditingController lastNameController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
   String signInLinkedInIcon = imageBase + 'signInLinkedIn.png';
   String signInTwitterIcon = imageBase + 'signInTwitter.png';
@@ -158,6 +178,132 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
     // }
   }
 
+  socialMediaSignup() async {
+    await FirebaseAuth.instance.signOut();
+    try {
+      setState(() {
+        blurrySize = 1;
+        showLoader = true;
+      });
+      if (socialMediaSelectedOption == 1) {
+        //user = await signInWithFacebook();
+      } else if (socialMediaSelectedOption == 2) {
+        user = await signInWithGoogle();
+      } else if (socialMediaSelectedOption == 3) {
+        print("Twitter click");
+        user = await signInWithTwitter();
+        //await userNameExist(user.user?.displayName ?? "");
+        enableEmail = true;
+      }
+      if (FirebaseAuth.instance.currentUser != null) {
+        bool isOldUser = await userExist();
+        print(FirebaseAuth.instance.currentUser);
+        print(isOldUser);
+        if (isOldUser) {
+          Get.offAll(() => dashboardPage());
+          return;
+        } else
+          setState(() {
+            _current = ++_current % 3;
+            userNameController.text = user.user?.displayName ?? "";
+            userNameController.text =
+                userNameController.text.replaceAll(' ', '');
+            // _current = 2;
+            socialAuthsLocation = 1;
+            next = !next;
+            blurrySize = 0;
+            showLoader = false;
+          });
+      } else {
+        blurrySize = 0;
+        showLoader = false;
+        showPopUp('Account Not Authenticated.');
+      }
+    } catch (e) {
+      print("Hereee");
+      print(e.toString());
+      if (e.toString() ==
+          "LateInitializationError: Field 'user' has already been initialized.") {
+        if (FirebaseAuth.instance.currentUser != null) {
+          bool isOldUser = await userExist();
+          if (isOldUser) {
+            Get.offAll(dashboardPage());
+            return;
+          } else
+            setState(() {
+              _current = ++_current % 3;
+              userNameController.text = user.user?.displayName ?? "";
+              userNameController.text =
+                  userNameController.text.replaceAll(' ', '');
+              // _current = 2;
+              socialAuthsLocation = 1;
+              //next = !next;
+              blurrySize = 0;
+              showLoader = false;
+            });
+        }
+      } else {
+        blurrySize = 0;
+        showLoader = false;
+        showPopUp('Account Not Authenticated.');
+      }
+      //show error signing up notification
+    }
+  }
+
+  Future<bool> userExist() async {
+    final docRef = await userRef.doc(user.user?.uid).get().then(
+      (DocumentSnapshot doc) {
+        if (doc.exists) {
+          return true;
+        } else
+          return false;
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
+    return docRef;
+  }
+
+  Future<bool> mailExist(String displayname) async {
+    int size = 0;
+    await FirebaseFirestore.instance
+        .collection("users")
+        .where("email", isEqualTo: emailController.text.toLowerCase())
+        .get()
+        .then(
+          (res) => {
+            size = res.size,
+          },
+          onError: (e) => print("Error completing: $e"),
+        );
+    setState(() {
+      emailExist = (size >= 1);
+    });
+    return size >= 1;
+  }
+
+  Future<bool> userNameExist(String displayname) async {
+    if (displayname.trim().length == 0) return true;
+    int size = 0;
+    await FirebaseFirestore.instance
+        .collection("users")
+        .where("unique", isEqualTo: displayname.toLowerCase())
+        .get()
+        .then(
+          (res) => {
+            size = res.size,
+            print(size),
+          },
+          onError: (e) => print("Error completing: $e"),
+        );
+    setState(() {
+      userNameIsValid = !(size >= 1);
+      userNameStatus =
+          (size >= 1) ? UserNameStatus.error : UserNameStatus.success;
+    });
+    return size >= 1;
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -182,170 +328,416 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
               AnimatedPositioned(
                   top: size.height * 0,
                   height: size.height,
+                  width: size.width,
                   duration: Duration(seconds: 0),
                   child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          width: size.width,
-                          alignment: Alignment.center,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                SizedBox(height: size.height * 0.05),
-                                Hero(
-                                  tag: "splashscreenImage",
-                                  child: WidgetAnimator(
-                                    component: Container(
-                                      height: size.height * 0.1,
-                                      width: MediaQuery.of(context).size.width,
-                                      alignment: Alignment.topCenter,
-                                      child: imgAnimation2(
-                                        url: Assets.images.logoWithName.path,
-                                        time: Duration(milliseconds: 4000),
-                                        width: size.width * 0.5,
-                                        beginx: 0.1,
-                                        endx: -0.1,
-                                        beginy: 0,
-                                        endy: 0,
-                                        height: size.height * 0.5,
-                                        transition: PositionedTransition,
+                    alignment: Alignment.center,
+                    child: AnimatedCrossFade(
+                      duration: const Duration(milliseconds: 500),
+                      firstChild: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              width: size.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    SizedBox(height: size.height * 0.05),
+                                    Hero(
+                                      tag: "splashscreenImage",
+                                      child: WidgetAnimator(
+                                        component: Container(
+                                          height: size.height * 0.1,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          alignment: Alignment.topCenter,
+                                          child: imgAnimation2(
+                                            url:
+                                                Assets.images.logoWithName.path,
+                                            time: Duration(milliseconds: 4000),
+                                            width: size.width * 0.5,
+                                            beginx: 0.1,
+                                            endx: -0.1,
+                                            beginy: 0,
+                                            endy: 0,
+                                            height: size.height * 0.5,
+                                            transition: PositionedTransition,
+                                          ),
+                                        ),
+                                        transition: Transform,
+                                        animPattern: Curves.easeIn,
+                                        pixle: Colors.transparent,
+                                        time: Duration(seconds: 1),
+                                        animType: "nothing",
+                                        xAxis: 0,
+                                        yAxis: 0,
                                       ),
                                     ),
-                                    transition: Transform,
-                                    animPattern: Curves.easeIn,
-                                    pixle: Colors.transparent,
-                                    time: Duration(seconds: 1),
-                                    animType: "nothing",
-                                    xAxis: 0,
-                                    yAxis: 0,
+                                    SizedBox(height: size.height * 0.05),
+                                    Hero(
+                                      tag: "headerTxt",
+                                      child: Text(
+                                        'Welcome back!',
+                                        style: blue25BoldStyle,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    SizedBox(height: size.height * 0.02),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.95,
+                                      child: Text(
+                                        'Sign in to learn and connect with other professionals like you',
+                                        style: darkNormal18Style,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    SizedBox(height: size.height * 0.05),
+                                  ]),
+                            ),
+                            Container(
+                              width: size.width * 0.8,
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  TextField(
+                                      decoration: InputDecoration(
+                                          labelText: 'Email ',
+                                          labelStyle: blue20Style),
+                                      controller: emailController,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          emailIsValid = emailValidator(value);
+                                          if (!emailIsValid) {
+                                            emailStatus = EmailStatus.error;
+                                          } else
+                                            emailStatus = EmailStatus.success;
+                                        });
+                                      }),
+                                  (emailStatus == EmailStatus.error)
+                                      ? error(email_invalid_error)
+                                      : Text(''),
+                                  TextField(
+                                      decoration: InputDecoration(
+                                          labelText: 'Password ',
+                                          suffixIcon: IconButton(
+                                            icon: Icon(
+                                              _passwordVisible
+                                                  ? Icons.visibility
+                                                  : Icons.visibility_off,
+                                              color: projectBlue,
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                _passwordVisible =
+                                                    !_passwordVisible;
+                                              });
+                                            },
+                                          ),
+                                          labelStyle: blue20Style,
+                                          focusColor: projectBlue),
+                                      obscureText: !_passwordVisible,
+                                      controller: passwordController,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          passwordValidationResp =
+                                              loginPasswordValidator(value);
+                                          if (passwordValidationResp
+                                                  .validated ==
+                                              -1) {
+                                            passwordStatus =
+                                                PasswordStatus.error;
+                                          } else
+                                            passwordStatus =
+                                                PasswordStatus.success;
+                                        });
+                                      }),
+                                  (passwordStatus == PasswordStatus.error)
+                                      ? error(passwordValidationResp.error)
+                                      : Text(''),
+                                  Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.01,
                                   ),
-                                ),
-                                SizedBox(height: size.height * 0.05),
-                                Hero(
-                                  tag: "headerTxt",
-                                  child: Text(
-                                    'Welcome back!',
-                                    style: blue25BoldStyle,
-                                    textAlign: TextAlign.center,
+                                  Container(
+                                    child: RichText(
+                                      textAlign: TextAlign.right,
+                                      text: TextSpan(
+                                        text: 'Forgot password?',
+                                        style: grayUnderline15Style,
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            Navigator.pushNamed(
+                                                context, '/forgotPass');
+                                          },
+                                      ),
+                                    ),
+                                    width: MediaQuery.of(context).size.width,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.04,
                                   ),
-                                ),
-                                SizedBox(height: size.height * 0.02),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.95,
-                                  child: Text(
-                                    'Sign in to learn and connect with other professionals like you',
-                                    style: darkNormal18Style,
-                                    textAlign: TextAlign.center,
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.7,
+                                    alignment: Alignment.center,
+                                    child: ButtonTheme(
+                                        minWidth:
+                                            MediaQuery.of(context).size.width *
+                                                0.6,
+                                        height: 40,
+                                        buttonColor: Colors.transparent,
+                                        child: RaisedButton(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              side: BorderSide(
+                                                  color: projectBlue)),
+                                          color: projectBlue,
+                                          child: Text(
+                                            'Get Started',
+                                            style: white18Style,
+                                          ),
+                                          onPressed: () async {
+                                            var connectivityResult =
+                                                await (Connectivity()
+                                                    .checkConnectivity());
+                                            if (connectivityResult ==
+                                                ConnectivityResult.none) {
+                                              showPopUp(internet_error);
+                                              // Mobile is not Connected to Internet
+                                            } else if (connectivityResult ==
+                                                ConnectivityResult.mobile) {
+                                              signInUser();
+                                              // I am connected to a mobile network.
+                                            } else if (connectivityResult ==
+                                                ConnectivityResult.wifi) {
+                                              signInUser();
+                                              // I am connected to a wifi network.
+                                            }
+                                          },
+                                          highlightElevation: 0.8,
+                                        )),
                                   ),
-                                ),
-                                SizedBox(height: size.height * 0.05),
-                              ]),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: size.height * 0.12),
+                          ],
                         ),
+                      ),
+                      secondChild: Column(children: <Widget>[
                         Container(
                           width: size.width * 0.8,
                           alignment: Alignment.center,
+                          //padding: EdgeInsets.all(0),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                              TextField(
-                                  decoration: InputDecoration(
-                                      labelText: 'Email ',
-                                      labelStyle: blue20Style),
-                                  controller: emailController,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      emailIsValid = emailValidator(value);
-                                      if (!emailIsValid) {
-                                        emailStatus = EmailStatus.error;
-                                      } else
-                                        emailStatus = EmailStatus.success;
-                                    });
-                                  }),
-                              (emailStatus == EmailStatus.error)
-                                  ? error(email_invalid_error)
-                                  : Text(''),
-                              TextField(
-                                  decoration: InputDecoration(
-                                      labelText: 'Password ',
-                                      suffixIcon: IconButton(
-                                        icon: Icon(
-                                          _passwordVisible
-                                              ? Icons.visibility
-                                              : Icons.visibility_off,
-                                          color: projectBlue,
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            _passwordVisible =
-                                                !_passwordVisible;
-                                          });
-                                        },
-                                      ),
-                                      labelStyle: blue20Style,
-                                      focusColor: projectBlue),
-                                  obscureText: !_passwordVisible,
-                                  controller: passwordController,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      passwordValidationResp =
-                                          loginPasswordValidator(value);
-                                      if (passwordValidationResp.validated ==
-                                          -1) {
-                                        passwordStatus = PasswordStatus.error;
-                                      } else
-                                        passwordStatus = PasswordStatus.success;
-                                    });
-                                  }),
-                              (passwordStatus == PasswordStatus.error)
-                                  ? error(passwordValidationResp.error)
-                                  : Text(''),
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.01,
+                              SizedBox(height: size.height * 0.08),
+                              Hero(
+                                tag: "splashscreenImage",
+                                child: WidgetAnimator(
+                                  component: Container(
+                                    height: size.height * 0.05,
+                                    width: size.width,
+                                    color: Colors.transparent,
+                                    alignment: Alignment.topCenter,
+                                    child: imgAnimation2(
+                                      url: Assets.images.logo.path,
+                                      time: Duration(milliseconds: 4000),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.5,
+                                      beginx: 0.1,
+                                      endx: -0.1,
+                                      beginy: 0,
+                                      endy: 0,
+                                      height: size.height * 0.1,
+                                      transition: PositionedTransition,
+                                    ),
+                                  ),
+                                  transition: Transform,
+                                  animPattern: Curves.easeIn,
+                                  pixle: Colors.transparent,
+                                  time: Duration(seconds: 1),
+                                  animType: "nothing",
+                                  xAxis: 0,
+                                  yAxis: 0,
+                                ),
                               ),
+                              SizedBox(height: size.height * 0.05),
+                              Hero(
+                                tag: "headerTxt",
+                                child: Text(
+                                  'Join Edurald',
+                                  style: blue25BoldStyle,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              SizedBox(
+                                height: size.height * 0.02,
+                              ),
+                              Text(
+                                'Sign up to learn and connect with other professionals like you',
+                                style: darkNormal18Style,
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: size.height * 0.05),
+                              Visibility(
+                                child: TextField(
+                                    textAlignVertical: TextAlignVertical.bottom,
+                                    decoration: InputDecoration(
+                                        labelText: 'Email ',
+                                        labelStyle: blue20Style),
+                                    keyboardType: TextInputType.emailAddress,
+                                    controller: emailController,
+                                    onSubmitted: (value) async {
+                                      await mailExist(
+                                          emailController.text.trim());
+                                    },
+                                    onChanged: (value) async {
+                                      setState(() {
+                                        mailExist(emailController.text.trim());
+                                        emailIsValid = emailValidator(value);
+                                        if (!emailIsValid) {
+                                          emailStatus = EmailStatus.error;
+                                        } else
+                                          emailStatus = EmailStatus.success;
+                                      });
+                                    }),
+                                maintainSize: false,
+                                maintainAnimation: true,
+                                maintainState: true,
+                                visible: enableEmail,
+                              ),
+                              Visibility(
+                                child: (emailStatus == EmailStatus.error)
+                                    ? error(email_invalid_error)
+                                    : Text(''),
+                                maintainSize: false,
+                                maintainAnimation: true,
+                                maintainState: true,
+                                visible: !emailIsValid,
+                              ),
+                              (emailExist)
+                                  ? error(email_exist_error)
+                                  : Text(''),
+                              TextField(
+                                  decoration: InputDecoration(
+                                      labelText: 'User name :-',
+                                      labelStyle: blue20Style),
+                                  controller: userNameController,
+                                  onChanged: (value) async {
+                                    if (value.contains(" ")) {
+                                      userNameController.text =
+                                          value.replaceAll(' ', '');
+                                      showPopUp(
+                                          "space not allowed for UserName");
+                                    }
+                                    await userNameExist(
+                                        userNameController.text.trim());
+                                    setState(() {
+                                      if (userNameIsValid) {
+                                        userNameStatus = UserNameStatus.success;
+                                      } else
+                                        userNameStatus = UserNameStatus.error;
+                                    });
+                                  }),
+                              (userNameStatus == UserNameStatus.error)
+                                  ? error(userName_error)
+                                  : Text(''),
+                              TextField(
+                                  decoration: InputDecoration(
+                                      labelText: 'First name :-',
+                                      labelStyle: blue20Style),
+                                  controller: firstNameController,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      firstNameIsValid =
+                                          firstNameValidator(value);
+                                      if (!firstNameIsValid) {
+                                        firstNameStatus = FirstNameStatus.error;
+                                      } else
+                                        firstNameStatus =
+                                            FirstNameStatus.success;
+                                    });
+                                  }),
+                              (firstNameStatus == FirstNameStatus.error)
+                                  ? error(firstName_error)
+                                  : Text(''),
+                              TextField(
+                                  decoration: InputDecoration(
+                                      labelText: 'Last name :-',
+                                      labelStyle: blue20Style),
+                                  controller: lastNameController,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      lastNameIsValid =
+                                          lastNameValidator(value);
+                                      if (!lastNameIsValid) {
+                                        lastNameStatus = LastNameStatus.error;
+                                      } else
+                                        lastNameStatus = LastNameStatus.success;
+                                    });
+                                  }),
+                              (lastNameStatus == LastNameStatus.error)
+                                  ? error(lastName_error)
+                                  : Text(''),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: size.height * 0.2,
+                          width: size.width * 0.8,
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(height: size.height * 0.01),
                               Container(
                                 child: RichText(
-                                  textAlign: TextAlign.right,
+                                  textAlign: TextAlign.center,
                                   text: TextSpan(
-                                    text: 'Forgot password?',
-                                    style: grayUnderline15Style,
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Navigator.pushNamed(
-                                            context, '/forgotPass');
-                                      },
-                                  ),
+                                      text: 'You agree to the edurald',
+                                      style: gray12Style,
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text:
+                                              'User Agreement, Privacy Policy, and Cookie Policy.',
+                                          style: blue12Style,
+                                        )
+                                      ]),
                                 ),
                                 width: MediaQuery.of(context).size.width,
                                 height:
                                     MediaQuery.of(context).size.height * 0.04,
                               ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          alignment: Alignment.center,
-                          child: Column(
-                            children: <Widget>[
+                              SizedBox(height: size.height * 0.01),
                               Container(
-                                width: MediaQuery.of(context).size.width * 0.7,
+                                width: MediaQuery.of(context).size.width,
                                 alignment: Alignment.center,
                                 child: ButtonTheme(
-                                    minWidth:
-                                        MediaQuery.of(context).size.width * 0.6,
+                                    minWidth: size.width,
                                     height: 40,
                                     buttonColor: Colors.transparent,
                                     child: RaisedButton(
@@ -355,10 +747,27 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                           side: BorderSide(color: projectBlue)),
                                       color: projectBlue,
                                       child: Text(
-                                        'Get Started',
+                                        'Continue',
                                         style: white18Style,
                                       ),
                                       onPressed: () async {
+                                        await userNameExist(
+                                            userNameController.text);
+                                        firstNameIsValid = firstNameValidator(
+                                            firstNameController.text.trim());
+                                        lastNameIsValid = lastNameValidator(
+                                            firstNameController.text.trim());
+                                        emailIsValid = emailValidator(
+                                            emailController.text.trim());
+                                        if (!firstNameIsValid ||
+                                            emailExist ||
+                                            !emailIsValid ||
+                                            !lastNameIsValid) {
+                                          _current = 1;
+                                          showPopUp(form_update_error);
+                                          return;
+                                        }
+                                        _current = 2;
                                         var connectivityResult =
                                             await (Connectivity()
                                                 .checkConnectivity());
@@ -366,14 +775,9 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                             ConnectivityResult.none) {
                                           showPopUp(internet_error);
                                           // Mobile is not Connected to Internet
-                                        } else if (connectivityResult ==
-                                            ConnectivityResult.mobile) {
-                                          signInUser();
-                                          // I am connected to a mobile network.
-                                        } else if (connectivityResult ==
-                                            ConnectivityResult.wifi) {
-                                          signInUser();
-                                          // I am connected to a wifi network.
+                                        } else {
+                                          //updateUserRecords();
+                                          // I am connected to a network.
                                         }
                                       },
                                       highlightElevation: 0.8,
@@ -382,8 +786,10 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-                        SizedBox(height: size.height * 0.12),
-                      ],
+                      ]),
+                      crossFadeState: next
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
                     ),
                   )),
 
@@ -463,17 +869,24 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                     child: Image.asset(
                                         Assets.images.socials.facebook.path,
                                         height: size.height * 0.05),
-                                    onPressed: () => {}),
+                                    onPressed: () =>
+                                        {print("facebook clicked")}),
                                 CupertinoButton(
                                     child: Image.asset(
                                         Assets.images.socials.googleIcon.path,
                                         height: size.height * 0.05),
-                                    onPressed: () => {}),
+                                    onPressed: () async => {
+                                          socialMediaSelectedOption = 2,
+                                          await socialMediaSignup(),
+                                        }),
                                 CupertinoButton(
                                     child: Image.asset(
                                         Assets.images.socials.twitterIcon.path,
                                         height: size.height * 0.065),
-                                    onPressed: () => {}),
+                                    onPressed: () async => {
+                                          socialMediaSelectedOption = 3,
+                                          await socialMediaSignup(),
+                                        }),
                               ]),
                         ),
                         Container(
@@ -490,6 +903,15 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                               },
                             )),
                       ]))),
+
+              AnimatedPositioned(
+                  top: 10,
+                  duration: Duration(seconds: 1),
+                  child: Container(
+                    height: size.height * blurrySize,
+                    color: Colors.transparent,
+                    width: size.width * blurrySize,
+                  )),
 
               if (showLoader)
                 AnimatedPositioned(
