@@ -49,7 +49,6 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
   int _current = 0;
   bool _passwordVisible = false;
   bool emailIsValid = false;
-  bool passwordIsValid = false;
   bool emailExist = false;
   bool next = true;
   bool userNameIsValid = false;
@@ -106,7 +105,13 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
     setState(() {
       showLoader = true;
     });
-    FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+    bool loginSuccess = await SignInWithEmailPassword(
+        emailController.text.trim(), passwordController.text.trim());
+    if (loginSuccess) {
+      Navigator.pushNamed(context, '/dashboard');
+    } else {
+      showError("Error loggging in");
+    }
     //await FirebaseAnalytics.instance.logLogin(loginMethod: "email");
     print("event logged");
     setState(() {
@@ -128,7 +133,6 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
 //         showLoader = false;
 //       });
 // //      if(res.isSignedIn){
-    Navigator.pushNamed(context, '/dashboard');
 // //      }
 //
 //     } on AuthError catch (e) {
@@ -485,6 +489,13 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                             style: white18Style,
                                           ),
                                           onPressed: () async {
+                                            if (!emailIsValid ||
+                                                (passwordStatus ==
+                                                    PasswordStatus.error)) {
+                                              _current = 0;
+                                              showError(form_update_error);
+                                              return;
+                                            }
                                             var connectivityResult =
                                                 await (Connectivity()
                                                     .checkConnectivity());

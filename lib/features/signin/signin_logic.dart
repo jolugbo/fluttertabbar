@@ -56,3 +56,16 @@ Future<UserCredential> signInWithTwitter() async {
   return await FirebaseAuth.instance
       .signInWithCredential(twitterAuthCredential);
 }
+
+Future<bool> SignInWithEmailPassword(String email, String password) async {
+  try {
+    final response = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email.trim(), password: password.trim());
+    user = response;
+    return true;
+  } on FirebaseAuthException catch (e) {
+    return false;
+  } catch (e) {
+    return false;
+  }
+}

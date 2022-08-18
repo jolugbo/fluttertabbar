@@ -363,16 +363,22 @@ class _Registration_formPageState extends State<registration_formPage>
                         emailStatus = EmailStatus.success;
                     });
                   }),
-              Visibility(
-                child: (emailStatus == EmailStatus.error)
-                    ? error(email_invalid_error)
-                    : Text(''),
-                maintainSize: false,
-                maintainAnimation: true,
-                maintainState: true,
-                visible: !emailIsValid,
+              Container(
+                child: Visibility(
+                  child: (emailStatus == EmailStatus.error)
+                      ? error(email_invalid_error)
+                      : Text(''),
+                  maintainSize: false,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  visible: !emailIsValid,
+                ),
+                alignment: Alignment.topLeft,
               ),
-              (emailExist) ? error(email_exist_error) : Text(''),
+              Container(
+                child: (emailExist) ? error(email_exist_error) : Text(''),
+                alignment: Alignment.topLeft,
+              ),
               TextField(
                 decoration: InputDecoration(
                     labelText: 'Password',
@@ -405,9 +411,12 @@ class _Registration_formPageState extends State<registration_formPage>
                   });
                 },
               ),
-              (passwordStatus == PasswordStatus.error)
-                  ? error(passwordValidationResp.error)
-                  : Text(''),
+              Container(
+                child: (passwordStatus == PasswordStatus.error)
+                    ? error(passwordValidationResp.error)
+                    : Text(''),
+                alignment: Alignment.topLeft,
+              ),
             ]));
 
     return Scaffold(
