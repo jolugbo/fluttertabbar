@@ -50,65 +50,80 @@ import 'styles.dart';
 //);
 
 Widget error(String error) => Padding(
-  padding: EdgeInsets.only(top: 2.0),
-  child: new Text(error,
-    style: TextStyle(
-        fontSize: 12.0,
-        color: Colors.red
-    ),
-  ),
-);
+      padding: EdgeInsets.only(top: 2.0),
+      child: new Text(
+        error,
+        textAlign: TextAlign.start,
+        style: TextStyle(fontSize: 12.0, color: Colors.red),
+      ),
+    );
 
 Future<bool?> message(String message) => Fluttertoast.showToast(
-  msg: message,webShowClose: true,
-  toastLength: Toast.LENGTH_LONG,
-  gravity: ToastGravity.CENTER,
-  timeInSecForIosWeb: 1,
-  backgroundColor: projectGreen,
-  textColor: accent,
-  fontSize: 16.0
-);
+    msg: message,
+    webShowClose: true,
+    toastLength: Toast.LENGTH_LONG,
+    gravity: ToastGravity.CENTER,
+    timeInSecForIosWeb: 1,
+    backgroundColor: projectGreen,
+    textColor: accent,
+    fontSize: 16.0);
 
-Future<void> showMyDialog(context,String title,String body) async =>   {
-   showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title:  Text(title,textAlign: TextAlign.center,style: blue20Style,),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children:  <Widget>[
-              Text(body),
+void showError(String msg) {
+  Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0);
+}
+
+Future<void> showMyDialog(context, String title, String body) async => {
+      showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: blue20Style,
+            ),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text(body),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              ButtonTheme(
+                  minWidth: MediaQuery.of(context).size.width,
+                  height: 40,
+                  buttonColor: Colors.transparent,
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                        side: BorderSide(color: projectBlue)),
+                    color: projectBlue,
+                    child: Text(
+                      'Ok',
+                      style: white18Style,
+                    ),
+                    onPressed: () async {
+                      Navigator.of(context).pop();
+                    },
+                    highlightElevation: 0.8,
+                  )),
+              // OutlineButton(
+              //   child:  Text('Approve',style: blue12boldStyle),
+              //   onPressed: () {
+              //     Navigator.of(context).pop();
+              //   },
+              // ),
             ],
-          ),
-        ),
-        actions: <Widget>[
-          ButtonTheme(
-              minWidth: MediaQuery.of(context).size.width ,
-              height: 40,
-              buttonColor: Colors.transparent,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                    side: BorderSide(color: projectBlue)
-                ),
-                color: projectBlue,
-                child: Text('Ok',style: white18Style,),
-                onPressed: () async {
-                  Navigator.of(context).pop();
-                },
-                highlightElevation: 0.8,
-              )
-          ),
-          // OutlineButton(
-          //   child:  Text('Approve',style: blue12boldStyle),
-          //   onPressed: () {
-          //     Navigator.of(context).pop();
-          //   },
-          // ),
-        ],
-      );
-    },
-  )
-};
+          );
+        },
+      )
+    };

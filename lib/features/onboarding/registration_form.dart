@@ -24,6 +24,7 @@ import '../../utills/imageanimations.dart';
 
 import '../dashboard/dashboard.dart';
 import '../signin/signin_logic.dart';
+import 'registration_logic.dart';
 
 class registration_formPage extends StatefulWidget {
   registration_formPage({Key? key, this.user}) : super(key: key);
@@ -74,17 +75,6 @@ class _Registration_formPageState extends State<registration_formPage>
   PhoneNumber? initialnumber;
   DateTime timeStamp = DateTime.now();
 
-  void showPopUp(String msg) {
-    Fluttertoast.showToast(
-        msg: msg,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0);
-  }
-
   Future<void> getLocation() async {
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
@@ -125,7 +115,16 @@ class _Registration_formPageState extends State<registration_formPage>
         blurrySize = 1;
         showLoader = true;
       });
-      await createUser();
+      bool resp = await createUser(
+          context, emailController.text, passwordController.text);
+      if (resp) {
+        setState(() {
+          socialAuthsLocation = 1;
+          isFirstView = false;
+        });
+      } else {
+        _current = --_current % 3;
+      }
       setState(() {
         blurrySize = 0;
         showLoader = false;
@@ -140,114 +139,24 @@ class _Registration_formPageState extends State<registration_formPage>
         showLoader = true;
       });
       if (userNameIsValid) {
-        saveUserToFirestore(user.user);
-        Get.offAll(dashboardPage());
+        try {
+          saveUserToFirestore(
+              user.user,
+              emailController.text.trim(),
+              firstNameController.text.trim(),
+              lastNameController.text.trim(),
+              userNameController.text.trim(),
+              user.user?.photoURL ?? "");
+          Get.offAll(dashboardPage());
+        } catch (e) {}
       } else {
-        showPopUp(userName_error);
+        showError(userName_error);
         setState(() {
           blurrySize = 0;
           showLoader = false;
         });
       }
     }
-  }
-
-  Future<bool> userNameExist(String displayname) async {
-    int size = 0;
-    await FirebaseFirestore.instance
-        .collection("users")
-        .where("unique", isEqualTo: displayname.toLowerCase())
-        .get()
-        .then(
-          (res) => {
-            size = res.size,
-            print(size),
-          },
-          onError: (e) => print("Error completing: $e"),
-        );
-    setState(() {
-      userNameIsValid = !(size >= 1);
-      userNameStatus =
-          (size >= 1) ? UserNameStatus.error : UserNameStatus.success;
-    });
-    return size >= 1;
-  }
-
-  Future<bool> mailExist(String displayname) async {
-    int size = 0;
-    await FirebaseFirestore.instance
-        .collection("users")
-        .where("email", isEqualTo: emailController.text.toLowerCase())
-        .get()
-        .then(
-          (res) => {
-            size = res.size,
-          },
-          onError: (e) => print("Error completing: $e"),
-        );
-    setState(() {
-      emailExist = (size >= 1);
-    });
-    return size >= 1;
-  }
-
-  validatePhoneNumber() async {
-    setState(() {
-      socialAuthsLocation = 1;
-      showLoader = true;
-    });
-    print(user.user?.providerData);
-    await user.user?.updateDisplayName(userNameController.text);
-    print(FirebaseAuth.instance.currentUser?.providerData);
-  }
-
-  createUser() async {
-    try {
-      final response = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailController.text.trim(),
-              password: passwordController.text.trim());
-      user = response;
-      showMyDialog(context, "Account Verification", account_verification_msg);
-      setState(() {
-        socialAuthsLocation = 1;
-        //next = !next;
-        isFirstView = false;
-      });
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        _current = --_current % 3;
-        showPopUp('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        _current = --_current % 3;
-        showPopUp('An account already exists for that email.');
-      }
-    } catch (e) {
-      _current = --_current % 3;
-      print(e);
-    }
-  }
-
-  saveUserToFirestore(currentuser) {
-    userRef.doc(currentuser.uid).set({
-      "email": user.user?.email ?? emailController.text.trim(),
-      "firstName": firstNameController.text.trim(),
-      "lastName": lastNameController.text.trim(),
-      "displayName": userNameController.text.trim(),
-      "photo": "",
-      "point": 30,
-      "socialMedia": {},
-      "communities": {},
-      "training": {},
-      "bookmarks": {},
-      "ratings": 0,
-      "friends": {
-        "followers": {},
-        "followings": {},
-      },
-      "notifications": {},
-      "unique": userNameController.text.trim().toLowerCase(),
-    });
   }
 
   socialMediaSignup() async {
@@ -262,7 +171,9 @@ class _Registration_formPageState extends State<registration_formPage>
         user = await signInWithGoogle();
       } else if (socialMediaSelectedOption == 3) {
         user = await signInWithTwitter();
-        await userNameExist(user.user?.displayName ?? "");
+        userNameIsValid = !await userNameExist(user.user?.displayName ?? "");
+        userNameStatus =
+            userNameIsValid ? UserNameStatus.success : UserNameStatus.error;
         enableEmail = true;
       }
     } catch (e) {
@@ -314,21 +225,8 @@ class _Registration_formPageState extends State<registration_formPage>
     } else {
       blurrySize = 0;
       showLoader = false;
-      showPopUp('The password provided is too weak.');
+      showError('The password provided is too weak.');
     }
-  }
-
-  Future<bool> userExist() async {
-    final docRef = await userRef.doc(user.user?.uid).get().then(
-      (DocumentSnapshot doc) {
-        if (doc.exists) {
-          return true;
-        } else
-          return false;
-      },
-      onError: (e) => print("Error getting document: $e"),
-    );
-    return docRef;
   }
 
   @override
@@ -353,7 +251,7 @@ class _Registration_formPageState extends State<registration_formPage>
                 keyboardType: TextInputType.emailAddress,
                 controller: emailController,
                 onSubmitted: (value) async {
-                  await mailExist(emailController.text.trim());
+                  emailExist = await mailExist(emailController.text.trim());
                 },
                 onChanged: (value) async {
                   setState(() {
@@ -387,10 +285,11 @@ class _Registration_formPageState extends State<registration_formPage>
               onChanged: (value) async {
                 if (value.contains(" ")) {
                   userNameController.text = value.replaceAll(' ', '');
-                  showPopUp("space not allowed for UserName");
+                  showError("space not allowed for UserName");
                 }
-                await userNameExist(userNameController.text.trim());
-                setState(() {
+                setState(() async {
+                  userNameIsValid =
+                      !await userNameExist(userNameController.text.trim());
                   if (userNameIsValid) {
                     userNameStatus = UserNameStatus.success;
                   } else
@@ -452,11 +351,11 @@ class _Registration_formPageState extends State<registration_formPage>
                   keyboardType: TextInputType.emailAddress,
                   controller: emailController,
                   onSubmitted: (value) async {
-                    await mailExist(emailController.text.trim());
+                    emailExist = await mailExist(emailController.text.trim());
                   },
                   onChanged: (value) async {
+                    emailExist = await mailExist(emailController.text.trim());
                     setState(() {
-                      mailExist(emailController.text.trim());
                       emailIsValid = emailValidator(value);
                       if (!emailIsValid) {
                         emailStatus = EmailStatus.error;
@@ -693,7 +592,7 @@ class _Registration_formPageState extends State<registration_formPage>
                                     case 1:
                                       if (!emailIsValid || !passwordIsValid) {
                                         _current = 0;
-                                        showPopUp(form_update_error);
+                                        showError(form_update_error);
                                         return;
                                       }
                                       var connectivityResult =
@@ -701,7 +600,7 @@ class _Registration_formPageState extends State<registration_formPage>
                                               .checkConnectivity());
                                       if (connectivityResult ==
                                           ConnectivityResult.none) {
-                                        showPopUp(internet_error);
+                                        showError(internet_error);
                                         // Mobile is not Connected to Internet
                                       } else {
                                         registerUser();
@@ -709,14 +608,19 @@ class _Registration_formPageState extends State<registration_formPage>
                                       }
                                       break;
                                     case 2:
-                                      await userNameExist(
-                                          userNameController.text);
+                                      userNameIsValid = !await userNameExist(
+                                          userNameController.text.trim());
+                                      emailExist = await mailExist(
+                                          emailController.text.trim());
+                                      userNameStatus = userNameIsValid
+                                          ? UserNameStatus.success
+                                          : UserNameStatus.error;
                                       if (!firstNameIsValid ||
                                           emailExist ||
                                           !lastNameIsValid ||
                                           !userNameIsValid) {
                                         _current = 1;
-                                        showPopUp(form_update_error);
+                                        showError(form_update_error);
                                         return;
                                       }
                                       _current = 2;
@@ -725,7 +629,7 @@ class _Registration_formPageState extends State<registration_formPage>
                                               .checkConnectivity());
                                       if (connectivityResult ==
                                           ConnectivityResult.none) {
-                                        showPopUp(internet_error);
+                                        showError(internet_error);
                                         // Mobile is not Connected to Internet
                                       } else {
                                         updateUserRecords();
@@ -734,7 +638,7 @@ class _Registration_formPageState extends State<registration_formPage>
                                       break;
                                     default:
                                       print(_current);
-                                      validatePhoneNumber();
+                                      //validatePhoneNumber();
                                       break;
                                   }
                                 },

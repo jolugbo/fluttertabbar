@@ -18,6 +18,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../gen/assets.gen.dart';
 import '../../utills/imageanimations.dart';
 import '../dashboard/dashboard.dart';
+import '../onboarding/registration_logic.dart';
 import 'signin_logic.dart';
 
 class signinPage extends StatefulWidget {
@@ -168,17 +169,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
     });
   }
 
-  Future<void> resendSignUpCode() async {
-    // try {
-    //   ResendSignUpCodeResult res = await Amplify.Auth.resendSignUpCode(
-    //     username: emailController.value.text.trim()
-    //   );
-    // } on AuthError catch (e) {
-    //   print(e);
-    // }
-  }
-
-  socialMediaSignup() async {
+  socialMediaSignin() async {
     await FirebaseAuth.instance.signOut();
     try {
       setState(() {
@@ -192,7 +183,6 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
       } else if (socialMediaSelectedOption == 3) {
         print("Twitter click");
         user = await signInWithTwitter();
-        //await userNameExist(user.user?.displayName ?? "");
         enableEmail = true;
       }
       if (FirebaseAuth.instance.currentUser != null) {
@@ -206,6 +196,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
           setState(() {
             _current = ++_current % 3;
             userNameController.text = user.user?.displayName ?? "";
+            emailController.text = user.user?.email ?? "";
             userNameController.text =
                 userNameController.text.replaceAll(' ', '');
             // _current = 2;
@@ -215,8 +206,10 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
             showLoader = false;
           });
       } else {
-        blurrySize = 0;
-        showLoader = false;
+        setState(() {
+          blurrySize = 0;
+          showLoader = false;
+        });
         showPopUp('Account Not Authenticated.');
       }
     } catch (e) {
@@ -243,65 +236,39 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
             });
         }
       } else {
-        blurrySize = 0;
-        showLoader = false;
+        setState(() {
+          blurrySize = 0;
+          showLoader = false;
+        });
         showPopUp('Account Not Authenticated.');
       }
       //show error signing up notification
     }
   }
 
-  Future<bool> userExist() async {
-    final docRef = await userRef.doc(user.user?.uid).get().then(
-      (DocumentSnapshot doc) {
-        if (doc.exists) {
-          return true;
-        } else
-          return false;
-      },
-      onError: (e) => print("Error getting document: $e"),
-    );
-    return docRef;
-  }
-
-  Future<bool> mailExist(String displayname) async {
-    int size = 0;
-    await FirebaseFirestore.instance
-        .collection("users")
-        .where("email", isEqualTo: emailController.text.toLowerCase())
-        .get()
-        .then(
-          (res) => {
-            size = res.size,
-          },
-          onError: (e) => print("Error completing: $e"),
-        );
-    setState(() {
-      emailExist = (size >= 1);
-    });
-    return size >= 1;
-  }
-
-  Future<bool> userNameExist(String displayname) async {
-    if (displayname.trim().length == 0) return true;
-    int size = 0;
-    await FirebaseFirestore.instance
-        .collection("users")
-        .where("unique", isEqualTo: displayname.toLowerCase())
-        .get()
-        .then(
-          (res) => {
-            size = res.size,
-            print(size),
-          },
-          onError: (e) => print("Error completing: $e"),
-        );
-    setState(() {
-      userNameIsValid = !(size >= 1);
-      userNameStatus =
-          (size >= 1) ? UserNameStatus.error : UserNameStatus.success;
-    });
-    return size >= 1;
+  Future<void> updateUserRecords() async {
+    if (!showLoader) {
+      setState(() {
+        blurrySize = 1;
+        showLoader = true;
+      });
+      try {
+        saveUserToFirestore(
+            user.user,
+            emailController.text.trim(),
+            firstNameController.text.trim(),
+            lastNameController.text.trim(),
+            userNameController.text.trim(),
+            user.user?.photoURL ?? "");
+        Get.offAll(dashboardPage());
+      } catch (e) {
+        showError(e.toString());
+        setState(() {
+          blurrySize = 0;
+          showLoader = false;
+        });
+      }
+    }
   }
 
   @override
@@ -617,8 +584,9 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                           emailController.text.trim());
                                     },
                                     onChanged: (value) async {
+                                      emailExist = await mailExist(
+                                          emailController.text.trim());
                                       setState(() {
-                                        mailExist(emailController.text.trim());
                                         emailIsValid = emailValidator(value);
                                         if (!emailIsValid) {
                                           emailStatus = EmailStatus.error;
@@ -631,23 +599,46 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                 maintainState: true,
                                 visible: enableEmail,
                               ),
-                              Visibility(
-                                child: (emailStatus == EmailStatus.error)
-                                    ? error(email_invalid_error)
-                                    : Text(''),
-                                maintainSize: false,
-                                maintainAnimation: true,
-                                maintainState: true,
-                                visible: !emailIsValid,
+                              Container(
+                                child: Visibility(
+                                  child: (emailStatus == EmailStatus.error)
+                                      ? error(email_invalid_error)
+                                      : Text(''),
+                                  maintainSize: false,
+                                  maintainAnimation: true,
+                                  maintainState: true,
+                                  visible: !emailIsValid,
+                                ),
+                                alignment: Alignment.topLeft,
                               ),
-                              (emailExist)
-                                  ? error(email_exist_error)
-                                  : Text(''),
+                              Container(
+                                child: (emailExist)
+                                    ? error(email_exist_error)
+                                    : Text(''),
+                                alignment: Alignment.topLeft,
+                              ),
                               TextField(
                                   decoration: InputDecoration(
                                       labelText: 'User name :-',
                                       labelStyle: blue20Style),
                                   controller: userNameController,
+                                  onSubmitted: (value) async {
+                                    if (value.contains(" ")) {
+                                      userNameController.text =
+                                          value.replaceAll(' ', '');
+                                      showPopUp(
+                                          "space not allowed for UserName");
+                                    }
+                                    print("got here");
+                                    userNameIsValid = !await userNameExist(
+                                        userNameController.text.trim());
+                                    setState(() {
+                                      if (userNameIsValid) {
+                                        userNameStatus = UserNameStatus.success;
+                                      } else
+                                        userNameStatus = UserNameStatus.error;
+                                    });
+                                  },
                                   onChanged: (value) async {
                                     if (value.contains(" ")) {
                                       userNameController.text =
@@ -655,7 +646,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                       showPopUp(
                                           "space not allowed for UserName");
                                     }
-                                    await userNameExist(
+                                    userNameIsValid = !await userNameExist(
                                         userNameController.text.trim());
                                     setState(() {
                                       if (userNameIsValid) {
@@ -664,9 +655,12 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                         userNameStatus = UserNameStatus.error;
                                     });
                                   }),
-                              (userNameStatus == UserNameStatus.error)
-                                  ? error(userName_error)
-                                  : Text(''),
+                              Container(
+                                child: (userNameStatus == UserNameStatus.error)
+                                    ? error(userName_error)
+                                    : Text(''),
+                                alignment: Alignment.topLeft,
+                              ),
                               TextField(
                                   decoration: InputDecoration(
                                       labelText: 'First name :-',
@@ -683,9 +677,13 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                             FirstNameStatus.success;
                                     });
                                   }),
-                              (firstNameStatus == FirstNameStatus.error)
-                                  ? error(firstName_error)
-                                  : Text(''),
+                              Container(
+                                child:
+                                    (firstNameStatus == FirstNameStatus.error)
+                                        ? error(firstName_error)
+                                        : Text(''),
+                                alignment: Alignment.topLeft,
+                              ),
                               TextField(
                                   decoration: InputDecoration(
                                       labelText: 'Last name :-',
@@ -701,9 +699,12 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                         lastNameStatus = LastNameStatus.success;
                                     });
                                   }),
-                              (lastNameStatus == LastNameStatus.error)
-                                  ? error(lastName_error)
-                                  : Text(''),
+                              Container(
+                                child: (lastNameStatus == LastNameStatus.error)
+                                    ? error(lastName_error)
+                                    : Text(''),
+                                alignment: Alignment.topLeft,
+                              ),
                             ],
                           ),
                         ),
@@ -751,23 +752,39 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                         style: white18Style,
                                       ),
                                       onPressed: () async {
-                                        await userNameExist(
-                                            userNameController.text);
-                                        firstNameIsValid = firstNameValidator(
-                                            firstNameController.text.trim());
-                                        lastNameIsValid = lastNameValidator(
-                                            firstNameController.text.trim());
-                                        emailIsValid = emailValidator(
+                                        emailExist = await mailExist(
                                             emailController.text.trim());
+                                        userNameIsValid = !await userNameExist(
+                                            userNameController.text.trim());
+                                        setState(() {
+                                          firstNameIsValid = firstNameValidator(
+                                              firstNameController.text.trim());
+                                          lastNameIsValid = lastNameValidator(
+                                              firstNameController.text.trim());
+                                          emailIsValid = emailValidator(
+                                              emailController.text.trim());
+
+                                          emailStatus = (emailIsValid)
+                                              ? EmailStatus.success
+                                              : EmailStatus.error;
+                                          lastNameStatus = (lastNameIsValid)
+                                              ? LastNameStatus.success
+                                              : LastNameStatus.error;
+                                          firstNameStatus = (firstNameIsValid)
+                                              ? FirstNameStatus.success
+                                              : FirstNameStatus.error;
+                                          userNameStatus = (userNameIsValid)
+                                              ? UserNameStatus.success
+                                              : UserNameStatus.error;
+                                        });
                                         if (!firstNameIsValid ||
                                             emailExist ||
+                                            !userNameIsValid ||
                                             !emailIsValid ||
                                             !lastNameIsValid) {
-                                          _current = 1;
                                           showPopUp(form_update_error);
                                           return;
                                         }
-                                        _current = 2;
                                         var connectivityResult =
                                             await (Connectivity()
                                                 .checkConnectivity());
@@ -776,8 +793,8 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                           showPopUp(internet_error);
                                           // Mobile is not Connected to Internet
                                         } else {
-                                          //updateUserRecords();
-                                          // I am connected to a network.
+                                          print("Got here");
+                                          updateUserRecords();
                                         }
                                       },
                                       highlightElevation: 0.8,
@@ -877,7 +894,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                         height: size.height * 0.05),
                                     onPressed: () async => {
                                           socialMediaSelectedOption = 2,
-                                          await socialMediaSignup(),
+                                          await socialMediaSignin(),
                                         }),
                                 CupertinoButton(
                                     child: Image.asset(
@@ -885,7 +902,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                         height: size.height * 0.065),
                                     onPressed: () async => {
                                           socialMediaSelectedOption = 3,
-                                          await socialMediaSignup(),
+                                          await socialMediaSignin(),
                                         }),
                               ]),
                         ),
