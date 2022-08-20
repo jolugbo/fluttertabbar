@@ -102,75 +102,83 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
   }
 
   Future<void> signInUser() async {
+    await FirebaseAuth.instance.signOut();
     setState(() {
       showLoader = true;
     });
     bool loginSuccess = await SignInWithEmailPassword(
         emailController.text.trim(), passwordController.text.trim());
     if (loginSuccess) {
-      Navigator.pushNamed(context, '/dashboard');
+      bool isOldUser = await userExist();
+      print(isOldUser);
+      if (isOldUser) {
+        Get.offAll(() => dashboardPage());
+        return;
+      } else
+        setState(() {
+          _current = ++_current % 3;
+          userNameController.text = user.user?.displayName ?? "";
+          emailController.text = user.user?.email ?? "";
+          userNameController.text = userNameController.text.replaceAll(' ', '');
+          socialAuthsLocation = 1;
+          next = !next;
+          blurrySize = 0;
+          showLoader = false;
+        });
     } else {
       showError("Error loggging in");
     }
     //await FirebaseAnalytics.instance.logLogin(loginMethod: "email");
-    print("event logged");
-    setState(() {
-      showLoader = false;
-    });
-//    loginEvent.properties.addBoolProperty("boolKey", true);
-//    loginEvent.properties.addDoubleProperty("doubleKey", 10.0);
-//    loginEvent.properties.addIntProperty("intKey", 10);
-//    loginEvent.properties.addStringProperty("stringKey", "stringValue");
-//
-//    Amplify.Analytics.recordEvent(event: loginEvent);
-//    print("event logged");
-//     try {
-// //      SignInResult res = await Amplify.Auth.signIn(
-// //        username: emailController.text.trim(),
-// //        password: passwordController.text.trim(),
-// //      );
-//       setState(() {
-//         showLoader = false;
-//       });
-// //      if(res.isSignedIn){
-// //      }
-//
-//     } on AuthError catch (e) {
-//       setState(() {
-//         showLoader = false;
-//       });
-//       if(e.exceptionList[0].detail == 'User is not confirmed.'){
-//         final prefs = await SharedPreferences.getInstance();
-//         await prefs.setString('userId', emailController.text);
-//         resendSignUpCode();
-//         Fluttertoast.showToast(
-//             msg:e.exceptionList[0].detail + " Sign up code re-sent",
-//             toastLength: Toast.LENGTH_LONG,
-//             gravity: ToastGravity.BOTTOM,
-//             timeInSecForIosWeb: 1,
-//             backgroundColor: Colors.red,
-//             textColor: Colors.white,
-//             fontSize: 16.0);
-//       Navigator.pushNamed(context, '/registration_token');
-//       return;
-//       }
-//
-//       Navigator.pushNamed(context, '/dashboard');
-//       Fluttertoast.showToast(
-//           msg:e.exceptionList[1].exception =='NOT_AUTHORIZED'?'Incorrect username or password':'Connection Error',
-//           toastLength: Toast.LENGTH_LONG,
-//           gravity: ToastGravity.BOTTOM,
-//           timeInSecForIosWeb: 1,
-//           backgroundColor: Colors.red,
-//           textColor: Colors.white,
-//           fontSize: 16.0);
-//     } catch (error) {
-//       print(error);
-//     }
-
-    setState(() {
-      showLoader = false;
-    });
+    //    loginEvent.properties.addBoolProperty("boolKey", true);
+    //    loginEvent.properties.addDoubleProperty("doubleKey", 10.0);
+    //    loginEvent.properties.addIntProperty("intKey", 10);
+    //    loginEvent.properties.addStringProperty("stringKey", "stringValue");
+    //
+    //    Amplify.Analytics.recordEvent(event: loginEvent);
+    //    print("event logged");
+    //     try {
+    // //      SignInResult res = await Amplify.Auth.signIn(
+    // //        username: emailController.text.trim(),
+    // //        password: passwordController.text.trim(),
+    // //      );
+    //       setState(() {
+    //         showLoader = false;
+    //       });
+    // //      if(res.isSignedIn){
+    // //      }
+    //
+    //     } on AuthError catch (e) {
+    //       setState(() {
+    //         showLoader = false;
+    //       });
+    //       if(e.exceptionList[0].detail == 'User is not confirmed.'){
+    //         final prefs = await SharedPreferences.getInstance();
+    //         await prefs.setString('userId', emailController.text);
+    //         resendSignUpCode();
+    //         Fluttertoast.showToast(
+    //             msg:e.exceptionList[0].detail + " Sign up code re-sent",
+    //             toastLength: Toast.LENGTH_LONG,
+    //             gravity: ToastGravity.BOTTOM,
+    //             timeInSecForIosWeb: 1,
+    //             backgroundColor: Colors.red,
+    //             textColor: Colors.white,
+    //             fontSize: 16.0);
+    //       Navigator.pushNamed(context, '/registration_token');
+    //       return;
+    //       }
+    //
+    //       Navigator.pushNamed(context, '/dashboard');
+    //       Fluttertoast.showToast(
+    //           msg:e.exceptionList[1].exception =='NOT_AUTHORIZED'?'Incorrect username or password':'Connection Error',
+    //           toastLength: Toast.LENGTH_LONG,
+    //           gravity: ToastGravity.BOTTOM,
+    //           timeInSecForIosWeb: 1,
+    //           backgroundColor: Colors.red,
+    //           textColor: Colors.white,
+    //           fontSize: 16.0);
+    //     } catch (error) {
+    //       print(error);
+    //     }
   }
 
   socialMediaSignin() async {
