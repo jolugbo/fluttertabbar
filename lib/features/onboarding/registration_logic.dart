@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../main.dart';
 import '../../models/strings.dart';
 import '../../utills/input_util.dart';
-import '../signin/signin_logic.dart';
+import 'package:uuid/uuid.dart';
 
 Future<bool> createUser(context, String email, String password) async {
   try {
@@ -35,7 +35,8 @@ saveUserToFirestore(currentuser, String email, String firstName,
     "point": 30,
     "socialMedia": {},
     "communities": {},
-    "training": {},
+    "careers": [],
+    "studies_taken": [],
     "bookmarks": {},
     "ratings": 0,
     "friends": {
@@ -44,6 +45,39 @@ saveUserToFirestore(currentuser, String email, String firstName,
     },
     "notifications": {},
     "unique": userName.trim().toLowerCase(),
+  });
+}
+
+createCareerStructure() {
+  var uuid = Uuid();
+  careersRef.doc(uuid.v1()).set({
+    "description": "",
+    "careerName": "Investment Banking",
+    "synonyms": ["finance,investment,banking"],
+    "studies": [],
+    "students": [],
+    "educators": [],
+    "quizes": [],
+  });
+}
+
+createQuizesStructure(String CourseId) {
+  var uuid = Uuid();
+  quizesRef.doc(CourseId).set({
+    "quizId": uuid.v1(),
+    "question": "",
+    "options": [],
+    "answer": "",
+  });
+}
+
+createStudiesStructure(String CourseId) {
+  var uuid = Uuid();
+  studiesRef.doc(CourseId).set({
+    "quizId": uuid.v1(),
+    "question": "",
+    "options": [],
+    "answer": "",
   });
 }
 
