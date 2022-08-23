@@ -31,12 +31,12 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 //import 'models/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-final userRef = FirebaseFirestore.instance.collection('users');
+final userRef = FirebaseFirestore.instance.collection('students');
 final authsRef = FirebaseFirestore.instance.collection('auths');
 final careersRef = FirebaseFirestore.instance.collection('careers');
+final coursesRef = FirebaseFirestore.instance.collection('courses');
 final quizesRef = FirebaseFirestore.instance.collection('quizes');
 final educatorsRef = FirebaseFirestore.instance.collection('educators');
-final studiesRef = FirebaseFirestore.instance.collection('studies');
 late final UserCredential user;
 // final postRef =  FirebaseFirestore.instance.collection('posts');
 // final commentsRef =  FirebaseFirestore.instance.collection('comments');

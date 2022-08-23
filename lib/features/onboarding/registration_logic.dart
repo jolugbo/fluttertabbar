@@ -37,6 +37,7 @@ saveUserToFirestore(currentuser, String email, String firstName,
     "communities": {},
     "careers": [],
     "studies_taken": [],
+    "quiz_taken": [],
     "bookmarks": {},
     "ratings": 0,
     "friends": {
@@ -61,23 +62,26 @@ createCareerStructure() {
   });
 }
 
-createQuizesStructure(String CourseId) {
+createQuizesStructure() {
   var uuid = Uuid();
-  quizesRef.doc(CourseId).set({
-    "quizId": uuid.v1(),
+  quizesRef.doc(uuid.v1()).set({
     "question": "",
     "options": [],
     "answer": "",
+    "careers": [],
+    "courses": [],
+    "comments": [],
   });
 }
 
-createStudiesStructure(String CourseId) {
+createCoursesStructure() {
   var uuid = Uuid();
-  studiesRef.doc(CourseId).set({
-    "quizId": uuid.v1(),
-    "question": "",
-    "options": [],
-    "answer": "",
+  coursesRef.doc(uuid.v1()).set({
+    "course_name": "",
+    "description": "",
+    "careers": [],
+    "educators": [],
+    "course_contents": [],
   });
 }
 
