@@ -20,8 +20,7 @@ class community extends StatefulWidget {
   _CommunityState createState() => _CommunityState();
 }
 
-class _CommunityState extends State<community>
-    with TickerProviderStateMixin {
+class _CommunityState extends State<community> with TickerProviderStateMixin {
   String leafIcon = 'assets/leaficon.png';
   String bgMain = 'assets/purplebg.png';
   String dashActive = 'assets/dashboardactive.png';
@@ -46,7 +45,10 @@ class _CommunityState extends State<community>
   String placeholder = 'assets/ph.jpg';
   double lowerDashElementPosition = 0.33;
   int _currentIndex = 0;
-  Icon dropDown = Icon(Icons.keyboard_arrow_down,color: accent,);
+  Icon dropDown = Icon(
+    Icons.keyboard_arrow_down,
+    color: accent,
+  );
   Map<String, double> dataMap = {
     "ARM Money Market Fund": 60,
     "ARM EuroBond": 16,
@@ -64,12 +66,11 @@ class _CommunityState extends State<community>
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Stack(
-      overflow: Overflow.visible,
+      clipBehavior: Clip.none,
       children: <Widget>[
         //bg
         AnimatedPositioned(
@@ -98,53 +99,67 @@ class _CommunityState extends State<community>
 
         //dashboard lower
         CustomScrollView(
-
           slivers: <Widget>[
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return  Container(
+                (BuildContext context, int index) {
+                  return Container(
                     width: MediaQuery.of(context).size.width,
                     alignment: Alignment.topCenter,
                     height: MediaQuery.of(context).size.height,
                     padding: EdgeInsets.fromLTRB(
-                        MediaQuery.of(context).size.width *0.01,
-                        MediaQuery.of(context).size.height *0.03,
-                        MediaQuery.of(context).size.width *0.01,
-                        MediaQuery.of(context).size.height *0.1),
-                    child:ListView(
+                        MediaQuery.of(context).size.width * 0.01,
+                        MediaQuery.of(context).size.height * 0.03,
+                        MediaQuery.of(context).size.width * 0.01,
+                        MediaQuery.of(context).size.height * 0.1),
+                    child: ListView(
                       scrollDirection: Axis.vertical,
                       children: <Widget>[
                         Container(
                           width: MediaQuery.of(context).size.width * 0.95,
-                          alignment: Alignment.topLeft, padding: EdgeInsets.all(10),
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.all(10),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                padding: EdgeInsets.fromLTRB(10,10,10,0),alignment: Alignment.topLeft,
-                                child: Text('Discipline Coaches', style: blue14Style,),
+                                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  'Discipline Coaches',
+                                  style: blue14Style,
+                                ),
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(10,5,10,10),alignment: Alignment.topLeft,
-                                    child: Text('make yourself accountable to our coach', style: dark10Style,),
+                                    padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      'make yourself accountable to our coach',
+                                      style: dark10Style,
+                                    ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(10,0,10,0),alignment: Alignment.centerRight,
+                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                    alignment: Alignment.centerRight,
                                     //width: MediaQuery.of(context).size.width * 0.95,
-                                    child: Text('View more', style: green12Style,),
+                                    child: Text(
+                                      'View more',
+                                      style: green12Style,
+                                    ),
                                   ),
                                 ],
                               ),
                               Container(
                                 child: CarouselSlider(
                                   options: CarouselOptions(
-                                    height: MediaQuery.of(context).size.height * 0.135,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.135,
                                     aspectRatio: 1,
                                     viewportFraction: 1,
                                     initialPage: 0,
@@ -152,7 +167,8 @@ class _CommunityState extends State<community>
                                     reverse: false,
                                     autoPlay: false,
                                     autoPlayInterval: Duration(seconds: 4),
-                                    autoPlayAnimationDuration: Duration(seconds: 1),
+                                    autoPlayAnimationDuration:
+                                        Duration(seconds: 1),
                                     autoPlayCurve: Curves.fastOutSlowIn,
                                     enlargeCenterPage: true,
                                     onPageChanged: (index, reason) {
@@ -160,97 +176,204 @@ class _CommunityState extends State<community>
                                         //_current = index;
                                       });
                                     },
-                                    scrollDirection: Axis.horizontal,),
-                                  items: [0,1,2].map((i) {
+                                    scrollDirection: Axis.horizontal,
+                                  ),
+                                  items: [0, 1, 2].map((i) {
                                     return Builder(
                                       builder: (BuildContext context) {
                                         return Container(
-                                          padding: EdgeInsets.fromLTRB(5,10,5,0),
-                                          alignment: Alignment.center, color: accent,
-                                          child: Scrollbar(
-                                            child: ListView(
-                                              scrollDirection: Axis.horizontal,
-                                              children: <Widget>[
-                                                Column(
-                                                    mainAxisSize: MainAxisSize.max,
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    children: <Widget>[
-                                                      RawMaterialButton(
-                                                        onPressed: () {},
-                                                        elevation: 2.0,
-                                                        fillColor: projectGray2,
-                                                        child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                                        padding: EdgeInsets.all(10.0),
-                                                        shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                                      ),
-                                                      Container(
-                                                          padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:120,
-                                                          child: Text('Investment Banking Coaches', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-                                                      ),
-
-                                                    ]),
-                                                Column(
-                                                    mainAxisSize: MainAxisSize.max,
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    children: <Widget>[
-                                                      RawMaterialButton(
-                                                        onPressed: () {},
-                                                        elevation: 2.0,
-                                                        fillColor: projectGray2,
-                                                        child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                                        padding: EdgeInsets.all(10.0),
-                                                        shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                                      ),
-                                                      Container(
-                                                          padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:120,
-                                                          child: Text('Accountant Coaches', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-                                                      ),
-
-                                                    ]),
-                                                Column(
-                                                    mainAxisSize: MainAxisSize.max,
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    children: <Widget>[
-                                                      RawMaterialButton(
-                                                        onPressed: () {},
-                                                        elevation: 2.0,
-                                                        fillColor: projectGray2,
-                                                        child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                                        padding: EdgeInsets.all(10.0),
-                                                        shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                                      ),
-                                                      Container(
-                                                          padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:120,
-                                                          child: Text('Corporate Governance Coaches', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-                                                      ),
-
-                                                    ]),
-                                                Column(
-                                                    mainAxisSize: MainAxisSize.max,
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    children: <Widget>[
-                                                      RawMaterialButton(
-                                                        onPressed: () {},
-                                                        elevation: 2.0,
-                                                        fillColor: projectGray2,
-                                                        child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                                        padding: EdgeInsets.all(10.0),
-                                                        shape: CircleBorder(side: BorderSide(color: projectGray2)),
-                                                      ),
-                                                      Container(
-                                                          padding: EdgeInsets.fromLTRB(5,5,5,0),alignment: Alignment.center, width:120,
-                                                          child: Text('Economics Coaches', style: dark10Style,softWrap: true,textAlign: TextAlign.center,)
-                                                      ),
-
-                                                    ]),
-                                              ],
-                                            ),
-                                          )
-                                        );
+                                            padding: EdgeInsets.fromLTRB(
+                                                5, 10, 5, 0),
+                                            alignment: Alignment.center,
+                                            color: accent,
+                                            child: Scrollbar(
+                                              child: ListView(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                children: <Widget>[
+                                                  Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        RawMaterialButton(
+                                                          onPressed: () {},
+                                                          elevation: 2.0,
+                                                          fillColor:
+                                                              projectGray2,
+                                                          child: Image.asset(
+                                                            placeholder,
+                                                            width: 30,
+                                                            height: 30,
+                                                          ), //,backgroundColor: Colors.green,
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  10.0),
+                                                          shape: CircleBorder(
+                                                              side: BorderSide(
+                                                                  color:
+                                                                      projectGray2)),
+                                                        ),
+                                                        Container(
+                                                            padding: EdgeInsets
+                                                                .fromLTRB(
+                                                                    5, 5, 5, 0),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            width: 120,
+                                                            child: Text(
+                                                              'Investment Banking Coaches',
+                                                              style:
+                                                                  dark10Style,
+                                                              softWrap: true,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            )),
+                                                      ]),
+                                                  Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        RawMaterialButton(
+                                                          onPressed: () {},
+                                                          elevation: 2.0,
+                                                          fillColor:
+                                                              projectGray2,
+                                                          child: Image.asset(
+                                                            placeholder,
+                                                            width: 30,
+                                                            height: 30,
+                                                          ), //,backgroundColor: Colors.green,
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  10.0),
+                                                          shape: CircleBorder(
+                                                              side: BorderSide(
+                                                                  color:
+                                                                      projectGray2)),
+                                                        ),
+                                                        Container(
+                                                            padding: EdgeInsets
+                                                                .fromLTRB(
+                                                                    5, 5, 5, 0),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            width: 120,
+                                                            child: Text(
+                                                              'Accountant Coaches',
+                                                              style:
+                                                                  dark10Style,
+                                                              softWrap: true,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            )),
+                                                      ]),
+                                                  Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        RawMaterialButton(
+                                                          onPressed: () {},
+                                                          elevation: 2.0,
+                                                          fillColor:
+                                                              projectGray2,
+                                                          child: Image.asset(
+                                                            placeholder,
+                                                            width: 30,
+                                                            height: 30,
+                                                          ), //,backgroundColor: Colors.green,
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  10.0),
+                                                          shape: CircleBorder(
+                                                              side: BorderSide(
+                                                                  color:
+                                                                      projectGray2)),
+                                                        ),
+                                                        Container(
+                                                            padding: EdgeInsets
+                                                                .fromLTRB(
+                                                                    5, 5, 5, 0),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            width: 120,
+                                                            child: Text(
+                                                              'Corporate Governance Coaches',
+                                                              style:
+                                                                  dark10Style,
+                                                              softWrap: true,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            )),
+                                                      ]),
+                                                  Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: <Widget>[
+                                                        RawMaterialButton(
+                                                          onPressed: () {},
+                                                          elevation: 2.0,
+                                                          fillColor:
+                                                              projectGray2,
+                                                          child: Image.asset(
+                                                            placeholder,
+                                                            width: 30,
+                                                            height: 30,
+                                                          ), //,backgroundColor: Colors.green,
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  10.0),
+                                                          shape: CircleBorder(
+                                                              side: BorderSide(
+                                                                  color:
+                                                                      projectGray2)),
+                                                        ),
+                                                        Container(
+                                                            padding: EdgeInsets
+                                                                .fromLTRB(
+                                                                    5, 5, 5, 0),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            width: 120,
+                                                            child: Text(
+                                                              'Economics Coaches',
+                                                              style:
+                                                                  dark10Style,
+                                                              softWrap: true,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            )),
+                                                      ]),
+                                                ],
+                                              ),
+                                            ));
                                       },
                                     );
                                   }).toList(),
@@ -265,33 +388,48 @@ class _CommunityState extends State<community>
                         Container(
                           width: MediaQuery.of(context).size.width * 0.95,
                           //height: MediaQuery.of(context).size.height * 0.5,
-                          alignment: Alignment.topLeft, padding: EdgeInsets.all(0),
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.all(0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                padding: EdgeInsets.fromLTRB(10,10,10,0),alignment: Alignment.topLeft,
-                                child: Text('Discuss Groups', style: blue14Style,),
+                                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  'Discuss Groups',
+                                  style: blue14Style,
+                                ),
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(10,5,10,10),alignment: Alignment.topLeft,
-                                    child: Text('Connect & Engage with like minds', style: dark10Style,),
+                                    padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      'Connect & Engage with like minds',
+                                      style: dark10Style,
+                                    ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(10,0,10,0),alignment: Alignment.centerRight,
-                                    child: Text('View more', style: green12Style,),
+                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      'View more',
+                                      style: green12Style,
+                                    ),
                                   ),
                                 ],
                               ),
                               Container(
                                 child: CarouselSlider(
                                   options: CarouselOptions(
-                                    height: MediaQuery.of(context).size.height * 0.22,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.22,
                                     aspectRatio: 1,
                                     viewportFraction: 1,
                                     initialPage: 0,
@@ -299,7 +437,8 @@ class _CommunityState extends State<community>
                                     reverse: false,
                                     autoPlay: false,
                                     autoPlayInterval: Duration(seconds: 4),
-                                    autoPlayAnimationDuration: Duration(seconds: 1),
+                                    autoPlayAnimationDuration:
+                                        Duration(seconds: 1),
                                     autoPlayCurve: Curves.fastOutSlowIn,
                                     enlargeCenterPage: true,
                                     onPageChanged: (index, reason) {
@@ -307,52 +446,105 @@ class _CommunityState extends State<community>
                                         //_current = index;
                                       });
                                     },
-                                    scrollDirection: Axis.horizontal,),
-                                  items: [0,1,2].map((i) {
+                                    scrollDirection: Axis.horizontal,
+                                  ),
+                                  items: [0, 1, 2].map((i) {
                                     return Builder(
                                       builder: (BuildContext context) {
                                         return Container(
-                                            padding: EdgeInsets.fromLTRB(5,10,5,0),
-                                            alignment: Alignment.center, color: accent,
+                                            padding: EdgeInsets.fromLTRB(
+                                                5, 10, 5, 0),
+                                            alignment: Alignment.center,
+                                            color: accent,
                                             child: Scrollbar(
                                               child: ListView(
-                                                scrollDirection: Axis.horizontal,
+                                                scrollDirection:
+                                                    Axis.horizontal,
                                                 children: <Widget>[
                                                   Card(
                                                       elevation: 2,
                                                       shape: cardShape,
                                                       child: Container(
-                                                        width: MediaQuery.of(context).size.width * 0.85,
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.85,
                                                         //height: MediaQuery.of(context).size.height * 0.46,
-                                                        alignment: Alignment.centerRight,
-                                                        padding: EdgeInsets.fromLTRB(0,2,0,2),
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0, 2, 0, 2),
                                                         child: Column(
-                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
                                                           children: [
                                                             Container(
-                                                              width: MediaQuery.of(context).size.width * 0.8,
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
                                                               child: Row(
-                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
                                                                 children: [
                                                                   RawMaterialButton(
-                                                                    onPressed: () {},
-                                                                    elevation: 2.0,
-                                                                    fillColor: projectGray2,
-                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                                                    padding: EdgeInsets.all(10.0),
-                                                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
+                                                                    onPressed:
+                                                                        () {},
+                                                                    elevation:
+                                                                        2.0,
+                                                                    fillColor:
+                                                                        projectGray2,
+                                                                    child: Image
+                                                                        .asset(
+                                                                      placeholder,
+                                                                      width: 30,
+                                                                      height:
+                                                                          30,
+                                                                    ), //,backgroundColor: Colors.green,
+                                                                    padding:
+                                                                        EdgeInsets.all(
+                                                                            10.0),
+                                                                    shape: CircleBorder(
+                                                                        side: BorderSide(
+                                                                            color:
+                                                                                projectGray2)),
                                                                   ),
                                                                   Container(
-                                                                    width: MediaQuery.of(context).size.width * 0.55,
-                                                                    child: Column(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width *
+                                                                        0.55,
+                                                                    child:
+                                                                        Column(
                                                                       children: [
                                                                         Container(
-                                                                          alignment: Alignment.centerLeft,
-                                                                          child: Text('Finance Discussion Group',style: dark13BoldStyle,textAlign: TextAlign.left,),
+                                                                          alignment:
+                                                                              Alignment.centerLeft,
+                                                                          child:
+                                                                              Text(
+                                                                            'Finance Discussion Group',
+                                                                            style:
+                                                                                dark13BoldStyle,
+                                                                            textAlign:
+                                                                                TextAlign.left,
+                                                                          ),
                                                                         ),
                                                                         Container(
-                                                                          alignment: Alignment.centerLeft,
-                                                                          child: Text('Lets discuss finance',style: gray12Style,textAlign: TextAlign.left,),
+                                                                          alignment:
+                                                                              Alignment.centerLeft,
+                                                                          child:
+                                                                              Text(
+                                                                            'Lets discuss finance',
+                                                                            style:
+                                                                                gray12Style,
+                                                                            textAlign:
+                                                                                TextAlign.left,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -361,42 +553,87 @@ class _CommunityState extends State<community>
                                                               ),
                                                             ),
                                                             Container(
-                                                                width: MediaQuery.of(context).size.width,
-                                                                alignment: Alignment.center,
+                                                                width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width,
+                                                                alignment:
+                                                                    Alignment
+                                                                        .center,
                                                                 child: Row(
-                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
                                                                   children: [
-                                                                    Icon(Icons.people_alt_rounded,color: projectGray,),
-                                                                    Container(
-                                                                      width: MediaQuery.of(context).size.width * 0.01,
+                                                                    Icon(
+                                                                      Icons
+                                                                          .people_alt_rounded,
+                                                                      color:
+                                                                          projectGray,
                                                                     ),
-                                                                    Text('5034 Members',style: gray12Style,textAlign: TextAlign.left,),
+                                                                    Container(
+                                                                      width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width *
+                                                                          0.01,
+                                                                    ),
+                                                                    Text(
+                                                                      '5034 Members',
+                                                                      style:
+                                                                          gray12Style,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .left,
+                                                                    ),
                                                                   ],
-                                                                )
-                                                            ),
+                                                                )),
                                                             Container(
-                                                              height: MediaQuery.of(context).size.height * 0.05,
-                                                              width: MediaQuery.of(context).size.width,
-                                                              alignment: Alignment.center,
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  0.05,
+                                                              width:
+                                                                  MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
                                                               child: Padding(
-                                                                padding: EdgeInsets.symmetric(horizontal: 0),
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            0),
                                                                 child: Container(
                                                                     height: 0.7,
-                                                                    width: MediaQuery.of(context).size.width,
-                                                                    color: projectGray),
+                                                                    width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width,
+                                                                    color:
+                                                                        projectGray),
                                                               ),
                                                             ),
                                                             Container(
-                                                              width: MediaQuery.of(context).size.width,
-                                                              alignment: Alignment.center,
-                                                              child: Text('Join Group',style: blue13boldStyle,),
+                                                              width:
+                                                                  MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              child: Text(
+                                                                'Join Group',
+                                                                style:
+                                                                    blue13boldStyle,
+                                                              ),
                                                             ),
-
                                                           ],
                                                         ),
-                                                      )
-
-                                                  ),
+                                                      )),
                                                   Container(
                                                     width: 20,
                                                   ),
@@ -404,37 +641,90 @@ class _CommunityState extends State<community>
                                                       elevation: 2,
                                                       shape: cardShape,
                                                       child: Container(
-                                                        width: MediaQuery.of(context).size.width * 0.85,
-                                                        height: MediaQuery.of(context).size.height * 0.46,
-                                                        alignment: Alignment.centerRight,
-                                                        padding: EdgeInsets.fromLTRB(0,2,0,2),
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.85,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.46,
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0, 2, 0, 2),
                                                         child: Column(
-                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
                                                           children: [
                                                             Container(
-                                                              width: MediaQuery.of(context).size.width * 0.8,
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
                                                               child: Row(
-                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
                                                                 children: [
                                                                   RawMaterialButton(
-                                                                    onPressed: () {},
-                                                                    elevation: 2.0,
-                                                                    fillColor: projectGray2,
-                                                                    child: Image.asset(placeholder,width: 30,height: 30,),//,backgroundColor: Colors.green,
-                                                                    padding: EdgeInsets.all(10.0),
-                                                                    shape: CircleBorder(side: BorderSide(color: projectGray2)),
+                                                                    onPressed:
+                                                                        () {},
+                                                                    elevation:
+                                                                        2.0,
+                                                                    fillColor:
+                                                                        projectGray2,
+                                                                    child: Image
+                                                                        .asset(
+                                                                      placeholder,
+                                                                      width: 30,
+                                                                      height:
+                                                                          30,
+                                                                    ), //,backgroundColor: Colors.green,
+                                                                    padding:
+                                                                        EdgeInsets.all(
+                                                                            10.0),
+                                                                    shape: CircleBorder(
+                                                                        side: BorderSide(
+                                                                            color:
+                                                                                projectGray2)),
                                                                   ),
                                                                   Container(
-                                                                    width: MediaQuery.of(context).size.width * 0.55,
-                                                                    child: Column(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width *
+                                                                        0.55,
+                                                                    child:
+                                                                        Column(
                                                                       children: [
                                                                         Container(
-                                                                          alignment: Alignment.centerLeft,
-                                                                          child: Text('Economics Discussion Group',style: dark13BoldStyle,textAlign: TextAlign.left,),
+                                                                          alignment:
+                                                                              Alignment.centerLeft,
+                                                                          child:
+                                                                              Text(
+                                                                            'Economics Discussion Group',
+                                                                            style:
+                                                                                dark13BoldStyle,
+                                                                            textAlign:
+                                                                                TextAlign.left,
+                                                                          ),
                                                                         ),
                                                                         Container(
-                                                                          alignment: Alignment.centerLeft,
-                                                                          child: Text('Lets discuss Economics',style: gray12Style,textAlign: TextAlign.left,),
+                                                                          alignment:
+                                                                              Alignment.centerLeft,
+                                                                          child:
+                                                                              Text(
+                                                                            'Lets discuss Economics',
+                                                                            style:
+                                                                                gray12Style,
+                                                                            textAlign:
+                                                                                TextAlign.left,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -443,47 +733,91 @@ class _CommunityState extends State<community>
                                                               ),
                                                             ),
                                                             Container(
-                                                              //height: MediaQuery.of(context).size.height * 0.05,
-                                                                width: MediaQuery.of(context).size.width,
-                                                                alignment: Alignment.center,
+                                                                //height: MediaQuery.of(context).size.height * 0.05,
+                                                                width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width,
+                                                                alignment:
+                                                                    Alignment
+                                                                        .center,
                                                                 child: Row(
-                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
                                                                   children: [
-                                                                    Icon(Icons.people_alt_rounded,color: projectGray,),
-                                                                    Container(
-                                                                      width: MediaQuery.of(context).size.width * 0.01,
+                                                                    Icon(
+                                                                      Icons
+                                                                          .people_alt_rounded,
+                                                                      color:
+                                                                          projectGray,
                                                                     ),
-                                                                    Text('5034 Members',style: gray12Style,textAlign: TextAlign.left,),
+                                                                    Container(
+                                                                      width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width *
+                                                                          0.01,
+                                                                    ),
+                                                                    Text(
+                                                                      '5034 Members',
+                                                                      style:
+                                                                          gray12Style,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .left,
+                                                                    ),
                                                                   ],
-                                                                )
-                                                            ),
+                                                                )),
                                                             Container(
-                                                              height: MediaQuery.of(context).size.height * 0.05,
-                                                              width: MediaQuery.of(context).size.width,
-                                                              alignment: Alignment.center,
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  0.05,
+                                                              width:
+                                                                  MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
                                                               child: Padding(
-                                                                padding: EdgeInsets.symmetric(horizontal: 0),
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            0),
                                                                 child: Container(
                                                                     height: 0.7,
-                                                                    width: MediaQuery.of(context).size.width,
-                                                                    color: projectGray),
+                                                                    width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width,
+                                                                    color:
+                                                                        projectGray),
                                                               ),
                                                             ),
                                                             Container(
-                                                              width: MediaQuery.of(context).size.width,
-                                                              alignment: Alignment.center,
-                                                              child: Text('Join Group',style: blue13boldStyle,),
+                                                              width:
+                                                                  MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              child: Text(
+                                                                'Join Group',
+                                                                style:
+                                                                    blue13boldStyle,
+                                                              ),
                                                             ),
-
                                                           ],
                                                         ),
-                                                      )
-
-                                                  ),
+                                                      )),
                                                 ],
                                               ),
-                                            )
-                                        );
+                                            ));
                                       },
                                     );
                                   }).toList(),
@@ -497,7 +831,7 @@ class _CommunityState extends State<community>
                         ),
                         Container(
                           height: MediaQuery.of(context).size.height * 0.479,
-                          padding: EdgeInsets.fromLTRB(10,5,10,10),
+                          padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
                           alignment: Alignment.topLeft,
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -505,19 +839,32 @@ class _CommunityState extends State<community>
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                padding: EdgeInsets.fromLTRB(10,10,10,0),alignment: Alignment.topLeft,
-                                child: Text('Trending in our community', style: blue14Style,),
+                                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  'Trending in our community',
+                                  style: blue14Style,
+                                ),
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(10,5,10,10),alignment: Alignment.topLeft,
-                                    child: Text('Whats going on?', style: dark10Style,),
+                                    padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      'Whats going on?',
+                                      style: dark10Style,
+                                    ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(10,0,10,0),alignment: Alignment.centerRight,
-                                    child: Text('View more', style: green12Style,),
+                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      'View more',
+                                      style: green12Style,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -528,21 +875,27 @@ class _CommunityState extends State<community>
                                     ListTile(
                                       contentPadding: EdgeInsets.all(0),
                                       title: Container(
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        padding:
+                                            EdgeInsets.fromLTRB(20, 10, 20, 0),
                                         // color: accent,
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           mainAxisSize: MainAxisSize.max,
                                           children: <Widget>[
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('# Auditing',style:dark11BoldStyle),
+                                              child: Text('# Auditing',
+                                                  style: dark11BoldStyle),
                                             ),
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                              child: Text(
+                                                  'Brief introduction into Account Auditing',
+                                                  style: dark10Style),
                                             ),
                                           ],
                                         ),
@@ -552,30 +905,38 @@ class _CommunityState extends State<community>
                                       },
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
                                       child: Container(
                                           height: 0.7,
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           color: projectGray),
                                     ),
                                     ListTile(
                                       contentPadding: EdgeInsets.all(0),
                                       title: Container(
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        padding:
+                                            EdgeInsets.fromLTRB(20, 10, 20, 0),
                                         // color: accent,
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           mainAxisSize: MainAxisSize.max,
                                           children: <Widget>[
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('# Investment',style:dark11BoldStyle),
+                                              child: Text('# Investment',
+                                                  style: dark11BoldStyle),
                                             ),
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                              child: Text(
+                                                  'Brief introduction into Account Auditing',
+                                                  style: dark10Style),
                                             ),
                                           ],
                                         ),
@@ -585,30 +946,38 @@ class _CommunityState extends State<community>
                                       },
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
                                       child: Container(
                                           height: 0.7,
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           color: projectGray),
                                     ),
                                     ListTile(
                                       contentPadding: EdgeInsets.all(0),
                                       title: Container(
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        padding:
+                                            EdgeInsets.fromLTRB(20, 10, 20, 0),
                                         // color: accent,
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           mainAxisSize: MainAxisSize.max,
                                           children: <Widget>[
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('# Auditing',style:dark11BoldStyle),
+                                              child: Text('# Auditing',
+                                                  style: dark11BoldStyle),
                                             ),
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                              child: Text(
+                                                  'Brief introduction into Account Auditing',
+                                                  style: dark10Style),
                                             ),
                                           ],
                                         ),
@@ -618,30 +987,38 @@ class _CommunityState extends State<community>
                                       },
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
                                       child: Container(
                                           height: 0.7,
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           color: projectGray),
                                     ),
                                     ListTile(
                                       contentPadding: EdgeInsets.all(0),
                                       title: Container(
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        padding:
+                                            EdgeInsets.fromLTRB(20, 10, 20, 0),
                                         // color: accent,
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           mainAxisSize: MainAxisSize.max,
                                           children: <Widget>[
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('# Auditing',style:dark11BoldStyle),
+                                              child: Text('# Auditing',
+                                                  style: dark11BoldStyle),
                                             ),
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                              child: Text(
+                                                  'Brief introduction into Account Auditing',
+                                                  style: dark10Style),
                                             ),
                                           ],
                                         ),
@@ -651,30 +1028,38 @@ class _CommunityState extends State<community>
                                       },
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
                                       child: Container(
                                           height: 0.7,
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           color: projectGray),
                                     ),
                                     ListTile(
                                       contentPadding: EdgeInsets.all(0),
                                       title: Container(
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                        padding:
+                                            EdgeInsets.fromLTRB(20, 10, 20, 0),
                                         // color: accent,
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           mainAxisSize: MainAxisSize.max,
                                           children: <Widget>[
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('# Auditing',style:dark11BoldStyle),
+                                              child: Text('# Auditing',
+                                                  style: dark11BoldStyle),
                                             ),
                                             Container(
                                               alignment: Alignment.centerLeft,
-                                              child:  Text('Brief introduction into Account Auditing',style:dark10Style),
+                                              child: Text(
+                                                  'Brief introduction into Account Auditing',
+                                                  style: dark10Style),
                                             ),
                                           ],
                                         ),
@@ -688,14 +1073,12 @@ class _CommunityState extends State<community>
                               ),
                             ],
                           ),
-
                         ),
                         Container(
                           height: 100,
                         ),
                       ],
                     ),
-
                   );
                 },
                 childCount: 1,
@@ -705,11 +1088,9 @@ class _CommunityState extends State<community>
         ),
 
         //header
-
       ],
     );
   }
-
 }
 
 class CircleTabIndicator extends Decoration {
@@ -722,15 +1103,14 @@ class CircleTabIndicator extends Decoration {
   BoxPainter createBoxPainter([void onChanged]) => _painter;
 }
 
-
 class _CirclePainter extends BoxPainter {
   final Paint _paint;
   final double radius;
 
   _CirclePainter(Color color, this.radius)
       : _paint = Paint()
-    ..color = color
-    ..isAntiAlias = true;
+          ..color = color
+          ..isAntiAlias = true;
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
