@@ -421,7 +421,7 @@ class _Registration_formPageState extends State<registration_formPage>
 
     return Scaffold(
       body: Stack(
-        overflow: Overflow.visible,
+        //overflow: Overflow.visible,
         children: <Widget>[
           AnimatedPositioned(
             top: 0,
@@ -446,7 +446,7 @@ class _Registration_formPageState extends State<registration_formPage>
                           color: Colors.transparent,
                           alignment: Alignment.topCenter,
                           child: imgAnimation2(
-                            url: Assets.images.logo.path,
+                            url: Assets.images.logoPng.path,
                             time: Duration(milliseconds: 4000),
                             width: MediaQuery.of(context).size.width * 0.5,
                             beginx: 0.1,

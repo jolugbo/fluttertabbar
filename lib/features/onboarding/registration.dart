@@ -1,9 +1,10 @@
-import 'package:edurald/models/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:linkedin_login/linkedin_login.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:edurald/models/strings.dart';
+
+import '../../models/user/user.dart';
 
 class registrationPage extends StatefulWidget {
   registrationPage({Key? key, this.title}) : super(key: key);
@@ -16,23 +17,24 @@ class registrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<registrationPage>
     with TickerProviderStateMixin {
-  String ladyIcon = imageBase+'welcomelady.png';
-  String signInLinkedInIcon = imageBase+'signInLinkedIn.png';
-  String signInTwitterIcon = imageBase+'signInTwitter.png';
-  String signInGoogleIcon = imageBase+'signInGoogle.png';
+  String ladyIcon = imageBase + 'welcomelady.png';
+  String signInLinkedInIcon = imageBase + 'signInLinkedIn.png';
+  String signInTwitterIcon = imageBase + 'signInTwitter.png';
+  String signInGoogleIcon = imageBase + 'signInGoogle.png';
   String redirectUrl = 'http://edurald.com/';
   String clientId = '77zum551b93zkz';
   String clientSecret = 'gwr7A7OHq00ns3Ow';
-  List<String> scrollText = ['Investment banking knowledge simplified',
-    'Learn and connect with other investors','Build your professional profile'];
+  List<String> scrollText = [
+    'Investment banking knowledge simplified',
+    'Learn and connect with other investors',
+    'Build your professional profile'
+  ];
   int index = 0;
   final int _numPages = 3;
   int _currentPage = 0;
   int _current = 0;
   bool logoutUser = false;
-  User? user;
-
-
+  //UserModel user;
 
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
@@ -55,21 +57,18 @@ class _RegistrationPageState extends State<registrationPage>
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        overflow: Overflow.visible,
+        //overflow: Overflow.visible,
         children: <Widget>[
-
           AnimatedPositioned(
               top: 0,
               duration: Duration(seconds: 1),
               child: Container(
                 height: MediaQuery.of(context).size.height,
-              )
-          ),
+              )),
 
           //bottom rect
           AnimatedPositioned(
@@ -86,22 +85,31 @@ class _RegistrationPageState extends State<registrationPage>
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Edurald',style: dark25BoldStyle,textAlign: TextAlign.center,),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Text('Commerce knowledge simplified',style: darkNormal18Style,textAlign: TextAlign.center,),
-                    ]),
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Edurald',
+                          style: dark25BoldStyle,
+                          textAlign: TextAlign.center,
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        Text(
+                          'Commerce knowledge simplified',
+                          style: darkNormal18Style,
+                          textAlign: TextAlign.center,
+                        ),
+                      ]),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.35,
                   width: MediaQuery.of(context).size.width,
-                  alignment: Alignment.center, padding:EdgeInsets.all(0),
-                  child: Image( image:AssetImage(ladyIcon)),
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(0),
+                  child: Image(image: AssetImage(ladyIcon)),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.18,
@@ -117,7 +125,8 @@ class _RegistrationPageState extends State<registrationPage>
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (BuildContext context) => LinkedInUserWidget(
+                                builder: (BuildContext context) =>
+                                    LinkedInUserWidget(
                                   appBar: AppBar(
                                     title: Text('LinkedIn Authorisation'),
                                   ),
@@ -137,54 +146,63 @@ class _RegistrationPageState extends State<registrationPage>
                                     print('Error: ${e.toString()}');
                                     print('Error: ${e.stackTrace.toString()}');
                                   },
-                                  onGetUserProfile: (UserSucceededAction linkedInUser) {
-                                    print('Access token ${linkedInUser.user.token.accessToken}');
-                                    print('User id: ${linkedInUser.user.userId}');
-                                    print('photoUrl: ${linkedInUser.user.profilePicture}');
-
+                                  onGetUserProfile:
+                                      (UserSucceededAction linkedInUser) {
+                                    print(
+                                        'Access token ${linkedInUser.user.token.accessToken}');
+                                    print(
+                                        'User id: ${linkedInUser.user.userId}');
+                                    print(
+                                        'photoUrl: ${linkedInUser.user.profilePicture}');
 
                                     setState(() {
-                                    user = User(
-                                      // firstName: linkedInUser.user?.firstName?.localized?.label,
-                                      // lastName: linkedInUser?.user?.lastName?.localized?.label,
-                                      // email: linkedInUser?.user?.email?.elements![0]?.handleDeep?.emailAddress,
-                                      // photoUrl: linkedInUser?.user?.profilePicture?.displayImageContent?.elements![0]?.identifiers![0]?.identifier,
-                                    );
+                                      // user = UserModel(
+                                      //     // firstName: linkedInUser.user?.firstName?.localized?.label,
+                                      //     // lastName: linkedInUser?.user?.lastName?.localized?.label,
+                                      //     // email: linkedInUser?.user?.email?.elements![0]?.handleDeep?.emailAddress,
+                                      //     // photoUrl: linkedInUser?.user?.profilePicture?.displayImageContent?.elements![0]?.identifiers![0]?.identifier,
+                                      //     );
                                       logoutUser = false;
                                     });
                                     Navigator.pop(context);
-                                    Navigator.pushNamed(context, '/registration_form',
-                                        arguments: user
-                                        // {
-                                        //   'email':user.email,
-                                        //   'lastName': user.lastName,
-                                        //   'photoUrl': user.photoUrl,
-                                        //  }
-                                        );
+                                    Navigator.pushNamed(
+                                      context, '/registration_form',
+                                      //arguments: user
+                                      // {
+                                      //   'email':user.email,
+                                      //   'lastName': user.lastName,
+                                      //   'photoUrl': user.photoUrl,
+                                      //  }
+                                    );
                                   },
                                 ),
                                 fullscreenDialog: true,
                               ),
                             );
                           },
-                          child: Image( image:AssetImage(signInLinkedInIcon),),
+                          child: Image(
+                            image: AssetImage(signInLinkedInIcon),
+                          ),
                         ),
                         GestureDetector(
                           onTap: () => print('Twitter Clicked'),
-                          child: Image( image:AssetImage(signInTwitterIcon)),
+                          child: Image(image: AssetImage(signInTwitterIcon)),
                         ),
                         GestureDetector(
-                          onTap: () =>print('Google Clicked'),
-                          child: Image( image:AssetImage(signInGoogleIcon)),
+                          onTap: () => print('Google Clicked'),
+                          child: Image(image: AssetImage(signInGoogleIcon)),
                         ),
                       ]),
                 ),
-
                 Container(
                   height: MediaQuery.of(context).size.height * 0.1,
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
-                  child: Text('or',style: darkNormal18Style,textAlign: TextAlign.center,),
+                  child: Text(
+                    'or',
+                    style: darkNormal18Style,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.1,
@@ -202,12 +220,15 @@ class _RegistrationPageState extends State<registrationPage>
                             child: RaisedButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5.0),
-                                  side: BorderSide(color: projectBlue)
-                              ),
+                                  side: BorderSide(color: projectBlue)),
                               color: projectBlue,
-                              child: Text('Create Account',style: white18Style,),
+                              child: Text(
+                                'Create Account',
+                                style: white18Style,
+                              ),
                               onPressed: () => {
-                                Navigator.pushNamed(context, '/registration_form')
+                                Navigator.pushNamed(
+                                    context, '/registration_form')
                               },
                               highlightElevation: 0.8,
                             )),
@@ -218,7 +239,6 @@ class _RegistrationPageState extends State<registrationPage>
               ],
             ),
           ),
-
         ],
       ),
     );

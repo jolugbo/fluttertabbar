@@ -11,7 +11,6 @@ class registration_tokenPage extends StatefulWidget {
 
   final String? title;
 
-
   @override
   _RegisterationTokenPageState createState() => _RegisterationTokenPageState();
 }
@@ -25,8 +24,6 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
   String token = '';
   String userId = '';
   bool showLoader = false;
-
-
 
   @override
   void initState() {
@@ -46,7 +43,7 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
   }
 
   Future<void> confirmSignUp() async {
-    if(!showLoader) {
+    if (!showLoader) {
       setState(() {
         showLoader = true;
       });
@@ -83,7 +80,7 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
     tokenEntryWidth = MediaQuery.of(context).size.width * 0.12;
     return Scaffold(
       body: Stack(
-        overflow: Overflow.visible,
+        //overflow: Overflow.visible,
         children: <Widget>[
 //          AnimatedPositioned(
 //            top: 0,
@@ -157,8 +154,10 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                 width: MediaQuery.of(context).size.width,
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.fromLTRB(
-                    MediaQuery.of(context).size.width * 0.05,0,
-                    MediaQuery.of(context).size.width * 0.05,0),
+                    MediaQuery.of(context).size.width * 0.05,
+                    0,
+                    MediaQuery.of(context).size.width * 0.05,
+                    0),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -189,8 +188,7 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                           ],
                         ),
                       ),
-                    ])
-            ),
+                    ])),
             top: MediaQuery.of(context).size.height * 0.1,
             height: MediaQuery.of(context).size.height * 0.2,
             duration: Duration(seconds: 1),
@@ -220,15 +218,19 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                           children: <Widget>[
                             Container(
                               height: MediaQuery.of(context).size.height * 0.08,
-                              child: Text('OTP expires in \n\n4:59s', style: light14Style,textAlign: TextAlign.center,),
+                              child: Text(
+                                'OTP expires in \n\n4:59s',
+                                style: light14Style,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular( 20)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                   child: Container(
                                       alignment: Alignment.center,
                                       decoration: tokenBox,
@@ -236,14 +238,14 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       width: tokenEntryWidth,
                                       margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
                                       child: Text(
-                                        (token.length>0)? token[0]:'',
+                                        (token.length > 0) ? token[0] : '',
                                         style: securityStyle2,
                                         textAlign: TextAlign.center,
                                       )),
                                 ),
                                 ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular( 20)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                   child: Container(
                                       alignment: Alignment.center,
                                       decoration: tokenBox,
@@ -251,14 +253,14 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       width: tokenEntryWidth,
                                       margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
                                       child: Text(
-                                        (token.length>1)? token[1]:'',
+                                        (token.length > 1) ? token[1] : '',
                                         style: securityStyle2,
                                         textAlign: TextAlign.center,
                                       )),
                                 ),
                                 ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular( 20)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                   child: Container(
                                       alignment: Alignment.center,
                                       decoration: tokenBox,
@@ -266,14 +268,14 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       width: tokenEntryWidth,
                                       margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
                                       child: Text(
-                                        (token.length>2)? token[2]:'',
+                                        (token.length > 2) ? token[2] : '',
                                         style: securityStyle2,
                                         textAlign: TextAlign.center,
                                       )),
                                 ),
                                 ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular( 20)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                   child: Container(
                                       alignment: Alignment.center,
                                       decoration: tokenBox,
@@ -281,14 +283,14 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       width: tokenEntryWidth,
                                       margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
                                       child: Text(
-                                        (token.length>3)? token[3]:'',
+                                        (token.length > 3) ? token[3] : '',
                                         style: securityStyle2,
                                         textAlign: TextAlign.center,
                                       )),
                                 ),
                                 ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular( 20)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                   child: Container(
                                       alignment: Alignment.center,
                                       decoration: tokenBox,
@@ -296,14 +298,14 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       width: tokenEntryWidth,
                                       margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
                                       child: Text(
-                                        (token.length>4)? token[4]:'',
+                                        (token.length > 4) ? token[4] : '',
                                         style: securityStyle2,
                                         textAlign: TextAlign.center,
                                       )),
                                 ),
                                 ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular( 20)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                   child: Container(
                                       alignment: Alignment.center,
                                       decoration: tokenBox,
@@ -311,7 +313,7 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       width: tokenEntryWidth,
                                       margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
                                       child: Text(
-                                        (token.length>5)? token[5]:'',
+                                        (token.length > 5) ? token[5] : '',
                                         style: securityStyle2,
                                         textAlign: TextAlign.center,
                                       )),
@@ -337,7 +339,7 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     RawMaterialButton(
                                       onPressed: () {
@@ -347,137 +349,183 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '1',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '1',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
                                           token += '2';
-                                        });},
+                                        });
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '2',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '2',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
                                           token += '3';
-                                        });},
+                                        });
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '3',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '3',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
-
                                   ]),
                               Row(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
                                           token += '4';
-                                        });},
+                                        });
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '4',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '4',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
                                           token += '5';
-                                        });},
+                                        });
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '5',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '5',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
                                           token += '6';
-                                        });},
+                                        });
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '6',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '6',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                   ]),
                               Row(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
                                           token += '7';
-                                        });},
+                                        });
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '7',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '7',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
                                           token += '8';
-                                        });},
+                                        });
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '8',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '8',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
                                           token += '9';
                                         });
-                                        },
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '9',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '9',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
-
                                   ]),
                               Row(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: <Widget>[
-
                                     RawMaterialButton(
                                       onPressed: () {
                                         setState(() {
-                                          if(token.length >6){
-                                            token = token.substring(0,6);
+                                          if (token.length > 6) {
+                                            token = token.substring(0, 6);
                                           }
-                                          if(token.length > 0)
-                                          token = token.substring(0,token.length-1);
-                                        });},
+                                          if (token.length > 0)
+                                            token = token.substring(
+                                                0, token.length - 1);
+                                        });
+                                      },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Icon(Icons.backspace,color: accent,),//,backgroundColor: Colors.green,
+                                      child: Icon(
+                                        Icons.backspace,
+                                        color: accent,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                     RawMaterialButton(
                                       onPressed: () {
@@ -487,21 +535,24 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( '0',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        '0',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
                                     RawMaterialButton(
                                       onPressed: () async {
-                                        if(token.length > 6){
-                                          token = token.substring(0,6);
+                                        if (token.length > 6) {
+                                          token = token.substring(0, 6);
                                         }
-                                        if(token.length == 6){
+                                        if (token.length == 6) {
                                           await confirmSignUp();
-                                        }
-                                        else{
+                                        } else {
                                           Fluttertoast.showToast(
-                                              msg:'invalid token length',
+                                              msg: 'invalid token length',
                                               toastLength: Toast.LENGTH_LONG,
                                               gravity: ToastGravity.BOTTOM,
                                               timeInSecForIosWeb: 1,
@@ -512,16 +563,24 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
                                       },
                                       elevation: 2.0,
                                       fillColor: projectBlue,
-                                      child: Text( 'OK',style: securityStyle,),//,backgroundColor: Colors.green,
+                                      child: Text(
+                                        'OK',
+                                        style: securityStyle,
+                                      ), //,backgroundColor: Colors.green,
                                       padding: EdgeInsets.all(15.0),
-                                      shape: CircleBorder(side: BorderSide(color: accent)),
+                                      shape: CircleBorder(
+                                          side: BorderSide(color: accent)),
                                     ),
-
                                   ]),
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.05,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.05,
                                 alignment: Alignment.center,
-                                child: Text('Request new OTP', style: light14Style,textAlign: TextAlign.center,),
+                                child: Text(
+                                  'Request new OTP',
+                                  style: light14Style,
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ]),
                       )
@@ -540,15 +599,16 @@ class _RegisterationTokenPageState extends State<registration_tokenPage>
             duration: Duration(seconds: 1),
           ),
 
-          if(showLoader)AnimatedPositioned(
-            top: MediaQuery.of(context).size.height * 0,
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            duration: Duration(milliseconds: 500),
-            child: Center(
-              child: new CircularProgressIndicator(),
-            ),
-          )
+          if (showLoader)
+            AnimatedPositioned(
+              top: MediaQuery.of(context).size.height * 0,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              duration: Duration(milliseconds: 500),
+              child: Center(
+                child: new CircularProgressIndicator(),
+              ),
+            )
         ],
       ),
     );

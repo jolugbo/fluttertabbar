@@ -294,7 +294,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Stack(
-            overflow: Overflow.visible,
+            //overflow: Overflow.visible,
             children: <Widget>[
               AnimatedPositioned(
                   top: 0,
@@ -551,7 +551,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                     color: Colors.transparent,
                                     alignment: Alignment.topCenter,
                                     child: imgAnimation2(
-                                      url: Assets.images.logo.path,
+                                      url: Assets.images.logoPng.path,
                                       time: Duration(milliseconds: 4000),
                                       width: MediaQuery.of(context).size.width *
                                           0.5,

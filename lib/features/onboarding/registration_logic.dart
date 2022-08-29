@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edurald/models/user/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../main.dart';
 import '../../models/strings.dart';
@@ -26,27 +27,14 @@ Future<bool> createUser(context, String email, String password) async {
 
 saveUserToFirestore(currentuser, String email, String firstName,
     String lastName, String userName, String photo) {
-  userRef.doc(currentuser.uid).set({
-    "email": user.user?.email ?? email.trim(),
-    "firstName": firstName.trim(),
-    "lastName": lastName.trim(),
-    "displayName": userName.trim(),
-    "photo": photo,
-    "point": 30,
-    "socialMedia": {},
-    "communities": {},
-    "careers": [],
-    "studies_taken": [],
-    "quiz_taken": [],
-    "bookmarks": {},
-    "ratings": 0,
-    "friends": {
-      "followers": {},
-      "followings": {},
-    },
-    "notifications": {},
-    "unique": userName.trim().toLowerCase(),
-  });
+  final sample = UserModel(
+      email: email,
+      unique: userName.toLowerCase().trim(),
+      firstName: firstName,
+      lastName: lastName,
+      displayName: userName,
+      photoUrl: photo);
+  userRef.doc(currentuser.uid).set(sample.toJson());
 }
 
 createCareerStructure() {
@@ -56,7 +44,7 @@ createCareerStructure() {
     "careerName": "Investment Banking",
     "synonyms": ["finance,investment,banking"],
     "studies": [],
-    "students": [],
+    "userts": [],
     "educators": [],
     "quizes": [],
   });
