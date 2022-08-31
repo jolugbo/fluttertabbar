@@ -35,7 +35,7 @@
     <string gender="unknown" name="com_facebook_like_button_not_liked">Me gusta</string>
     <string gender="unknown" name="com_facebook_loading">Cargando…</string>
     <string gender="unknown" name="com_facebook_loginview_cancel_action">Cancelar</string>
-    <string gender="unknown" name="com_facebook_loginview_log_in_button">Entrar</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">Iniciar sesión</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Continuar con Facebook</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Iniciar sesión con Facebook</string>
     <string gender="unknown" name="com_facebook_loginview_log_out_action">Salir</string>

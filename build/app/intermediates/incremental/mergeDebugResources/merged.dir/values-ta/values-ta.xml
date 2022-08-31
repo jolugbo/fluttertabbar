@@ -35,7 +35,7 @@
     <string gender="unknown" name="com_facebook_like_button_not_liked">பிடித்திருக்கிறது</string>
     <string gender="unknown" name="com_facebook_loading">ஏற்றுகிறது…</string>
     <string gender="unknown" name="com_facebook_loginview_cancel_action">ரத்துசெய்க</string>
-    <string gender="unknown" name="com_facebook_loginview_log_in_button">உள்நுழையவும்</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">உள்நுழைக</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Facebook மூலம் தொடரவும்</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Facebook மூலம் உள்நுழையவும்</string>
     <string gender="unknown" name="com_facebook_loginview_log_out_action">வெளியேறு</string>

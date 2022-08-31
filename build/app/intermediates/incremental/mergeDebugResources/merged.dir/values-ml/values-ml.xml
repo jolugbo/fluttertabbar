@@ -35,7 +35,7 @@
     <string gender="unknown" name="com_facebook_like_button_not_liked">ലൈക്കുചെയ്യുക</string>
     <string gender="unknown" name="com_facebook_loading">ലോഡ് ചെയ്യുന്നു…</string>
     <string gender="unknown" name="com_facebook_loginview_cancel_action">റദ്ദാക്കുക</string>
-    <string gender="unknown" name="com_facebook_loginview_log_in_button">ലോഗിന് ചെയ്യുക</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">ലോഗിൻ ചെയ്യുക</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Facebook ഉപയോഗിച്ച് തുടരുക</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Facebook ഉപയോഗിച്ച് ലോഗിൻ ചെയ്യുക</string>
     <string gender="unknown" name="com_facebook_loginview_log_out_action">ലോഗൗട്ട് ചെയ്യുക</string>

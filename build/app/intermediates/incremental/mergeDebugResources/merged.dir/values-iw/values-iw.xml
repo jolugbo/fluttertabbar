@@ -35,7 +35,7 @@
     <string gender="unknown" name="com_facebook_like_button_not_liked">לייק</string>
     <string gender="unknown" name="com_facebook_loading">טוען...</string>
     <string gender="unknown" name="com_facebook_loginview_cancel_action">ביטול</string>
-    <string gender="unknown" name="com_facebook_loginview_log_in_button">התחבר/י</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">התחברות</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">המשך/המשיכי עם פייסבוק</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_long">התחברות באמצעות פייסבוק</string>
     <string gender="unknown" name="com_facebook_loginview_log_out_action">התנתק/י</string>

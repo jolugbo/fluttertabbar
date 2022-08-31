@@ -36,7 +36,7 @@
     <string gender="unknown" name="com_facebook_loading">Загрузка…</string>
     <string gender="unknown" name="com_facebook_loginview_cancel_action">Отмена</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button">Войти</string>
-    <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Продолжить с Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Продолжить с аккаунтом Facebook</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Вход через Facebook</string>
     <string gender="unknown" name="com_facebook_loginview_log_out_action">Выйти</string>
     <string gender="unknown" name="com_facebook_loginview_log_out_button">Выйти</string>

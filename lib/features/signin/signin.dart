@@ -17,6 +17,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../gen/assets.gen.dart';
 import '../../utills/imageanimations.dart';
+import '../administration/administration_logic.dart';
 import '../dashboard/dashboard.dart';
 import '../onboarding/registration_logic.dart';
 import 'signin_logic.dart';
@@ -106,10 +107,10 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
     setState(() {
       showLoader = true;
     });
-    bool loginSuccess = await SignInWithEmailPassword(
+    bool loginSuccess = await signInWithEmailPassword(
         emailController.text.trim(), passwordController.text.trim());
     if (loginSuccess) {
-      bool isOldUser = await userExist();
+      bool isOldUser = await checkIfUserExist();
       print(isOldUser);
       if (isOldUser) {
         Get.offAll(() => dashboardPage());
@@ -198,7 +199,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
         enableEmail = true;
       }
       if (FirebaseAuth.instance.currentUser != null) {
-        bool isOldUser = await userExist();
+        bool isOldUser = await checkIfUserExist();
         print(FirebaseAuth.instance.currentUser);
         print(isOldUser);
         if (isOldUser) {
@@ -230,7 +231,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
       if (e.toString() ==
           "LateInitializationError: Field 'user' has already been initialized.") {
         if (FirebaseAuth.instance.currentUser != null) {
-          bool isOldUser = await userExist();
+          bool isOldUser = await checkIfUserExist();
           if (isOldUser) {
             Get.offAll(dashboardPage());
             return;
@@ -599,11 +600,11 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                     keyboardType: TextInputType.emailAddress,
                                     controller: emailController,
                                     onSubmitted: (value) async {
-                                      await mailExist(
+                                      await checkIfEmailExist(
                                           emailController.text.trim());
                                     },
                                     onChanged: (value) async {
-                                      emailExist = await mailExist(
+                                      emailExist = await checkIfEmailExist(
                                           emailController.text.trim());
                                       setState(() {
                                         emailIsValid = emailValidator(value);
@@ -771,7 +772,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                         style: white18Style,
                                       ),
                                       onPressed: () async {
-                                        emailExist = await mailExist(
+                                        emailExist = await checkIfEmailExist(
                                             emailController.text.trim());
                                         userNameIsValid = !await userNameExist(
                                             userNameController.text.trim());

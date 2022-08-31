@@ -27,6 +27,7 @@ import 'features/onboarding/registration.dart';
 import 'features/onboarding/registration_form.dart';
 import 'features/onboarding/registration_token.dart';
 import 'features/onboarding/walkthrough.dart';
+import 'features/administration/administration_office.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 //import 'models/user.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -253,7 +254,8 @@ class _MyAppState extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Scaffold(
-          body: (hasLoggedIn) ? dashboardPage() : walkthroughPage(),
+          body:
+              admin_office_Page(), //(hasLoggedIn) ? dashboardPage() : walkthroughPage(),
         ));
   }
 

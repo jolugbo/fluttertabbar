@@ -35,7 +35,7 @@
     <string gender="unknown" name="com_facebook_like_button_not_liked">लाइक करें</string>
     <string gender="unknown" name="com_facebook_loading">लोड हो रहा है...</string>
     <string gender="unknown" name="com_facebook_loginview_cancel_action">कैंसल करें</string>
-    <string gender="unknown" name="com_facebook_loginview_log_in_button">लॉग इन</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">लॉग इन करें</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Facebook के साथ जारी रखें</string>
     <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Facebook से लॉग इन करें</string>
     <string gender="unknown" name="com_facebook_loginview_log_out_action">लॉग आउट करें</string>

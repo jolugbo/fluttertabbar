@@ -57,7 +57,7 @@ Future<UserCredential> signInWithTwitter() async {
       .signInWithCredential(twitterAuthCredential);
 }
 
-Future<bool> SignInWithEmailPassword(String email, String password) async {
+Future<bool> signInWithEmailPassword(String email, String password) async {
   try {
     final response = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email.trim(), password: password.trim());

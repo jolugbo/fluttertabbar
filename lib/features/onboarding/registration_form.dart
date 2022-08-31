@@ -22,6 +22,7 @@ import '../../gen/assets.gen.dart';
 import '../../main.dart';
 import '../../utills/imageanimations.dart';
 
+import '../administration/administration_logic.dart';
 import '../dashboard/dashboard.dart';
 import '../signin/signin_logic.dart';
 import 'registration_logic.dart';
@@ -115,7 +116,7 @@ class _Registration_formPageState extends State<registration_formPage>
         blurrySize = 1;
         showLoader = true;
       });
-      bool resp = await createUser(
+      bool resp = await createUserWithEmailAndPassword(
           context, emailController.text, passwordController.text);
       if (resp) {
         setState(() {
@@ -182,7 +183,7 @@ class _Registration_formPageState extends State<registration_formPage>
       if (e.toString() ==
           "LateInitializationError: Field 'user' has already been initialized.") {
         if (FirebaseAuth.instance.currentUser != null) {
-          bool isOldUser = await userExist();
+          bool isOldUser = await checkIfUserExist();
           if (isOldUser) {
             Get.offAll(dashboardPage());
             return;
@@ -204,7 +205,7 @@ class _Registration_formPageState extends State<registration_formPage>
       //show error signing up notification
     }
     if (FirebaseAuth.instance.currentUser != null) {
-      bool isOldUser = await userExist();
+      bool isOldUser = await checkIfUserExist();
       print("isOld?");
       print(isOldUser);
       if (isOldUser) {
@@ -251,11 +252,12 @@ class _Registration_formPageState extends State<registration_formPage>
                 keyboardType: TextInputType.emailAddress,
                 controller: emailController,
                 onSubmitted: (value) async {
-                  emailExist = await mailExist(emailController.text.trim());
+                  emailExist =
+                      await checkIfEmailExist(emailController.text.trim());
                 },
                 onChanged: (value) async {
                   setState(() {
-                    mailExist(emailController.text.trim());
+                    checkIfEmailExist(emailController.text.trim());
                     emailIsValid = emailValidator(value);
                     if (!emailIsValid) {
                       emailStatus = EmailStatus.error;
@@ -351,10 +353,12 @@ class _Registration_formPageState extends State<registration_formPage>
                   keyboardType: TextInputType.emailAddress,
                   controller: emailController,
                   onSubmitted: (value) async {
-                    emailExist = await mailExist(emailController.text.trim());
+                    emailExist =
+                        await checkIfEmailExist(emailController.text.trim());
                   },
                   onChanged: (value) async {
-                    emailExist = await mailExist(emailController.text.trim());
+                    emailExist =
+                        await checkIfEmailExist(emailController.text.trim());
                     setState(() {
                       emailIsValid = emailValidator(value);
                       if (!emailIsValid) {
@@ -619,7 +623,7 @@ class _Registration_formPageState extends State<registration_formPage>
                                     case 2:
                                       userNameIsValid = !await userNameExist(
                                           userNameController.text.trim());
-                                      emailExist = await mailExist(
+                                      emailExist = await checkIfEmailExist(
                                           emailController.text.trim());
                                       userNameStatus = userNameIsValid
                                           ? UserNameStatus.success
