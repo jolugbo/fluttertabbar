@@ -290,6 +290,9 @@ class admin_office_state extends State<admin_office_Page>
                                     createCourse3();
                                     createCourse4();
                                     createCourse5();
+                                    createCourse6();
+                                    createCourse7();
+                                    createCourse8();
                                     // I am connected to a wifi network.
                                   }
                                 },

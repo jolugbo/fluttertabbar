@@ -136,117 +136,176 @@ createQuiz() {
 
 createCourse0() {
   try {
-    print("creating History to IB....");
+    print("creating IPOs....");
     var uuid = Uuid();
     coursesRef.doc(uuid.v1()).set({
-      "course_name": "History to IB",
+      "course_name": "Initial Public Offerings (IPOs)",
       "icon": "",
-      "description": "A brief history on Investment Banking",
+      "description": "Intro to (IPOs)",
       "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
       "educators": [],
       "course_contents": [],
       "createdBy": user.uid
     });
-    message("History to IB Created....");
+    message("IPOs Created....");
   } catch (e) {
-    showError("History to IB  not Created");
+    showError("IPOs not Created");
   }
 }
 
 createCourse1() {
   try {
-    print("creating Main Subsect of IB....");
+    //You will learn about the mechanics of Initial Public Offerings, Seasoned Equity Offerings, Private Placements
+    print("creating SEOs....");
     var uuid = Uuid();
     coursesRef.doc(uuid.v1()).set({
-      "course_name": "Main Subsect of IB",
+      "course_name": "Seasoned Equity Offerings (SEOs)",
       "icon": "",
-      "description": "Intro to 4 main Subsect IB",
+      "description": "Intro to (SEOs)",
       "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
       "educators": [],
       "course_contents": [],
       "createdBy": user.uid
     });
-    message("Main Subsect of IB Created....");
+    message("SEOs Created....");
   } catch (e) {
-    showError("Main Subsect of IB not Created");
+    showError("SEOs not Created");
   }
 }
 
 createCourse2() {
   try {
-    print("creating Capital Markets....");
+    print("creating Private Placements....");
     var uuid = Uuid();
     coursesRef.doc(uuid.v1()).set({
-      "course_name": "Capital Markets",
+      "course_name": "Private Placements",
       "icon": "",
-      "description": "Intro to Capital Markets",
+      "description": "Intro to Private Placements",
       "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
       "educators": [],
       "course_contents": [],
       "createdBy": user.uid
     });
-    message("Capital Markets Created....");
+    message("Private Placements Created....");
   } catch (e) {
-    showError(e.toString());
-    print(e.toString());
-    showError("Capital Markets not Created");
+    showError("Private Placements not Created");
   }
 }
 
 createCourse3() {
   try {
-    print("creating Asset Management....");
+    print("creating Bond Issuances....");
     var uuid = Uuid();
     coursesRef.doc(uuid.v1()).set({
-      "course_name": "Asset Management",
+      "course_name": "Bond Issuances",
       "icon": "",
-      "description": "Intro to Asset Management",
+      "description": "Intro to Bond Issuances",
       "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
       "educators": [],
       "course_contents": [],
       "createdBy": user.uid
     });
-    message("Asset Management Created....");
+    message("Bond Issuances Created....");
   } catch (e) {
-    showError("Asset Management not Created");
+    showError("Bond Issuances not Created");
   }
 }
 
 createCourse4() {
   try {
-    print("creating Advisory....");
+    print("creating Loan Syndications....");
     var uuid = Uuid();
     coursesRef.doc(uuid.v1()).set({
-      "course_name": "Advisory",
+      "course_name": "Loan Syndications",
       "icon": "",
-      "description": "Intro to Advisory",
+      "description": "Intro to Loan Syndications",
       "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
       "educators": [],
       "course_contents": [],
       "createdBy": user.uid
     });
-    message("Advisory Created....");
+    message("Loan Syndications Created....");
   } catch (e) {
-    showError("Advisory not Created");
+    showError("Loan Syndications not Created");
   }
 }
 
 createCourse5() {
   try {
-    print("creating Trading & Brokerage....");
+    print("creating Securitizations....");
     var uuid = Uuid();
 
     coursesRef.doc(uuid.v1()).set({
-      "course_name": "Trading & Brokerage",
+      "course_name": "Securitizations",
       "icon": "",
-      "description": "Intro to Trading & Brokerage",
+      "description": "Intro to Securitizations",
       "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
       "educators": [],
       "course_contents": [],
       "createdBy": user.uid
     });
-    message("Trading & Brokerage Created....");
+    message("Securitizations Created....");
   } catch (e) {
-    showError("Trading & Brokerage not Created");
+    showError("Securitizations not Created");
   }
 }
+
+createCourse6() {
+  try {
+    print("creating Mergers and Acquisitions....");
+    var uuid = Uuid();
+    coursesRef.doc(uuid.v1()).set({
+      "course_name": "Mergers and Acquisitions (M&As)",
+      "icon": "",
+      "description": "Intro to M&As",
+      "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
+      "educators": [],
+      "course_contents": [],
+      "createdBy": user.uid
+    });
+    message("Mergers and Acquisitions Created....");
+  } catch (e) {
+    showError("Mergers and Acquisitions not Created");
+  }
+}
+
+createCourse7() {
+  try {
+    print("creating Restructurings....");
+    var uuid = Uuid();
+
+    coursesRef.doc(uuid.v1()).set({
+      "course_name": "Restructurings",
+      "icon": "",
+      "description": "Intro to Restructurings",
+      "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
+      "educators": [],
+      "course_contents": [],
+      "createdBy": user.uid
+    });
+    message("Restructurings Created....");
+  } catch (e) {
+    showError("Restructurings not Created");
+  }
+}
+
+createCourse8() {
+  try {
+    print("creating Trading Instruments....");
+    var uuid = Uuid();
+
+    coursesRef.doc(uuid.v1()).set({
+      "course_name": "Trading Instruments",
+      "icon": "",
+      "description": "Intro to Trading Instruments",
+      "careers": ["d32bf610-2a4f-11ed-b0e6-e76c95bb498e"],
+      "educators": [],
+      "course_contents": [],
+      "createdBy": user.uid
+    });
+    message("Trading Instruments Created....");
+  } catch (e) {
+    showError("Trading Instruments not Created");
+  }
+}
+//Bond Issuances, Loan Syndications, Securitizations, Mergers and Acquisitions, Restructurings, Trading Instruments,
