@@ -12,6 +12,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:edurald/utills/pagetransitionutill.dart';
 import 'package:edurald/utills/styles.dart';
 
+import '../../gen/assets.gen.dart';
 import '../dashboard/dashboard.dart';
 
 class learn extends StatefulWidget {
@@ -24,12 +25,12 @@ class learn extends StatefulWidget {
 }
 
 class _LearnPageState extends State<learn> with TickerProviderStateMixin {
-  String placeholder = 'assets/ph.jpg';
-  String bgMain = 'assets/bg.png';
-  String advisory = 'assets/advisory.png';
-  String assetManagement = 'assets/assetManagement.png';
-  String capitalMarket = 'assets/capitalMarket.png';
-  String trading = 'assets/trading.jpg';
+  String placeholder = Assets.images.ph.path;
+  String bgMain = Assets.images.bg.path;
+  String advisory = Assets.images.advisory.path;
+  String assetManagement = Assets.images.assetManagement.path;
+  String capitalMarket = Assets.images.capitalMarket.path;
+  String trading = Assets.images.trading.path;
   bool showBreakDown = false;
   bool showdashboard = true;
   bool showinvestment = false;

@@ -142,12 +142,12 @@ class _Registration_formPageState extends State<registration_formPage>
       if (userNameIsValid) {
         try {
           saveUserToFirestore(
-              user.user,
+              user,
               emailController.text.trim(),
               firstNameController.text.trim(),
               lastNameController.text.trim(),
               userNameController.text.trim(),
-              user.user?.photoURL ?? "");
+              user.photoURL ?? "");
           Get.offAll(dashboardPage());
         } catch (e) {}
       } else {
@@ -167,12 +167,15 @@ class _Registration_formPageState extends State<registration_formPage>
         showLoader = true;
       });
       if (socialMediaSelectedOption == 1) {
-        user = await signInWithFacebook();
+        UserCredential currentUser = await signInWithFacebook();
+        user = currentUser.user!;
       } else if (socialMediaSelectedOption == 2) {
-        user = await signInWithGoogle();
+        UserCredential currentUser = await signInWithGoogle();
+        user = currentUser.user!;
       } else if (socialMediaSelectedOption == 3) {
-        user = await signInWithTwitter();
-        userNameIsValid = !await userNameExist(user.user?.displayName ?? "");
+        UserCredential currentUser = await signInWithTwitter();
+        user = currentUser.user!;
+        userNameIsValid = !await userNameExist(user.displayName ?? "");
         userNameStatus =
             userNameIsValid ? UserNameStatus.success : UserNameStatus.error;
         enableEmail = true;
@@ -190,7 +193,7 @@ class _Registration_formPageState extends State<registration_formPage>
           } else
             setState(() {
               _current = ++_current % 3;
-              userNameController.text = user.user?.displayName ?? "";
+              userNameController.text = user.displayName ?? "";
               userNameController.text =
                   userNameController.text.replaceAll(' ', '');
               // _current = 2;
@@ -214,7 +217,7 @@ class _Registration_formPageState extends State<registration_formPage>
       } else
         setState(() {
           _current = ++_current % 3;
-          userNameController.text = user.user?.displayName ?? "";
+          userNameController.text = user.displayName ?? "";
           userNameController.text = userNameController.text.replaceAll(' ', '');
           // _current = 2;
           socialAuthsLocation = 1;

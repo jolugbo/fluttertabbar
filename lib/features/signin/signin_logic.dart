@@ -61,7 +61,7 @@ Future<bool> signInWithEmailPassword(String email, String password) async {
   try {
     final response = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email.trim(), password: password.trim());
-    user = response;
+    user = response.user!;
     return true;
   } on FirebaseAuthException catch (e) {
     return false;

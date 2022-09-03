@@ -4,9 +4,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:edurald/models/strings.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../utills/imageanimations.dart';
+import '../signin/signin.dart';
 
 class walkthroughPage extends StatefulWidget {
   walkthroughPage({Key? key, this.title}) : super(key: key);
@@ -227,10 +229,7 @@ class _WalkthroughPageState extends State<walkthroughPage> {
                                 'Sign up',
                                 style: white25Style,
                               ),
-                              onPressed: () => {
-                                Navigator.pushNamed(
-                                    context, '/registration_form')
-                              },
+                              onPressed: () => {Get.off(() => signinPage())},
                               highlightElevation: 0.8,
                             )),
                       ),
@@ -252,8 +251,7 @@ class _WalkthroughPageState extends State<walkthroughPage> {
                                 'Sign in',
                                 style: gray25Style,
                               ),
-                              onPressed: () =>
-                                  {Navigator.pushNamed(context, '/signin')},
+                              onPressed: () => {Get.off(() => signinPage())},
                               highlightElevation: 0.8,
                             )),
                       ),

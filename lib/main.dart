@@ -38,7 +38,7 @@ final careersRef = FirebaseFirestore.instance.collection('careers');
 final coursesRef = FirebaseFirestore.instance.collection('courses');
 final quizesRef = FirebaseFirestore.instance.collection('quizes');
 final educatorsRef = FirebaseFirestore.instance.collection('educators');
-late final UserCredential user;
+late final User user;
 
 // final postRef =  FirebaseFirestore.instance.collection('posts');
 // final commentsRef =  FirebaseFirestore.instance.collection('comments');
@@ -116,20 +116,21 @@ class _MyAppState extends State<MyApp> {
 
   getAppState() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
+    FirebaseAuth.instance.authStateChanges().listen((User? loggedInuser) {
+      if (loggedInuser == null) {
         hasLoggedIn = false;
       } else {
+        user = loggedInuser;
         hasLoggedIn = true;
       }
     });
-    FirebaseAuth.instance.idTokenChanges().listen((User? user) {
-      if (user == null) {
-        hasLoggedIn = false;
-      } else {
-        hasLoggedIn = true;
-      }
-    });
+    // FirebaseAuth.instance.idTokenChanges().listen((User? user) {
+    //   if (user == null) {
+    //     hasLoggedIn = false;
+    //   } else {
+    //     hasLoggedIn = true;
+    //   }
+    // });
   }
 
   @override
@@ -256,6 +257,7 @@ class _MyAppState extends State<MyApp> {
         home: Scaffold(
           body:
               admin_office_Page(), //(hasLoggedIn) ? dashboardPage() : walkthroughPage(),
+          //
         ));
   }
 

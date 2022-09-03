@@ -134,7 +134,7 @@ class admin_office_state extends State<admin_office_Page>
 
               //bottom rect
               AnimatedPositioned(
-                  top: size.height * 0.2,
+                  top: size.height * 0.1,
                   height: size.height,
                   width: size.width,
                   duration: Duration(seconds: 0),
@@ -218,6 +218,84 @@ class admin_office_state extends State<admin_office_Page>
                               )),
                         ),
                         SizedBox(height: size.height * 0.12),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          alignment: Alignment.center,
+                          child: ButtonTheme(
+                              minWidth: MediaQuery.of(context).size.width * 0.6,
+                              height: 40,
+                              buttonColor: Colors.transparent,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide(color: projectBlue)),
+                                color: projectBlue,
+                                child: Text(
+                                  'Create a career path',
+                                  style: white18Style,
+                                ),
+                                onPressed: () async {
+                                  var connectivityResult = await (Connectivity()
+                                      .checkConnectivity());
+                                  if (connectivityResult ==
+                                      ConnectivityResult.none) {
+                                    showPopUp(internet_error);
+                                    // Mobile is not Connected to Internet
+                                  } else if (connectivityResult ==
+                                      ConnectivityResult.mobile) {
+                                    createCareerPath();
+                                    // I am connected to a mobile network.
+                                  } else if (connectivityResult ==
+                                      ConnectivityResult.wifi) {
+                                    createCareerPath();
+                                    // I am connected to a wifi network.
+                                  }
+                                },
+                                highlightElevation: 0.8,
+                              )),
+                        ),
+                        SizedBox(height: size.height * 0.12),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          alignment: Alignment.center,
+                          child: ButtonTheme(
+                              minWidth: MediaQuery.of(context).size.width * 0.6,
+                              height: 40,
+                              buttonColor: Colors.transparent,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide(color: projectBlue)),
+                                color: projectBlue,
+                                child: Text(
+                                  'Create Courses',
+                                  style: white18Style,
+                                ),
+                                onPressed: () async {
+                                  var connectivityResult = await (Connectivity()
+                                      .checkConnectivity());
+                                  if (connectivityResult ==
+                                      ConnectivityResult.none) {
+                                    showPopUp(internet_error);
+                                    // Mobile is not Connected to Internet
+                                  } else if (connectivityResult ==
+                                      ConnectivityResult.mobile) {
+                                    createCareerPath();
+                                    // I am connected to a mobile network.
+                                  } else if (connectivityResult ==
+                                      ConnectivityResult.wifi) {
+                                    createCourse0();
+                                    createCourse1();
+                                    createCourse2();
+                                    createCourse3();
+                                    createCourse4();
+                                    createCourse5();
+                                    // I am connected to a wifi network.
+                                  }
+                                },
+                                highlightElevation: 0.8,
+                              )),
+                        ),
                       ],
                     ),
                   )),

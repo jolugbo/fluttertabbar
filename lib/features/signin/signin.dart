@@ -118,8 +118,8 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
       } else
         setState(() {
           _current = ++_current % 3;
-          userNameController.text = user.user?.displayName ?? "";
-          emailController.text = user.user?.email ?? "";
+          userNameController.text = user.displayName ?? "";
+          emailController.text = user.email ?? "";
           userNameController.text = userNameController.text.replaceAll(' ', '');
           socialAuthsLocation = 1;
           next = !next;
@@ -192,10 +192,11 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
       if (socialMediaSelectedOption == 1) {
         //user = await signInWithFacebook();
       } else if (socialMediaSelectedOption == 2) {
-        user = await signInWithGoogle();
+        UserCredential currentUser = await signInWithGoogle();
+        user = currentUser.user!;
       } else if (socialMediaSelectedOption == 3) {
-        print("Twitter click");
-        user = await signInWithTwitter();
+        UserCredential currentUser = await signInWithTwitter();
+        user = currentUser.user!;
         enableEmail = true;
       }
       if (FirebaseAuth.instance.currentUser != null) {
@@ -208,8 +209,8 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
         } else
           setState(() {
             _current = ++_current % 3;
-            userNameController.text = user.user?.displayName ?? "";
-            emailController.text = user.user?.email ?? "";
+            userNameController.text = user.displayName ?? "";
+            emailController.text = user.email ?? "";
             userNameController.text =
                 userNameController.text.replaceAll(' ', '');
             // _current = 2;
@@ -238,7 +239,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
           } else
             setState(() {
               _current = ++_current % 3;
-              userNameController.text = user.user?.displayName ?? "";
+              userNameController.text = user.displayName ?? "";
               userNameController.text =
                   userNameController.text.replaceAll(' ', '');
               // _current = 2;
@@ -267,12 +268,12 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
       });
       try {
         saveUserToFirestore(
-            user.user,
+            user,
             emailController.text.trim(),
             firstNameController.text.trim(),
             lastNameController.text.trim(),
             userNameController.text.trim(),
-            user.user?.photoURL ?? "");
+            user.photoURL ?? "");
         Get.offAll(dashboardPage());
       } catch (e) {
         showError(e.toString());
