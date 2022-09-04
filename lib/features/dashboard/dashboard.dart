@@ -16,6 +16,7 @@ import '../community/community.dart';
 import '../learn/learn.dart';
 import '../discovery/discovery.dart';
 import '../challenge/challenge.dart';
+import '../../gen/assets.gen.dart';
 
 class dashboardPage extends StatefulWidget {
   dashboardPage({Key? key, this.title, this.index}) : super(key: key);
@@ -29,7 +30,7 @@ class dashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<dashboardPage>
     with TickerProviderStateMixin {
-  String defaultprofile = 'assets/jolugbo.jpeg';
+  String defaultprofile = Assets.images.jolugbo.path;
   bool challeng = false;
   bool discover = false;
   bool chat = false;
