@@ -43,7 +43,7 @@ bower_components
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
-
+build/app/outputs/apk/debug/app-debug.apk
 # ignore facebook secrete key
 android/app/src/main/res/values/string.xml
 
