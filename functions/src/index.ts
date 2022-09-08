@@ -1,5 +1,6 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
+import {dBase} from "../src/models/base_models"
 const {getFirestore} = require("firebase-admin/firestore");
 admin.initializeApp();
 
@@ -13,14 +14,12 @@ export const testConnection = functions.https.onRequest((request, response) => {
 });
 
 export const getAllCareers = functions.https.onRequest(async (request, response) => {
-  const db = getFirestore();
   try {
-    const snapshot = await db.collection("careers").doc("d32bf610-2a4f-11ed-b0e6-e76c95bb498e").get();
-    if (!snapshot.exists) {
-      console.log("No such document!");
+    const careers = dBase.careers.get();
+    if (careers.empty) {
+      console.log("No documents!");
     } else {
-      console.log("Document data:", snapshot.data());
-      response.send(snapshot.data());
+      response.send(careers);
     }
   } catch (err) {
     functions.logger.error(err, {structuredData: true});
