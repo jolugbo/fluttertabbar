@@ -29,5 +29,6 @@ module.exports = {
     "import/no-unresolved": 0,
     "max-len": ["error", 120],
     "@typescript-eslint/no-var-requires": 0,
+    "linebreak-style": 0,
   },
 };
