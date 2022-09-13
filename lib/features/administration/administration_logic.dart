@@ -5,7 +5,9 @@ import '../../main.dart';
 import '../../models/strings.dart';
 import '../../utills/input_util.dart';
 import 'package:uuid/uuid.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
+FirebaseFunctions functions = FirebaseFunctions.instance;
 createAdmin() async {
   try {
     final response = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -50,35 +52,39 @@ loginAsAdmin() async {
 ///
 ///
 
+// Future<bool> userNameExist(String displayname) async {
+//   int size = 0;
+//   await FirebaseFirestore.instance
+//       .collection("users")
+//       .where("unique", isEqualTo: displayname.toLowerCase())
+//       .get()
+//       .then(
+//         (res) => {
+//           size = res.size,
+//           print(size),
+//         },
+//         onError: (e) => print("Error completing: $e"),
+//       );
+//   return size >= 1;
+// }
 Future<bool> userNameExist(String displayname) async {
-  int size = 0;
-  await FirebaseFirestore.instance
-      .collection("users")
-      .where("unique", isEqualTo: displayname.toLowerCase())
-      .get()
-      .then(
-        (res) => {
-          size = res.size,
-          print(size),
-        },
-        onError: (e) => print("Error completing: $e"),
-      );
-  return size >= 1;
+  HttpsCallable callable =
+      FirebaseFunctions.instance.httpsCallable('checkIfUserNameExist');
+  final results = await callable.call(<String, dynamic>{
+    'displayname': displayname,
+  });
+  print(results.data);
+  return results.data;
 }
 
 Future<bool> checkIfEmailExist(String email) async {
-  int size = 0;
-  await FirebaseFirestore.instance
-      .collection("users")
-      .where("email", isEqualTo: email.toLowerCase())
-      .get()
-      .then(
-        (res) => {
-          size = res.size,
-        },
-        onError: (e) => print("Error completing: $e"),
-      );
-  return size >= 1;
+  HttpsCallable callable =
+      FirebaseFunctions.instance.httpsCallable('checkIfEmailExist');
+  final results = await callable.call(<String, dynamic>{
+    'email': email,
+  });
+  print(results.data);
+  return results.data;
 }
 
 Future<bool> checkIfUserExist() async {
@@ -307,5 +313,14 @@ createCourse8() {
   } catch (e) {
     showError("Trading Instruments not Created");
   }
+}
+
+Future<void> getCareers() async {
+  HttpsCallable callable =
+      FirebaseFunctions.instance.httpsCallable('getAllCareers');
+  final results = await callable();
+  print(results.data);
+  // List fruit =
+  //     results.data; // ["Apple", "Banana", "Cherry", "Date", "Fig", "Grapes"]
 }
 //Bond Issuances, Loan Syndications, Securitizations, Mergers and Acquisitions, Restructurings, Trading Instruments,

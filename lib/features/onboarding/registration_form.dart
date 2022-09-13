@@ -358,8 +358,16 @@ class _Registration_formPageState extends State<registration_formPage>
                   onSubmitted: (value) async {
                     emailExist =
                         await checkIfEmailExist(emailController.text.trim());
+                    setState(() {
+                      emailIsValid = emailValidator(value);
+                      if (!emailIsValid) {
+                        emailStatus = EmailStatus.error;
+                      } else
+                        emailStatus = EmailStatus.success;
+                    });
                   },
                   onChanged: (value) async {
+                    print("got here");
                     emailExist =
                         await checkIfEmailExist(emailController.text.trim());
                     setState(() {
@@ -428,7 +436,6 @@ class _Registration_formPageState extends State<registration_formPage>
 
     return Scaffold(
       body: Stack(
-        //overflow: Overflow.visible,
         children: <Widget>[
           AnimatedPositioned(
             top: 0,
@@ -436,7 +443,6 @@ class _Registration_formPageState extends State<registration_formPage>
             child: Container(
               height: size.height * 0.4,
               width: size.width,
-              //padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
               alignment: Alignment.center,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,

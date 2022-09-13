@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:edurald/features/onboarding/registration_form.dart';
 import 'package:edurald/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -935,10 +936,8 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                 "Don't have an account ?",
                                 style: blue20Style,
                               ),
-                              onTap: () => {
-                                Navigator.pushNamed(
-                                    context, '/registration_form')
-                              },
+                              onTap: () =>
+                                  {Get.off(() => registration_formPage())},
                             )),
                       ]))),
 

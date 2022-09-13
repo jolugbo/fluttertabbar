@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 admin.initializeApp();
-import {dBase} from "./models/base_models";
+import {career, dBase} from "./models/base_models";
 
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
@@ -14,17 +14,53 @@ export const testConnection = functions.https.onRequest((request, response) => {
 
 export const getAllCareers = functions.https.onRequest(async (request, response) => {
   try {
+    const resp: Array<career> = [];
     const careers = await dBase.careers.get();
     if (careers.empty) {
       console.log("No documents!");
     } else {
       careers.forEach((snapshot: admin.firestore.DocumentSnapshot) => {
-        console.log(snapshot.id, "=>", snapshot.data());
+        resp.push(snapshot.data() as career);
       });
-      response.status(200).send(careers);
+      response.status(200).send({
+        "status": 200,
+        "data": resp,
+      });
     }
   } catch (err) {
     functions.logger.error(err, {structuredData: true});
     response.send("error fetching data!");
+  }
+});
+
+export const checkIfEmailExist = functions.https.onCall(async (data, response) => {
+  try {
+    console.log(data.email);
+    const user = await dBase.users.where("email", "==", data.email).get();
+    if (user.empty) {
+      console.log("No documents!");
+      return false;
+    } else {
+      return true;
+    }
+  } catch (err) {
+    functions.logger.error(err, {structuredData: true});
+    return false;
+  }
+});
+
+export const checkIfUserNameExist = functions.https.onCall(async (data, response) => {
+  try {
+    console.log(data.email);
+    const user = await dBase.users.where("unique", "==", data.displayname).get();
+    if (user.empty) {
+      console.log("No documents!");
+      return false;
+    } else {
+      return true;
+    }
+  } catch (err) {
+    functions.logger.error(err, {structuredData: true});
+    return false;
   }
 });

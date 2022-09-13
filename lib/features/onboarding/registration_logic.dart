@@ -12,6 +12,7 @@ Future<bool> createUserWithEmailAndPassword(
     final response = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email.trim(), password: password.trim());
     user = response.user!;
+    print("got here");
     showMyDialog(context, "Account Verification", account_verification_msg);
     return true;
   } on FirebaseAuthException catch (e) {

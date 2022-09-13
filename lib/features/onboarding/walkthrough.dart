@@ -1,3 +1,4 @@
+import 'package:edurald/features/onboarding/registration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 import '../../gen/assets.gen.dart';
 import '../../utills/imageanimations.dart';
 import '../signin/signin.dart';
+import 'registration_form.dart';
 
 class walkthroughPage extends StatefulWidget {
   walkthroughPage({Key? key, this.title}) : super(key: key);
@@ -229,7 +231,8 @@ class _WalkthroughPageState extends State<walkthroughPage> {
                                 'Sign up',
                                 style: white25Style,
                               ),
-                              onPressed: () => {Get.off(() => signinPage())},
+                              onPressed: () =>
+                                  {Get.off(() => registration_formPage())},
                               highlightElevation: 0.8,
                             )),
                       ),

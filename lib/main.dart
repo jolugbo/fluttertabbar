@@ -23,13 +23,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'features/champions_league/champions_league.dart';
+import 'features/function_test/function_test.dart';
 import 'features/onboarding/registration.dart';
 import 'features/onboarding/registration_form.dart';
 import 'features/onboarding/registration_token.dart';
 import 'features/onboarding/walkthrough.dart';
 import 'features/administration/administration_office.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-//import 'models/user.dart';
+import 'models/user/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 final userRef = FirebaseFirestore.instance.collection('users');
@@ -39,6 +40,7 @@ final coursesRef = FirebaseFirestore.instance.collection('courses');
 final quizesRef = FirebaseFirestore.instance.collection('quizes');
 final educatorsRef = FirebaseFirestore.instance.collection('educators');
 late final User user;
+late final UserModel userProfile;
 
 // final postRef =  FirebaseFirestore.instance.collection('posts');
 // final commentsRef =  FirebaseFirestore.instance.collection('comments');
@@ -115,8 +117,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   getAppState() async {
+    //await FirebaseAuth.instance.signOut();
     SharedPreferences preferences = await SharedPreferences.getInstance();
     FirebaseAuth.instance.authStateChanges().listen((User? loggedInuser) {
+      print(loggedInuser);
       if (loggedInuser == null) {
         hasLoggedIn = false;
       } else {
@@ -124,13 +128,6 @@ class _MyAppState extends State<MyApp> {
         hasLoggedIn = true;
       }
     });
-    // FirebaseAuth.instance.idTokenChanges().listen((User? user) {
-    //   if (user == null) {
-    //     hasLoggedIn = false;
-    //   } else {
-    //     hasLoggedIn = true;
-    //   }
-    // });
   }
 
   @override
@@ -255,8 +252,9 @@ class _MyAppState extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Scaffold(
-          body:(hasLoggedIn) ? dashboardPage() : walkthroughPage(),
+          body: (hasLoggedIn) ? dashboardPage() : walkthroughPage(),
           //admin_office_Page(), //
+          //functionTest_page(),//
         ));
   }
 
