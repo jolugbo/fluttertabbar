@@ -41,7 +41,7 @@ class _Registration_formPageState extends State<registration_formPage>
   File _image = File(imageBase + 'graduatehat.jpg');
   final picker = ImagePicker();
   int blurrySize = 0;
-  double socialAuthsLocation = 0.78;
+  double socialAuthsLocation = 0.6;
   final int _numPages = 3;
   bool next = true;
   String initialCountry = "";
@@ -367,7 +367,6 @@ class _Registration_formPageState extends State<registration_formPage>
                     });
                   },
                   onChanged: (value) async {
-                    print("got here");
                     emailExist =
                         await checkIfEmailExist(emailController.text.trim());
                     setState(() {
@@ -435,13 +434,36 @@ class _Registration_formPageState extends State<registration_formPage>
             ]));
 
     return Scaffold(
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: accent,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: projectBlue,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: Container(
+            width: size.width,
+            child: Hero(
+              tag: "headerTxt",
+              child: Text(
+                'Join Edurald',
+                style: blue25BoldStyle,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          )),
       body: Stack(
         children: <Widget>[
           AnimatedPositioned(
             top: 0,
             duration: Duration(seconds: 1),
             child: Container(
-              height: size.height * 0.4,
+              height: size.height * 0.35,
               width: size.width,
               alignment: Alignment.center,
               child: Column(
@@ -449,24 +471,31 @@ class _Registration_formPageState extends State<registration_formPage>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: size.height * 0.08),
+                    SizedBox(height: size.height * 0.05),
+                    SizedBox(
+                      width: size.width * 0.8,
+                      child: Text(
+                        'Sign up to learn and connect with other professionals like you',
+                        style: darkNormal18Style,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                     Hero(
-                      tag: "splashscreenImage",
+                      tag: "screenIcon",
                       child: WidgetAnimator(
                         component: Container(
-                          height: size.height * 0.05,
-                          width: size.width,
-                          color: Colors.transparent,
+                          height: size.height * 0.15,
+                          width: size.width * 0.3,
                           alignment: Alignment.topCenter,
                           child: imgAnimation2(
                             url: Assets.images.logoPng.path,
                             time: Duration(milliseconds: 4000),
-                            width: MediaQuery.of(context).size.width * 0.5,
+                            width: size.width * 0.2,
                             beginx: 0.1,
                             endx: -0.1,
                             beginy: 0,
                             endy: 0,
-                            height: size.height * 0.1,
+                            height: size.height * 0.15,
                             transition: PositionedTransition,
                           ),
                         ),
@@ -479,31 +508,13 @@ class _Registration_formPageState extends State<registration_formPage>
                         yAxis: 0,
                       ),
                     ),
-                    SizedBox(height: size.height * 0.05),
-                    Hero(
-                      tag: "headerTxt",
-                      child: Text(
-                        'Join Edurald',
-                        style: blue25BoldStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.02,
-                    ),
-                    Text(
-                      'Sign up to learn and connect with other professionals like you',
-                      style: darkNormal18Style,
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: size.height * 0.05),
                   ]),
             ),
           ),
 
           //bottom rect
           AnimatedPositioned(
-            top: size.height * 0.15,
+            top: size.height * 0.05,
             width: size.width,
             duration: Duration(microseconds: 100),
             child: Container(
@@ -625,6 +636,7 @@ class _Registration_formPageState extends State<registration_formPage>
                                         showError(internet_error);
                                         // Mobile is not Connected to Internet
                                       } else {
+                                        print("got here");
                                         registerUser();
                                         // I am connected to a network.
                                       }

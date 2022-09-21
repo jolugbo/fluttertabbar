@@ -117,7 +117,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   getAppState() async {
-    //await FirebaseAuth.instance.signOut();
+    await FirebaseAuth.instance.signOut();
     SharedPreferences preferences = await SharedPreferences.getInstance();
     FirebaseAuth.instance.authStateChanges().listen((User? loggedInuser) {
       print(loggedInuser);

@@ -91,7 +91,7 @@ class _WalkthroughPageState extends State<walkthroughPage> {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.15,
                   child: Hero(
-                    tag: "splashscreenImage",
+                    tag: "screenIcon",
                     child: WidgetAnimator(
                       component: Container(
                         height: MediaQuery.of(context).size.height * 0.4,
@@ -99,7 +99,7 @@ class _WalkthroughPageState extends State<walkthroughPage> {
                         color: Colors.transparent,
                         alignment: Alignment.topCenter,
                         child: imgAnimation2(
-                          url: Assets.images.eduraldLogo.path,
+                          url: Assets.images.logoWithName.path,
                           time: Duration(milliseconds: 4000),
                           width: MediaQuery.of(context).size.width * 0.5,
                           beginx: 0.1,
@@ -232,7 +232,7 @@ class _WalkthroughPageState extends State<walkthroughPage> {
                                 style: white25Style,
                               ),
                               onPressed: () =>
-                                  {Get.off(() => registration_formPage())},
+                                  {Get.to(() => registration_formPage())},
                               highlightElevation: 0.8,
                             )),
                       ),
@@ -254,7 +254,7 @@ class _WalkthroughPageState extends State<walkthroughPage> {
                                 'Sign in',
                                 style: gray25Style,
                               ),
-                              onPressed: () => {Get.off(() => signinPage())},
+                              onPressed: () => {Get.to(() => signinPage())},
                               highlightElevation: 0.8,
                             )),
                       ),

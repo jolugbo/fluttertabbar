@@ -45,7 +45,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
   int blurrySize = 0;
   bool enableEmail = false;
   int socialMediaSelectedOption = 1;
-  double socialAuthsLocation = 0.7;
+  double socialAuthsLocation = 0.6;
   final int _numPages = 3;
   int _currentPage = 0;
   int _current = 0;
@@ -129,6 +129,9 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
         });
     } else {
       showError("Error loggging in");
+      setState(() {
+        showLoader = false;
+      });
     }
     //await FirebaseAnalytics.instance.logLogin(loginMethod: "email");
     //    loginEvent.properties.addBoolProperty("boolKey", true);
@@ -292,6 +295,29 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
     return Scaffold(
         //resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: true,
+        appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: accent,
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: projectBlue,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            title: Container(
+              width: size.width,
+              child: Hero(
+                tag: "headerTxt",
+                child: Text(
+                  'Welcome back!',
+                  style: blue25BoldStyle,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )),
         body: SingleChildScrollView(
             child: Container(
           height: MediaQuery.of(context).size.height,
@@ -331,8 +357,18 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     SizedBox(height: size.height * 0.05),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.8,
+                                      child: Text(
+                                        'Sign in to learn and connect with other professionals like you',
+                                        style: darkNormal18Style,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    SizedBox(height: size.height * 0.05),
                                     Hero(
-                                      tag: "splashscreenImage",
+                                      tag: "screenIcon",
                                       child: WidgetAnimator(
                                         component: Container(
                                           height: size.height * 0.1,
@@ -361,26 +397,6 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                         yAxis: 0,
                                       ),
                                     ),
-                                    SizedBox(height: size.height * 0.05),
-                                    Hero(
-                                      tag: "headerTxt",
-                                      child: Text(
-                                        'Welcome back!',
-                                        style: blue25BoldStyle,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    SizedBox(height: size.height * 0.02),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.95,
-                                      child: Text(
-                                        'Sign in to learn and connect with other professionals like you',
-                                        style: darkNormal18Style,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    SizedBox(height: size.height * 0.05),
                                   ]),
                             ),
                             Container(
@@ -577,7 +593,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                               ),
                               SizedBox(height: size.height * 0.05),
                               Hero(
-                                tag: "headerTxt",
+                                tag: "Txt",
                                 child: Text(
                                   'Join Edurald',
                                   style: blue25BoldStyle,
@@ -937,7 +953,7 @@ class _SigninPageState extends State<signinPage> with TickerProviderStateMixin {
                                 style: blue20Style,
                               ),
                               onTap: () =>
-                                  {Get.off(() => registration_formPage())},
+                                  {Get.to(() => registration_formPage())},
                             )),
                       ]))),
 

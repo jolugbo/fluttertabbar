@@ -75,6 +75,7 @@ Future<bool> signInWithEmailPassword(String email, String password) async {
     return true;
   } on FirebaseAuthException catch (e) {
     print("got herere");
+    print(e);
     return false;
   } catch (e) {
     print(e);
