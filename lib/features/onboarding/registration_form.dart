@@ -111,6 +111,7 @@ class _Registration_formPageState extends State<registration_formPage>
   }
 
   Future<void> registerUser() async {
+    //user = Null;
     if (!showLoader) {
       setState(() {
         blurrySize = 1;
@@ -385,7 +386,7 @@ class _Registration_formPageState extends State<registration_formPage>
                   maintainSize: false,
                   maintainAnimation: true,
                   maintainState: true,
-                  visible: !emailIsValid,
+                  visible: (emailStatus == EmailStatus.error),
                 ),
                 alignment: Alignment.topLeft,
               ),

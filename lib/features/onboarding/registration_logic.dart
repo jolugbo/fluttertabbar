@@ -23,6 +23,7 @@ Future<bool> createUserWithEmailAndPassword(
     }
     return false;
   } catch (e) {
+    print(e);
     return false;
   }
 }
