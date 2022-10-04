@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/app/edurald/BuildConfig.java
- com.app.edurald.BuildConfig
