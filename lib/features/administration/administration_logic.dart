@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edurald/models/career/career.dart';
 import 'package:edurald/models/user/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../main.dart';
@@ -320,6 +324,14 @@ Future<void> getCareers() async {
       FirebaseFunctions.instance.httpsCallable('getAllCareers');
   final results = await callable();
   print(results.data);
+  String careerStrings = json.encode(results.data);
+  var careersObjsJson = jsonDecode(careerStrings) as List;
+  List<Career> CareerObjs =
+      careersObjsJson.map((careerJson) => Career.fromJson(careerJson)).toList();
+  for (var i = 0; i < CareerObjs.length; i++) {
+    print(CareerObjs[i].careerName);
+  }
+
   // List fruit =
   //     results.data; // ["Apple", "Banana", "Cherry", "Date", "Fig", "Grapes"]
 }

@@ -75,7 +75,7 @@ class functionTest_state extends State<functionTest_page>
                                     side: BorderSide(color: projectBlue)),
                                 color: projectBlue,
                                 child: Text(
-                                  'test modeling',
+                                  'Fetch Careers',
                                   style: white18Style,
                                 ),
                                 onPressed: () async {
@@ -90,7 +90,7 @@ class functionTest_state extends State<functionTest_page>
                                     // I am connected to a mobile network.
                                   } else if (connectivityResult ==
                                       ConnectivityResult.wifi) {
-                                    await userNameExist("edurald");
+                                    await getCareers();
                                     // I am connected to a wifi network.
                                   }
                                 },
