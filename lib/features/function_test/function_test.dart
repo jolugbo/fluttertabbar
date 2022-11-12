@@ -1,4 +1,6 @@
 import 'package:connectivity/connectivity.dart';
+import 'package:edurald/gen/assets.gen.dart';
+import 'package:edurald/widgets/course/course_prompts.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:edurald/models/strings.dart';
@@ -97,6 +99,8 @@ class functionTest_state extends State<functionTest_page>
                                 highlightElevation: 0.8,
                               )),
                         ),
+                        Course_prompt(
+                            "Advisory", Assets.images.advisory.path, "001"),
                       ],
                     ),
                   )),

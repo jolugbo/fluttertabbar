@@ -1,17 +1,17 @@
+import 'package:edurald/gen/assets.gen.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class Course_prompt extends StatefulWidget {
-  const Course_prompt({Key? key}) : super(key: key);
+class Course_prompt extends StatelessWidget {
+  String courseName;
+  String courseIcon;
+  String courseID;
 
-  @override
-  State<Course_prompt> createState() => _Course_promptState();
-}
+  Course_prompt(this.courseName, this.courseIcon, this.courseID);
 
-class _Course_promptState extends State<Course_prompt> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +24,7 @@ class _Course_promptState extends State<Course_prompt> {
             elevation: 2.0,
             fillColor: projectGray2,
             child: Image.asset(
-              advisory,
+              courseIcon,
               width: 30,
               height: 30,
             ),
@@ -36,7 +36,7 @@ class _Course_promptState extends State<Course_prompt> {
               alignment: Alignment.center,
               width: 120,
               child: Text(
-                'Advisory',
+                courseName,
                 style: dark12Style,
                 softWrap: true,
                 textAlign: TextAlign.center,
