@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkedin_login/linkedin_login.dart';
 import 'package:edurald/utills/styles.dart';
-import 'package:edurald/models/strings.dart';
+import 'package:edurald/repository/models/strings.dart';
 
 class registrationPage extends StatefulWidget {
   registrationPage({Key? key, this.title}) : super(key: key);

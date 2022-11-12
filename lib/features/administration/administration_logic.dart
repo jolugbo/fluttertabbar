@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edurald/models/career/career.dart';
-import 'package:edurald/models/user/user.dart';
+import 'package:edurald/repository/models/career/career.dart';
+import 'package:edurald/repository/models/user/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../main.dart';
-import '../../models/strings.dart';
+import '../../repository/models/strings.dart';
 import '../../utills/input_util.dart';
 import 'package:uuid/uuid.dart';
 import 'package:cloud_functions/cloud_functions.dart';

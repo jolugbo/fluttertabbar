@@ -5,7 +5,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edurald/utills/emulations/emulator_starter.dart';
+import 'package:edurald/utills/observers/app_bloc_observer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,8 +30,9 @@ import 'features/onboarding/registration_token.dart';
 import 'features/onboarding/walkthrough.dart';
 import 'features/administration/administration_office.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'models/user/user.dart';
+import 'repository/models/user/user.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 final userRef = FirebaseFirestore.instance.collection('users');
 final authsRef = FirebaseFirestore.instance.collection('auths');
@@ -66,7 +67,10 @@ Future<void> main() async {
       version: "v13.0",
     );
   }
-  runApp(MyApp());
+  BlocOverrides.runZoned(
+    () => runApp(MyApp()),
+    blocObserver: AppBlocObserver(),
+  );
 }
 
 //class MyApp extends StatelessWidget {

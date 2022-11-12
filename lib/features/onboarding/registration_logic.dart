@@ -1,7 +1,7 @@
-import 'package:edurald/models/user/user.dart';
+import 'package:edurald/repository/models/strings.dart';
+import 'package:edurald/repository/models/user/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../main.dart';
-import '../../models/strings.dart';
 import '../../utills/input_util.dart';
 
 Future<bool> createUserWithEmailAndPassword(

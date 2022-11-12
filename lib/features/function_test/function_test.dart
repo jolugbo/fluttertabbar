@@ -3,7 +3,7 @@ import 'package:edurald/gen/assets.gen.dart';
 import 'package:edurald/widgets/course/course_prompts.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:edurald/models/strings.dart';
+import 'package:edurald/repository/models/strings.dart';
 import 'package:edurald/utills/styles.dart';
 import '../administration/administration_logic.dart';
 

@@ -7,10 +7,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../../models/strings.dart';
-class edurald_emulators {
+import '../../repository/models/strings.dart';
 
-  edurald_emulators()  {
+class edurald_emulators {
+  edurald_emulators() {
     _configureFirebaseAuth();
     _configureFirebaseStorage();
     _configureFirebaseFirestore();

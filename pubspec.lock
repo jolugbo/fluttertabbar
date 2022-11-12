@@ -310,12 +310,12 @@ packages:
     source: hosted
     version: "1.1.0"
   equatable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: equatable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.5"
   expandable:
     dependency: "direct main"
     description:

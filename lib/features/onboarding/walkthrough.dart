@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:edurald/utills/styles.dart';
-import 'package:edurald/models/strings.dart';
+import 'package:edurald/repository/models/strings.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 

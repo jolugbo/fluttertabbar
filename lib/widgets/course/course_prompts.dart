@@ -1,9 +1,11 @@
+import 'package:edurald/blocs/career_bloc/career_bloc.dart';
 import 'package:edurald/gen/assets.gen.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Course_prompt extends StatelessWidget {
   String courseName;
@@ -42,5 +44,19 @@ class Course_prompt extends StatelessWidget {
                 textAlign: TextAlign.center,
               )),
         ]);
+  }
+}
+
+class CareersWidget extends StatelessWidget {
+  const CareersWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CareerBloc, CareerState>(
+      buildWhen: (previous, current) => current.status.isSuccess,
+      builder: (context, state) {
+        return CareersWidget();
+      },
+    );
   }
 }
