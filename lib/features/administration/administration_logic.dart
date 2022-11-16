@@ -42,11 +42,11 @@ loginAsAdmin() async {
     return false;
   } on FirebaseAuthException catch (e) {
     print(e.toString());
-    showError("Admin not loggedIn");
+    showError("Admin not loggedIn firebase error");
     return false;
   } catch (e) {
     print(e.toString());
-    showError("Admin not loggedIn");
+    showError(e.toString());
     return false;
   }
 }
@@ -109,15 +109,14 @@ Future<bool> checkIfUserExist() async {
 ///
 ///
 
-createCareerPath() {
+createCareerPath() async {
   var uuid = Uuid();
   try {
-    print("got here");
-    careersRef.doc(uuid.v1()).set({
-      "description":
-          "Land a Job in Investment Banking. Learn about IPOs, Bonds, M&A, Trading, LBOs, Valuation etc",
-      "careerName": "Investment Banking",
-      "synonyms": ["finance,investment,banking"],
+    print(user.uid);
+    await careersRef.doc(uuid.v1()).set({
+      "description": "Understanding Micro and Macro Economics",
+      "careerName": "Economics",
+      "synonyms": ["Economics,Economics,Economics"],
       "courses": [],
       "users": [],
       "educators": ["eduraldApp"],

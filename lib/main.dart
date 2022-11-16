@@ -40,7 +40,7 @@ final careersRef = FirebaseFirestore.instance.collection('careers');
 final coursesRef = FirebaseFirestore.instance.collection('courses');
 final quizesRef = FirebaseFirestore.instance.collection('quizes');
 final educatorsRef = FirebaseFirestore.instance.collection('educators');
-late final User user;
+late User user;
 late final UserModel userProfile;
 
 // final postRef =  FirebaseFirestore.instance.collection('posts');
@@ -121,7 +121,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   getAppState() async {
-    await FirebaseAuth.instance.signOut();
+    //await FirebaseAuth.instance.signOut();
     SharedPreferences preferences = await SharedPreferences.getInstance();
     FirebaseAuth.instance.authStateChanges().listen((User? loggedInuser) {
       print(loggedInuser);
@@ -256,8 +256,7 @@ class _MyAppState extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Scaffold(
-          body:
-              functionTest_page(), //(hasLoggedIn) ? dashboardPage() : walkthroughPage(),
+          body: (hasLoggedIn) ? dashboardPage() : walkthroughPage(),
           //admin_office_Page(), //
           //functionTest_page(),//
         ));

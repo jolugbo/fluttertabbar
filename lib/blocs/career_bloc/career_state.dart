@@ -26,7 +26,7 @@ class CareerState extends Equatable {
   List<Object?> get props => [status, careers, idSelected];
 
   CareerState copyWith({
-    List<Career>? categories,
+    List<Career>? careers,
     CareerStatus? status,
     int? idSelected,
   }) {
