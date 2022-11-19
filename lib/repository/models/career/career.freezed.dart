@@ -27,7 +27,7 @@ mixin _$Career {
   int? get point => throw _privateConstructorUsedError;
   List<String>? get synonyms => throw _privateConstructorUsedError;
   List<String>? get quizes => throw _privateConstructorUsedError;
-  List<String>? get studies => throw _privateConstructorUsedError;
+  List<String>? get courses => throw _privateConstructorUsedError;
   List<String>? get educators => throw _privateConstructorUsedError;
   List<String>? get users => throw _privateConstructorUsedError;
 
@@ -48,7 +48,7 @@ abstract class $CareerCopyWith<$Res> {
       int? point,
       List<String>? synonyms,
       List<String>? quizes,
-      List<String>? studies,
+      List<String>? courses,
       List<String>? educators,
       List<String>? users});
 }
@@ -70,7 +70,7 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
     Object? point = freezed,
     Object? synonyms = freezed,
     Object? quizes = freezed,
-    Object? studies = freezed,
+    Object? courses = freezed,
     Object? educators = freezed,
     Object? users = freezed,
   }) {
@@ -103,9 +103,9 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
           ? _value.quizes
           : quizes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      studies: studies == freezed
-          ? _value.studies
-          : studies // ignore: cast_nullable_to_non_nullable
+      courses: courses == freezed
+          ? _value.courses
+          : courses // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       educators: educators == freezed
           ? _value.educators
@@ -132,7 +132,7 @@ abstract class _$$_CareerCopyWith<$Res> implements $CareerCopyWith<$Res> {
       int? point,
       List<String>? synonyms,
       List<String>? quizes,
-      List<String>? studies,
+      List<String>? courses,
       List<String>? educators,
       List<String>? users});
 }
@@ -155,7 +155,7 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
     Object? point = freezed,
     Object? synonyms = freezed,
     Object? quizes = freezed,
-    Object? studies = freezed,
+    Object? courses = freezed,
     Object? educators = freezed,
     Object? users = freezed,
   }) {
@@ -188,9 +188,9 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
           ? _value._quizes
           : quizes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      studies: studies == freezed
-          ? _value._studies
-          : studies // ignore: cast_nullable_to_non_nullable
+      courses: courses == freezed
+          ? _value._courses
+          : courses // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       educators: educators == freezed
           ? _value._educators
@@ -215,12 +215,12 @@ class _$_Career implements _Career {
       this.point,
       final List<String>? synonyms,
       final List<String>? quizes,
-      final List<String>? studies,
+      final List<String>? courses,
       final List<String>? educators,
       final List<String>? users})
       : _synonyms = synonyms,
         _quizes = quizes,
-        _studies = studies,
+        _courses = courses,
         _educators = educators,
         _users = users;
 
@@ -256,10 +256,10 @@ class _$_Career implements _Career {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _studies;
+  final List<String>? _courses;
   @override
-  List<String>? get studies {
-    final value = _studies;
+  List<String>? get courses {
+    final value = _courses;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
@@ -285,7 +285,7 @@ class _$_Career implements _Career {
 
   @override
   String toString() {
-    return 'Career(description: $description, createdBy: $createdBy, approved: $approved, careerName: $careerName, point: $point, synonyms: $synonyms, quizes: $quizes, studies: $studies, educators: $educators, users: $users)';
+    return 'Career(description: $description, createdBy: $createdBy, approved: $approved, careerName: $careerName, point: $point, synonyms: $synonyms, quizes: $quizes, courses: $courses, educators: $educators, users: $users)';
   }
 
   @override
@@ -302,7 +302,7 @@ class _$_Career implements _Career {
             const DeepCollectionEquality().equals(other.point, point) &&
             const DeepCollectionEquality().equals(other._synonyms, _synonyms) &&
             const DeepCollectionEquality().equals(other._quizes, _quizes) &&
-            const DeepCollectionEquality().equals(other._studies, _studies) &&
+            const DeepCollectionEquality().equals(other._courses, _courses) &&
             const DeepCollectionEquality()
                 .equals(other._educators, _educators) &&
             const DeepCollectionEquality().equals(other._users, _users));
@@ -319,7 +319,7 @@ class _$_Career implements _Career {
       const DeepCollectionEquality().hash(point),
       const DeepCollectionEquality().hash(_synonyms),
       const DeepCollectionEquality().hash(_quizes),
-      const DeepCollectionEquality().hash(_studies),
+      const DeepCollectionEquality().hash(_courses),
       const DeepCollectionEquality().hash(_educators),
       const DeepCollectionEquality().hash(_users));
 
@@ -345,7 +345,7 @@ abstract class _Career implements Career {
       final int? point,
       final List<String>? synonyms,
       final List<String>? quizes,
-      final List<String>? studies,
+      final List<String>? courses,
       final List<String>? educators,
       final List<String>? users}) = _$_Career;
 
@@ -366,7 +366,7 @@ abstract class _Career implements Career {
   @override
   List<String>? get quizes;
   @override
-  List<String>? get studies;
+  List<String>? get courses;
   @override
   List<String>? get educators;
   @override

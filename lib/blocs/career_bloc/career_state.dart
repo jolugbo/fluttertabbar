@@ -2,7 +2,7 @@ part of 'career_bloc.dart';
 
 enum CareerStatus { initial, success, error, loading, selected }
 
-extension CategoryStatusX on CareerStatus {
+extension CareerStatusX on CareerStatus {
   bool get isInitial => this == CareerStatus.initial;
   bool get isSuccess => this == CareerStatus.success;
   bool get isError => this == CareerStatus.error;

@@ -7,10 +7,8 @@ class CareerRepository {
   });
   final CareerService service;
 
-  // Future<Career> getCareers() async => service.getCareers();
-
   Future<List<Career>?> getCareers() async => service.getCareers();
 
-  // Future<List<Result>> getGamesByCategory(int genreId) async =>
-  //     service.getGamesByCategory(genreId);
+  Future<List<Career>?> getCareerInterest(String UserId) async =>
+      service.getCareerInterest(UserId);
 }

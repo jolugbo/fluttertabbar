@@ -19,7 +19,6 @@ class CareerBloc extends Bloc<CareerEvent, CareerState> {
     emit(state.copyWith(status: CareerStatus.loading));
     try {
       final careers = await careerRepository.getCareers();
-      print("got heree");
       print(careers);
       emit(
         state.copyWith(

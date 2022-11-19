@@ -12,7 +12,7 @@ abstract class Career with _$Career {
     int? point,
     List<String>? synonyms,
     List<String>? quizes,
-    List<String>? studies,
+    List<String>? courses,
     List<String>? educators,
     List<String>? users,
   }) = _Career;

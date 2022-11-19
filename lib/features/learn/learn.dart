@@ -4,6 +4,9 @@
 
 //
 import 'package:animations/animations.dart';
+import 'package:edurald/blocs/course_bloc/course_bloc.dart';
+import 'package:edurald/repository/repos/course_repo.dart';
+import 'package:edurald/repository/services/course_services.dart';
 import 'package:edurald/blocs/career_bloc/career_bloc.dart';
 import 'package:edurald/repository/repos/career_repo.dart';
 import 'package:edurald/repository/services/career_services.dart';
@@ -64,6 +67,11 @@ class _LearnPageState extends State<learn> with TickerProviderStateMixin {
                   create: (context) => CareerBloc(
                     careerRepository: context.read<CareerRepository>(),
                   )..add(GetCareers()),
+                ),
+                BlocProvider<CourseBloc>(
+                  create: (context) => CourseBloc(
+                    courseRepository: context.read<CourseRepository>(),
+                  )..add(GetCoursesByCareer()),
                 ),
               ],
               child: Stack(
