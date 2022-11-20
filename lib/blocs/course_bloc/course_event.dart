@@ -7,13 +7,21 @@ class CourseEvent extends Equatable {
 
 class GetCourses extends CourseEvent {}
 
-class GetCoursesByCareer extends CourseEvent {}
+class GetCoursesByCareer extends CourseEvent {
+  GetCoursesByCareer({
+    required this.careerId,
+  });
+  final String careerId;
+
+  @override
+  List<Object?> get props => [careerId];
+}
 
 class SelectCourse extends CourseEvent {
   SelectCourse({
     required this.idSelected,
   });
-  final int idSelected;
+  final String idSelected;
 
   @override
   List<Object?> get props => [idSelected];

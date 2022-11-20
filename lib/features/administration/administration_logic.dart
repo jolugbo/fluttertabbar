@@ -318,6 +318,18 @@ createCourse8() {
   }
 }
 
+Future<void> getCoursesByCareer() async {
+  try {
+    HttpsCallable callable =
+        FirebaseFunctions.instance.httpsCallable('getCoursesByCareer');
+    final results = await callable.call(<String, dynamic>{
+      'careerId': "d32bf610-2a4f-11ed-b0e6-e76c95bb498e",
+    });
+    print(results.data);
+    return results.data;
+  } catch (e) {}
+}
+
 Future<void> getCareers() async {
   HttpsCallable callable =
       FirebaseFunctions.instance.httpsCallable('getAllCareers');
@@ -330,8 +342,5 @@ Future<void> getCareers() async {
   for (var i = 0; i < CareerObjs.length; i++) {
     print(CareerObjs[i].careerName);
   }
-
-  // List fruit =
-  //     results.data; // ["Apple", "Banana", "Cherry", "Date", "Fig", "Grapes"]
 }
 //Bond Issuances, Loan Syndications, Securitizations, Mergers and Acquisitions, Restructurings, Trading Instruments,

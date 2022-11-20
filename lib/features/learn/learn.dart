@@ -68,11 +68,11 @@ class _LearnPageState extends State<learn> with TickerProviderStateMixin {
                     careerRepository: context.read<CareerRepository>(),
                   )..add(GetCareers()),
                 ),
-                BlocProvider<CourseBloc>(
-                  create: (context) => CourseBloc(
-                    courseRepository: context.read<CourseRepository>(),
-                  )..add(GetCoursesByCareer()),
-                ),
+                // BlocProvider<CourseBloc>(
+                //   create: (context) => CourseBloc(
+                //     courseRepository: context.read<CourseRepository>(),
+                //   )..add(GetCoursesByCareer()),
+                // ),
               ],
               child: Stack(
                 //overflow: Overflow.visible,

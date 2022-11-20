@@ -37,7 +37,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
       GetCoursesByCareer event, Emitter<CourseState> emit) async {
     emit(state.copyWith(status: CourseStatus.loading));
     try {
-      final courses = await courseRepository.getCoursesByCareer();
+      final courses = await courseRepository.getCoursesByCareer(event.careerId);
       print("got heree");
       print(courses);
       emit(

@@ -11,6 +11,6 @@ class CourseRepository {
 
   Future<List<Course>?> getCourses() async => service.getCourses();
 
-  Future<List<Course>?> getCoursesByCareer() async =>
-      service.getCoursesByCareer();
+  Future<List<Course>?> getCoursesByCareer(String careerId) async =>
+      service.getCoursesByCareer(careerId);
 }

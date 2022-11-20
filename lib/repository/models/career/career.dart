@@ -6,6 +6,7 @@ part 'career.g.dart';
 abstract class Career with _$Career {
   const factory Career({
     required String description,
+    required String career_id,
     String? createdBy,
     @Default(false) bool approved,
     String? careerName,

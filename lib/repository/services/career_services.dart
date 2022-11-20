@@ -33,4 +33,31 @@ class CareerService {
       return null;
     }
   }
+
+  Future<List<Career>?> getCareerInterest(String UserId) async {
+    try {
+      HttpsCallable callable =
+          FirebaseFunctions.instance.httpsCallable('getAllCareers');
+      final results = await callable();
+      String careerStrings = json.encode(results.data);
+      var careersObjsJson = jsonDecode(careerStrings) as List;
+      List<Career> careers = careersObjsJson
+          .map((careerJson) => Career.fromJson(careerJson))
+          .toList();
+      print(
+          "got hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+      return careers;
+      // for (var i = 0; i < CareerObjs.length; i++) {
+      //   print(CareerObjs[i].careerName);
+      // }
+      //     return List<Career>.from(
+      //       json.decode(results.data).map(
+      //             (data) => Career.fromJson(data),
+      //           ),
+      //     );
+    } catch (Ex) {
+      print(Ex);
+      return null;
+    }
+  }
 }

@@ -1,7 +1,14 @@
 import 'package:connectivity/connectivity.dart';
+import 'package:edurald/blocs/career_bloc/career_bloc.dart';
+import 'package:edurald/blocs/course_bloc/course_bloc.dart';
 import 'package:edurald/gen/assets.gen.dart';
+import 'package:edurald/repository/repos/career_repo.dart';
+import 'package:edurald/repository/repos/course_repo.dart';
+import 'package:edurald/repository/services/course_services.dart';
 import 'package:edurald/widgets/course/course_prompts.dart';
+import 'package:edurald/widgets/course/courses_by_career_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:edurald/repository/models/strings.dart';
 import 'package:edurald/utills/styles.dart';
@@ -20,6 +27,7 @@ class functionTest_state extends State<functionTest_page>
     with TickerProviderStateMixin {
   int blurrySize = 0;
   bool showLoader = false;
+  String advisory = Assets.images.advisory.path;
 
   void showPopUp(String msg) {
     Fluttertoast.showToast(
@@ -59,6 +67,7 @@ class functionTest_state extends State<functionTest_page>
                   width: size.width,
                   duration: Duration(seconds: 0),
                   child: Container(
+                    height: size.height,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
@@ -92,12 +101,80 @@ class functionTest_state extends State<functionTest_page>
                                     // I am connected to a mobile network.
                                   } else if (connectivityResult ==
                                       ConnectivityResult.wifi) {
-                                    await getCareers();
+                                    //await getCoursesByCareer();
                                     // I am connected to a wifi network.
                                   }
                                 },
                                 highlightElevation: 0.8,
                               )),
+                        ),
+                        Container(
+                          height: size.height * 0.5,
+                          width: size.width * 0.8,
+                          child: RepositoryProvider(
+                              create: (context) =>
+                                  CourseRepository(service: CourseService()),
+                              child: MultiBlocProvider(
+                                  providers: [
+                                    // BlocProvider<CareerBloc>(
+                                    //   create: (context) => CareerBloc(
+                                    //     careerRepository: context.read<CareerRepository>(),
+                                    //   )..add(GetCareers()),
+                                    // ),
+                                    BlocProvider<CourseBloc>(
+                                      create: (context) => CourseBloc(
+                                        courseRepository:
+                                            context.read<CourseRepository>(),
+                                      )..add(GetCoursesByCareer(
+                                          careerId:
+                                              "d32bf610-2a4f-11ed-b0e6-e76c95bb498e")),
+                                    ),
+                                  ],
+                                  child: BlocBuilder<CourseBloc, CourseState>(
+                                    buildWhen: (previous, current) =>
+                                        current.status.isSuccess,
+                                    builder: (context, state) {
+                                      return state.status.isSuccess
+                                          ? Container(
+                                              width: size.width,
+                                              alignment: Alignment.topCenter,
+                                              height: size.height * 0.1,
+                                              // padding: EdgeInsets.fromLTRB(
+                                              //     size.width * 0.01,
+                                              //     size.height * 0.03,
+                                              //     size.width * 0.01,
+                                              //     size.height * 0.1),
+                                              child: ListView.separated(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemBuilder: (context, index) {
+                                                  return Course_prompt(
+                                                      state.courses[index]
+                                                          .course_name,
+                                                      advisory,
+                                                      "1");
+                                                },
+                                                separatorBuilder: (_, __) =>
+                                                    SizedBox(
+                                                  height: 0.0,
+                                                ),
+                                                itemCount: state.courses.length,
+                                              ),
+                                            )
+                                          : state.status.isLoading
+                                              ? Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                )
+                                              : state.status.isError
+                                                  ? const SizedBox(
+                                                      child: Text("Error"),
+                                                    )
+                                                  : const SizedBox(
+                                                      child: Text("Error"),
+                                                    );
+                                    },
+                                  ))),
                         ),
                         Course_prompt(
                             "Advisory", Assets.images.advisory.path, "001"),

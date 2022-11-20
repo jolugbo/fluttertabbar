@@ -21,6 +21,7 @@ Career _$CareerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Career {
   String get description => throw _privateConstructorUsedError;
+  String get career_id => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   bool get approved => throw _privateConstructorUsedError;
   String? get careerName => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $CareerCopyWith<$Res> {
       _$CareerCopyWithImpl<$Res>;
   $Res call(
       {String description,
+      String career_id,
       String? createdBy,
       bool approved,
       String? careerName,
@@ -64,6 +66,7 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
   @override
   $Res call({
     Object? description = freezed,
+    Object? career_id = freezed,
     Object? createdBy = freezed,
     Object? approved = freezed,
     Object? careerName = freezed,
@@ -78,6 +81,10 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      career_id: career_id == freezed
+          ? _value.career_id
+          : career_id // ignore: cast_nullable_to_non_nullable
               as String,
       createdBy: createdBy == freezed
           ? _value.createdBy
@@ -126,6 +133,7 @@ abstract class _$$_CareerCopyWith<$Res> implements $CareerCopyWith<$Res> {
   @override
   $Res call(
       {String description,
+      String career_id,
       String? createdBy,
       bool approved,
       String? careerName,
@@ -149,6 +157,7 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
   @override
   $Res call({
     Object? description = freezed,
+    Object? career_id = freezed,
     Object? createdBy = freezed,
     Object? approved = freezed,
     Object? careerName = freezed,
@@ -163,6 +172,10 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      career_id: career_id == freezed
+          ? _value.career_id
+          : career_id // ignore: cast_nullable_to_non_nullable
               as String,
       createdBy: createdBy == freezed
           ? _value.createdBy
@@ -209,6 +222,7 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
 class _$_Career implements _Career {
   const _$_Career(
       {required this.description,
+      required this.career_id,
       this.createdBy,
       this.approved = false,
       this.careerName,
@@ -229,6 +243,8 @@ class _$_Career implements _Career {
 
   @override
   final String description;
+  @override
+  final String career_id;
   @override
   final String? createdBy;
   @override
@@ -285,7 +301,7 @@ class _$_Career implements _Career {
 
   @override
   String toString() {
-    return 'Career(description: $description, createdBy: $createdBy, approved: $approved, careerName: $careerName, point: $point, synonyms: $synonyms, quizes: $quizes, courses: $courses, educators: $educators, users: $users)';
+    return 'Career(description: $description, career_id: $career_id, createdBy: $createdBy, approved: $approved, careerName: $careerName, point: $point, synonyms: $synonyms, quizes: $quizes, courses: $courses, educators: $educators, users: $users)';
   }
 
   @override
@@ -295,6 +311,7 @@ class _$_Career implements _Career {
             other is _$_Career &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.career_id, career_id) &&
             const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
             const DeepCollectionEquality().equals(other.approved, approved) &&
             const DeepCollectionEquality()
@@ -313,6 +330,7 @@ class _$_Career implements _Career {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(career_id),
       const DeepCollectionEquality().hash(createdBy),
       const DeepCollectionEquality().hash(approved),
       const DeepCollectionEquality().hash(careerName),
@@ -339,6 +357,7 @@ class _$_Career implements _Career {
 abstract class _Career implements Career {
   const factory _Career(
       {required final String description,
+      required final String career_id,
       final String? createdBy,
       final bool approved,
       final String? careerName,
@@ -353,6 +372,8 @@ abstract class _Career implements Career {
 
   @override
   String get description;
+  @override
+  String get career_id;
   @override
   String? get createdBy;
   @override

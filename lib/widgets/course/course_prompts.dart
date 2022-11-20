@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 
 class Course_prompt extends StatelessWidget {
-  String courseName;
+  String? courseName;
   String courseIcon;
   String courseID;
 
@@ -43,7 +43,7 @@ class Course_prompt extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 120,
                   child: Text(
-                    courseName,
+                    courseName ?? "test",
                     style: dark12Style,
                     softWrap: true,
                     textAlign: TextAlign.center,

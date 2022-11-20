@@ -8,12 +8,12 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 class CourseService {
-  Future<List<Course>?> getCoursesByCareer() async {
+  Future<List<Course>?> getCoursesByCareer(String careerId) async {
     try {
       HttpsCallable callable =
           FirebaseFunctions.instance.httpsCallable('getCoursesByCareer');
       final results = await callable.call(<String, dynamic>{
-        'careerId': "d32bf610-2a4f-11ed-b0e6-e76c95bb498e",
+        'careerId': careerId,
       });
       print(results.data);
       return results.data;

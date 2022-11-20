@@ -14,13 +14,13 @@ class CareerState extends Equatable {
   const CareerState({
     this.status = CareerStatus.initial,
     List<Career>? careers,
-    int idSelected = 0,
+    String idSelected = "",
   })  : careers = careers ?? const [],
         idSelected = idSelected;
 
   final List<Career> careers;
   final CareerStatus status;
-  final int idSelected;
+  final String idSelected;
 
   @override
   List<Object?> get props => [status, careers, idSelected];
@@ -28,7 +28,7 @@ class CareerState extends Equatable {
   CareerState copyWith({
     List<Career>? careers,
     CareerStatus? status,
-    int? idSelected,
+    String? idSelected,
   }) {
     return CareerState(
       careers: careers ?? this.careers,
