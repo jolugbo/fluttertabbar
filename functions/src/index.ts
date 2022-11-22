@@ -38,18 +38,18 @@ export const getCoursesByCareer = functions.https.onCall(async (data, response) 
     console.log(data.careerId);
     const resp: Array<course> = [];
     const courses = await dBase.courses.where("careers", "array-contains", data.careerId).get();
+    console.log(courses);
+    courses.forEach((snapshot: admin.firestore.DocumentSnapshot) => {
+      resp.push(snapshot.data() as course);
+    });
     if (courses.empty) {
-      console.log("No documents!");
-      return false;
+      return "File Not Found!";
     } else {
-      courses.forEach((snapshot: admin.firestore.DocumentSnapshot) => {
-        resp.push(snapshot.data() as course);
-      });
       return resp;
     }
   } catch (err) {
     functions.logger.error(err, {structuredData: true});
-    return "error fetching data!";
+    return err;
   }
 });
 

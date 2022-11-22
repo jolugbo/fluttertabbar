@@ -8,13 +8,15 @@ part of 'course.dart';
 
 _$_Course _$$_CourseFromJson(Map<String, dynamic> json) => _$_Course(
       description: json['description'] as String,
+      courseId: json['courseId'] as String,
+      courseNum: json['courseNum'] as int,
       createdBy: json['createdBy'] as String?,
       icon: json['icon'] as String?,
       approved: json['approved'] as bool? ?? false,
-      course_name: json['course_name'] as String?,
+      courseName: json['courseName'] as String?,
       careers:
           (json['careers'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      course_contents: (json['course_contents'] as List<dynamic>?)
+      courseContents: (json['courseContents'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       contributors: (json['contributors'] as List<dynamic>?)
@@ -26,12 +28,14 @@ _$_Course _$$_CourseFromJson(Map<String, dynamic> json) => _$_Course(
 
 Map<String, dynamic> _$$_CourseToJson(_$_Course instance) => <String, dynamic>{
       'description': instance.description,
+      'courseId': instance.courseId,
+      'courseNum': instance.courseNum,
       'createdBy': instance.createdBy,
       'icon': instance.icon,
       'approved': instance.approved,
-      'course_name': instance.course_name,
+      'courseName': instance.courseName,
       'careers': instance.careers,
-      'course_contents': instance.course_contents,
+      'courseContents': instance.courseContents,
       'contributors': instance.contributors,
       'users': instance.users,
     };

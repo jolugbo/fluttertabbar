@@ -40,6 +40,7 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
       final courses = await courseRepository.getCoursesByCareer(event.careerId);
       print("got heree");
       print(courses);
+      print(event.careerId);
       emit(
         state.copyWith(
           status: CourseStatus.success,

@@ -9,15 +9,30 @@ import 'package:http/http.dart';
 
 class CourseService {
   Future<List<Course>?> getCoursesByCareer(String careerId) async {
+    print("request: ${careerId}");
     try {
       HttpsCallable callable =
           FirebaseFunctions.instance.httpsCallable('getCoursesByCareer');
+      var data = {
+        "data": {
+          'careerId': careerId,
+        }
+      };
       final results = await callable.call(<String, dynamic>{
         'careerId': careerId,
       });
-      print(results.data);
-      return results.data;
-    } catch (e) {}
+      String careerStrings = json.encode(results.data);
+      //var careersObjsJson = jsonDecode(careerStrings) as List;
+      print(careerStrings);
+      return List<Course>.from(
+        json.decode(careerStrings).map(
+              (data) => Course.fromJson(data),
+            ),
+      );
+    } catch (e) {
+      print(":)");
+      print(e);
+    }
   }
 
   Future<List<Course>?> getCourses() async {

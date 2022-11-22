@@ -86,7 +86,7 @@ class functionTest_state extends State<functionTest_page>
                                     side: BorderSide(color: projectBlue)),
                                 color: projectBlue,
                                 child: Text(
-                                  'Fetch Careers',
+                                  'set Courses',
                                   style: white18Style,
                                 ),
                                 onPressed: () async {
@@ -101,6 +101,21 @@ class functionTest_state extends State<functionTest_page>
                                     // I am connected to a mobile network.
                                   } else if (connectivityResult ==
                                       ConnectivityResult.wifi) {
+                                    createCourse1();
+                                    createCourse2();
+                                    createCourse3();
+                                    createCourse4();
+                                    createCourse5();
+                                    createCourse6();
+                                    createCourse7();
+                                    createCourse8();
+                                    createCourse9();
+                                    createCourse10();
+                                    createCourse11();
+                                    createCourse12();
+                                    createCourse13();
+                                    createCourse14();
+                                    createCourse15();
                                     //await getCoursesByCareer();
                                     // I am connected to a wifi network.
                                   }
@@ -109,8 +124,9 @@ class functionTest_state extends State<functionTest_page>
                               )),
                         ),
                         Container(
-                          height: size.height * 0.5,
+                          //height: size.height * 0.5,
                           width: size.width * 0.8,
+                          color: Colors.blue,
                           child: RepositoryProvider(
                               create: (context) =>
                                   CourseRepository(service: CourseService()),
@@ -150,13 +166,13 @@ class functionTest_state extends State<functionTest_page>
                                                 itemBuilder: (context, index) {
                                                   return Course_prompt(
                                                       state.courses[index]
-                                                          .course_name,
+                                                          .courseName,
                                                       advisory,
                                                       "1");
                                                 },
                                                 separatorBuilder: (_, __) =>
                                                     SizedBox(
-                                                  height: 0.0,
+                                                  height: 1,
                                                 ),
                                                 itemCount: state.courses.length,
                                               ),

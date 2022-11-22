@@ -6,12 +6,14 @@ part 'course.g.dart';
 abstract class Course with _$Course {
   const factory Course({
     required String description,
+    required String courseId,
+    required int courseNum,
     String? createdBy,
     String? icon,
     @Default(false) bool approved,
-    String? course_name,
+    String? courseName,
     List<String>? careers,
-    List<String>? course_contents,
+    List<String>? courseContents,
     List<String>? contributors,
     List<String>? users,
   }) = _Course;

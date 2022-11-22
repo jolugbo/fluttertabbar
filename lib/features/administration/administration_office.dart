@@ -284,7 +284,6 @@ class admin_office_state extends State<admin_office_Page>
                                     // I am connected to a mobile network.
                                   } else if (connectivityResult ==
                                       ConnectivityResult.wifi) {
-                                    createCourse0();
                                     createCourse1();
                                     createCourse2();
                                     createCourse3();
@@ -293,7 +292,13 @@ class admin_office_state extends State<admin_office_Page>
                                     createCourse6();
                                     createCourse7();
                                     createCourse8();
-                                    // I am connected to a wifi network.
+                                    createCourse9();
+                                    createCourse10();
+                                    createCourse11();
+                                    createCourse12();
+                                    createCourse13();
+                                    createCourse14();
+                                    createCourse15();
                                   }
                                 },
                                 highlightElevation: 0.8,
