@@ -143,6 +143,29 @@ createQuiz() {
   });
 }
 
+createCourse0() {
+  try {
+    print("creating Introduction to Economics....");
+    var uuid = Uuid();
+
+    coursesRef.doc(uuid.v1()).set({
+      "courseName": "History to IB",
+      "courseId": uuid.v1(),
+      "courseNum": 1,
+      "icon": "",
+      "description": "Introduction to economics",
+      "careers": ["6a378d10-65a8-11ed-9376-53d65d3ae008"],
+      "contributors": [],
+      "courseContents": [],
+      "users": [],
+      "createdBy": user.uid
+    });
+    message("Introduction to Economics....");
+  } catch (e) {
+    showError("Introduction to Economics");
+  }
+}
+
 createCourse1() {
   try {
     print("creating History to IB....");

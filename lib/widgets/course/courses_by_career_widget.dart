@@ -1,12 +1,13 @@
-import 'package:animations/animations.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:edurald/blocs/career_bloc/career_bloc.dart';
 import 'package:edurald/gen/assets.gen.dart';
 import 'package:edurald/repository/models/career/career.dart';
 import 'package:edurald/utills/styles.dart';
 import 'package:edurald/widgets/course/course_prompts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:edurald/blocs/course_bloc/course_bloc.dart';
+import 'package:edurald/repository/repos/course_repo.dart';
+import 'package:edurald/repository/services/course_services.dart';
 
 typedef CareerCLicked = Function(Career careerSelected);
 
@@ -22,6 +23,7 @@ class CoursesByCareerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     String advisory = Assets.images.advisory.path;
     return Card(
       elevation: 2,
@@ -83,18 +85,81 @@ class CoursesByCareerWidget extends StatelessWidget {
                 items: [0, 1, 2].map((i) {
                   return Builder(
                     builder: (BuildContext context) {
-                      return Container(
-                        //width: MediaQuery.of(context).size.width * 0.8,
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        alignment: Alignment.center,
-                        color: accent,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            Course_prompt("advisory", advisory, "1"),
-                          ],
-                        ),
-                      );
+                      return RepositoryProvider(
+                          create: (context) =>
+                              CourseRepository(service: CourseService()),
+                          child: MultiBlocProvider(
+                              providers: [
+                                BlocProvider<CourseBloc>(
+                                  create: (context) => CourseBloc(
+                                    courseRepository:
+                                        context.read<CourseRepository>(),
+                                  )..add(GetCoursesByCareer(
+                                      careerId: career.career_id)),
+                                ),
+                              ],
+                              child: BlocBuilder<CourseBloc, CourseState>(
+                                buildWhen: (previous, current) =>
+                                    current.status.isSuccess,
+                                builder: (context, state) {
+                                  return state.status.isSuccess
+                                      ? Container(
+                                          height: size.height * 0.02,
+                                          child: CircularProgressIndicator(
+                                              color: projectRed),
+                                        )
+
+                                      //  Container(
+                                      //     width: size.width,
+                                      //     alignment: Alignment.topCenter,
+                                      //     height: size.height * 0.1,
+                                      //     child: ListView.separated(
+                                      //       scrollDirection: Axis.horizontal,
+                                      //       itemBuilder: (context, index) {
+                                      //         return Course_prompt(
+                                      //             state.courses[index]
+                                      //                 .courseName,
+                                      //             advisory,
+                                      //             "1");
+                                      //       },
+                                      //       separatorBuilder: (_, __) =>
+                                      //           SizedBox(
+                                      //         height: 1,
+                                      //       ),
+                                      //       itemCount: state.courses.length,
+                                      //     ),
+                                      //   )
+                                      : state.status.isLoading
+                                          ? SizedBox(
+                                              height: size.height * 0.05,
+                                              child: CircularProgressIndicator(
+                                                  color: projectBlue),
+                                            )
+                                          : state.status.isError
+                                              ? SizedBox(
+                                                  child: Text("Error"),
+                                                )
+                                              : SizedBox(
+                                                  height: size.height * 0.05,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                          color: projectBlue),
+                                                );
+                                },
+                              )));
+
+                      // Container(
+                      //   //width: MediaQuery.of(context).size.width * 0.8,
+                      //   padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      //   alignment: Alignment.center,
+                      //   color: accent,
+                      //   child: ListView(
+                      //     scrollDirection: Axis.horizontal,
+                      //     children: <Widget>[
+                      //       Course_prompt("advisory", advisory, "1"),
+                      //     ],
+                      //   ),
+                      // );
                     },
                   );
                 }).toList(),

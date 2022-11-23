@@ -1,8 +1,6 @@
 import 'package:connectivity/connectivity.dart';
-import 'package:edurald/blocs/career_bloc/career_bloc.dart';
 import 'package:edurald/blocs/course_bloc/course_bloc.dart';
 import 'package:edurald/gen/assets.gen.dart';
-import 'package:edurald/repository/repos/career_repo.dart';
 import 'package:edurald/repository/repos/course_repo.dart';
 import 'package:edurald/repository/services/course_services.dart';
 import 'package:edurald/widgets/course/course_prompts.dart';
@@ -101,21 +99,7 @@ class functionTest_state extends State<functionTest_page>
                                     // I am connected to a mobile network.
                                   } else if (connectivityResult ==
                                       ConnectivityResult.wifi) {
-                                    createCourse1();
-                                    createCourse2();
-                                    createCourse3();
-                                    createCourse4();
-                                    createCourse5();
-                                    createCourse6();
-                                    createCourse7();
-                                    createCourse8();
-                                    createCourse9();
-                                    createCourse10();
-                                    createCourse11();
-                                    createCourse12();
-                                    createCourse13();
-                                    createCourse14();
-                                    createCourse15();
+                                    createCourse0();
                                     //await getCoursesByCareer();
                                     // I am connected to a wifi network.
                                   }
@@ -132,11 +116,6 @@ class functionTest_state extends State<functionTest_page>
                                   CourseRepository(service: CourseService()),
                               child: MultiBlocProvider(
                                   providers: [
-                                    // BlocProvider<CareerBloc>(
-                                    //   create: (context) => CareerBloc(
-                                    //     careerRepository: context.read<CareerRepository>(),
-                                    //   )..add(GetCareers()),
-                                    // ),
                                     BlocProvider<CourseBloc>(
                                       create: (context) => CourseBloc(
                                         courseRepository:
@@ -155,11 +134,6 @@ class functionTest_state extends State<functionTest_page>
                                               width: size.width,
                                               alignment: Alignment.topCenter,
                                               height: size.height * 0.1,
-                                              // padding: EdgeInsets.fromLTRB(
-                                              //     size.width * 0.01,
-                                              //     size.height * 0.03,
-                                              //     size.width * 0.01,
-                                              //     size.height * 0.1),
                                               child: ListView.separated(
                                                 scrollDirection:
                                                     Axis.horizontal,
