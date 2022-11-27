@@ -6,11 +6,14 @@ part 'career.g.dart';
 abstract class Career with _$Career {
   const factory Career({
     required String description,
+    required String career_fit,
+    required String tag_line,
     required String career_id,
     String? createdBy,
     @Default(false) bool approved,
     String? careerName,
     int? point,
+    String? icon,
     List<String>? synonyms,
     List<String>? quizes,
     List<String>? courses,

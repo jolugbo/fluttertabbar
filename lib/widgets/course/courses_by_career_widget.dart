@@ -1,7 +1,9 @@
+import 'package:animations/animations.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:edurald/gen/assets.gen.dart';
 import 'package:edurald/repository/models/career/career.dart';
 import 'package:edurald/utills/styles.dart';
+import 'package:edurald/widgets/careeer/career_widget.dart';
 import 'package:edurald/widgets/course/course_prompts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +28,7 @@ class CoursesByCareerWidget extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     String advisory = Assets.images.advisory.path;
     return Card(
-      elevation: 2,
+      elevation: 5,
       shape: cardShape,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.95,
@@ -37,31 +39,58 @@ class CoursesByCareerWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-              alignment: Alignment.topLeft,
-              child: Text(
-                career.description,
-                style: blue14Style,
-              ),
-            ),
-            Container(
-                padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
-                alignment: Alignment.topLeft,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Learn at your own pace',
-                      style: dark10Style,
+            OpenContainer<bool>(
+                transitionType: ContainerTransitionType.fade,
+                openBuilder: (context, openContainer) => CareerWidget(
+                      career: career,
                     ),
-                    Text(
-                      'View more',
-                      style: green12Style,
-                    )
-                  ],
-                )),
+                tappable: false,
+                closedShape: const RoundedRectangleBorder(),
+                closedElevation: 0,
+                closedBuilder: (context, openContainer) {
+                  return GestureDetector(
+                      onTap: openContainer,
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        alignment: Alignment.topLeft,
+                        color: projectLightBlue,
+                        child: Text(
+                          career.careerName ?? "Career Name",
+                          style: blue14BoldStyle,
+                        ),
+                      ));
+                }),
+            OpenContainer<bool>(
+                transitionType: ContainerTransitionType.fade,
+                openBuilder: (context, openContainer) => CareerWidget(
+                      career: career,
+                    ),
+                tappable: false,
+                closedShape: const RoundedRectangleBorder(),
+                closedElevation: 0,
+                closedBuilder: (context, openContainer) {
+                  return GestureDetector(
+                    onTap: openContainer,
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              career.tag_line,
+                              style: dark10Style,
+                            ),
+                            Text(
+                              'View more',
+                              style: green12Style,
+                            )
+                          ],
+                        )),
+                  );
+                }),
             Container(
+              color: projectLightBlue,
               child: CarouselSlider(
                 options: CarouselOptions(
                   height: MediaQuery.of(context).size.height * 0.12,
@@ -104,46 +133,48 @@ class CoursesByCareerWidget extends StatelessWidget {
                                 builder: (context, state) {
                                   return state.status.isSuccess
                                       ? Container(
-                                          height: size.height * 0.02,
-                                          child: CircularProgressIndicator(
-                                              color: projectRed),
+                                          width: size.width,
+                                          alignment: Alignment.topCenter,
+                                          height: size.height * 0.1,
+                                          child: ListView.separated(
+                                            scrollDirection: Axis.horizontal,
+                                            itemBuilder: (context, index) {
+                                              return Course_prompt(
+                                                  state.courses[index]
+                                                      .courseName,
+                                                  advisory,
+                                                  "1",
+                                                  true);
+                                            },
+                                            separatorBuilder: (_, __) =>
+                                                SizedBox(
+                                              height: 1,
+                                            ),
+                                            itemCount: state.courses.length,
+                                          ),
                                         )
-
-                                      //  Container(
-                                      //     width: size.width,
-                                      //     alignment: Alignment.topCenter,
-                                      //     height: size.height * 0.1,
-                                      //     child: ListView.separated(
-                                      //       scrollDirection: Axis.horizontal,
-                                      //       itemBuilder: (context, index) {
-                                      //         return Course_prompt(
-                                      //             state.courses[index]
-                                      //                 .courseName,
-                                      //             advisory,
-                                      //             "1");
-                                      //       },
-                                      //       separatorBuilder: (_, __) =>
-                                      //           SizedBox(
-                                      //         height: 1,
-                                      //       ),
-                                      //       itemCount: state.courses.length,
-                                      //     ),
-                                      //   )
                                       : state.status.isLoading
-                                          ? SizedBox(
-                                              height: size.height * 0.05,
-                                              child: CircularProgressIndicator(
-                                                  color: projectBlue),
+                                          ? Container(
+                                              child: Text(
+                                                "Loading...",
+                                                style: blue13boldStyle,
+                                              ),
+                                              alignment: Alignment.center,
                                             )
                                           : state.status.isError
-                                              ? SizedBox(
-                                                  child: Text("Error"),
+                                              ? Container(
+                                                  child: Text(
+                                                    "Error...",
+                                                    style: red13boldStyle,
+                                                  ),
+                                                  alignment: Alignment.center,
                                                 )
-                                              : SizedBox(
-                                                  height: size.height * 0.05,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                          color: projectBlue),
+                                              : Container(
+                                                  child: Text(
+                                                    "Loading...",
+                                                    style: blue13boldStyle,
+                                                  ),
+                                                  alignment: Alignment.center,
                                                 );
                                 },
                               )));

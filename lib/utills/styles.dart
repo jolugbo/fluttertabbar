@@ -16,8 +16,8 @@ Color projectPurple2 = Color(0xFFE6DEF4);
 Color projectPink = Color(0xFFDD4CF4);
 Color projectGray = Color(0xFF979797);
 Color projectGray2 = Color(0xFFF3F3F3);
-Color projectOverlayLightPurple = Color.fromRGBO(0,0,0,0.53);
-Color projectLightPurple = Color.fromRGBO(121,77,146,0.1);//(0xFF794d921a);
+Color projectOverlayLightPurple = Color.fromRGBO(0, 0, 0, 0.53);
+Color projectLightPurple = Color.fromRGBO(121, 77, 146, 0.1); //(0xFF794d921a);
 Color projectLightGray = Color(0xFF323a56);
 Color projectLightGray2 = Color(0xFFF2EDF4);
 Color projectDark = Color(0xFF1D1D1D);
@@ -138,6 +138,14 @@ final dark13BoldStyle = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,
 );
+final dark13Style = TextStyle(
+  color: projectDark,
+  fontFamily: generalFont,
+  fontSize: 13.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.normal,
+);
 final dark16Style = TextStyle(
   color: projectDark,
   fontFamily: generalFont,
@@ -184,7 +192,7 @@ final dark15Style = TextStyle(
   fontSize: 15.0,
   height: 1,
   fontStyle: FontStyle.normal,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.normal,
 );
 final dark25BoldStyle = TextStyle(
   color: projectDark,
@@ -347,12 +355,12 @@ final orange14Style = TextStyle(
   fontWeight: FontWeight.normal,
 );
 final gray19Style = TextStyle(
-    color: projectGray,
-    fontFamily: generalFont,
-    fontSize: 15.0,
-    height: 1,
-    fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.normal,
+  color: projectGray,
+  fontFamily: generalFont,
+  fontSize: 15.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.normal,
 );
 final gray12Style = TextStyle(
   color: projectGray,
@@ -386,13 +394,29 @@ final blue13boldStyle = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,
 );
-final blue14Style = TextStyle(
+final red13boldStyle = TextStyle(
+  color: projectRed,
+  fontFamily: generalFont,
+  fontSize: 13.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+);
+final blue14BoldStyle = TextStyle(
   color: projectBlue,
   fontFamily: generalFont,
   fontSize: 14.0,
   height: 1,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,
+);
+final blue14Style = TextStyle(
+  color: projectBlue,
+  fontFamily: generalFont,
+  fontSize: 14.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.normal,
 );
 final blue20Style = TextStyle(
   color: projectBlue,
@@ -411,14 +435,13 @@ final blue25BoldStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 final grayUnderline15Style = TextStyle(
-  color: projectGray,
-  fontFamily: generalFont,
-  fontSize: 15.0,
-  height: 1,
-  fontStyle: FontStyle.normal,
-  fontWeight: FontWeight.normal,
-    decoration: TextDecoration.underline
-);
+    color: projectGray,
+    fontFamily: generalFont,
+    fontSize: 15.0,
+    height: 1,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.normal,
+    decoration: TextDecoration.underline);
 final securityStyle = TextStyle(
   color: accent,
   fontFamily: 'CM Sans Serif',
@@ -474,15 +497,15 @@ final buttonShape = RoundedRectangleBorder(
   borderRadius: BorderRadius.circular(10.0),
 );
 final textFieldDecoration = InputDecoration(
-enabledBorder: UnderlineInputBorder(
-borderSide: BorderSide(color: projectGreen),
-),
-focusedBorder: UnderlineInputBorder(
-borderSide: BorderSide(color: projectGreen),
-),
-border: UnderlineInputBorder(
-borderSide: BorderSide(color: projectGreen),
-));
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: projectGreen),
+    ),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: projectGreen),
+    ),
+    border: UnderlineInputBorder(
+      borderSide: BorderSide(color: projectGreen),
+    ));
 final cardShape = RoundedRectangleBorder(
-  borderRadius: BorderRadius.circular(5.0),
+  borderRadius: BorderRadius.circular(10.0),
 );

@@ -142,7 +142,8 @@ class functionTest_state extends State<functionTest_page>
                                                       state.courses[index]
                                                           .courseName,
                                                       advisory,
-                                                      "1");
+                                                      "1",
+                                                      true);
                                                 },
                                                 separatorBuilder: (_, __) =>
                                                     SizedBox(
@@ -166,8 +167,6 @@ class functionTest_state extends State<functionTest_page>
                                     },
                                   ))),
                         ),
-                        Course_prompt(
-                            "Advisory", Assets.images.advisory.path, "001"),
                       ],
                     ),
                   )),

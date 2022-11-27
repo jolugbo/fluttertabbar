@@ -21,11 +21,14 @@ Career _$CareerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Career {
   String get description => throw _privateConstructorUsedError;
+  String get career_fit => throw _privateConstructorUsedError;
+  String get tag_line => throw _privateConstructorUsedError;
   String get career_id => throw _privateConstructorUsedError;
   String? get createdBy => throw _privateConstructorUsedError;
   bool get approved => throw _privateConstructorUsedError;
   String? get careerName => throw _privateConstructorUsedError;
   int? get point => throw _privateConstructorUsedError;
+  String? get icon => throw _privateConstructorUsedError;
   List<String>? get synonyms => throw _privateConstructorUsedError;
   List<String>? get quizes => throw _privateConstructorUsedError;
   List<String>? get courses => throw _privateConstructorUsedError;
@@ -43,11 +46,14 @@ abstract class $CareerCopyWith<$Res> {
       _$CareerCopyWithImpl<$Res>;
   $Res call(
       {String description,
+      String career_fit,
+      String tag_line,
       String career_id,
       String? createdBy,
       bool approved,
       String? careerName,
       int? point,
+      String? icon,
       List<String>? synonyms,
       List<String>? quizes,
       List<String>? courses,
@@ -66,11 +72,14 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
   @override
   $Res call({
     Object? description = freezed,
+    Object? career_fit = freezed,
+    Object? tag_line = freezed,
     Object? career_id = freezed,
     Object? createdBy = freezed,
     Object? approved = freezed,
     Object? careerName = freezed,
     Object? point = freezed,
+    Object? icon = freezed,
     Object? synonyms = freezed,
     Object? quizes = freezed,
     Object? courses = freezed,
@@ -81,6 +90,14 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      career_fit: career_fit == freezed
+          ? _value.career_fit
+          : career_fit // ignore: cast_nullable_to_non_nullable
+              as String,
+      tag_line: tag_line == freezed
+          ? _value.tag_line
+          : tag_line // ignore: cast_nullable_to_non_nullable
               as String,
       career_id: career_id == freezed
           ? _value.career_id
@@ -102,6 +119,10 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
               as int?,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String?,
       synonyms: synonyms == freezed
           ? _value.synonyms
           : synonyms // ignore: cast_nullable_to_non_nullable
@@ -133,11 +154,14 @@ abstract class _$$_CareerCopyWith<$Res> implements $CareerCopyWith<$Res> {
   @override
   $Res call(
       {String description,
+      String career_fit,
+      String tag_line,
       String career_id,
       String? createdBy,
       bool approved,
       String? careerName,
       int? point,
+      String? icon,
       List<String>? synonyms,
       List<String>? quizes,
       List<String>? courses,
@@ -157,11 +181,14 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
   @override
   $Res call({
     Object? description = freezed,
+    Object? career_fit = freezed,
+    Object? tag_line = freezed,
     Object? career_id = freezed,
     Object? createdBy = freezed,
     Object? approved = freezed,
     Object? careerName = freezed,
     Object? point = freezed,
+    Object? icon = freezed,
     Object? synonyms = freezed,
     Object? quizes = freezed,
     Object? courses = freezed,
@@ -172,6 +199,14 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      career_fit: career_fit == freezed
+          ? _value.career_fit
+          : career_fit // ignore: cast_nullable_to_non_nullable
+              as String,
+      tag_line: tag_line == freezed
+          ? _value.tag_line
+          : tag_line // ignore: cast_nullable_to_non_nullable
               as String,
       career_id: career_id == freezed
           ? _value.career_id
@@ -193,6 +228,10 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
               as int?,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String?,
       synonyms: synonyms == freezed
           ? _value._synonyms
           : synonyms // ignore: cast_nullable_to_non_nullable
@@ -222,11 +261,14 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
 class _$_Career implements _Career {
   const _$_Career(
       {required this.description,
+      required this.career_fit,
+      required this.tag_line,
       required this.career_id,
       this.createdBy,
       this.approved = false,
       this.careerName,
       this.point,
+      this.icon,
       final List<String>? synonyms,
       final List<String>? quizes,
       final List<String>? courses,
@@ -244,6 +286,10 @@ class _$_Career implements _Career {
   @override
   final String description;
   @override
+  final String career_fit;
+  @override
+  final String tag_line;
+  @override
   final String career_id;
   @override
   final String? createdBy;
@@ -254,6 +300,8 @@ class _$_Career implements _Career {
   final String? careerName;
   @override
   final int? point;
+  @override
+  final String? icon;
   final List<String>? _synonyms;
   @override
   List<String>? get synonyms {
@@ -301,7 +349,7 @@ class _$_Career implements _Career {
 
   @override
   String toString() {
-    return 'Career(description: $description, career_id: $career_id, createdBy: $createdBy, approved: $approved, careerName: $careerName, point: $point, synonyms: $synonyms, quizes: $quizes, courses: $courses, educators: $educators, users: $users)';
+    return 'Career(description: $description, career_fit: $career_fit, tag_line: $tag_line, career_id: $career_id, createdBy: $createdBy, approved: $approved, careerName: $careerName, point: $point, icon: $icon, synonyms: $synonyms, quizes: $quizes, courses: $courses, educators: $educators, users: $users)';
   }
 
   @override
@@ -311,12 +359,16 @@ class _$_Career implements _Career {
             other is _$_Career &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.career_fit, career_fit) &&
+            const DeepCollectionEquality().equals(other.tag_line, tag_line) &&
             const DeepCollectionEquality().equals(other.career_id, career_id) &&
             const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
             const DeepCollectionEquality().equals(other.approved, approved) &&
             const DeepCollectionEquality()
                 .equals(other.careerName, careerName) &&
             const DeepCollectionEquality().equals(other.point, point) &&
+            const DeepCollectionEquality().equals(other.icon, icon) &&
             const DeepCollectionEquality().equals(other._synonyms, _synonyms) &&
             const DeepCollectionEquality().equals(other._quizes, _quizes) &&
             const DeepCollectionEquality().equals(other._courses, _courses) &&
@@ -330,11 +382,14 @@ class _$_Career implements _Career {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(career_fit),
+      const DeepCollectionEquality().hash(tag_line),
       const DeepCollectionEquality().hash(career_id),
       const DeepCollectionEquality().hash(createdBy),
       const DeepCollectionEquality().hash(approved),
       const DeepCollectionEquality().hash(careerName),
       const DeepCollectionEquality().hash(point),
+      const DeepCollectionEquality().hash(icon),
       const DeepCollectionEquality().hash(_synonyms),
       const DeepCollectionEquality().hash(_quizes),
       const DeepCollectionEquality().hash(_courses),
@@ -357,11 +412,14 @@ class _$_Career implements _Career {
 abstract class _Career implements Career {
   const factory _Career(
       {required final String description,
+      required final String career_fit,
+      required final String tag_line,
       required final String career_id,
       final String? createdBy,
       final bool approved,
       final String? careerName,
       final int? point,
+      final String? icon,
       final List<String>? synonyms,
       final List<String>? quizes,
       final List<String>? courses,
@@ -373,6 +431,10 @@ abstract class _Career implements Career {
   @override
   String get description;
   @override
+  String get career_fit;
+  @override
+  String get tag_line;
+  @override
   String get career_id;
   @override
   String? get createdBy;
@@ -382,6 +444,8 @@ abstract class _Career implements Career {
   String? get careerName;
   @override
   int? get point;
+  @override
+  String? get icon;
   @override
   List<String>? get synonyms;
   @override

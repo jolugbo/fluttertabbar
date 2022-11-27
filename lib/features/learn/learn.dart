@@ -109,12 +109,31 @@ class _LearnPageState extends State<learn> with TickerProviderStateMixin {
                                         ),
                                       )
                                     : state.status.isLoading
-                                        ? Center(
-                                            child: CircularProgressIndicator(),
+                                        ? Container(
+                                            height: size.height * 0.2,
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              "Loading...",
+                                              style: blue13boldStyle,
+                                            ),
                                           )
                                         : state.status.isError
-                                            ? const SizedBox()
-                                            : const SizedBox();
+                                            ? Container(
+                                                height: size.height * 0.2,
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  "Error...",
+                                                  style: red13boldStyle,
+                                                ),
+                                              )
+                                            : Container(
+                                                height: size.height * 0.2,
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  "Loading...",
+                                                  style: blue13boldStyle,
+                                                ),
+                                              );
                               },
                             );
                           },

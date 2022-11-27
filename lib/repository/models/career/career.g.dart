@@ -8,11 +8,14 @@ part of 'career.dart';
 
 _$_Career _$$_CareerFromJson(Map<String, dynamic> json) => _$_Career(
       description: json['description'] as String,
+      career_fit: json['career_fit'] as String,
+      tag_line: json['tag_line'] as String,
       career_id: json['career_id'] as String,
       createdBy: json['createdBy'] as String?,
       approved: json['approved'] as bool? ?? false,
       careerName: json['careerName'] as String?,
       point: json['point'] as int?,
+      icon: json['icon'] as String?,
       synonyms: (json['synonyms'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -29,11 +32,14 @@ _$_Career _$$_CareerFromJson(Map<String, dynamic> json) => _$_Career(
 
 Map<String, dynamic> _$$_CareerToJson(_$_Career instance) => <String, dynamic>{
       'description': instance.description,
+      'career_fit': instance.career_fit,
+      'tag_line': instance.tag_line,
       'career_id': instance.career_id,
       'createdBy': instance.createdBy,
       'approved': instance.approved,
       'careerName': instance.careerName,
       'point': instance.point,
+      'icon': instance.icon,
       'synonyms': instance.synonyms,
       'quizes': instance.quizes,
       'courses': instance.courses,
