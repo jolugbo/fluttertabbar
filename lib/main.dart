@@ -256,7 +256,7 @@ class _MyAppState extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Scaffold(
-          body: (hasLoggedIn) ? dashboardPage() : walkthroughPage(),
+          body:(hasLoggedIn) ? dashboardPage() : walkthroughPage(),
           //admin_office_Page(), //
           //functionTest_page(),//
         ));

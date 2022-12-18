@@ -291,6 +291,14 @@ final white11Style = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.normal,
 );
+final white12BoldStyle = TextStyle(
+  color: accent,
+  fontFamily: factFont,
+  fontSize: 12.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+);
 final white12Style = TextStyle(
   color: accent,
   fontFamily: generalFont,

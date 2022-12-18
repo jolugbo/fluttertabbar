@@ -12,6 +12,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:edurald/blocs/course_bloc/course_bloc.dart';
 import 'package:edurald/repository/repos/course_repo.dart';
 import 'package:edurald/repository/services/course_services.dart';
+import 'package:accordion/accordion.dart';
+import 'package:accordion/controllers.dart';
 
 import '../university/university_widget.dart';
 
@@ -106,129 +108,173 @@ class CareerWidget extends StatelessWidget {
                             padding: EdgeInsets.only(right: 15)),
                       ],
                     )),
-                SizedBox(height: size.height * 0.03),
-                Container(
-                  width: size.width,
-                  child: Text(
-                    "College courses.",
-                    style: blue14BoldStyle,
-                  ),
-                ),
-                SizedBox(height: size.height * 0.01),
-                Container(
-                  width: size.width,
-                  child: Text(
-                    "listed below are some of the areas of knowledge this career path covers",
-                    style: dark14Style,
-                  ),
-                ),
-                Container(
-                  //width: size.width * 0.7,
-                  color: projectLightGray2,
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.38,
-                      aspectRatio: 1,
-                      viewportFraction: 1,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
-                      autoPlay: false,
-                      autoPlayInterval: Duration(seconds: 4),
-                      autoPlayAnimationDuration: Duration(seconds: 1),
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enlargeCenterPage: true,
-                      onPageChanged: (index, reason) {
-                        // setState(() {
-                        //   //_current = index;
-                        // });
-                      },
-                      scrollDirection: Axis.vertical,
+                //SizedBox(height: size.height * 0.02),
+                Accordion(
+                  headerBackgroundColorOpened: projectBlue,
+                  scaleWhenAnimating: true,
+                  contentHorizontalPadding: 0,
+                  openAndCloseAnimation: true,
+                  headerPadding:
+                      const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
+                  sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
+                  sectionClosingHapticFeedback: SectionHapticFeedback.light,
+                  children: [
+                    AccordionSection(
+                      isOpen: false,
+                      headerBackgroundColor: projectBlue,
+                      headerBackgroundColorOpened: projectBlue,
+                      header: Container(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.all(5),
+                          child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  width: size.width,
+                                  child: Text(
+                                    "College courses.",
+                                    style: white12BoldStyle,
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.01),
+                                Container(
+                                  width: size.width,
+                                  child: Text(
+                                    "listed below are some of the areas of knowledge this career path covers",
+                                    style: white12Style,
+                                  ),
+                                ),
+                              ])),
+                      content: Container(
+                        color: projectLightGray2,
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                            height: size.height * 0.45,
+                            aspectRatio: 1,
+                            viewportFraction: 1,
+                            initialPage: 0,
+                            enableInfiniteScroll: true,
+                            reverse: false,
+                            autoPlay: false,
+                            autoPlayInterval: Duration(seconds: 4),
+                            autoPlayAnimationDuration: Duration(seconds: 1),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enlargeCenterPage: true,
+                            onPageChanged: (index, reason) {
+                              // setState(() {
+                              //   //_current = index;
+                              // });
+                            },
+                            scrollDirection: Axis.vertical,
+                          ),
+                          items: [0, 1, 2].map((i) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return RepositoryProvider(
+                                    create: (context) => CourseRepository(
+                                        service: CourseService()),
+                                    child: MultiBlocProvider(
+                                        providers: [
+                                          BlocProvider<CourseBloc>(
+                                            create: (context) => CourseBloc(
+                                              courseRepository: context
+                                                  .read<CourseRepository>(),
+                                            )..add(GetCoursesByCareer(
+                                                careerId: career.career_id)),
+                                          ),
+                                        ],
+                                        child: BlocBuilder<CourseBloc,
+                                            CourseState>(
+                                          buildWhen: (previous, current) =>
+                                              current.status.isSuccess,
+                                          builder: (context, state) {
+                                            return state.status.isSuccess
+                                                ? Container(
+                                                    alignment:
+                                                        Alignment.topLeft,
+                                                    child: Scrollbar(
+                                                      child: ListView.separated(
+                                                        scrollDirection:
+                                                            Axis.vertical,
+                                                        padding:
+                                                            EdgeInsets.all(10),
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        itemBuilder:
+                                                            (context, index) {
+                                                          return Course_prompt(
+                                                              state
+                                                                  .courses[
+                                                                      index]
+                                                                  .courseName,
+                                                              advisory,
+                                                              state
+                                                                  .courses[
+                                                                      index]
+                                                                  .courseNum,
+                                                              false);
+                                                        },
+                                                        separatorBuilder:
+                                                            (_, __) => SizedBox(
+                                                          height: 5,
+                                                        ),
+                                                        itemCount: state
+                                                            .courses.length,
+                                                      ),
+                                                      thickness: 8,
+                                                      radius:
+                                                          Radius.circular(10),
+                                                      thumbVisibility: true,
+                                                      trackVisibility: true,
+                                                    ))
+                                                : state.status.isLoading
+                                                    ? Container(
+                                                        child: Text(
+                                                          "Loading...",
+                                                          style:
+                                                              blue13boldStyle,
+                                                        ),
+                                                        alignment:
+                                                            Alignment.center,
+                                                      )
+                                                    : state.status.isError
+                                                        ? Container(
+                                                            child: Text(
+                                                              "Error...",
+                                                              style:
+                                                                  red13boldStyle,
+                                                            ),
+                                                            alignment: Alignment
+                                                                .center,
+                                                          )
+                                                        : Container(
+                                                            child: Text(
+                                                              "Loading...",
+                                                              style:
+                                                                  blue13boldStyle,
+                                                            ),
+                                                            alignment: Alignment
+                                                                .center,
+                                                          );
+                                          },
+                                        )));
+                              },
+                            );
+                          }).toList(),
+                        ),
+                      ),
+
+                      contentHorizontalPadding: 10,
+                      contentBorderWidth: 1,
+                      // onOpenSection: () => print('onOpenSection ...'),
+                      // onCloseSection: () => print('onCloseSection ...'),
                     ),
-                    items: [0, 1, 2].map((i) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return RepositoryProvider(
-                              create: (context) =>
-                                  CourseRepository(service: CourseService()),
-                              child: MultiBlocProvider(
-                                  providers: [
-                                    BlocProvider<CourseBloc>(
-                                      create: (context) => CourseBloc(
-                                        courseRepository:
-                                            context.read<CourseRepository>(),
-                                      )..add(GetCoursesByCareer(
-                                          careerId: career.career_id)),
-                                    ),
-                                  ],
-                                  child: BlocBuilder<CourseBloc, CourseState>(
-                                    buildWhen: (previous, current) =>
-                                        current.status.isSuccess,
-                                    builder: (context, state) {
-                                      return state.status.isSuccess
-                                          ? Container(
-                                              alignment: Alignment.topLeft,
-                                              child: Scrollbar(
-                                                child: ListView.separated(
-                                                  scrollDirection:
-                                                      Axis.vertical,
-                                                  padding: EdgeInsets.all(10),
-                                                  clipBehavior: Clip.antiAlias,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    return Course_prompt(
-                                                        state.courses[index]
-                                                            .courseName,
-                                                        advisory,
-                                                        state.courses[index]
-                                                            .courseNum,
-                                                        false);
-                                                  },
-                                                  separatorBuilder: (_, __) =>
-                                                      SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  itemCount:
-                                                      state.courses.length,
-                                                ),
-                                                thickness: 8,
-                                                radius: Radius.circular(10),
-                                                thumbVisibility: true,
-                                                trackVisibility: true,
-                                              ))
-                                          : state.status.isLoading
-                                              ? Container(
-                                                  child: Text(
-                                                    "Loading...",
-                                                    style: blue13boldStyle,
-                                                  ),
-                                                  alignment: Alignment.center,
-                                                )
-                                              : state.status.isError
-                                                  ? Container(
-                                                      child: Text(
-                                                        "Error...",
-                                                        style: red13boldStyle,
-                                                      ),
-                                                      alignment:
-                                                          Alignment.center,
-                                                    )
-                                                  : Container(
-                                                      child: Text(
-                                                        "Loading...",
-                                                        style: blue13boldStyle,
-                                                      ),
-                                                      alignment:
-                                                          Alignment.center,
-                                                    );
-                                    },
-                                  )));
-                        },
-                      );
-                    }).toList(),
-                  ),
+                  ],
                 ),
-                SizedBox(height: size.height * 0.03),
+                //SizedBox(height: size.height * 0.02),
                 Container(
                   width: size.width,
                   child: Text(
@@ -294,94 +340,73 @@ class CareerWidget extends StatelessWidget {
                 ),
                 SizedBox(height: size.height * 0.01),
                 Container(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      padding: EdgeInsets.only(top: 2),
-                      itemCount: career.accredited_institutions?.length ?? 0,
-                      itemBuilder: (context, index) => Builder(
-                            builder: (BuildContext context) {
-                              return RepositoryProvider(
-                                  create: (context) => UniversityRepository(
-                                      service: UniversityService()),
-                                  child: MultiBlocProvider(
-                                      providers: [
-                                        BlocProvider<UniversityBloc>(
-                                          create: (context) => UniversityBloc(
-                                            universityRepository: context
-                                                .read<UniversityRepository>(),
-                                          )..add(GetUniversitiesByCareer(
-                                              careerId: career.career_id)),
-                                        ),
-                                      ],
-                                      child: BlocBuilder<UniversityBloc,
-                                          UniversityState>(
-                                        buildWhen: (previous, current) =>
-                                            current.status.isSuccess,
-                                        builder: (context, state) {
-                                          return state.status.isSuccess
-                                              ? Container(
-                                                  alignment: Alignment.topLeft,
-                                                  height: size.height * 0.25,
-                                                  child: Scrollbar(
-                                                    child: ListView.separated(
-                                                      scrollDirection:
-                                                          Axis.vertical,
-                                                      padding:
-                                                          EdgeInsets.all(10),
-                                                      clipBehavior:
-                                                          Clip.antiAlias,
-                                                      itemBuilder:
-                                                          (context, index) {
-                                                        return university_prompt(
-                                                            state.universities[
-                                                                index]);
-                                                      },
-                                                      separatorBuilder:
-                                                          (_, __) => SizedBox(
-                                                        height: 5,
-                                                      ),
-                                                      itemCount: state
-                                                          .universities.length,
-                                                    ),
-                                                    thickness: 8,
-                                                    radius: Radius.circular(10),
-                                                    thumbVisibility: true,
-                                                    trackVisibility: true,
-                                                  ))
-                                              : state.status.isLoading
-                                                  ? Container(
-                                                      child: Text(
-                                                        "Loading...",
-                                                        style: blue13boldStyle,
-                                                      ),
-                                                      alignment:
-                                                          Alignment.center,
-                                                    )
-                                                  : state.status.isError
-                                                      ? Container(
-                                                          child: Text(
-                                                            "Error...",
-                                                            style:
-                                                                red13boldStyle,
-                                                          ),
-                                                          alignment:
-                                                              Alignment.center,
-                                                        )
-                                                      : Container(
-                                                          child: Text(
-                                                            "Loading...",
-                                                            style:
-                                                                blue13boldStyle,
-                                                          ),
-                                                          alignment:
-                                                              Alignment.center,
-                                                        );
-                                        },
-                                      )));
-                            },
-                          )),
-                ),
+                    child: RepositoryProvider(
+                        create: (context) =>
+                            UniversityRepository(service: UniversityService()),
+                        child: MultiBlocProvider(
+                            providers: [
+                              BlocProvider<UniversityBloc>(
+                                create: (context) => UniversityBloc(
+                                  universityRepository:
+                                      context.read<UniversityRepository>(),
+                                )..add(GetUniversitiesByCareer(
+                                    careerId: career.career_id)),
+                              ),
+                            ],
+                            child: BlocBuilder<UniversityBloc, UniversityState>(
+                              buildWhen: (previous, current) =>
+                                  current.status.isSuccess,
+                              builder: (context, state) {
+                                return state.status.isSuccess
+                                    ? Container(
+                                        alignment: Alignment.topLeft,
+                                        height: size.height * 0.25,
+                                        child: Scrollbar(
+                                          child: ListView.separated(
+                                            scrollDirection: Axis.vertical,
+                                            padding: EdgeInsets.all(10),
+                                            clipBehavior: Clip.antiAlias,
+                                            itemBuilder: (context, index) {
+                                              return university_prompt(
+                                                  state.universities[index]);
+                                            },
+                                            separatorBuilder: (_, __) =>
+                                                SizedBox(
+                                              height: 5,
+                                            ),
+                                            itemCount:
+                                                state.universities.length,
+                                          ),
+                                          thickness: 8,
+                                          radius: Radius.circular(10),
+                                          thumbVisibility: true,
+                                          trackVisibility: true,
+                                        ))
+                                    : state.status.isLoading
+                                        ? Container(
+                                            child: Text(
+                                              "Loading...",
+                                              style: blue13boldStyle,
+                                            ),
+                                            alignment: Alignment.center,
+                                          )
+                                        : state.status.isError
+                                            ? Container(
+                                                child: Text(
+                                                  "Error...",
+                                                  style: red13boldStyle,
+                                                ),
+                                                alignment: Alignment.center,
+                                              )
+                                            : Container(
+                                                child: Text(
+                                                  "...",
+                                                  style: blue13boldStyle,
+                                                ),
+                                                alignment: Alignment.center,
+                                              );
+                              },
+                            )))),
               ],
             ))),
       ),

@@ -75,7 +75,7 @@ class Course_prompt extends StatelessWidget {
                       Container(
                           padding: EdgeInsets.fromLTRB(5, 5, 5, 0),
                           alignment: Alignment.centerLeft,
-                          width: size.width * 0.55,
+                          width: size.width * 0.4,
                           child: Text(
                             courseName ?? "test",
                             style: dark12Style,
@@ -85,7 +85,7 @@ class Course_prompt extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.fromLTRB(5, 5, 2, 0),
                         alignment: Alignment.centerLeft,
-                        width: size.width * 0.181 ,
+                        width: size.width * 0.187,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
