@@ -136,23 +136,25 @@ class CoursesByCareerWidget extends StatelessWidget {
                                           width: size.width,
                                           alignment: Alignment.topCenter,
                                           height: size.height * 0.1,
-                                          child: ListView.separated(
-                                            scrollDirection: Axis.horizontal,
-                                            itemBuilder: (context, index) {
-                                              return Course_prompt(
-                                                  state.courses[index]
-                                                      .courseName,
-                                                  advisory,
-                                                  "1",
-                                                  true);
-                                            },
-                                            separatorBuilder: (_, __) =>
-                                                SizedBox(
-                                              height: 1,
+                                          child: Scrollbar(
+                                            child: ListView.separated(
+                                              scrollDirection: Axis.horizontal,
+                                              itemBuilder: (context, index) {
+                                                return Course_prompt(
+                                                    state.courses[index]
+                                                        .courseName,
+                                                    advisory,
+                                                    state.courses[index]
+                                                        .courseNum,
+                                                    true);
+                                              },
+                                              separatorBuilder: (_, __) =>
+                                                  SizedBox(
+                                                height: 1,
+                                              ),
+                                              itemCount: state.courses.length,
                                             ),
-                                            itemCount: state.courses.length,
-                                          ),
-                                        )
+                                          ))
                                       : state.status.isLoading
                                           ? Container(
                                               child: Text(

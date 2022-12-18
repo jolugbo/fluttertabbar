@@ -161,6 +161,10 @@ flutter:
         - asset: assets/fonts/Montserrat Thin 250.ttf
           #weight: 250
           #style: Thin
+    - family: RubikGemstones
+      fonts:
+         - asset: assets/fonts/RubikGemstones-Regular.ttf
+  
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -53,6 +53,26 @@ export const getCoursesByCareer = functions.https.onCall(async (data, response) 
   }
 });
 
+export const getUniversitiesByCareer = functions.https.onCall(async (data, response) => {
+  try {
+    console.log(data.careerId);
+    const resp: Array<course> = [];
+    const universities = await dBase.universities.where("accredited_careers", "array-contains", data.careerId).get();
+    console.log(universities);
+    universities.forEach((snapshot: admin.firestore.DocumentSnapshot) => {
+      resp.push(snapshot.data() as course);
+    });
+    if (universities.empty) {
+      return "File Not Found!";
+    } else {
+      return resp;
+    }
+  } catch (err) {
+    functions.logger.error(err, {structuredData: true});
+    return err;
+  }
+});
+
 export const checkIfEmailExist = functions.https.onCall(async (data, response) => {
   try {
     console.log(data.email);

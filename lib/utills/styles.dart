@@ -25,15 +25,8 @@ Color projectLightDark = Color(0xFF323a56);
 Color projectYellow = Color(0xFFFFE600);
 
 String generalFont = 'Montserrat';
+String factFont = 'RubikGemstones';
 
-final lightHeaderStyle = TextStyle(
-  color: accent,
-  fontFamily: generalFont,
-  fontSize: 22.0,
-  height: 1.5,
-  fontStyle: FontStyle.normal,
-  fontWeight: FontWeight.normal,
-);
 final dark32Style = TextStyle(
   color: projectDark,
   fontFamily: generalFont,
@@ -42,13 +35,13 @@ final dark32Style = TextStyle(
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.normal,
 );
-final purpleThickStyle = TextStyle(
-  color: projectPurple,
-  fontFamily: generalFont,
-  fontSize: 20.0,
-  height: 1.2,
+final factStyle = TextStyle(
+  color: projectDark,
+  fontFamily: factFont,
+  fontSize: 14.0,
+  height: 1.5,
   //fontStyle: FontStyle.,
-  fontWeight: FontWeight.bold,
+  //fontWeight: FontWeight.bold,
 );
 final light14Style = TextStyle(
   color: accent,
@@ -126,7 +119,7 @@ final dark14Style = TextStyle(
   color: projectDark,
   fontFamily: generalFont,
   fontSize: 14.0,
-  height: 1,
+  height: 1.5,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.normal,
 );
@@ -238,6 +231,14 @@ final green12Style = TextStyle(
   color: projectGreen,
   fontFamily: generalFont,
   fontSize: 12.0,
+  height: 1.5,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+);
+final green14BoldStyle = TextStyle(
+  color: projectGreen,
+  fontFamily: generalFont,
+  fontSize: 14.0,
   height: 1.5,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.bold,

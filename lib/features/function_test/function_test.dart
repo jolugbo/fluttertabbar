@@ -142,7 +142,8 @@ class functionTest_state extends State<functionTest_page>
                                                       state.courses[index]
                                                           .courseName,
                                                       advisory,
-                                                      "1",
+                                                      state.courses[index]
+                                                          .courseNum,
                                                       true);
                                                 },
                                                 separatorBuilder: (_, __) =>

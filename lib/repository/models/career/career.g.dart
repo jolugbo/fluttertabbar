@@ -19,6 +19,10 @@ _$_Career _$$_CareerFromJson(Map<String, dynamic> json) => _$_Career(
       synonyms: (json['synonyms'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      accredited_institutions:
+          (json['accredited_institutions'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList(),
       quizes:
           (json['quizes'] as List<dynamic>?)?.map((e) => e as String).toList(),
       courses:
@@ -28,6 +32,9 @@ _$_Career _$$_CareerFromJson(Map<String, dynamic> json) => _$_Career(
           .toList(),
       users:
           (json['users'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      fun_fact: (json['fun_fact'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_CareerToJson(_$_Career instance) => <String, dynamic>{
@@ -41,8 +48,10 @@ Map<String, dynamic> _$$_CareerToJson(_$_Career instance) => <String, dynamic>{
       'point': instance.point,
       'icon': instance.icon,
       'synonyms': instance.synonyms,
+      'accredited_institutions': instance.accredited_institutions,
       'quizes': instance.quizes,
       'courses': instance.courses,
       'educators': instance.educators,
       'users': instance.users,
+      'fun_fact': instance.fun_fact,
     };

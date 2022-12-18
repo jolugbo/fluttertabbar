@@ -12,4 +12,7 @@ class FontFamily {
 
   /// Font family: Montserrat
   static const String montserrat = 'Montserrat';
+
+  /// Font family: RubikGemstones
+  static const String rubikGemstones = 'RubikGemstones';
 }

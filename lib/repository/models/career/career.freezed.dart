@@ -30,10 +30,13 @@ mixin _$Career {
   int? get point => throw _privateConstructorUsedError;
   String? get icon => throw _privateConstructorUsedError;
   List<String>? get synonyms => throw _privateConstructorUsedError;
+  List<String>? get accredited_institutions =>
+      throw _privateConstructorUsedError;
   List<String>? get quizes => throw _privateConstructorUsedError;
   List<String>? get courses => throw _privateConstructorUsedError;
   List<String>? get educators => throw _privateConstructorUsedError;
   List<String>? get users => throw _privateConstructorUsedError;
+  List<String>? get fun_fact => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,10 +58,12 @@ abstract class $CareerCopyWith<$Res> {
       int? point,
       String? icon,
       List<String>? synonyms,
+      List<String>? accredited_institutions,
       List<String>? quizes,
       List<String>? courses,
       List<String>? educators,
-      List<String>? users});
+      List<String>? users,
+      List<String>? fun_fact});
 }
 
 /// @nodoc
@@ -81,10 +86,12 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
     Object? point = freezed,
     Object? icon = freezed,
     Object? synonyms = freezed,
+    Object? accredited_institutions = freezed,
     Object? quizes = freezed,
     Object? courses = freezed,
     Object? educators = freezed,
     Object? users = freezed,
+    Object? fun_fact = freezed,
   }) {
     return _then(_value.copyWith(
       description: description == freezed
@@ -127,6 +134,10 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
           ? _value.synonyms
           : synonyms // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      accredited_institutions: accredited_institutions == freezed
+          ? _value.accredited_institutions
+          : accredited_institutions // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       quizes: quizes == freezed
           ? _value.quizes
           : quizes // ignore: cast_nullable_to_non_nullable
@@ -142,6 +153,10 @@ class _$CareerCopyWithImpl<$Res> implements $CareerCopyWith<$Res> {
       users: users == freezed
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      fun_fact: fun_fact == freezed
+          ? _value.fun_fact
+          : fun_fact // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
   }
@@ -163,10 +178,12 @@ abstract class _$$_CareerCopyWith<$Res> implements $CareerCopyWith<$Res> {
       int? point,
       String? icon,
       List<String>? synonyms,
+      List<String>? accredited_institutions,
       List<String>? quizes,
       List<String>? courses,
       List<String>? educators,
-      List<String>? users});
+      List<String>? users,
+      List<String>? fun_fact});
 }
 
 /// @nodoc
@@ -190,10 +207,12 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
     Object? point = freezed,
     Object? icon = freezed,
     Object? synonyms = freezed,
+    Object? accredited_institutions = freezed,
     Object? quizes = freezed,
     Object? courses = freezed,
     Object? educators = freezed,
     Object? users = freezed,
+    Object? fun_fact = freezed,
   }) {
     return _then(_$_Career(
       description: description == freezed
@@ -236,6 +255,10 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
           ? _value._synonyms
           : synonyms // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      accredited_institutions: accredited_institutions == freezed
+          ? _value._accredited_institutions
+          : accredited_institutions // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       quizes: quizes == freezed
           ? _value._quizes
           : quizes // ignore: cast_nullable_to_non_nullable
@@ -251,6 +274,10 @@ class __$$_CareerCopyWithImpl<$Res> extends _$CareerCopyWithImpl<$Res>
       users: users == freezed
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      fun_fact: fun_fact == freezed
+          ? _value._fun_fact
+          : fun_fact // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
   }
@@ -270,15 +297,19 @@ class _$_Career implements _Career {
       this.point,
       this.icon,
       final List<String>? synonyms,
+      final List<String>? accredited_institutions,
       final List<String>? quizes,
       final List<String>? courses,
       final List<String>? educators,
-      final List<String>? users})
+      final List<String>? users,
+      final List<String>? fun_fact})
       : _synonyms = synonyms,
+        _accredited_institutions = accredited_institutions,
         _quizes = quizes,
         _courses = courses,
         _educators = educators,
-        _users = users;
+        _users = users,
+        _fun_fact = fun_fact;
 
   factory _$_Career.fromJson(Map<String, dynamic> json) =>
       _$$_CareerFromJson(json);
@@ -306,6 +337,15 @@ class _$_Career implements _Career {
   @override
   List<String>? get synonyms {
     final value = _synonyms;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _accredited_institutions;
+  @override
+  List<String>? get accredited_institutions {
+    final value = _accredited_institutions;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
@@ -347,9 +387,18 @@ class _$_Career implements _Career {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<String>? _fun_fact;
+  @override
+  List<String>? get fun_fact {
+    final value = _fun_fact;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'Career(description: $description, career_fit: $career_fit, tag_line: $tag_line, career_id: $career_id, createdBy: $createdBy, approved: $approved, careerName: $careerName, point: $point, icon: $icon, synonyms: $synonyms, quizes: $quizes, courses: $courses, educators: $educators, users: $users)';
+    return 'Career(description: $description, career_fit: $career_fit, tag_line: $tag_line, career_id: $career_id, createdBy: $createdBy, approved: $approved, careerName: $careerName, point: $point, icon: $icon, synonyms: $synonyms, accredited_institutions: $accredited_institutions, quizes: $quizes, courses: $courses, educators: $educators, users: $users, fun_fact: $fun_fact)';
   }
 
   @override
@@ -370,11 +419,14 @@ class _$_Career implements _Career {
             const DeepCollectionEquality().equals(other.point, point) &&
             const DeepCollectionEquality().equals(other.icon, icon) &&
             const DeepCollectionEquality().equals(other._synonyms, _synonyms) &&
+            const DeepCollectionEquality().equals(
+                other._accredited_institutions, _accredited_institutions) &&
             const DeepCollectionEquality().equals(other._quizes, _quizes) &&
             const DeepCollectionEquality().equals(other._courses, _courses) &&
             const DeepCollectionEquality()
                 .equals(other._educators, _educators) &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            const DeepCollectionEquality().equals(other._fun_fact, _fun_fact));
   }
 
   @JsonKey(ignore: true)
@@ -391,10 +443,12 @@ class _$_Career implements _Career {
       const DeepCollectionEquality().hash(point),
       const DeepCollectionEquality().hash(icon),
       const DeepCollectionEquality().hash(_synonyms),
+      const DeepCollectionEquality().hash(_accredited_institutions),
       const DeepCollectionEquality().hash(_quizes),
       const DeepCollectionEquality().hash(_courses),
       const DeepCollectionEquality().hash(_educators),
-      const DeepCollectionEquality().hash(_users));
+      const DeepCollectionEquality().hash(_users),
+      const DeepCollectionEquality().hash(_fun_fact));
 
   @JsonKey(ignore: true)
   @override
@@ -421,10 +475,12 @@ abstract class _Career implements Career {
       final int? point,
       final String? icon,
       final List<String>? synonyms,
+      final List<String>? accredited_institutions,
       final List<String>? quizes,
       final List<String>? courses,
       final List<String>? educators,
-      final List<String>? users}) = _$_Career;
+      final List<String>? users,
+      final List<String>? fun_fact}) = _$_Career;
 
   factory _Career.fromJson(Map<String, dynamic> json) = _$_Career.fromJson;
 
@@ -449,6 +505,8 @@ abstract class _Career implements Career {
   @override
   List<String>? get synonyms;
   @override
+  List<String>? get accredited_institutions;
+  @override
   List<String>? get quizes;
   @override
   List<String>? get courses;
@@ -456,6 +514,8 @@ abstract class _Career implements Career {
   List<String>? get educators;
   @override
   List<String>? get users;
+  @override
+  List<String>? get fun_fact;
   @override
   @JsonKey(ignore: true)
   _$$_CareerCopyWith<_$_Career> get copyWith =>

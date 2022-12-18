@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'career.freezed.dart';
 part 'career.g.dart';
 
@@ -15,10 +16,12 @@ abstract class Career with _$Career {
     int? point,
     String? icon,
     List<String>? synonyms,
+    List<String>? accredited_institutions,
     List<String>? quizes,
     List<String>? courses,
     List<String>? educators,
     List<String>? users,
+    List<String>? fun_fact,
   }) = _Career;
   factory Career.fromJson(Map<String, dynamic> json) =>
       _$CareerFromJson(json); //⇒
