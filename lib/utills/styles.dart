@@ -36,8 +36,8 @@ final dark32Style = TextStyle(
   fontWeight: FontWeight.normal,
 );
 final factStyle = TextStyle(
-  color: projectDark,
-  fontFamily: factFont,
+  color: projectBlue,
+  fontFamily: generalFont,
   fontSize: 14.0,
   height: 1.5,
   //fontStyle: FontStyle.,
@@ -50,6 +50,14 @@ final light14Style = TextStyle(
   height: 1,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.normal,
+);
+final light14BoldStyle = TextStyle(
+  color: accent,
+  fontFamily: generalFont,
+  fontSize: 14.0,
+  height: 1,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
 );
 final light10Style = TextStyle(
   color: accent,
@@ -293,7 +301,7 @@ final white11Style = TextStyle(
 );
 final white12BoldStyle = TextStyle(
   color: accent,
-  fontFamily: factFont,
+  fontFamily: generalFont,
   fontSize: 12.0,
   height: 1,
   fontStyle: FontStyle.normal,

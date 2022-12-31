@@ -255,11 +255,13 @@ class _MyAppState extends State<MyApp> {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: Scaffold(
-          body:(hasLoggedIn) ? dashboardPage() : walkthroughPage(),
+        home: SafeArea(
+            child: Scaffold(
+          body: (hasLoggedIn) ? dashboardPage() : walkthroughPage(),
+          backgroundColor: Colors.transparent,
           //admin_office_Page(), //
           //functionTest_page(),//
-        ));
+        )));
   }
 
   Route _createRoute() {
