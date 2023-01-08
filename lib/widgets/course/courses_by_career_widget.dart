@@ -51,14 +51,22 @@ class CoursesByCareerWidget extends StatelessWidget {
                   return GestureDetector(
                       onTap: openContainer,
                       child: Container(
-                        padding: EdgeInsets.all(10),
-                        alignment: Alignment.topLeft,
-                        color: projectLightBlue,
-                        child: Text(
-                          career.careerName ?? "Career Name",
-                          style: blue14BoldStyle,
-                        ),
-                      ));
+                          padding: EdgeInsets.all(10),
+                          alignment: Alignment.topLeft,
+                          color: projectLightBlue,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                career.careerName ?? "Career Name",
+                                style: blue14BoldStyle,
+                              ),
+                              Text(
+                                'Click here to learn more',
+                                style: green12Style,
+                              )
+                            ],
+                          )));
                 }),
             OpenContainer<bool>(
                 transitionType: ContainerTransitionType.fade,
@@ -81,10 +89,6 @@ class CoursesByCareerWidget extends StatelessWidget {
                               career.tag_line,
                               style: dark10Style,
                             ),
-                            Text(
-                              'View more',
-                              style: green12Style,
-                            )
                           ],
                         )),
                   );
@@ -94,7 +98,7 @@ class CoursesByCareerWidget extends StatelessWidget {
               child: CarouselSlider(
                 options: CarouselOptions(
                   height: MediaQuery.of(context).size.height * 0.12,
-                  aspectRatio: 1,
+                  aspectRatio: 0.8,
                   viewportFraction: 1,
                   initialPage: 0,
                   enableInfiniteScroll: true,
@@ -137,6 +141,12 @@ class CoursesByCareerWidget extends StatelessWidget {
                                           alignment: Alignment.topCenter,
                                           height: size.height * 0.1,
                                           child: Scrollbar(
+                                            trackVisibility: true,
+                                            thumbVisibility: true,
+                                            radius: Radius.circular(30),
+                                            hoverThickness: 10,
+                                            scrollbarOrientation:
+                                                ScrollbarOrientation.bottom,
                                             child: ListView.separated(
                                               scrollDirection: Axis.horizontal,
                                               itemBuilder: (context, index) {

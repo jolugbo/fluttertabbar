@@ -24,7 +24,7 @@ class university_prompt extends StatelessWidget {
         children: [
           AccordionSection(
               isOpen: false,
-              headerBackgroundColor: projectBlue2,
+              headerBackgroundColor: projectBlue,
               rightIcon: Icon(Icons.arrow_downward_sharp, color: accent),
               headerBackgroundColorOpened: projectBlue,
               paddingBetweenClosedSections: 10,

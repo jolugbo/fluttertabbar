@@ -29,7 +29,7 @@ class Course_prompt extends StatelessWidget {
           component: (displayVertical)
               ? Column(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                       RawMaterialButton(
@@ -47,7 +47,7 @@ class Course_prompt extends StatelessWidget {
                       ),
                       Container(
                           padding: EdgeInsets.fromLTRB(5, 5, 5, 0),
-                          alignment: Alignment.bottomLeft,
+                          alignment: Alignment.center,
                           width: 120,
                           child: Text(
                             courseName ?? "test",

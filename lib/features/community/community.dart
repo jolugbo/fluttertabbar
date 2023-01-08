@@ -10,6 +10,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/widgets.dart';
 import 'package:edurald/utills/imageanimations.dart';
 import 'package:edurald/utills/styles.dart';
+import '../../gen/assets.gen.dart';
 
 class community extends StatefulWidget {
   community({Key? key, this.title}) : super(key: key);
@@ -42,19 +43,13 @@ class _CommunityState extends State<community> with TickerProviderStateMixin {
   String mmfchart = 'assets/mmfchart.png';
   String defaultprofile = 'assets/defaultprofile.png';
   String favourite = 'assets/favourite.png';
-  String placeholder = 'assets/ph.jpg';
+  String placeholder = Assets.images.ph.path;
   double lowerDashElementPosition = 0.33;
   int _currentIndex = 0;
   Icon dropDown = Icon(
     Icons.keyboard_arrow_down,
     color: accent,
   );
-  Map<String, double> dataMap = {
-    "ARM Money Market Fund": 60,
-    "ARM EuroBond": 16,
-    "ARM Fixed Income Fund": 20,
-    "ARM Ethical Fund": 4,
-  };
   List<Color> colorList = [
     projectPink,
     projectGreen2,

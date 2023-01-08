@@ -35,7 +35,7 @@ class CareerWidget extends StatelessWidget {
         duration: Duration(seconds: 1),
         child: Container(
           height: size.height * 0.08,
-          color: Colors.transparent,
+          color: projectLightGray2,
           width: size.width,
           child: Center(
             child: Text(
@@ -49,7 +49,7 @@ class CareerWidget extends StatelessWidget {
           top: size.height * 0,
           duration: Duration(seconds: 1),
           child: Container(
-            color: projectBlue,
+            color: accent,
             height: size.height * 0.08,
             width: size.width * 0.18,
             // margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -63,12 +63,12 @@ class CareerWidget extends StatelessWidget {
                 child: Icon(Icons.cancel, color: projectRed),
                 padding: EdgeInsets.all(5.0),
                 shape: CircleBorder(
-                    side: BorderSide(color: projectGray, width: 2)),
+                    side: BorderSide(color: projectGray2, width: 1)),
               ),
             ),
           )),
       AnimatedPositioned(
-        top: size.height * 0.11,
+        top: size.height * 0.09,
         left: 10,
         right: 10,
         duration: Duration(seconds: 1),
@@ -112,10 +112,10 @@ class CareerWidget extends StatelessWidget {
                       )),
                   SizedBox(height: size.height * 0.035),
                   Accordion(
-                    headerBackgroundColorOpened: projectBlue,
+                    headerBackgroundColorOpened: projectBlue2,
                     scaleWhenAnimating: true,
-                    disableScrolling: true,
                     contentHorizontalPadding: 0,
+                    disableScrolling: true,
                     openAndCloseAnimation: true,
                     headerPadding:
                         const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
@@ -203,6 +203,7 @@ class CareerWidget extends StatelessWidget {
                                                       child: Scrollbar(
                                                         child:
                                                             ListView.separated(
+                                                          shrinkWrap: true,
                                                           scrollDirection:
                                                               Axis.vertical,
                                                           padding:
