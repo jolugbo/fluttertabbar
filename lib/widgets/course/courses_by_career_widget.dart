@@ -190,19 +190,6 @@ class CoursesByCareerWidget extends StatelessWidget {
                                                 );
                                 },
                               )));
-
-                      // Container(
-                      //   //width: MediaQuery.of(context).size.width * 0.8,
-                      //   padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      //   alignment: Alignment.center,
-                      //   color: accent,
-                      //   child: ListView(
-                      //     scrollDirection: Axis.horizontal,
-                      //     children: <Widget>[
-                      //       Course_prompt("advisory", advisory, "1"),
-                      //     ],
-                      //   ),
-                      // );
                     },
                   );
                 }).toList(),
